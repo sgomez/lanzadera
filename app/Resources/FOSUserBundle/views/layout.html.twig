@@ -1,0 +1,11 @@
+{% extends 'LanzaderaBundle::layout.html.twig' %}
+
+{% block title %}Acme Demo Application{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="centered six columns">
+            {% block fos_user_content %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

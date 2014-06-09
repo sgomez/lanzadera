@@ -1,12 +1,16 @@
 default:
-  formatter:
-    name: progress
+  suites:
+    default:
+      type: symfony_bundle
+      bundle: LanzaderaBundle
+      mink_session: default
+      mink_javascript_session: selenium2
+      contexts:
+        - Tejedora\LanzaderaBundle\Features\Context\FeatureContext
   extensions:
-    Behat\Symfony2Extension\Extension:
-      mink_driver: true
-      kernel:
-        env: test
-        debug: true
-    Behat\MinkExtension\Extension:
-      base_url: 'http://localhost:8080/app_test.php'
-      default_session: symfony2
+    Behat\Symfony2Extension: ~
+    Behat\MinkExtension:
+      base_url: 'http://localhost:8080'
+      sessions:
+        default:
+          symfony2: ~

@@ -6,6 +6,19 @@
     "autoload": {
         "psr-0": { "": "src/" }
     },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "jquery/jquery",
+                "version": "1.11.0",
+                "dist": {
+                    "url": "http://code.jquery.com/jquery-1.11.0.js",
+                    "type": "file"
+                }
+            }
+        }
+    ],
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "2.5.*",
@@ -20,15 +33,22 @@
         "incenteev/composer-parameter-handler": "~2.0",
 
         "friendsofsymfony/user-bundle": "2.0.*@dev",
-        "gumbyframework/gumby": "2.6.3",
+        "braincrafted/bootstrap-bundle": "v2.1.0-beta1",
+        "twbs/bootstrap": "v3.1.1",
+        "jquery/jquery":  "1.11.*",
+        "oyejorge/less.php": "v1.7.0.2",
+        "knplabs/knp-paginator-bundle": "2.4.0",
+        "knplabs/knp-menu": "v2.0.0-alpha2",
+        "knplabs/knp-menu-bundle": "v2.0.0-alpha2",
+
         "behat/behat":  "3.0.*@stable",
         "behat/mink": "1.6.*@dev",
-
         "behat/symfony2-extension":      "2.0.*@dev",
         "behat/mink-extension":          "2.0.*@dev",
         "behat/mink-browserkit-driver":  "1.2.*@dev",
         "behat/mink-selenium-driver":    "1.2.*@dev",
         "phpunit/phpunit":               "~3.7"
+
     },
     "scripts": {
         "post-install-cmd": [
@@ -36,14 +56,16 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Braincrafted\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::install"
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Braincrafted\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::install"
         ]
     },
     "config": {

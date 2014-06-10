@@ -1,6 +1,7 @@
-/web/bundles/
 /web/assetic/
+/web/bundles/
 /web/css/
+/web/fonts/
 /web/js/
 /app/bootstrap.php.cache
 /app/cache/*

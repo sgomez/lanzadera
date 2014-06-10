@@ -1,3 +1,11 @@
-form label.inline {
-    min-width: 120px;
+.fullscreen_bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: contain;
+    background-position: 50% 50%;
+    background-image: url('../img/tejedorabg.png');
+    background-repeat:no-repeat;
 }

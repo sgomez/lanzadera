@@ -34,3 +34,8 @@ assetic:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+
+
+fos_user:
+  from_email:
+        address: sergio@uco.es

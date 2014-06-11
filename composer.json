@@ -18,6 +18,7 @@
                 }
             }
         }
+
     ],
     "require": {
         "php": ">=5.3.3",
@@ -28,15 +29,20 @@
         "symfony/assetic-bundle": "~2.3",
         "symfony/swiftmailer-bundle": "~2.3",
         "symfony/monolog-bundle": "~2.4",
+        "sensio/generator-bundle": "v2.3.4",
         "sensio/distribution-bundle": "~3.0",
         "sensio/framework-extra-bundle": "~3.0",
         "incenteev/composer-parameter-handler": "~2.0",
 
         "friendsofsymfony/user-bundle": "2.0.*@dev",
+        "sonata-project/admin-bundle": "2.3.x-dev",
+        "sonata-project/doctrine-orm-admin-bundle": "2.3.x-dev",
+
         "braincrafted/bootstrap-bundle": "v2.1.0-beta1",
         "twbs/bootstrap": "v3.1.1",
         "jquery/jquery":  "1.11.*",
         "oyejorge/less.php": "v1.7.0.2",
+        "fortawesome/font-awesome": "4.1.0",
         "knplabs/knp-paginator-bundle": "2.4.0",
         "knplabs/knp-menu": "v2.0.0-alpha2",
         "knplabs/knp-menu-bundle": "v2.0.0-alpha2",

@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="sonata.admin.organization" class="Tejedora\LanzaderaBundle\Admin\OrganizationAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Administración" label="Organizaciones"/>
+            <argument />
+            <argument>Tejedora\LanzaderaBundle\Entity\Organization</argument>
+            <argument />
+            <call method="setTranslationDomain">
+                <argument>LanzaderaBundle</argument>
+            </call>
+        </service>
+        <service id="sonata.admin.user" class="Tejedora\LanzaderaBundle\Admin\UserAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Administración" label="Usuarios"/>
+            <argument />
+            <argument>Tejedora\LanzaderaBundle\Entity\User</argument>
+            <argument />
+        </service>
+    </services>
+
+</container>

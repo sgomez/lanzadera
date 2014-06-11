@@ -45,6 +45,7 @@ assetic:
 
 braincrafted_bootstrap:
     less_filter: lessphp
+    icon_prefix: fa
 
 # Doctrine Configuration
 doctrine:
@@ -76,3 +77,13 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: Tejedora\LanzaderaBundle\Entity\User
+
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+
+sonata_admin:
+    title: Lanzadera
+    title_logo: bundles/lanzadera/img/tejedorasm.png

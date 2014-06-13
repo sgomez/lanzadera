@@ -8,7 +8,7 @@ Característica: Iniciar sesión
     Dado que existen los siguientes usuarios:
       | username  | password  | email                 | enabled | role        |
       | admin     | adminpw   | admin@latejedora.com  | 1       | ROLE_ADMIN  |
-      | sergio    | sergiopw  | sergio@latejedora.com | 1       | ROLE_USER   |
+      | sergio    | sergiopw  | sergio@uco.es         | 1       | ROLE_USER   |
       | johndoe   | johndoepw | johndoe@latejedora.com| 0       | ROLE_ADMIN  |
 
   Escenario: Identificarse como administrador

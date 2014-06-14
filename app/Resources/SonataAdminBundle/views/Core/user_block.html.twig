@@ -1,0 +1,13 @@
+{% block user_block %}
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+    <li role="presentation" class="dropdown-header">Bienvenido {{ app.user.username }}</li>
+    <li role="presentation">
+        <a href="{{ path('fos_user_security_logout') }}">Cerrar sesión</a>
+    </li>
+    {% else %}
+    <li role="presentation">
+        <a href="{{ path('fos_user_security_login') }}">Iniciar sesión</a>
+    </li>
+    {% endif %}
+{% endblock %}

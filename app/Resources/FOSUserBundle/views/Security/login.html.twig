@@ -20,19 +20,19 @@
 
             <div class="form-group">
                 <label for="username">Usuario</label>
-                <input type="text" class="form-control" style="border-radius:0px" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="Enter email">
+                <input tabindex="1" autofocus type="text" class="form-control" style="border-radius:0px" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="Enter email">
             </div>
             <div class="form-group">
-                <label for="password">{{ 'security.login.password'|trans }} <a href="{{ path("fos_user_resetting_request") }}">(recuperar contraseña)</a></label>
-                <input type="password" class="form-control" style="border-radius:0px" id="password" name="_password" required="required" placeholder="Password">
+                <label for="password">{{ 'security.login.password'|trans }} <a tabindex="-1" href="{{ path("fos_user_resetting_request") }}">(recuperar contraseña)</a></label>
+                <input tabindex="2" type="password" class="form-control" style="border-radius:0px" id="password" name="_password" required="required" placeholder="Password">
             </div>
             <div class="form-group">
                 <label class="checkbox checked" for="check1">
-                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                    <input tabindex="-1" type="checkbox" id="remember_me" name="_remember_me" value="on" />
                     <span></span> {{ 'security.login.remember_me'|trans }}
                 </label>
             </div>
-            <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+            <input tabindex="-1" class="btn btn-default" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
         </form>
     </div>
 

@@ -1,11 +1,7 @@
-homepage:
-    path: /
-    defaults: {  _controller: FrameworkBundle:Template:template, template: 'LanzaderaBundle:Default:index.html.twig' }
-
-lanzadera:
-    resource: "@LanzaderaBundle/Controller/"
-    type:     annotation
-    prefix:   /backend
+#lanzadera:
+#    resource: "@LanzaderaBundle/Controller/"
+#    type:     annotation
+#    prefix:   /backend
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
@@ -34,3 +30,7 @@ _sonata_admin:
     resource: .
     type: sonata_admin
     prefix: /
+
+sonata_admin_redirect:
+    pattern: /
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: sonata_admin_dashboard, permanent: true }

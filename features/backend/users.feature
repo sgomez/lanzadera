@@ -1,5 +1,5 @@
 #language: es
-@usuarios
+@account
 Característica: Administrar usuarios
   Para administrar los usuarios
   Como administrador de la aplicación

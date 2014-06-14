@@ -1,6 +1,6 @@
 <?php
 
-namespace Tejedora\LanzaderaBundle\Features\Context;
+namespace Tejedora\LanzaderaBundle\Behat;
 
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Behat\Definition\Call\When as StepWhen;
@@ -18,37 +18,8 @@ use Tejedora\LanzaderaBundle\Entity\User;
 /**
  * Behat context class.
  */
-class FeatureContext extends MinkContext
-                     implements SnippetAcceptingContext, KernelAwareContext
+class UsersContext extends DefaultContext
 {
-    private $kernel;
-    private $parameters;
-
-    /**
-     * Initializes context.
-     *
-     * Every scenario gets its own context object.
-     * You can also pass arbitrary arguments to the context constructor through behat.yml.
-     */
-    public function __construct()
-    {
-    }
-
-    public function setKernel(KernelInterface $kernel)
-    {
-      $this->kernel = $kernel;
-    }
-
-    /**
-     * Returns the Doctrine entity manager.
-     *
-     * @return Doctrine\ORM\EntityManager
-     */
-    protected function getEntityManager()
-    {
-        return $this->kernel->getContainer()->get("doctrine")->getManager();
-    }
-
     /**
      * @return string
      */
@@ -70,7 +41,7 @@ class FeatureContext extends MinkContext
      */
     public function deboEstarEnElPanelDeAdministracion()
     {
-        $this->assertUrlRegExp("#".$this->getDashboardRoute()."#");
+        $this->assertSession()->addressEquals($this->generateUrl('sonata_admin_dashboard'));
     }
 
     /**

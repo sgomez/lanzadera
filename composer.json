@@ -45,16 +45,17 @@
         "fortawesome/font-awesome": "4.1.0",
         "knplabs/knp-paginator-bundle": "2.4.0",
         "knplabs/knp-menu": "v2.0.0-alpha2",
-        "knplabs/knp-menu-bundle": "v2.0.0-alpha2",
-
-        "behat/behat":  "3.0.*@stable",
-        "behat/mink": "1.6.*@dev",
-        "behat/symfony2-extension":      "2.0.*@dev",
-        "behat/mink-extension":          "2.0.*@dev",
-        "behat/mink-browserkit-driver":  "1.2.*@dev",
-        "behat/mink-selenium-driver":    "1.2.*@dev",
-        "phpunit/phpunit":               "~3.7"
-
+        "knplabs/knp-menu-bundle": "v2.0.0-alpha2"
+    },
+    "require-dev": {
+        "behat/behat":                       "3.0.*@stable",
+        "behat/symfony2-extension":          "2.0.*@dev",
+        "behat/mink-extension":              "2.0.*@dev",
+        "behat/mink-browserkit-driver":      "1.2.*@dev",
+        "behat/mink-selenium-driver":        "1.2.*@dev",
+        "behat/mink":                        "1.6.*@dev",
+        "doctrine/doctrine-fixtures-bundle": "2.2.*",
+        "phpunit/phpunit":                   "~3.7"
     },
     "scripts": {
         "post-install-cmd": [

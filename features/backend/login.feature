@@ -1,4 +1,5 @@
 #language: es
+@login
 Característica: Iniciar sesión
   Para poder usar la aplicación
   Como usuario registrado y habilitado

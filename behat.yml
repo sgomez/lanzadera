@@ -1,16 +1,24 @@
 default:
-  suites:
-    default:
-      type: symfony_bundle
-      bundle: LanzaderaBundle
-      mink_session: default
-      mink_javascript_session: selenium2
-      contexts:
-        - Tejedora\LanzaderaBundle\Features\Context\FeatureContext
-  extensions:
-    Behat\Symfony2Extension: ~
-    Behat\MinkExtension:
-      base_url: 'http://localhost:8080'
-      sessions:
-        default:
-          symfony2: ~
+    formatters:
+        pretty:
+            verbose:  true
+            paths:    false
+            snippets: false
+
+    suites:
+        account:
+            contexts:
+                - Behat\MinkExtension\Context\MinkContext
+                - Tejedora\LanzaderaBundle\Behat\UsersContext
+            filters:
+                tags: "@login"
+
+    extensions:
+        Behat\MinkExtension:
+            sessions:
+                default:
+                    symfony2: ~
+            browser_name: firefox
+            show_auto:    false
+            base_url: 'http://localhost:8080'
+        Behat\Symfony2Extension: ~

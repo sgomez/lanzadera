@@ -7,6 +7,6 @@ Característica: Administrar usuarios
 
   Escenario: Ver listado de usuarios
     Dado que estoy autenticado como "admin"
-    Cuando voy a "/dashboard"
+    Cuando estoy en el panel de administración
     Y presiono "Listar" en el bloque "Usuarios"
     Entonces debo ver "Lista de usuarios"

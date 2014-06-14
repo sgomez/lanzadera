@@ -50,6 +50,30 @@ class FeatureContext extends MinkContext
     }
 
     /**
+     * @return string
+     */
+    protected function getDashboardRoute()
+    {
+        return $this->kernel->getContainer()->get('router')->generate('sonata_admin_dashboard');
+    }
+
+    /**
+     * @When estoy en el panel de administración
+     */
+    public function estoyEnElPanelDeAdministracion()
+    {
+        $this->getSession()->visit($this->getDashboardRoute());
+    }
+
+    /**
+     * @Then debo estar en el panel de administración
+     */
+    public function deboEstarEnElPanelDeAdministracion()
+    {
+        $this->assertUrlRegExp("#".$this->getDashboardRoute()."#");
+    }
+
+    /**
      * @Given /^que existen los siguientes usuarios:$/
      */
     public function generateUsers(TableNode $usersTable)

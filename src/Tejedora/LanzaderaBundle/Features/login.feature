@@ -16,8 +16,7 @@ Característica: Iniciar sesión
     Cuando relleno "username" con "admin"
     Y relleno "password" con "adminpw"
     Y presiono "Entrar"
-    Entonces debo estar en "/"
-    Y debo ver "Estamos dentro"
+    Entonces debo estar en el panel de administración
 
   Escenario: Iniciar sesión como un usuario no existente
     Dado estoy en "/login"

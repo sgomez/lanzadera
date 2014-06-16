@@ -77,9 +77,9 @@ swiftmailer:
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: Application\Sonata\UserBundle\Entity\User
+    user_class: Lanzadera\CoreBundle\Entity\User
     group:
-        group_class:   Application\Sonata\UserBundle\Entity\Group
+        group_class:   Lanzadera\CoreBundle\Entity\Group
         group_manager: sonata.user.orm.group_manager
     service:
         user_manager: sonata.user.orm.user_manager
@@ -95,6 +95,12 @@ sonata_block:
 sonata_user:
     security_acl: true
     manager_type: orm
+    class:
+        user:         Lanzadera\CoreBundle\Entity\User
+        group:        Lanzadera\CoreBundle\Entity\Group
+    admin:
+        user:
+            class:    Lanzadera\CoreBundle\Admin\Model\UserAdmin
 
 sonata_admin:
     title: Lanzadera

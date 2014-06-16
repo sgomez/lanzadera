@@ -13,7 +13,7 @@ use Behat\MinkExtension\Context\MinkContext;
 use Behat\Symfony2Extension\Context\KernelAwareContext;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use Application\Sonata\UserBundle\Entity\User;
+use Lanzadera\CoreBundle\Entity\User;
 
 /**
  * Behat context class.

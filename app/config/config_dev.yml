@@ -39,3 +39,7 @@ assetic:
 fos_user:
   from_email:
         address: sergio@uco.es
+
+doctrine:
+    dbal:
+        dbname: %database_name%_dev

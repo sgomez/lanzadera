@@ -28,6 +28,19 @@ class LoadUsersData extends DataFixture
         $user = $this->createUser("admin", "admin@test.uco.es", "adminpw");
 
         $manager->persist($user);
+
+        for ($i=0; $i < 15; $i++) {
+            $username = $this->faker->username;
+            $user = $this->createUser(
+                $username,
+                $username."@test.uco.es",
+                $username,
+                $this->faker->boolean
+            );
+
+            $manager->persist($user);
+        }
+
         $manager->flush();
     }
 
@@ -41,12 +54,8 @@ class LoadUsersData extends DataFixture
 
     public function createUser($username, $email, $password, $enabled = true, array $roles = array('ROLE_USER'))
     {
-        /* @var $user UserInterface */
-        $repo = $this->getOrganizationRepository();
-        var_dump(get_class($repo));
         /* @var $repo UserRepository */
         $repo = $this->getUserRepository();
-        var_dump(get_class($repo));
         $user = $repo->createNew();
 
         $user->setUsername($username);

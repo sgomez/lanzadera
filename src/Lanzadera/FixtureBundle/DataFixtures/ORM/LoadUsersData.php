@@ -25,7 +25,7 @@ class LoadUsersData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        $user = $this->createUser("admin", "admin@test.uco.es", "adminpw");
+        $user = $this->createUser("admin", "admin@test.uco.es", "adminpw", true, array('ROLE_SUPER_ADMIN'));
 
         $manager->persist($user);
 

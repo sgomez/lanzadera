@@ -13,7 +13,7 @@ use Behat\MinkExtension\Context\MinkContext;
 use Behat\Symfony2Extension\Context\KernelAwareContext;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use Tejedora\LanzaderaBundle\Entity\User;
+use Application\Sonata\UserBundle\Entity\User;
 
 /**
  * Behat context class.
@@ -28,7 +28,7 @@ class UsersContext extends DefaultContext
     {
         $em = $this->getEntityManager();
         foreach ($usersTable->getHash() as $userHash) {
-            $user = $em->getRepository('LanzaderaBundle:User')->findOneByUsername($userHash['username']);
+            $user = $this->getRepository('user')->findOneByUsername($userHash['username']);
             if (!$user) {
                 $user = new User();
             }

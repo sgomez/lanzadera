@@ -3,4 +3,4 @@ services:
         class: Lanzadera\CoreBundle\Doctrine\ORM\UserRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
-        arguments: ['Tejedora\LanzaderaBundle\Entity\User']
+        arguments: ['Application\Sonata\UserBundle\Entity\User']

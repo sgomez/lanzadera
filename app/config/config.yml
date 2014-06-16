@@ -60,7 +60,8 @@ doctrine:
         # if using pdo_sqlite as your database driver, add the path in parameters.yml
         # e.g. database_path: "%kernel.root_dir%/data/data.db3"
         # path:     "%database_path%"
-
+        types:
+            json: Sonata\Doctrine\Types\JsonType
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
@@ -76,13 +77,24 @@ swiftmailer:
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: Tejedora\LanzaderaBundle\Entity\User
+    user_class: Application\Sonata\UserBundle\Entity\User
+    group:
+        group_class:   Application\Sonata\UserBundle\Entity\Group
+        group_manager: sonata.user.orm.group_manager
+    service:
+        user_manager: sonata.user.orm.user_manager
 
 sonata_block:
     default_contexts: [cms]
     blocks:
+        sonata.user.block.menu: ~
+        sonata.user.block.account: ~
         sonata.admin.block.admin_list:
             contexts: [admin]
+
+sonata_user:
+    security_acl: true
+    manager_type: orm
 
 sonata_admin:
     title: Lanzadera

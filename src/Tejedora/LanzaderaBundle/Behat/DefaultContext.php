@@ -106,6 +106,19 @@ abstract class DefaultContext extends RawMinkContext
     }
 
     /**
+     * Get repository by resource name.
+     *
+     * @param string $resource
+     *
+     * @return RepositoryInterface
+     */
+    protected function getRepository($resource)
+    {
+        return $this->getService('lanzadera.repository.'.$resource);
+    }
+
+
+    /**
      * Get security context.
      *
      * @return SecurityContextInterface

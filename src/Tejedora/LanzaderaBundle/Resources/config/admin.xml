@@ -14,12 +14,7 @@
                 <argument>LanzaderaBundle</argument>
             </call>
         </service>
-        <service id="sonata.admin.user" class="Tejedora\LanzaderaBundle\Admin\UserAdmin">
-            <tag name="sonata.admin" manager_type="orm" group="Administración" label="Usuarios"/>
-            <argument />
-            <argument>Tejedora\LanzaderaBundle\Entity\User</argument>
-            <argument />
-        </service>
+
     </services>
 
 </container>

@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Class User
  * @package Tejedora\LanzaderaBundle\Entity
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\UserRepository")
  */
 class User extends BaseUser
 {

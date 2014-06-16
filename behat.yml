@@ -10,8 +10,16 @@ default:
             contexts:
                 - Behat\MinkExtension\Context\MinkContext
                 - Tejedora\LanzaderaBundle\Behat\UsersContext
+                - Tejedora\LanzaderaBundle\Behat\WebContext
             filters:
                 tags: "@login"
+        users:
+            contexts:
+                - Behat\MinkExtension\Context\MinkContext
+                - Tejedora\LanzaderaBundle\Behat\UsersContext
+                - Tejedora\LanzaderaBundle\Behat\WebContext
+            filters:
+                tags: "@users"
 
     extensions:
         Behat\MinkExtension:

@@ -1,0 +1,6 @@
+services:
+    lanzadera.repository.user:
+        class: Lanzadera\CoreBundle\Doctrine\ORM\UserRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: ['Tejedora\LanzaderaBundle\Entity\User']

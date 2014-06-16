@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Organization
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Tejedora\LanzaderaBundle\Entity\OrganizationRepository")
+ * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\OrganizationRepository")
  */
 class Organization
 {

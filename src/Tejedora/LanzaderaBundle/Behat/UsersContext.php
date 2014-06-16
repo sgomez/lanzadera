@@ -20,29 +20,6 @@ use Tejedora\LanzaderaBundle\Entity\User;
  */
 class UsersContext extends DefaultContext
 {
-    /**
-     * @return string
-     */
-    protected function getDashboardRoute()
-    {
-        return $this->kernel->getContainer()->get('router')->generate('sonata_admin_dashboard');
-    }
-
-    /**
-     * @When estoy en el panel de administración
-     */
-    public function estoyEnElPanelDeAdministracion()
-    {
-        $this->getSession()->visit($this->getDashboardRoute());
-    }
-
-    /**
-     * @Then debo estar en el panel de administración
-     */
-    public function deboEstarEnElPanelDeAdministracion()
-    {
-        $this->assertSession()->addressEquals($this->generateUrl('sonata_admin_dashboard'));
-    }
 
     /**
      * @Given /^que existen los siguientes usuarios:$/
@@ -90,23 +67,6 @@ class UsersContext extends DefaultContext
     }
 
 
-    /**
-     * @When presiono :link en el bloque :block
-     */
-    public function presionoEnElBloque($link, $block)
-    {
-        $node = $this->getSession()->getPage()->find('xpath', "//tr/td[contains(text(),'{$block}')]/..");
-        $node->clickLink($link);
-    }
-
-    /**
-     * @Then debo estar en la ruta :arg1
-     */
-    public function deboEstarEnLaRuta($arg1)
-    {
-        echo $this->getSession()->getCurrentUrl();
-        throw new PendingException();
-    }
 
 
 }

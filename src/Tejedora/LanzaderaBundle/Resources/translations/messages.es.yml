@@ -7,3 +7,10 @@ Locked: Bloqueado
 Action: Acción
 Actions: Acciones
 User List: Lista de usuarios
+
+
+form:
+    label_locked: Bloqueada
+    label_expired: Caducada
+    label_enabled: Habilitada
+    label_credentials_expired: Credenciales caducadas

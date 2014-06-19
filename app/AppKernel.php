@@ -32,6 +32,7 @@ class AppKernel extends Kernel
             new Tejedora\LanzaderaBundle\LanzaderaBundle(),
             new Lanzadera\FixtureBundle\LanzaderaFixtureBundle(),
             new Lanzadera\CoreBundle\LanzaderaCoreBundle(),
+            new Lanzadera\OrganizationBundle\LanzaderaOrganizationBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -20,6 +20,11 @@ default:
                 - Tejedora\LanzaderaBundle\Behat\WebContext
             filters:
                 tags: "@users"
+        organizations:
+            contexts:
+                - Behat\MinkExtension\Context\MinkContext
+            filters:
+                tags: "@organizations"
 
     extensions:
         Behat\MinkExtension:

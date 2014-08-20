@@ -1,0 +1,24 @@
+parameters:
+#    lanzadera_classification.example.class: Lanzadera\ClassificationBundle\Example
+
+services:
+#    lanzadera_classification.example:
+#        class: %lanzadera_classification.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    lanzadera.admin.classification:
+        class: Lanzadera\ClassificationBundle\Admin\ClassificationAdmin
+        arguments: [~, Lanzadera\ClassificationBundle\Entity\Classification, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Administración, label: Clasificadores}
+
+    lanzadera.admin.criterion:
+        class: Lanzadera\ClassificationBundle\Admin\CriterionAdmin
+        arguments: [~, Lanzadera\ClassificationBundle\Entity\Criterion, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Administración, label: Criterios}
+
+    lanzadera.admin.parameter:
+        class: Lanzadera\ClassificationBundle\Admin\ParameterAdmin
+        arguments: [~, Lanzadera\ClassificationBundle\Entity\Parameter, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Administración, label: Parametros}

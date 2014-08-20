@@ -4,3 +4,13 @@ services:
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments: ['Lanzadera\CoreBundle\Entity\User']
+    lanzadera.repository.organization:
+        class: Lanzadera\CoreBundle\Doctrine\ORM\OrganizationRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: ['Lanzadera\OrganizationBundle\Entity\Organization']
+    lanzadera.repository.classification:
+        class: Lanzadera\CoreBundle\Doctrine\ORM\ClassificationRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: ['Lanzadera\ClassificationBundle\Entity\Classification']

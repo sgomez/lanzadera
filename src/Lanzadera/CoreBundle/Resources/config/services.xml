@@ -20,11 +20,11 @@
             <!--<argument>LanzaderaBundle:User</argument>-->
         <!--</service>-->
 
-        <service id="lanzadera.repository.organization"
+<!--        <service id="lanzadera.repository.organization"
                  class="%lanzadera.repository.organization.class%"
                  factory-service="doctrine.orm.entity_manager"
                  factory-method="getRepository">
-            <argument>LanzaderaBundle:Organization</argument>
-        </service>
+            <argument>Lanzadera\OrganizationBundle\Entity\Organization</argument>
+        </service>-->
     </services>
 </container>

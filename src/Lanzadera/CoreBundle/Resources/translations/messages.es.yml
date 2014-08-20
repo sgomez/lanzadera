@@ -1,4 +1,4 @@
-#LanzaderaBundle\Resources\translations\messages.es.yml
+#CoreBundle\Resources\translations\messages.es.yml
 Username: Usuario
 Email: Correo-e
 Enabled: Activo
@@ -8,7 +8,7 @@ Action: Acción
 Actions: Acciones
 User List: Lista de usuarios
 
-
+Dashboard: Panel principal
 form:
     label_locked: Bloqueada
     label_expired: Caducada

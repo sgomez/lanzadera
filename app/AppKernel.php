@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+            new Sonata\IntlBundle\SonataIntlBundle(),
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
 
@@ -33,6 +34,8 @@ class AppKernel extends Kernel
             new Lanzadera\FixtureBundle\LanzaderaFixtureBundle(),
             new Lanzadera\CoreBundle\LanzaderaCoreBundle(),
             new Lanzadera\OrganizationBundle\LanzaderaOrganizationBundle(),
+            new Lanzadera\ProductBundle\LanzaderaProductBundle(),
+            new Lanzadera\ClassificationBundle\LanzaderaClassificationBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

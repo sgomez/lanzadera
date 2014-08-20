@@ -56,6 +56,7 @@ class LoadUsersData extends DataFixture
     {
         /* @var $repo UserRepository */
         $repo = $this->getUserRepository();
+        /* @var $user User */
         $user = $repo->createNew();
 
         $user->setUsername($username);

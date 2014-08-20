@@ -21,4 +21,4 @@ services:
         class: Lanzadera\ClassificationBundle\Admin\ParameterAdmin
         arguments: [~, Lanzadera\ClassificationBundle\Entity\Parameter, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: Administración, label: Parametros}
+            - {name: sonata.admin, manager_type: orm, group: Administración, label: Parametros, show_in_dashboard: false}

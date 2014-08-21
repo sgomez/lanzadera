@@ -3,6 +3,7 @@
 namespace Lanzadera\ClassificationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Classification
@@ -25,6 +26,8 @@ class Classification
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     * @Assert\NotBlank(message="classification.name.not_blank")
+     * @Assert\Length(max="255")
      */
     private $name;
 
@@ -32,6 +35,8 @@ class Classification
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=45, nullable=true)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="255")
      */
     private $description;
 
@@ -39,6 +44,8 @@ class Classification
      * @var string
      *
      * @ORM\Column(name="threshold", type="string", length=45, nullable=true)
+     * @Assert\NotBlank()
+     * @Assert\Range(min="0", max="100")
      */
     private $threshold;
 

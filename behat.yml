@@ -28,6 +28,14 @@ default:
                 - Lanzadera\OrganizationBundle\Behat\OrganizationContext
             filters:
                 tags: "@organizations"
+        classificators:
+            contexts:
+                - Behat\MinkExtension\Context\MinkContext
+                - Lanzadera\CoreBundle\Behat\UsersContext
+                - Lanzadera\CoreBundle\Behat\WebContext
+                - Lanzadera\ClassificationBundle\Behat\ClassificationContext
+            filters:
+                tags: "@classificators"
 
     extensions:
         Behat\MinkExtension:

@@ -10,6 +10,8 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class ClassificationAdmin extends Admin
 {
+    protected $baseRouteName = "lanzadera_classification";
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -50,7 +52,6 @@ class ClassificationAdmin extends Admin
             ->add('name')
             ->add('description', 'textarea')
             ->add('threshold', 'percent', array('type' => 'integer'))
-            ->add('criteria', 'sonata_type_collection')
         ;
     }
 

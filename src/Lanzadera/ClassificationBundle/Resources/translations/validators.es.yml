@@ -1,0 +1,3 @@
+classification:
+    name:
+        not_blank: Por favor, indique el nombre de la clasificación.

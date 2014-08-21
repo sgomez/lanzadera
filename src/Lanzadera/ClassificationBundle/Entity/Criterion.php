@@ -4,13 +4,15 @@ namespace Lanzadera\ClassificationBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Constraints\Collection;
+
 
 /**
  * Criterion
  *
  * @ORM\Table(name="criterion", indexes={@ORM\Index(name="fk_criterion_classification1_idx", columns={"classification_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\CriterionRepository")
  */
 class Criterion
 {
@@ -31,6 +33,7 @@ class Criterion
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=45, nullable=true)
+     * @Assert\NotBlank(message="criterion.name.not_blank")
      */
     private $name;
 
@@ -38,6 +41,7 @@ class Criterion
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=45, nullable=true)
+     * @Assert\NotBlank()
      */
     private $description;
 
@@ -45,6 +49,7 @@ class Criterion
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=45, nullable=true)
+     * @Assert\NotBlank()
      */
     private $type;
 
@@ -55,6 +60,7 @@ class Criterion
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="classification_id", referencedColumnName="id")
      * })
+     * @Assert\NotBlank()
      */
     private $classification;
 

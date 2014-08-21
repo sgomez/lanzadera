@@ -11,6 +11,7 @@ namespace Lanzadera\ClassificationBundle\Behat;
 
 use Behat\Gherkin\Node\TableNode;
 use Lanzadera\ClassificationBundle\Entity\Classification;
+use Lanzadera\ClassificationBundle\Entity\Criterion;
 use Lanzadera\CoreBundle\Behat\DefaultContext;
 
 class ClassificationContext extends DefaultContext
@@ -35,4 +36,28 @@ class ClassificationContext extends DefaultContext
             $em->flush();
         }
     }
-} 
+
+    /**
+     * @Given existen los siguientes criterios:
+     */
+    public function createCriterion(TableNode $tableNode)
+    {
+        $em = $this->getEntityManager();
+        foreach ($tableNode->getHash() as $criterionHash) {
+            /** @var Classification $classification */
+            $classification = $this->getContainer()->get('lanzadera.repository.classification')->findOneByName($criterionHash['clasificación']);
+            /** @var Criterion $criterion */
+            $criterion = $this->getContainer()->get('lanzadera.repository.criterion')->findOneByName($criterionHash['nombre']);
+            if (!$criterion) {
+                $criterion = new Criterion();
+            }
+            $criterion->setName($criterionHash['nombre']);
+            $criterion->setDescription($criterionHash['descripción']);
+            $criterion->setType($criterionHash['tipo'] == "Organización" ? Criterion::ORGANIZATION : Criterion::PRODUCT);
+            $criterion->setClassification($classification);
+
+            $em->persist($criterion);
+            $em->flush();
+        }
+    }
+}

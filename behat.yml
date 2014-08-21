@@ -36,6 +36,14 @@ default:
                 - Lanzadera\ClassificationBundle\Behat\ClassificationContext
             filters:
                 tags: "@classificators"
+        criteria:
+            contexts:
+                - Behat\MinkExtension\Context\MinkContext
+                - Lanzadera\CoreBundle\Behat\UsersContext
+                - Lanzadera\CoreBundle\Behat\WebContext
+                - Lanzadera\ClassificationBundle\Behat\ClassificationContext
+            filters:
+                tags: "@criteria"
 
     extensions:
         Behat\MinkExtension:

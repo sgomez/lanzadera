@@ -11,6 +11,8 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class CriterionAdmin extends Admin
 {
+    protected $baseRouteName = "lanzadera_criterion";
+
     /**
      * @param DatagridMapper $datagridMapper
      */

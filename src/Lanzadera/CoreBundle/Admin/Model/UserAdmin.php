@@ -65,6 +65,7 @@ class UserAdmin extends Admin
             ->add('locked', null, array('editable' => true))
             ->add('createdAt')
             ->add('_action', 'actions', array(
+                'label' => 'Acciones',
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),
@@ -80,9 +81,7 @@ class UserAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $filterMapper)
     {
         $filterMapper
-            ->add('id')
             ->add('username')
-            ->add('locked')
             ->add('email')
             ->add('groups')
         ;

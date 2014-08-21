@@ -14,3 +14,5 @@ form:
     label_expired: Caducada
     label_enabled: Habilitada
     label_credentials_expired: Credenciales caducadas
+list:
+    label__action: Acciones

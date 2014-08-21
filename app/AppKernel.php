@@ -30,7 +30,6 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
 
 
-            new Tejedora\LanzaderaBundle\LanzaderaBundle(),
             new Lanzadera\FixtureBundle\LanzaderaFixtureBundle(),
             new Lanzadera\CoreBundle\LanzaderaCoreBundle(),
             new Lanzadera\OrganizationBundle\LanzaderaOrganizationBundle(),

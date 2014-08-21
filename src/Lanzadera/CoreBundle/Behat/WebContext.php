@@ -6,7 +6,7 @@
  * Time: 22:57
  */
 
-namespace Tejedora\LanzaderaBundle\Behat;
+namespace Lanzadera\CoreBundle\Behat;
 
 
 class WebContext extends DefaultContext
@@ -34,5 +34,13 @@ class WebContext extends DefaultContext
     {
         $node = $this->getSession()->getPage()->find('xpath', "//tr/td[contains(text(),'{$block}')]/..");
         $node->clickLink($link);
+    }
+
+    /**
+     * @Then debería estar en la sección :block
+     */
+    public function deboEstarEnlaSeccion($block)
+    {
+        $this->assertSession()->elementExists('xpath', sprintf("//ol[contains(@class, 'breadcrumb')]//li[contains(@class, 'active')]//span[contains(text(),'%s')]", $block));
     }
 } 

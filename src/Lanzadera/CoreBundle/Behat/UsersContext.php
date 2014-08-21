@@ -1,6 +1,6 @@
 <?php
 
-namespace Tejedora\LanzaderaBundle\Behat;
+namespace Lanzadera\CoreBundle\Behat;
 
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Behat\Definition\Call\When as StepWhen;

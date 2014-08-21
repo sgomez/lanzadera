@@ -34,7 +34,7 @@ assetic:
     debug:          "%kernel.debug%"
     use_controller: false
     bundles:
-      - LanzaderaBundle
+      - LanzaderaCoreBundle
     #java: /usr/bin/java
     filters:
         lessphp:
@@ -104,4 +104,4 @@ sonata_user:
 
 sonata_admin:
     title: Lanzadera
-    title_logo: bundles/lanzadera/img/tejedorasm.png
+    title_logo: bundles/lanzaderacore/img/tejedorasm.png

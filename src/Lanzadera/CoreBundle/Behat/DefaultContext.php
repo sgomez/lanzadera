@@ -6,7 +6,7 @@
  * Time: 20:14
  */
 
-namespace Tejedora\LanzaderaBundle\Behat;
+namespace Lanzadera\CoreBundle\Behat;
 
 
 use Behat\Behat\Context\Context;

@@ -6,77 +6,89 @@ Característica: Organizaciones
     Quiero poder administrar las entidades que venden en nuestra organización
 
     Antecedentes:
-      Dado que estoy autenticado como administrador
-        Y existen las siguientes organizaciones:
-          | nombre         |
-          | Organización A |
-          | Organización B |
-          | Organización C |
-          | Organización D |
+      Dado que existen los siguientes usuarios:
+        | username  | password  | email                 | enabled | role        |
+        | admin     | adminpw   | admin@latejedora.com  | 1       | ROLE_ADMIN  |
+      Y que estoy autenticado como administrador
+      Y existen las siguientes organizaciones:
+        | name           | enabled |
+        | Organización A | 1       |
+        | Organización B | 1       |
+        | Organización C | 1       |
+        | Organización D | 1       |
 
     Escenario: Ver el listado de organizaciones
-        Dado que estoy en el panel de administración
-        Cuando entro en la sección de organizaciones
-        Entonces debo estar en la página de administración de organizaciones
-        Y debería ver 4 elementos en la lista
+        Dado que estoy en la página del escritorio
+        Cuando presiono listar las organizaciones
+        Entonces debería estar en la página principal de organización
+        Y debería ver 4 organizaciones en la lista
 
-    Escenario: Nombres en el listado de organizaciones
-        Dado que estoy en el panel de administración
-        Cuando entro en la sección de organizaciones
-        Entonces debo estar en la página de administración de organizaciones
-        Y debería ver la organización "Organización D"
+    Escenario: Buscar organizaciones
+        Dado que estoy en la página principal de organización
+        Cuando relleno "Nombre" con "Organización B"
+        Y presiono "Filtrar"
+        Entonces debería estar en la página principal de organización
+        Y debería ver 1 organización en la lista
 
-    Escenario: Ver un listado vacío de organizaciones
-        Dado que no hay organizaciones registradas
-        Cuando estoy en la página de administración de organizaciones
-        Entonces debería ver "No hay resultados"
+    Escenario: Acceder a los detalles de la organización desde el listado
+        Dado que estoy en la página principal de organización
+        Cuando presiono "Mostrar" junto a "Organización C"
+        Entonces debería estar en la página de organización con nombre "Organización C"
 
-    Escenario: Acceder al formulario de creación de organizaciones
-        Dado que estoy en el panel de administración
-        Cuando entro en la sección de organizaciones
-        Y presiono sobre "Agregar nueva"
-        Entonces debo estar en la página de creación de organizaciones
+    Escenario: Acceder al formulario de creación de usuarios
+        Dado que estoy en la página principal de organización
+        Y sigo "Agregar nuevo"
+        Entonces debería estar en la página creación de organización
 
-    Escenario: Rellenar un formulario incompleto
-        Dado que estoy en la página de creación de organizaciones
-        Cuando presiono sobre "Crear"
-        Entonces aún debo estar en la página de creación de organizaciones
-        Y debería ver "Por favor, introduzca un nombre."
+    Escenario: Enviar formulario vacío
+        Dado que estoy en la página creación de organización
+        Cuando presiono "Crear y editar"
+        Entonces debería estar todavía en la página creación de organización
+        Y debo ver "Por favor, indique el nombre de la organización."
 
-#TODO: Escenarios de campos requeridos
+    Escenario: Crear organización
+        Dado que estoy en la página creación de organización
+        Cuando relleno lo siguiente:
+          | Nombre      | La Tejedora           |
+          | Dirección   | Plaza de la Tejedora  |
+          | Teléfono    | 555-123456            |
+          | Correo-e    | info@latejedora.com   |
+          | Página web  | http://latejedora.com |
+          | Activo      | 1                     |
+        Y presiono "Crear y regresar al listado"
+        Entonces debería estar en la página principal de organización
+        Y debo ver "Elemento creado satisfactoriamente"
+        Y debo ver "La Tejedora"
 
-#TODO: Escenario de crear empresa completa
+    Escenario: Acceder al formulario de edición de usuario desde el listado
+        Dado que estoy en la página principal de organización
+        Cuando presiono "Editar" junto a "Organización B"
+        Entonces debería estar en la página edición de organización con nombre "Organización B"
 
-    Escenario: Las nuevas organizaciones aparecen en el listado
-        Dado que he creado la organización "Organización E"
-        Cuando entro en la página de administración de organizaciones
-        Entonces debería ver 5 elementos en la lista
-        Y debería ver la organización "Organización E"
+    Escenario: Actualizar organización
+        Dado que estoy en la página edición de organización con nombre "Organización A"
+        Cuando relleno "Correo-e" con "info@organizaciona.com"
+        Y presiono "Actualizar"
+        Entonces debería estar en la página edición de organización con nombre "Organización A"
+        Y debo ver "Elemento actualizado satisfactoriamente."
+        Y el campo "Correo-e" debe contener "info@organizaciona.com"
 
-    Escenario: Acceder al formulario de edición de organización
-        Dado que esto en la página de la organización "Organización A"
-        Cuando presiono "Editar"
-        Entonces debo estar en la página de edición de la organización "Organización A"
-
-    Escenario: Acceder al formulario de edición desde el listado
-        Dado que estoy en la página de administración de organizaciones
-        Cuando presiono "Editar" de la "Organización A"
-        Entonces debo estar en la página de edición de la organización "Organización A"
-
-#TODO: Escenario de actualización
-
-    Escenario: Borrar organización
-        Dado que estoy en la página de edición de la organización "Organización A"
-        Cuando presiono "Borrar"
-        Y presiono "Sí, borrar" en la página de confirmación
-        Entonces debo estar en la página de administración de organizaciones
+    Escenario: Borrar organización desde la página de edición
+        Dado que estoy en la página edición de organización con nombre "Organización A"
+        Cuando sigo "Borrar"
+        Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
+        Cuando presiono "Sí, borrar"
+        Entonces debería estar en la página principal de organización
         Y debo ver "Elemento eliminado satisfactoriamente."
 
-    Escenario: Borrar organización desde el índice
-        Dado que estoy en la página de administración de organizaciones
-        Cuando presiono "Borrar" de la "Organización A"
-        Y presiono "Sí, borrar" en la página de confirmación
-        Entonces aún debo estar en la página de administración de organizaciones
+    Escenario: Borrar organización desde el listado
+        Dado que estoy en la página principal de organización
+        Cuando presiono "Borrar" junto a "Organización A"
+        Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
+        Cuando presiono "Sí, borrar"
+        Entonces debería estar en la página principal de organización
         Y debo ver "Elemento eliminado satisfactoriamente."
-        Y no debería ver la organización "Organización A" en el listado
+        Pero no debo ver "Organización A"
+
+
 

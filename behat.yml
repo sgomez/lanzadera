@@ -23,6 +23,9 @@ default:
         organizations:
             contexts:
                 - Behat\MinkExtension\Context\MinkContext
+                - Lanzadera\CoreBundle\Behat\UsersContext
+                - Lanzadera\CoreBundle\Behat\WebContext
+                - Lanzadera\OrganizationBundle\Behat\OrganizationContext
             filters:
                 tags: "@organizations"
 

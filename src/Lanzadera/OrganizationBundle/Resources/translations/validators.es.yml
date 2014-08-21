@@ -1,0 +1,4 @@
+organization:
+    name:
+        not_blank: Por favor, indique el nombre de la organización.
+        max_message: El nombre no puede ser mayor que {{ limit }} caracteres.

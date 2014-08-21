@@ -21,6 +21,8 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class OrganizationAdmin extends Admin
 {
+    protected $baseRouteName = "lanzadera_organization";
+
     /**
      * {@inheritdoc}
      */

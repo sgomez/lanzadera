@@ -3,6 +3,7 @@
 namespace Lanzadera\OrganizationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Organization
@@ -25,6 +26,8 @@ class Organization
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     * @Assert\NotBlank(message = "organization.name.not_blank")
+     * @Assert\Length(max="255", maxMessage="organization.name.max_message")
      */
     private $name;
 
@@ -32,6 +35,7 @@ class Organization
      * @var string
      *
      * @ORM\Column(name="address", type="string", length=255, nullable=true)
+     * @Assert\Length(max="255")
      */
     private $address;
 
@@ -39,6 +43,7 @@ class Organization
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=255, nullable=true)
+     * @Assert\Length(max="255")
      */
     private $phone;
 
@@ -46,6 +51,8 @@ class Organization
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     * @Assert\Email()
+     * @Assert\Length(max="255")
      */
     private $email;
 
@@ -53,6 +60,8 @@ class Organization
      * @var string
      *
      * @ORM\Column(name="web", type="string", length=255, nullable=true)
+     * @Assert\Url()
+     * @Assert\Length(max="255")
      */
     private $web;
 
@@ -60,6 +69,7 @@ class Organization
      * @var bool
      *
      * @ORM\Column(name="enabled", type="boolean", nullable=false)
+     * @Assert\Type(type="bool")
      */
     private $enabled;
 
@@ -67,6 +77,7 @@ class Organization
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
+     * @Assert\DateTime()
      */
     private $createdAt;
 
@@ -91,6 +102,7 @@ class Organization
     public function __construct()
     {
         $this->parameter = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
 

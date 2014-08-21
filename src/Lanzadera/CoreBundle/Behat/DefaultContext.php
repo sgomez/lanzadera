@@ -23,6 +23,17 @@ use Symfony\Component\Security\Core\User\UserInterface;
 abstract class DefaultContext extends RawMinkContext
                implements Context, KernelAwareContext
 {
+    protected $actions = array(
+        "principal" => "list",
+        "creación"  => "create",
+        "edición"   => "edit",
+    );
+
+    protected $translate = array(
+        "usuario" => "user",
+        "nombre" => "username"
+    );
+
     /**
      * @var KernelInterface
      */
@@ -126,6 +137,32 @@ abstract class DefaultContext extends RawMinkContext
     protected function getSecurityContext()
     {
         return $this->getContainer()->get('security.context');
+    }
+
+    /**
+     * Find one resource by criteria.
+     *
+     * @param string $type
+     * @param array  $criteria
+     *
+     * @return object
+     *
+     * @throws \InvalidArgumentException
+     */
+    protected function findOneBy($type, array $criteria)
+    {
+        $resource = $this
+            ->getRepository($type)
+            ->findOneBy($criteria)
+        ;
+
+        if (null === $resource) {
+            throw new \InvalidArgumentException(
+                sprintf('%s for criteria "%s" was not found.', str_replace('_', ' ', ucfirst($type)), serialize($criteria))
+            );
+        }
+
+        return $resource;
     }
 
     /**

@@ -20,7 +20,6 @@ use Lanzadera\CoreBundle\Entity\User;
  */
 class UsersContext extends DefaultContext
 {
-
     /**
      * @Given /^que existen los siguientes usuarios:$/
      */
@@ -44,7 +43,15 @@ class UsersContext extends DefaultContext
     }
 
     /**
-     * @Given que estoy autenticado como :username
+     * @Given que estoy autenticado como administrador
+     */
+    public function authenticateAdmin()
+    {
+        $this->authenticateUser('admin');
+    }
+
+    /**
+     * @Given que estoy autenticado como el usuario :username
      */
     public function authenticateUser($username)
     {
@@ -65,8 +72,4 @@ class UsersContext extends DefaultContext
         $this->getSession()->setCookie($session->getName(), $session->getId());
 
     }
-
-
-
-
 }

@@ -22,6 +22,7 @@ use FOS\UserBundle\Model\UserManagerInterface;
 
 class UserAdmin extends Admin
 {
+    protected $baseRouteName = "lanzadera_user";
 
     /**
      * {@inheritdoc}
@@ -63,13 +64,14 @@ class UserAdmin extends Admin
             ->add('enabled', null, array('editable' => true))
             ->add('locked', null, array('editable' => true))
             ->add('createdAt')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
+            ))
         ;
-
-        if ($this->isGranted('ROLE_ALLOWED_TO_SWITCH')) {
-            $listMapper
-                ->add('impersonating', 'string', array('template' => 'SonataUserBundle:Admin:Field/impersonating.html.twig'))
-            ;
-        }
     }
 
     /**

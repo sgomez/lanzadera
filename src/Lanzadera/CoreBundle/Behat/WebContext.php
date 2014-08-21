@@ -89,11 +89,17 @@ class WebContext extends DefaultContext
     }
 
     /**
-     * @Then debería estar en la página del usuario con nombre :username
+     * @Then /^debería estar en la página de ([^""]*) con ([^""]*) "([^""]*)"$/
+     * @Then /^debería estar todavía en la página de ([^""]*) con ([^""]*) "([^""]*)"$/
      */
-    public function iShouldBeOnTheUserPage($username)
+    public function iShouldBeOnTheResourcePage($type, $property, $value)
     {
-        $this->iShouldBeOnTheResourcePage('user', 'username', $username);
+        $type = $this->translate[$type];
+        $property = $this->translate[$property];
+        $resource = $this->findOneBy($type, array($property => $value));
+
+        $this->assertSession()->addressEquals($this->generateUrl(sprintf('lanzadera_%s_show', $type), array('id' => $resource->getId())));
+        $this->assertSession()->statusCodeEquals(200);
     }
 
     /**
@@ -106,12 +112,19 @@ class WebContext extends DefaultContext
     }
 
     /**
-     * @When presiono :action junto a :block
+     * @When presiono :button junto a :value
      */
-    public function iClickNear($action, $block)
+    public function iClickNear($button, $value)
     {
-        $node = $this->getSession()->getPage()->find('xpath', "//tr/td[contains(text(),'{$block}')]/..");
-        $node->clickLink($action);
+        $tr = $this->assertSession()->elementExists('css', sprintf('table tbody tr:contains("%s")', $value));
+
+        $locator = sprintf('button:contains("%s")', $button);
+
+        if ($tr->has('css', $locator)) {
+            $tr->find('css', $locator)->press();
+        } else {
+            $tr->clickLink($button);
+        }
     }
 
     /**
@@ -135,7 +148,7 @@ class WebContext extends DefaultContext
     }
 
     /**
-     * @Then /^debería ver (\d+) (usuarios|usuario) en la lista$/
+     * @Then /^debería ver (\d+) (.*) en la lista$/
      */
     public function iShouldSeeNumItems($num)
     {
@@ -150,18 +163,7 @@ class WebContext extends DefaultContext
 
     }
 
-    /**
-     * @param $type
-     * @param $property
-     * @param $value
-     */
-    protected  function iShouldBeOnTheResourcePage($type, $property, $value)
-    {
-        $resource = $this->findOneBy($type, array($property => $value));
 
-        $this->assertSession()->addressEquals($this->generateUrl(sprintf('lanzadera_%s_show', $type), array('id' => $resource->getId())));
-        $this->assertSession()->statusCodeEquals(200);
-    }
 
 
 

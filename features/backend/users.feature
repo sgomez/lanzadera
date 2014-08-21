@@ -30,7 +30,7 @@ Característica: Administrar usuarios
   Escenario: Acceder a los detalles del usuario desde el listado
     Dado que estoy en la página principal de usuario
     Cuando presiono "Mostrar" junto a "sergio"
-    Entonces debería estar en la página del usuario con nombre "sergio"
+    Entonces debería estar en la página de usuario con identificador "sergio"
 
   Escenario: Acceder al formulario de creación de usuarios
     Dado que estoy en la página principal de usuario
@@ -57,18 +57,18 @@ Característica: Administrar usuarios
   Escenario: Acceder al formulario de edición de usuario desde el listado
     Dado que estoy en la página principal de usuario
     Cuando presiono "Editar" junto a "sergio"
-    Entonces debería estar en la página edición de usuario con nombre "sergio"
+    Entonces debería estar en la página edición de usuario con identificador "sergio"
 
   Escenario: Actualizar usuario
-    Dado que estoy en la página edición de usuario con nombre "sergio"
+    Dado que estoy en la página edición de usuario con identificador "sergio"
     Cuando relleno "Dirección de correo electrónico" con "sergio@nuevomail.com"
     Y presiono "Actualizar"
-    Entonces debería estar en la página edición de usuario con nombre "sergio"
+    Entonces debería estar en la página edición de usuario con identificador "sergio"
     Y debo ver "Elemento actualizado satisfactoriamente."
     Y el campo "Dirección de correo electrónico" debe contener "sergio@nuevomail.com"
 
   Escenario: Borrar usuario desde la página de edición
-    Dado que estoy en la página edición de usuario con nombre "sergio"
+    Dado que estoy en la página edición de usuario con identificador "sergio"
     Cuando sigo "Borrar"
     Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
     Cuando presiono "Sí, borrar"

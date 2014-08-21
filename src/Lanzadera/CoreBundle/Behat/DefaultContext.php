@@ -31,7 +31,9 @@ abstract class DefaultContext extends RawMinkContext
 
     protected $translate = array(
         "usuario" => "user",
-        "nombre" => "username"
+        "identificador" => "username",
+        "nombre" => "name",
+        "organización" => "organization",
     );
 
     /**

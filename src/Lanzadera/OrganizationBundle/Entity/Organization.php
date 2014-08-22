@@ -114,6 +114,15 @@ class Organization
         $this->createdAt = new \DateTime();
     }
 
+    /**
+     * Return string object representation
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
+    }
 
     /**
      * Get id

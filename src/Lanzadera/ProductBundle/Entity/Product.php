@@ -3,6 +3,7 @@
 namespace Lanzadera\ProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Product
@@ -25,6 +26,7 @@ class Product
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=45, nullable=true)
+     * @Assert\NotBlank(message="product.name.not_blank")
      */
     private $name;
 
@@ -113,6 +115,15 @@ class Product
         $this->parameter = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    /**
+     * Get string object representation
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
+    }
 
     /**
      * Set id

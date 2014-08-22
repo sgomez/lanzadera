@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Product
  *
  * @ORM\Table(name="product", indexes={@ORM\Index(name="fk_product_organization_idx", columns={"organization_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\ProductRepository")
  */
 class Product
 {
@@ -17,7 +17,7 @@ class Product
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -66,7 +66,6 @@ class Product
     /**
      * @var \Organization
      *
-     * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\ManyToOne(targetEntity="Lanzadera\OrganizationBundle\Entity\Organization", inversedBy="products")
      * @ORM\JoinColumns({

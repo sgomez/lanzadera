@@ -29,19 +29,19 @@ Característica: productos
         Dado que estoy en la página del escritorio
         Cuando presiono listar las productos
         Entonces debería estar en la página principal de producto
-        Y debería ver 4 productos en la lista
+        Y debería ver 6 productos en la lista
 
     Escenario: Buscar productos
         Dado que estoy en la página principal de producto
-        Cuando relleno "Nombre" con "Producto B"
+        Cuando relleno "Nombre" con "Producto B1"
         Y presiono "Filtrar"
         Entonces debería estar en la página principal de producto
         Y debería ver 1 producto en la lista
 
     Escenario: Acceder a los detalles del producto desde el listado
         Dado que estoy en la página principal de producto
-        Cuando presiono "Mostrar" junto a "Producto C"
-        Entonces debería estar en la página de producto con nombre "Producto C"
+        Cuando presiono "Mostrar" junto a "Producto C1"
+        Entonces debería estar en la página de producto con nombre "Producto C1"
 
     Escenario: Acceder al formulario de creación de productos
         Dado que estoy en la página principal de producto
@@ -67,30 +67,31 @@ Característica: productos
 
     Escenario: Acceder al formulario de edición de producto desde el listado
         Dado que estoy en la página principal de producto
-        Cuando presiono "Editar" junto a "Producto B"
-        Entonces debería estar en la página edición de producto con nombre "Producto B"
+        Cuando presiono "Editar" junto a "Producto B1"
+        Entonces debería estar en la página edición de producto con nombre "Producto B1"
 
     Escenario: Actualizar producto
-        Dado que estoy en la página edición de producto con nombre "Producto A"
-        Cuando relleno "Descripción" con "Nuevo y mejorado producto A"
+        Dado que estoy en la página edición de producto con nombre "Producto A1"
+        Cuando relleno "Descripción" con "Nuevo y mejorado producto A1"
         Y presiono "Actualizar"
-        Entonces debería estar en la página edición de producto con nombre "Producto A"
+        Entonces debería estar en la página edición de producto con nombre "Producto A1"
         Y debo ver "Elemento actualizado satisfactoriamente."
-        Y el campo "Descripción" debe contener "Nuevo y mejorado producto A"
+        Y el campo "Descripción" debe contener "Nuevo y mejorado producto A1"
 
     Escenario: Borrar producto desde la página de edición
-        Dado que estoy en la página edición de producto con nombre "Producto A"
+        Dado que estoy en la página edición de producto con nombre "Producto A1"
         Cuando sigo "Borrar"
         Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
         Cuando presiono "Sí, borrar"
         Entonces debería estar en la página principal de producto
         Y debo ver "Elemento eliminado satisfactoriamente."
+        Pero no debo ver "Producto A1"
 
     Escenario: Borrar producto desde el listado
         Dado que estoy en la página principal de producto
-        Cuando presiono "Borrar" junto a "Producto A"
+        Cuando presiono "Borrar" junto a "Producto A1"
         Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
         Cuando presiono "Sí, borrar"
         Entonces debería estar en la página principal de producto
         Y debo ver "Elemento eliminado satisfactoriamente."
-        Pero no debo ver "Producto A"
+        Pero no debo ver "Producto A1"

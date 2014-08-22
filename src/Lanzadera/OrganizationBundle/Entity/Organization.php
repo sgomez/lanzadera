@@ -84,6 +84,14 @@ class Organization
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
+     * @ORM\OneToMany(targetEntity="Lanzadera\ProductBundle\Entity\Product", mappedBy="organization", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    private $products;
+
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
      * @ORM\ManyToMany(targetEntity="Lanzadera\ClassificationBundle\Entity\Parameter", inversedBy="organization")
      * @ORM\JoinTable(name="organization_has_parameter",
      *   joinColumns={
@@ -102,6 +110,7 @@ class Organization
     public function __construct()
     {
         $this->parameter = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
         $this->createdAt = new \DateTime();
     }
 
@@ -308,5 +317,38 @@ class Organization
     public function getParameter()
     {
         return $this->parameter;
+    }
+
+    /**
+     * Add products
+     *
+     * @param \Lanzadera\ProductBundle\Entity\Product $products
+     * @return Organization
+     */
+    public function addProduct(\Lanzadera\ProductBundle\Entity\Product $products)
+    {
+        $this->products[] = $products;
+
+        return $this;
+    }
+
+    /**
+     * Remove products
+     *
+     * @param \Lanzadera\ProductBundle\Entity\Product $products
+     */
+    public function removeProduct(\Lanzadera\ProductBundle\Entity\Product $products)
+    {
+        $this->products->removeElement($products);
+    }
+
+    /**
+     * Get products
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProducts()
+    {
+        return $this->products;
     }
 }

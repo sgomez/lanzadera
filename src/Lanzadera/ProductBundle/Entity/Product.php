@@ -68,7 +68,7 @@ class Product
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Lanzadera\OrganizationBundle\Entity\Organization")
+     * @ORM\ManyToOne(targetEntity="Lanzadera\OrganizationBundle\Entity\Organization", inversedBy="products")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="organization_id", referencedColumnName="id")
      * })

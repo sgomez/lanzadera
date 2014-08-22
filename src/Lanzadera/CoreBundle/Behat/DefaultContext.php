@@ -36,7 +36,8 @@ abstract class DefaultContext extends RawMinkContext
         "usuario" => "user",
         "organización" => "organization",
         "clasificación" => "classification",
-        "criterio" => "criterion"
+        "criterio" => "criterion",
+        "producto" => "product"
     );
 
     /**

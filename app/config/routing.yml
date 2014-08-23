@@ -1,3 +1,8 @@
+lanzadera_taxonomy:
+    resource: "@LanzaderaTaxonomyBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 lanzadera_classification:
     resource: "@LanzaderaClassificationBundle/Resources/config/routing.yml"
     prefix:   /

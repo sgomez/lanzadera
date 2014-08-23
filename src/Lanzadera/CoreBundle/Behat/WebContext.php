@@ -128,8 +128,7 @@ class WebContext extends DefaultContext
     }
 
     /**
-     * @When presiono :action los :block
-     * @When presiono :action las :block
+     * @When /^presiono (.*) l.s (.*)$/
      */
     public function iClickActionOnBlock($action, $block)
     {

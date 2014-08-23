@@ -24,3 +24,13 @@ services:
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments: ['Lanzadera\ProductBundle\Entity\Product']
+    lanzadera.repository.category:
+        class: Sylius\Bundle\TaxonomiesBundle\Doctrine\ORM\TaxonRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: ['Lanzadera\TaxonomyBundle\Entity\Taxon']
+    lanzadera.repository.tag:
+        class: Sylius\Bundle\TaxonomiesBundle\Doctrine\ORM\TaxonomyRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: ['Lanzadera\TaxonomyBundle\Entity\Taxonomy']

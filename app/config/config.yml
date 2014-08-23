@@ -105,3 +105,17 @@ sonata_user:
 sonata_admin:
     title: Lanzadera
     title_logo: bundles/lanzaderacore/img/tejedorasm.png
+
+sylius_taxonomies:
+    classes:
+        taxonomy:
+            model: Lanzadera\TaxonomyBundle\Entity\Taxonomy
+        taxon:
+            model: Lanzadera\TaxonomyBundle\Entity\Taxon
+    driver: doctrine/orm # Configure the doctrine orm driver used in documentation.
+
+stof_doctrine_extensions:
+    orm:
+        default:
+            tree: true
+            sluggable: true

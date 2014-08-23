@@ -19,6 +19,20 @@ class TaxonAdmin extends Admin
     );
 
     /**
+     * {@inheritdoc}
+     */
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+
+        $query->andWhere(
+            $query->expr()->isNull($query->getRootAlias() . '.taxonomy')
+        );
+
+        return $query;
+    }
+
+    /**
      * @param DatagridMapper $datagridMapper
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -61,10 +75,15 @@ class TaxonAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+
             $formMapper
             ->add('name')
             ->add('description')
-            ->add('parent')
+            ->add('parent', 'sonata_type_model', array(
+                'query' => $this->getConfigurationPool()->getContainer()->get('lanzadera.repository.category')->createTaxonQuery(),
+                'btn_add' => false,
+                'required' => false,
+            ))
         ;
     }
 

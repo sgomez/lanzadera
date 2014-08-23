@@ -15,6 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class Taxonomy
  * @package Lanzadera\ClassificationBundle\Entity
  * @ORM\MappedSuperclass()
+ * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\TaxonomyRepository")
  */
 class Taxonomy extends SyriusTaxonomy
 {

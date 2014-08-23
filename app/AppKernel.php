@@ -14,9 +14,17 @@ class AppKernel extends Kernel
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
-            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
+
+            new FOS\RestBundle\FOSRestBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle($this),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
+            new Sylius\Bundle\TaxonomiesBundle\SyliusTaxonomiesBundle(),
+            new Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
+
+            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
 
             new Sonata\CoreBundle\SonataCoreBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
@@ -35,6 +43,7 @@ class AppKernel extends Kernel
             new Lanzadera\OrganizationBundle\LanzaderaOrganizationBundle(),
             new Lanzadera\ProductBundle\LanzaderaProductBundle(),
             new Lanzadera\ClassificationBundle\LanzaderaClassificationBundle(),
+            new Lanzadera\TaxonomyBundle\LanzaderaTaxonomyBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

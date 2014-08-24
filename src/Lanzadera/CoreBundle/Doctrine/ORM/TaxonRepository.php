@@ -11,6 +11,8 @@ namespace Lanzadera\CoreBundle\Doctrine\ORM;
 
 use Sylius\Bundle\TaxonomiesBundle\Model\TaxonomyInterface;
 use Sylius\Bundle\TaxonomiesBundle\Repository\TaxonRepositoryInterface;
+use Doctrine\ORM\Query\Expr;
+use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 
 class TaxonRepository extends CustomRepository implements TaxonRepositoryInterface
 {
@@ -26,17 +28,16 @@ class TaxonRepository extends CustomRepository implements TaxonRepositoryInterfa
             ;
     }
 
-    public function createTaxonQuery()
+    public function createTaxonQuery($type)
     {
         $query = $this->createQueryBuilder('t');
 
         $query
-            ->where(
-                $query->expr()->isNull('t.taxonomy')
-            )
-            ->orderBy(
-                't.left'
-            )
+            ->leftJoin('t.taxonomy', 'y')
+            ->where($query->expr()->eq('y.name', '?1'))
+            ->andWhere($query->expr()->isNotNull('t.parent'))
+            ->orderBy('t.left')
+            ->setParameter('1', $type)
         ;
 
         return $query;

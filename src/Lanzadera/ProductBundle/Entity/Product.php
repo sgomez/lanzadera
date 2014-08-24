@@ -66,9 +66,8 @@ class Product
     private $state;
 
     /**
-     * @var \Organization
+     * @var \Lanzadera\OrganizationBundle\Entity\Organization
      *
-     * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\ManyToOne(targetEntity="Lanzadera\OrganizationBundle\Entity\Organization", inversedBy="products")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="organization_id", referencedColumnName="id")
@@ -107,12 +106,40 @@ class Product
     private $parameter;
 
     /**
+     * @var \Lanzadera\TaxonomyBundle\Entity\Taxon
+     *
+     * @ORM\ManyToOne(targetEntity="Lanzadera\TaxonomyBundle\Entity\Taxon")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * })
+     * @Assert\Valid()
+     */
+    private $category;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Lanzadera\TaxonomyBundle\Entity\Taxon", cascade={"remove"})
+     * @ORM\JoinTable(name="product_has_tag",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="product_id", referencedColumnName="id", onDelete="CASCADE")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="taxon_id", referencedColumnName="id", onDelete="CASCADE")
+     *   }
+     * )
+     */
+    private $tags;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->classification = new \Doctrine\Common\Collections\ArrayCollection();
         $this->parameter = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+
     }
 
     /**
@@ -373,5 +400,66 @@ class Product
     public function getParameter()
     {
         return $this->parameter;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \Lanzadera\TaxonomyBundle\Entity\Taxon $category
+     * @return Product
+     */
+    public function setCategory(\Lanzadera\TaxonomyBundle\Entity\Taxon $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Lanzadera\TaxonomyBundle\Entity\Taxon 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Add tags
+     *
+     * @param \Lanzadera\TaxonomyBundle\Entity\Taxon $tags
+     * @return Product
+     */
+    public function addTag(\Lanzadera\TaxonomyBundle\Entity\Taxon $tags)
+    {
+        $this->tags[] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \Lanzadera\TaxonomyBundle\Entity\Taxon $tags
+     */
+    public function removeTag(\Lanzadera\TaxonomyBundle\Entity\Taxon $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    public function getTagsAsList()
+    {
+        return implode(", ", $this->tags->getValues());
     }
 }

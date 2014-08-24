@@ -5,14 +5,14 @@ services:
 #    lanzadera_classification.example:
 #        class: %lanzadera_classification.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
-    lanzadera.admin.taxon:
-        class: Lanzadera\TaxonomyBundle\Admin\TaxonAdmin
+    lanzadera.admin.category:
+        class: Lanzadera\TaxonomyBundle\Admin\CategoryAdmin
         arguments: [~, Lanzadera\TaxonomyBundle\Entity\Taxon, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: Gestión de productos, label: Categorías}
-    lanzadera.admin.taxonomy:
-        class: Lanzadera\TaxonomyBundle\Admin\TaxonomyAdmin
-        arguments: [~, Lanzadera\TaxonomyBundle\Entity\Taxonomy, SonataAdminBundle:CRUD]
+    lanzadera.admin.tag:
+        class: Lanzadera\TaxonomyBundle\Admin\TagAdmin
+        arguments: [~, Lanzadera\TaxonomyBundle\Entity\Taxon, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: Gestión de productos, label: Etiquetas}
 

@@ -2,7 +2,7 @@
 
 namespace Lanzadera\ProductBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Lanzadera\CoreBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -18,12 +18,21 @@ class ProductAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name')
-            ->add('description')
-            ->add('photo')
-            ->add('rawMaterialSource')
-            ->add('processingSite')
-            ->add('state')
+            ->add('name', null, array('label' => 'product.name.label'))
+            ->add('description', null, array('label' => 'product.description.label'))
+            ->add('state', null, array('label' => 'product.state.label'))
+            ->add('category', null, array('label' => 'product.category.label'), null,
+                array(
+                    'expanded' => false,
+                    'multiple' => true,
+                    'query_builder' => $this->getRepository('taxon')->createTaxonQuery('Category'),
+            ))
+            ->add('tags', null, array('label' => 'product.tag.label'), null,
+                array(
+                    'expanded' => false,
+                    'multiple' => true,
+                    'query_builder' => $this->getRepository('taxon')->createTaxonQuery('Tag'),
+            ))
         ;
     }
 
@@ -33,12 +42,11 @@ class ProductAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('name')
-            ->add('description')
-            ->add('photo')
-            ->add('rawMaterialSource')
-            ->add('processingSite')
-            ->add('state')
+            ->add('name', null, array('label' => 'product.name.label'))
+            ->add('description', null, array('label' => 'product.description.label'))
+            ->add('category.name', null, array('label' => 'product.category.label'))
+            ->add('tags_as_list', null, array('label' => 'product.tag.label'))
+            ->add('state', null, array('label' => 'product.state.label'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -55,13 +63,40 @@ class ProductAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name')
-            ->add('description')
-            ->add('photo')
-            ->add('rawMaterialSource')
-            ->add('processingSite')
-            ->add('state')
-            ->add('organization')
+            ->add('name', null, array(
+                    'label' => 'product.name.label',
+                    'required' => true,
+            ))
+            ->add('description', 'textarea', array('label' => 'product.description.label'))
+            ->add('state', null, array('label' => 'product.state.label'))
+            ->add('organization', null, array(
+                    'label' => 'product.organization.label',
+                    'required' => true,
+                    'attr' => array('placeholder' => 'product.organization.placeholder', 'class' => 'form-control')
+            ))
+            ->add('category', 'sonata_type_model', array(
+                    'label' => 'product.category.label',
+                    'query' => $this->get('lanzadera.repository.taxon')->createTaxonQuery('Category'),
+                    'btn_add' => false,
+                    'required' => true,
+                    'attr' => array('placeholder' => 'product.category.placeholder', 'class' => 'form-control')
+                ),
+                array(
+                    'admin_code' => 'lanzadera.admin.category',
+                )
+            )
+            ->add('tags', 'sonata_type_model', array(
+                    'label' => 'product.tag.label',
+                    'query' => $this->get('lanzadera.repository.taxon')->createTaxonQuery('Tag'),
+                    'expanded' => false,
+                    'multiple' => true,
+                    'btn_add' => 'product.tags.add',
+                    'attr' => array('placeholder' => 'product.tag.placeholder', 'class' => 'form-control')
+                ),
+                array(
+                    'admin_code' => 'lanzadera.admin.tag'
+                )
+            )
         ;
     }
 
@@ -78,5 +113,16 @@ class ProductAdmin extends Admin
             ->add('processingSite')
             ->add('state')
         ;
+    }
+
+    /**
+     * Return service from container
+     *
+     * @param $service
+     * @return object
+     */
+    protected function get($service)
+    {
+        return $this->getConfigurationPool()->getContainer()->get($service);
     }
 }

@@ -9,4 +9,4 @@ services:
         class: Lanzadera\ProductBundle\Admin\ProductAdmin
         arguments: [~, Lanzadera\ProductBundle\Entity\Product, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: Administración, label: Productos}
+            - {name: sonata.admin, manager_type: orm, group: Gestión de productos, label: Productos}

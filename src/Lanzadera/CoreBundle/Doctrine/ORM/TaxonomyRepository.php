@@ -35,6 +35,22 @@ class TaxonomyRepository extends CustomRepository
             ;
     }
 
+    public function createCategoryQuery()
+    {
+        $query = $this->createQueryBuilder('t');
+
+        $query
+            ->where(
+                $query->expr()->isNull('t.taxonomy')
+            )
+            ->orderBy(
+                't.left'
+            )
+        ;
+
+        return $query;
+    }
+
     /**
      * {@inheritdoc}
      */

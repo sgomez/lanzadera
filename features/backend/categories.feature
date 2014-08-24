@@ -6,19 +6,15 @@ Característica: Categorías
     Quiero poder crear y gestionar categorías jerarquicas
 
     Antecedentes:
-        Dado que existen los siguientes usuarios:
-            | username  | password  | email                 | enabled | role        |
-            | admin     | adminpw   | admin@latejedora.com  | 1       | ROLE_ADMIN  |
-        Y que estoy autenticado como administrador
-        Y existen las siguientes categorías:
-            | nombre          | descripción                                       | superior      |
-            | Categoría A     | Clasifica productos con una propiedad común A     |               |
-            | Categoría B     | Clasifica productos con una propiedad común B     |               |
-            | Categoría C     | Clasifica productos con una propiedad común C     |               |
-            | Categoría A.1   | Clasifica productos con una propiedad común A.1   | Categoría A   |
-            | Categoría A.2   | Clasifica productos con una propiedad común A.2   | Categoría A   |
-            | Categoría A.1.1 | Clasifica productos con una propiedad común A.1.1 | Categoría A.1 |
-            | Categoría B.1   | Clasifica productos con una propiedad común B.1   | Categoría B   |
+        Dado que estoy autenticado como administrador
+        Y existen las siguientes taxonomías:
+            | nombre          | id          |
+            | Categoría       | Category    |
+            | Tag             | Tag         |
+        Y la taxonomía "Category" tiene los siguientes elementos:
+            | Categoría A > Categoría A.1 > Categoría A.1.1 |
+            | Categoría B > Categoría B.1                   |
+            | Categoría C > Categoría C.1                   |
 
     Escenario: Ver el listado de categorías
         Dado que estoy en la página del escritorio

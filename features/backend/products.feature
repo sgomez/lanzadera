@@ -6,24 +6,36 @@ Característica: productos
     Quiero poder gestionar un catálago de productos
 
     Antecedentes:
-        Dado que existen los siguientes usuarios:
-            | username  | password  | email                 | enabled | role        |
-            | admin     | adminpw   | admin@latejedora.com  | 1       | ROLE_ADMIN  |
-        Y que estoy autenticado como administrador
+        Dado que estoy autenticado como administrador
         Y existen las siguientes organizaciones:
             | name            | enabled |
             | Organización A  | 1       |
             | Organización B  | 1       |
             | Organización C  | 1       |
             | Organización D  | 1       |
+        Y existen las siguientes taxonomías:
+            | nombre          | id          |
+            | Categoría       | Category    |
+            | Tag             | Tag         |
+        Y la taxonomía "Category" tiene los siguientes elementos:
+            | Categoría A > Categoría A.1 > Categoría A.1.1 |
+            | Categoría B > Categoría B.1                   |
+            | Categoría C > Categoría C.1                   |
+        Y la taxonomía "Tag" tiene los siguientes elementos:
+            | Etiqueta A      |
+            | Etiqueta B      |
+            | Etiqueta C      |
+            | Etiqueta D      |
+            | Etiqueta E      |
+            | Etiqueta F      |
         Y existen los siguientes productos:
-            | nombre          | descripción           | organización    |
-            | Producto A1     | Características de A1 | Organización A  |
-            | Producto A2     | Características de A2 | Organización A  |
-            | Producto B1     | Características de B1 | Organización B  |
-            | Producto B2     | Características de B2 | Organización B  |
-            | Producto B3     | Características de B3 | Organización B  |
-            | Producto C1     | Características de C1 | Organización C  |
+            | nombre          | descripción           | organización    | categoría     | etiquetas               |
+            | Producto A1     | Características de A1 | Organización A  | Categoría A   | Etiqueta A, Etiqueta B  |
+            | Producto A2     | Características de A2 | Organización A  | Categoría B   | Etiqueta B, Etiqueta C  |
+            | Producto B1     | Características de B1 | Organización B  | Categoría A.1 | Etiqueta C, Etiqueta D  |
+            | Producto B2     | Características de B2 | Organización B  | Categoría A.1 | Etiqueta E, Etiqueta A  |
+            | Producto B3     | Características de B3 | Organización B  | Categoría B   | Etiqueta A, Etiqueta C  |
+            | Producto C1     | Características de C1 | Organización C  | Categoría C   | Etiqueta B, Etiqueta D  |
 
     Escenario: Ver el listado de productos
         Dado que estoy en la página del escritorio
@@ -31,12 +43,26 @@ Característica: productos
         Entonces debería estar en la página principal de producto
         Y debería ver 6 productos en la lista
 
-    Escenario: Buscar productos
+    Escenario: Buscar productos por nombre
         Dado que estoy en la página principal de producto
         Cuando relleno "Nombre" con "Producto B1"
         Y presiono "Filtrar"
         Entonces debería estar en la página principal de producto
         Y debería ver 1 producto en la lista
+
+    Escenario: Buscar productos por categoría
+        Dado que estoy en la página principal de producto
+        Cuando selecciono "Categoría B" de "Categoría"
+        Y presiono "Filtrar"
+        Entonces debería estar en la página principal de producto
+        Y debería ver 2 productos en la lista
+
+    Escenario: Buscar productos por etiqueta
+        Dado que estoy en la página principal de producto
+        Cuando selecciono "Etiqueta B" de "Etiquetas"
+        Y presiono "Filtrar"
+        Entonces debería estar en la página principal de producto
+        Y debería ver 3 productos en la lista
 
     Escenario: Acceder a los detalles del producto desde el listado
         Dado que estoy en la página principal de producto
@@ -60,10 +86,13 @@ Característica: productos
             | Nombre      | Café Torrefacto       |
             | Descripción | Café 100% natural     |
         Y selecciono "Organización D" de "Organización"
+        Y selecciono "Categoría B" de "Categoría"
+        Y selecciono "Etiqueta F" de "Etiquetas"
         Y presiono "Crear y regresar al listado"
         Entonces debería estar en la página principal de producto
         Y debo ver "Elemento creado satisfactoriamente"
         Y debo ver "Café Torrefacto"
+        Y debo ver "Etiqueta F"
 
     Escenario: Acceder al formulario de edición de producto desde el listado
         Dado que estoy en la página principal de producto
@@ -77,6 +106,19 @@ Característica: productos
         Entonces debería estar en la página edición de producto con nombre "Producto A1"
         Y debo ver "Elemento actualizado satisfactoriamente."
         Y el campo "Descripción" debe contener "Nuevo y mejorado producto A1"
+
+    @javascript
+    Escenario: Agregar una nueva etiqueta a un producto
+        Dado que estoy en la página edición de producto con nombre "Producto A1"
+        Y sigo "Añadir etiqueta"
+        Y espero que se abra la ventana
+        Y relleno "Nombre de etiqueta" con "Etiqueta G"
+        Y presiono "Crear"
+        Y espero que se cierre la ventana
+        Y presiono "Actualizar"
+        Entonces debería estar en la página edición de producto con nombre "Producto A1"
+        Y debo ver "Elemento actualizado satisfactoriamente."
+        Y debo ver "Etiqueta G"
 
     Escenario: Borrar producto desde la página de edición
         Dado que estoy en la página edición de producto con nombre "Producto A1"

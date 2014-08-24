@@ -6,12 +6,12 @@ Característica: Etiquetas
     Quiero poder etiquetarlos semánticamente
 
     Antecedentes:
-        Dado que existen los siguientes usuarios:
-            | username  | password  | email                 | enabled | role        |
-            | admin     | adminpw   | admin@latejedora.com  | 1       | ROLE_ADMIN  |
-        Y que estoy autenticado como administrador
-        Y existen las siguientes etiquetas:
-            | nombre          |
+        Dado que estoy autenticado como administrador
+        Y existen las siguientes taxonomías:
+            | nombre          | id          |
+            | Categoría       | Category    |
+            | Etiqueta        | Tag         |
+        Y la taxonomía "Tag" tiene los siguientes elementos:
             | Etiqueta A      |
             | Etiqueta B      |
             | Etiqueta C      |
@@ -79,10 +79,10 @@ Característica: Etiquetas
 
         Escenario: Borrar etiqueta desde el listado
             Dado que estoy en la página principal de etiqueta
-            Cuando presiono "Borrar" junto a "Etiqueta A"
+            Cuando presiono "Borrar" junto a "Etiqueta E"
             Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
             Cuando presiono "Sí, borrar"
             Entonces debería estar en la página principal de etiqueta
             Y debo ver "Elemento eliminado satisfactoriamente."
-            Pero no debo ver "Etiqueta A"
+            Pero no debo ver "Etiqueta E"
 

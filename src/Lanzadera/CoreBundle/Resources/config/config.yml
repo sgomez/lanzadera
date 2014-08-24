@@ -24,12 +24,22 @@ services:
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments: ['Lanzadera\ProductBundle\Entity\Product']
+    lanzadera.repository.taxon:
+        class: Lanzadera\CoreBundle\Doctrine\ORM\TaxonRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: ['Lanzadera\TaxonomyBundle\Entity\Taxon']
     lanzadera.repository.category:
         class: Lanzadera\CoreBundle\Doctrine\ORM\TaxonRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments: ['Lanzadera\TaxonomyBundle\Entity\Taxon']
     lanzadera.repository.tag:
+        class: Lanzadera\CoreBundle\Doctrine\ORM\TaxonRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: ['Lanzadera\TaxonomyBundle\Entity\Taxon']
+    lanzadera.repository.taxonomy:
         class: Lanzadera\CoreBundle\Doctrine\ORM\TaxonomyRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository

@@ -7,18 +7,18 @@ Característica: Administrar usuarios
 
   Antecedentes:
 
-    Dado que existen los siguientes usuarios:
+    Dado que estoy autenticado como administrador
+    Y que existen los siguientes usuarios:
       | username  | password  | email                 | enabled | role        |
       | admin     | adminpw   | admin@secret.com      | 1       | ROLE_ADMIN  |
       | sergio    | sergiopw  | sergio@secret.com     | 1       | ROLE_USER   |
       | johndoe   | johndoepw | johndoe@secret.com    | 0       | ROLE_ADMIN  |
-      Y que estoy autenticado como administrador
 
   Escenario: Ver listado de todos los usuarios
     Dado que estoy en la página del escritorio
     Cuando presiono listar los usuarios
     Entonces debería estar en la página principal de usuario
-    Y debería ver 3 usuarios en la lista
+    Y debería ver 4 usuarios en la lista
 
   Escenario: Buscar usuarios
     Dado que estoy en la página principal de usuario

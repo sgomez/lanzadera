@@ -8,8 +8,9 @@
 
 namespace Lanzadera\TaxonomyBundle\Entity;
 
-use Sylius\Bundle\TaxonomiesBundle\Model\Taxonomy as SyriusTaxonomy;
 use Doctrine\ORM\Mapping as ORM;
+use Sylius\Bundle\TaxonomiesBundle\Model\Taxonomy as SyriusTaxonomy;
+use Sylius\Bundle\TaxonomiesBundle\Model\TaxonomyInterface;
 
 /**
  * Class Taxonomy
@@ -17,7 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\MappedSuperclass()
  * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\TaxonomyRepository")
  */
-class Taxonomy extends SyriusTaxonomy
+class Taxonomy extends SyriusTaxonomy implements TaxonomyInterface
 {
     /**
      * {@inheritdoc}

@@ -1,1 +1,7 @@
-Parent: Superior
+category.name.label: Nombre
+category.description.label: Descripción
+category.parent.label: Superior
+category.parent.placeholder: Seleccione una categoría
+
+tag.name.label: Nombre de etiqueta
+tag.description.label: Descripción

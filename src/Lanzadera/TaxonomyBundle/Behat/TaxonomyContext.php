@@ -17,26 +17,62 @@ use Lanzadera\TaxonomyBundle\Entity\Taxonomy;
 class TaxonomyContext extends DefaultContext
 {
     /**
-     * @Given existen las siguientes categorías:
+     * @Given existen las siguientes taxonomías:
      */
-    public function createCategories(TableNode $tableNode)
+    public function createTaxonomies(TableNode $tableNode)
     {
-        $em = $this->getEntityManager();
-        foreach ($tableNode->getHash() as $categoryHash) {
-            /** @var Taxon $parent */
-            $parent = $this->getContainer()->get('sylius.repository.taxon')->findOneByName($categoryHash['superior']);
-            /** @var Taxon $category */
-            $category = $this->getContainer()->get('sylius.repository.taxon')->findOneByName($categoryHash['nombre']);
-            if (!$category) {
-                $category = new Taxon();
-            }
-            $category->setName($categoryHash['nombre']);
-            $category->setDescription($categoryHash['descripción']);
-            $category->setParent($parent);
+        foreach($tableNode->getHash() as $node) {
+            $taxonomy = $this->getRepository('taxonomy')->findOneByName($node['id']);
 
-            $em->persist($category);
-            $em->flush();
+            if (!$taxonomy) {
+                $taxonomy = new Taxonomy();
+            }
+            $taxonomy->setName($node['id']);
+            $this->getEntityManager()->persist($taxonomy);
         }
+
+        $this->getEntityManager()->flush();
+    }
+
+    /**
+     * @Given /^la taxonomía "([^""]*)" tiene los siguientes elementos:$/
+     */
+    public function createTaxons($taxonomyName, TableNode $taxonsTable)
+    {
+        $taxonomy = $this->getRepository('taxonomy')->findOneByName($taxonomyName);
+        $manager = $this->getEntityManager();
+
+        $taxons = array();
+
+        foreach ($taxonsTable->getRows() as $node) {
+            $taxonList = explode('>', $node[0]);
+            $parent = null;
+
+            foreach ($taxonList as $taxonName) {
+                $taxonName = trim($taxonName);
+
+                if (!isset($taxons[$taxonName])) {
+                    /* @var $taxon TaxonInterface */
+                    $taxon = $this->getRepository('taxon')->createNew();
+                    $taxon->setName($taxonName);
+
+                    $taxons[$taxonName] = $taxon;
+                }
+
+                $taxon = $taxons[$taxonName];
+
+                if (null !== $parent) {
+                    $parent->addChild($taxon);
+                } else {
+                    $taxonomy->addTaxon($taxon);
+                }
+
+                $parent = $taxon;
+            }
+        }
+
+        $manager->persist($taxonomy);
+        $manager->flush();
     }
 
     /**

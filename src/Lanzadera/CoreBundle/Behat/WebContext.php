@@ -10,6 +10,7 @@ namespace Lanzadera\CoreBundle\Behat;
 
 
 use Behat\Gherkin\Node\TableNode;
+use Symfony\Component\Intl\Exception\NotImplementedException;
 
 class WebContext extends DefaultContext
 {
@@ -18,7 +19,7 @@ class WebContext extends DefaultContext
      */
     public function iAmOnDashboard()
     {
-        $this->getSession()->visit($this->generateUrl('sonata_admin_dashboard'));
+        $this->getSession()->visit($this->generatePageUrl('sonata_admin_dashboard'));
     }
 
     /**
@@ -27,7 +28,7 @@ class WebContext extends DefaultContext
      */
     public function iShouldBeOnDashBoard()
     {
-        $this->assertSession()->addressEquals($this->generateUrl('sonata_admin_dashboard'));
+        $this->assertSession()->addressEquals($this->generatePageUrl('sonata_admin_dashboard'));
     }
 
     /**
@@ -50,7 +51,7 @@ class WebContext extends DefaultContext
         $action = str_replace(array_keys($this->actions), array_values($this->actions), $action);
         $resource = $this->findOneBy($type, array($property => $value));
 
-        $this->getSession()->visit($this->generateUrl(sprintf('lanzadera_%s_%s', $type, $action), array('id' => $resource->getId())));
+        $this->getSession()->visit($this->generatePageUrl(sprintf('lanzadera_%s_%s', $type, $action), array('id' => $resource->getId())));
     }
 
 
@@ -65,8 +66,7 @@ class WebContext extends DefaultContext
         $action = str_replace(array_keys($this->actions), array_values($this->actions), $action);
         $resource = $this->findOneBy($type, array($property => $value));
 
-        $this->assertSession()->addressEquals($this->generateUrl(sprintf('lanzadera_%s_%s', $type, $action), array('id' => $resource->getId())));
-        $this->assertSession()->statusCodeEquals(200);
+        $this->assertSession()->addressEquals($this->generatePageUrl(sprintf('lanzadera_%s_%s', $type, $action), array('id' => $resource->getId())));
     }
 
     /**
@@ -85,7 +85,7 @@ class WebContext extends DefaultContext
      */
     public function iAmOnPage($page)
     {
-        $this->getSession()->visit($this->generateUrl($page));
+        $this->getSession()->visit($this->generatePageUrl($page));
     }
 
     /**
@@ -98,8 +98,7 @@ class WebContext extends DefaultContext
         $property = $this->translate[$property];
         $resource = $this->findOneBy($type, array($property => $value));
 
-        $this->assertSession()->addressEquals($this->generateUrl(sprintf('lanzadera_%s_show', $type), array('id' => $resource->getId())));
-        $this->assertSession()->statusCodeEquals(200);
+        $this->assertSession()->addressEquals($this->generatePageUrl(sprintf('lanzadera_%s_show', $type), array('id' => $resource->getId())));
     }
 
     /**
@@ -107,8 +106,7 @@ class WebContext extends DefaultContext
      */
     public function iShouldBeOnPage($page)
     {
-        $this->assertSession()->addressEquals($this->generateUrl($page));
-        $this->assertSession()->statusCodeEquals(200);
+        $this->assertSession()->addressEquals($this->generatePageUrl($page));
     }
 
     /**
@@ -153,17 +151,4 @@ class WebContext extends DefaultContext
     {
         $this->assertSession()->pageTextContains(sprintf("%d %s", $num, $num == 1 ? "resultado" : "resultados"));
     }
-
-    /**
-     * @When relleno el formulario con
-     */
-    public function iFillTheForm(TableNode $tableNode)
-    {
-
-    }
-
-
-
-
-
-} 
+}

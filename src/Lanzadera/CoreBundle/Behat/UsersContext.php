@@ -41,35 +41,4 @@ class UsersContext extends DefaultContext
             $em->flush();
         }
     }
-
-    /**
-     * @Given que estoy autenticado como administrador
-     */
-    public function authenticateAdmin()
-    {
-        $this->authenticateUser('admin');
-    }
-
-    /**
-     * @Given que estoy autenticado como el usuario :username
-     */
-    public function authenticateUser($username)
-    {
-        $driver = $this->getSession()->getDriver();
-        if (!$driver instanceof BrowserKitDriver) {
-            throw new UnsupportedDriverActionException('Este paso solo está soportado con BrowserKitDriver', $driver);
-        }
-
-        $user = $this->kernel->getContainer()->get('fos_user.user_manager')->findUserByUsername($username);
-        $firewall = $this->kernel->getContainer()->getParameter('fos_user.firewall_name');
-
-        $token = new UsernamePasswordToken($user, null, $firewall, $user->getRoles());
-
-        $session = $this->kernel->getContainer()->get('session');
-        $session->set('_security_'.$firewall, serialize($token));
-        $session->save();
-
-        $this->getSession()->setCookie($session->getName(), $session->getId());
-
-    }
 }

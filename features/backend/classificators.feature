@@ -6,10 +6,7 @@ Característica: Clasificación
     Quiero poder crear grupos de clasificación de productos
 
     Antecedentes:
-        Dado que existen los siguientes usuarios:
-            | username  | password  | email                 | enabled | role        |
-            | admin     | adminpw   | admin@latejedora.com  | 1       | ROLE_ADMIN  |
-        Y que estoy autenticado como administrador
+        Dado que estoy autenticado como administrador
         Y existen las siguientes clasificaciones:
             | nombre            | descripción                  | umbral |
             | Clasificación A   | Agrupa Propiedades de tipo A | 60     |

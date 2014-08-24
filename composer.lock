@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "14e0f9c956eb65c356c6e81a8bec06f3",
+    "hash": "15e26820f8ce9eeab0c4a9d7ec2ecead",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -2372,12 +2372,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "1705d8ef44a0c9ddd42c191be99b2f69e9e2bdba"
+                "reference": "a43a8aceb9021bd3b659bda7f6c41a7dfd656101"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/1705d8ef44a0c9ddd42c191be99b2f69e9e2bdba",
-                "reference": "1705d8ef44a0c9ddd42c191be99b2f69e9e2bdba",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/a43a8aceb9021bd3b659bda7f6c41a7dfd656101",
+                "reference": "a43a8aceb9021bd3b659bda7f6c41a7dfd656101",
                 "shasum": ""
             },
             "require": {
@@ -2443,7 +2443,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2014-08-22 07:37:20"
+            "time": "2014-08-22 15:05:38"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -3945,57 +3945,17 @@
     ],
     "packages-dev": [
         {
-            "name": "alexandresalome/php-selenium",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/alexandresalome/PHP-Selenium.git",
-                "reference": "5578adde63b72aa453e37fee4a7729ce770310af"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/alexandresalome/PHP-Selenium/zipball/5578adde63b72aa453e37fee4a7729ce770310af",
-                "reference": "5578adde63b72aa453e37fee4a7729ce770310af",
-                "shasum": ""
-            },
-            "require-dev": {
-                "symfony/dom-crawler": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Selenium": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Alexandre Salomé",
-                    "email": "alexandre.salome@gmail.com",
-                    "homepage": "http://alexandre-salome.fr"
-                }
-            ],
-            "description": "PHP Library for Selenium",
-            "keywords": [
-                "selenium"
-            ],
-            "time": "2014-07-05 14:05:19"
-        },
-        {
             "name": "behat/behat",
-            "version": "v3.0.12",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Behat.git",
-                "reference": "0fb9a9494a92374ddcc741374cef68c4cbf6fa05"
+                "reference": "860860d4b997bc8121aba470f1cb13a1500586ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Behat/zipball/0fb9a9494a92374ddcc741374cef68c4cbf6fa05",
-                "reference": "0fb9a9494a92374ddcc741374cef68c4cbf6fa05",
+                "url": "https://api.github.com/repos/Behat/Behat/zipball/860860d4b997bc8121aba470f1cb13a1500586ee",
+                "reference": "860860d4b997bc8121aba470f1cb13a1500586ee",
                 "shasum": ""
             },
             "require": {
@@ -4063,7 +4023,7 @@
                 "symfony",
                 "testing"
             ],
-            "time": "2014-07-17 06:37:41"
+            "time": "2014-08-21 16:20:09"
         },
         {
             "name": "behat/gherkin",
@@ -4293,24 +4253,23 @@
             "time": "2014-08-12 17:51:50"
         },
         {
-            "name": "behat/mink-selenium-driver",
+            "name": "behat/mink-selenium2-driver",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Behat/MinkSeleniumDriver.git",
-                "reference": "f99fef1fdc7d0f822a0082bb1d507e89d970dedf"
+                "url": "https://github.com/Behat/MinkSelenium2Driver.git",
+                "reference": "c2d36feb081057c3137e828fda4a9458e6ab1c76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/MinkSeleniumDriver/zipball/f99fef1fdc7d0f822a0082bb1d507e89d970dedf",
-                "reference": "f99fef1fdc7d0f822a0082bb1d507e89d970dedf",
+                "url": "https://api.github.com/repos/Behat/MinkSelenium2Driver/zipball/c2d36feb081057c3137e828fda4a9458e6ab1c76",
+                "reference": "c2d36feb081057c3137e828fda4a9458e6ab1c76",
                 "shasum": ""
             },
             "require": {
-                "alexandresalome/php-selenium": "~1.1@dev",
                 "behat/mink": "~1.6@dev",
-                "php": ">=5.3.1",
-                "symfony/dom-crawler": "~2.0"
+                "instaclick/php-webdriver": "~1.1",
+                "php": ">=5.3.1"
             },
             "type": "mink-driver",
             "extra": {
@@ -4332,18 +4291,24 @@
                     "name": "Konstantin Kudryashov",
                     "email": "ever.zet@gmail.com",
                     "homepage": "http://everzet.com"
+                },
+                {
+                    "name": "Pete Otaqui",
+                    "email": "pete@otaqui.com",
+                    "homepage": "https://github.com/pete-otaqui"
                 }
             ],
-            "description": "Selenium driver for Mink framework",
+            "description": "Selenium2 (WebDriver) driver for Mink framework",
             "homepage": "http://mink.behat.org/",
             "keywords": [
                 "ajax",
                 "browser",
                 "javascript",
                 "selenium",
-                "testing"
+                "testing",
+                "webdriver"
             ],
-            "time": "2014-08-13 22:33:06"
+            "time": "2014-08-13 23:29:15"
         },
         {
             "name": "behat/symfony2-extension",
@@ -4607,6 +4572,64 @@
                 "fixtures"
             ],
             "time": "2013-06-09 18:05:57"
+        },
+        {
+            "name": "instaclick/php-webdriver",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/instaclick/php-webdriver.git",
+                "reference": "3cf130283b054b50119f887e11b9b5a648d785a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/instaclick/php-webdriver/zipball/3cf130283b054b50119f887e11b9b5a648d785a9",
+                "reference": "3cf130283b054b50119f887e11b9b5a648d785a9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "WebDriver": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Justin Bishop",
+                    "email": "jubishop@gmail.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Anthon Pang",
+                    "email": "apang@softwaredevelopment.ca",
+                    "role": "developer"
+                }
+            ],
+            "description": "PHP WebDriver for Selenium 2",
+            "homepage": "http://instaclick.com/",
+            "keywords": [
+                "browser",
+                "selenium",
+                "webdriver",
+                "webtest"
+            ],
+            "time": "2014-05-08 04:19:19"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -4988,11 +5011,11 @@
         "braincrafted/bootstrap-bundle": 10,
         "knplabs/knp-menu": 15,
         "knplabs/knp-menu-bundle": 15,
-        "behat/behat": 0,
+        "behat/behat": 20,
         "behat/symfony2-extension": 20,
         "behat/mink-extension": 20,
         "behat/mink-browserkit-driver": 20,
-        "behat/mink-selenium-driver": 20,
+        "behat/mink-selenium2-driver": 20,
         "behat/mink": 20
     },
     "prefer-stable": false,

@@ -15,6 +15,8 @@ use Behat\MinkExtension\Context\RawMinkContext;
 use Behat\Symfony2Extension\Context\KernelAwareContext;
 use Doctrine\Common\DataFixtures\Purger\ORMPurger;
 use Doctrine\Common\Persistence\ObjectManager;
+use Faker\Factory as FakerFactory;
+use Faker\Generator;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Security\Core\SecurityContextInterface;
@@ -48,6 +50,13 @@ abstract class DefaultContext extends RawMinkContext
     protected $kernel;
 
     /**
+     * Faker.
+     *
+     * @var Generator
+     */
+    protected $faker;
+
+    /**
      * Initializes context.
      *
      * Every scenario gets its own context object.
@@ -55,6 +64,7 @@ abstract class DefaultContext extends RawMinkContext
      */
     public function __construct()
     {
+        $this->faker = FakerFactory::create();
     }
 
     /**
@@ -136,7 +146,6 @@ abstract class DefaultContext extends RawMinkContext
         return $this->getService('lanzadera.repository.'.$resource);
     }
 
-
     /**
      * Get security context.
      *
@@ -174,6 +183,39 @@ abstract class DefaultContext extends RawMinkContext
     }
 
     /**
+     * Generate page url.
+     * This method uses simple convention where page argument is prefixed
+     * with "lanzadera_" and used as route name passed to router generate method.
+     *
+     * @param object|string $page
+     * @param array         $parameters
+     *
+     * @return string
+     */
+    protected function generatePageUrl($page, array $parameters = array())
+    {
+        if (is_object($page)) {
+            return $this->locatePath($this->generateUrl($page, $parameters));
+        }
+
+        $route  = str_replace(' ', '_', trim($page));
+        $routes = $this->getContainer()->get('router')->getRouteCollection();
+
+        if (null === $routes->get($route)) {
+            $route = 'lanzadera_'.$route;
+        }
+
+        if (null === $routes->get($route)) {
+            $route = str_replace('lanzadera_', 'lanzadera_', $route);
+        }
+
+        $route = str_replace(array_keys($this->actions), array_values($this->actions), $route);
+        $route = str_replace(' ', '_', $route);
+
+        return $this->locatePath($this->generateUrl($route, $parameters));
+    }
+
+    /**
      * Generate url.
      *
      * @param string  $route
@@ -185,5 +227,49 @@ abstract class DefaultContext extends RawMinkContext
     protected function generateUrl($route, array $parameters = array(), $absolute = false)
     {
         return $this->getService('router')->generate($route, $parameters, $absolute);
+    }
+
+    /**
+     * Presses button with specified id|name|title|alt|value.
+     */
+    protected function pressButton($button)
+    {
+        $this->getSession()->getPage()->pressButton($this->fixStepArgument($button));
+    }
+
+    /**
+     * Clicks link with specified id|title|alt|text.
+     */
+    protected function clickLink($link)
+    {
+        $this->getSession()->getPage()->clickLink($this->fixStepArgument($link));
+    }
+
+    /**
+     * Fills in form field with specified id|name|label|value.
+     */
+    protected function fillField($field, $value)
+    {
+        $this->getSession()->getPage()->fillField($this->fixStepArgument($field), $this->fixStepArgument($value));
+    }
+
+    /**
+     * Selects option in select field with specified id|name|label|value.
+     */
+    public function selectOption($select, $option)
+    {
+        $this->getSession()->getPage()->selectFieldOption($this->fixStepArgument($select), $this->fixStepArgument($option));
+    }
+
+    /**
+     * Returns fixed step argument (with \\" replaced back to ").
+     *
+     * @param string $argument
+     *
+     * @return string
+     */
+    protected function fixStepArgument($argument)
+    {
+        return str_replace('\\"', '"', $argument);
     }
 } 

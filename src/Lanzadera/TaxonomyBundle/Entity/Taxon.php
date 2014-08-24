@@ -8,9 +8,9 @@
 
 namespace Lanzadera\TaxonomyBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use Sylius\Bundle\TaxonomiesBundle\Model\Taxon as SyliusTaxon;
 use Sylius\Bundle\TaxonomiesBundle\Model\TaxonInterface;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class Taxon
@@ -18,7 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\MappedSuperclass()
  * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\TaxonRepository")
  */
-class Taxon extends SyliusTaxon
+class Taxon extends SyliusTaxon implements TaxonInterface
 {
     /**
      * {@inheritdoc}
@@ -43,6 +43,6 @@ class Taxon extends SyliusTaxon
      */
     public function getTabName()
     {
-        return str_repeat("—", $this->level) . $this->getName();
+        return str_repeat("—", $this->level > 0 ? $this->level - 1 : 0) . " " . $this->getName();
     }
 }

@@ -23,9 +23,10 @@ class LoadOrganizationData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        for ($i=0; $i < 15; $i++) {
+        $names = array("Asturias", "Barcelona", "Córdoba", "Dinamarca", "España", "Francia", "Gerona", "Huesca");
+        foreach ($names as $name) {
             $organization = $this->createOrganization(
-                $this->faker->company,
+                $name,
                 $this->faker->address,
                 $this->faker->email,
                 $this->faker->phoneNumber,
@@ -61,6 +62,8 @@ class LoadOrganizationData extends DataFixture
         $organization->setWeb($web);
         $organization->setEnabled($enabled);
         $organization->setCreatedAt(new \DateTime());
+
+        $this->addReference("Lanzadera.Organization." . $name, $organization);
 
         return $organization;
     }

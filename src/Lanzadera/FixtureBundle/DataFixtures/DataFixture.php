@@ -38,7 +38,7 @@ abstract class DataFixture extends AbstractFixture implements ContainerAwareInte
      */
     public function __construct()
     {
-        $this->faker = FakerFactory::create();
+        $this->faker = FakerFactory::create('es_ES');
     }
 
     public function __call($method, $arguments)

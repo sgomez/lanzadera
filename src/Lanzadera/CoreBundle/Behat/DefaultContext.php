@@ -64,7 +64,7 @@ abstract class DefaultContext extends RawMinkContext
      */
     public function __construct()
     {
-        $this->faker = FakerFactory::create();
+        $this->faker = FakerFactory::create('es_ES');
     }
 
     /**

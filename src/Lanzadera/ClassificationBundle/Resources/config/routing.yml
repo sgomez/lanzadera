@@ -1,3 +1,0 @@
-lanzadera_classification_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: LanzaderaClassificationBundle:Default:index }

@@ -1,20 +1,3 @@
-lanzadera_taxonomy:
-    resource: "@LanzaderaTaxonomyBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
-lanzadera_classification:
-    resource: "@LanzaderaClassificationBundle/Resources/config/routing.yml"
-    prefix:   /
-
-lanzadera_organization:
-    resource: "@LanzaderaOrganizationBundle/Resources/config/routing.yml"
-    prefix:   /
-
-lanzadera_product:
-    resource: "@LanzaderaProductBundle/Resources/config/routing.yml"
-    prefix:   /
-
 # Sonata
 
 sonata_user_security:

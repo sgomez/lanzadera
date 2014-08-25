@@ -1,5 +1,6 @@
 parameters:
 #    lanzadera_product.example.class: Lanzadera\ProductBundle\Example
+    lanzadera.product.admin.group: product.admin.group
 
 services:
 #    lanzadera_product.example:
@@ -9,4 +10,4 @@ services:
         class: Lanzadera\ProductBundle\Admin\ProductAdmin
         arguments: [~, Lanzadera\ProductBundle\Entity\Product, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: Gestión de productos, label: Productos}
+            - {name: sonata.admin, manager_type: orm, group: %lanzadera.product.admin.group%, label: product.admin.label}

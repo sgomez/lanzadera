@@ -202,8 +202,8 @@ class Criterion
     public static function getTypes()
     {
         return array(
-            self::ORGANIZATION => "Organization",
-            self::PRODUCT => "Product",
+            self::ORGANIZATION => "criterion.type.organization",
+            self::PRODUCT => "criterion.type.product",
         );
     }
 

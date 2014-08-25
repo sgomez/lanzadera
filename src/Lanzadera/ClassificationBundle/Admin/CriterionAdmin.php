@@ -19,9 +19,9 @@ class CriterionAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name')
-            ->add('description')
-            ->add('type')
+            ->add('name', null, array('label' => 'criterion.name.label'))
+            ->add('description', null, array('label' => 'criterion.description.label'))
+            ->add('type', null, array('label' => 'criterion.type.label'))
         ;
     }
 
@@ -31,9 +31,9 @@ class CriterionAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('name')
-            ->add('description')
-            ->add('type')
+            ->addIdentifier('name', null, array('label' => 'criterion.name.label'))
+            ->add('description', null, array('label' => 'criterion.description.label'))
+            ->add('type', null, array('label' => 'criterion.type.label'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -50,24 +50,23 @@ class CriterionAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Descripción')
-                ->add('name', null, array(
-                    'required' => true,
-                    'help' => 'Indique el nombre del criterio de clasificación'
-                ))
-                ->add('description', 'textarea')
+            ->with('criterion.group.description')
+                ->add('name', null, array('label' => 'criterion.name.label', 'required' => true))
+                ->add('description', 'textarea', array('label' => 'criterion.description.label'))
                 ->add('type', 'choice', array(
+                    'label' => 'criterion.type.label',
                     'expanded' => true,
                     'choices' => Criterion::getTypes()
                 ))
                 ->add('classification', null, array(
+                    'label' => 'criterion.classification.label',
                     'required' => true,
                 ))
             ->end()
-            ->with('Parámetros')
+            ->with('criterion.group.parameters')
                 ->add('parameters', 'sonata_type_collection',
                     array(
-                        // Prevents the "Delete" option from being displayed
+                        'label' => 'criterion.parameter.label',
                         'cascade_validation' => true,
                         'type_options' => array('delete' => true),
                         'by_reference' => false,
@@ -87,9 +86,9 @@ class CriterionAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('name')
-            ->add('description')
-            ->add('type')
+            ->add('name', null, array('label' => 'criterion.name.label'))
+            ->add('description', null, array('label' => 'criterion.description.label'))
+            ->add('type', null, array('label' => 'criterion.type.label'))
         ;
     }
 }

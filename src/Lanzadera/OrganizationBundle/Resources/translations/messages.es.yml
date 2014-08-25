@@ -1,10 +1,10 @@
-Name: Nombre
-Address: Dirección
-Phone: Teléfono
-Email: Correo-e
-Web: Página web
-Enabled: Activo
-Organization List: Lista de organizaciones
-Created At: Fecha alta
-
-
+organization.address.label: Dirección
+organization.admin.group: Gestión de Organizaciones
+organization.admin.label: Organizaciones
+organization.created_at.label: Fecha alta
+organization.email.label: Correo-e
+organization.enabled.label: Activo
+organization.name.label: Nombre
+organization.phone.label: Teléfono
+organization.web.label: Página web
+lanzadera.action: Acción

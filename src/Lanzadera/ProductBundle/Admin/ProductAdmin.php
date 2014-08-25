@@ -76,7 +76,7 @@ class ProductAdmin extends Admin
             ))
             ->add('category', 'sonata_type_model', array(
                     'label' => 'product.category.label',
-                    'query' => $this->get('lanzadera.repository.taxon')->createTaxonQuery('Category'),
+                    'query' => $this->getRepository('taxon')->createTaxonQuery('Category'),
                     'btn_add' => false,
                     'required' => true,
                     'attr' => array('placeholder' => 'product.category.placeholder', 'class' => 'form-control')
@@ -87,7 +87,7 @@ class ProductAdmin extends Admin
             )
             ->add('tags', 'sonata_type_model', array(
                     'label' => 'product.tag.label',
-                    'query' => $this->get('lanzadera.repository.taxon')->createTaxonQuery('Tag'),
+                    'query' => $this->getRepository('taxon')->createTaxonQuery('Tag'),
                     'expanded' => false,
                     'multiple' => true,
                     'btn_add' => 'product.tags.add',
@@ -106,23 +106,11 @@ class ProductAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('name')
-            ->add('description')
-            ->add('photo')
-            ->add('rawMaterialSource')
-            ->add('processingSite')
-            ->add('state')
+            ->add('name', null, array('label' => 'product.name.label'))
+            ->add('description', null, array('label' => 'product.description.label'))
+            ->add('category.name', null, array('label' => 'product.category.label'))
+            ->add('tags_as_list', null, array('label' => 'product.tag.label'))
+            ->add('state', null, array('label' => 'product.state.label'))
         ;
-    }
-
-    /**
-     * Return service from container
-     *
-     * @param $service
-     * @return object
-     */
-    protected function get($service)
-    {
-        return $this->getConfigurationPool()->getContainer()->get($service);
     }
 }

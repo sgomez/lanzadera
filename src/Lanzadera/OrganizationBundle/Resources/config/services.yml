@@ -1,6 +1,5 @@
 parameters:
-#    lanzadera_organization.example.class: Lanzadera\OrganizationBundle\Example
-
+    lanzadera.organization.admin.group: product.admin.group
 services:
 #    lanzadera_organization.example:
 #        class: %lanzadera_organization.example.class%
@@ -9,4 +8,4 @@ services:
         class: Lanzadera\OrganizationBundle\Admin\OrganizationAdmin
         arguments: [~, Lanzadera\OrganizationBundle\Entity\Organization, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: Administración, label: Organizaciones}
+            - {name: sonata.admin, manager_type: orm, group: %lanzadera.organization.admin.group%, label: organization.admin.label}

@@ -1,11 +1,18 @@
-Description: Descripción
-Threshold: Umbral
-Type: Tipo
-Classification: Clasificación
-Criterion: Criterio
-Criteria: Criterios
-Parameter: Parámetro
-Parameters: Parámetros
-Organization: Organización
-Product: Producto
-Value: Peso
+classificacion.admin.label: Clasificadores
+classification.description.label: Descripción
+classification.name.label: Nombre
+classification.threshold.label: Umbral
+
+criterion.admin.label: Criterios
+criterion.classification.label: Clasificación
+criterion.description.label: Descripción
+criterion.group.description: Descripción
+criterion.group.parameters: Parámetros
+criterion.name.label: Nombre
+criterion.parameter.label: Parámetro
+criterion.type.label: Tipo
+criterion.type.organization: Organización
+criterion.type.product: Producto
+
+parameter.name.label: Nombre
+parameter.value.label: Valor

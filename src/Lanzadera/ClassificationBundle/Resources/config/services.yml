@@ -1,24 +1,21 @@
 parameters:
-#    lanzadera_classification.example.class: Lanzadera\ClassificationBundle\Example
+    lanzadera.classification.admin.group: classification.admin.group
 
 services:
-#    lanzadera_classification.example:
-#        class: %lanzadera_classification.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
     lanzadera.admin.classification:
         class: Lanzadera\ClassificationBundle\Admin\ClassificationAdmin
         arguments: [~, Lanzadera\ClassificationBundle\Entity\Classification, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: Administración, label: Clasificadores}
+            - {name: sonata.admin, manager_type: orm, group: %lanzadera.classification.admin.group%, label: classificacion.admin.label}
 
     lanzadera.admin.criterion:
         class: Lanzadera\ClassificationBundle\Admin\CriterionAdmin
         arguments: [~, Lanzadera\ClassificationBundle\Entity\Criterion, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: Administración, label: Criterios}
+            - {name: sonata.admin, manager_type: orm, group: %lanzadera.classification.admin.group%, label: criterion.admin.label}
 
     lanzadera.admin.parameter:
         class: Lanzadera\ClassificationBundle\Admin\ParameterAdmin
         arguments: [~, Lanzadera\ClassificationBundle\Entity\Parameter, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: Administración, label: Parametros, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: %lanzadera.classification.admin.group%, label: parameter.admin.label, show_in_dashboard: false}

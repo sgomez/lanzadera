@@ -1,5 +1,6 @@
 parameters:
 #    lanzadera_classification.example.class: Lanzadera\ClassificationBundle\Example
+     lanzadera.taxonomy.admin.group: product.admin.group
 
 services:
 #    lanzadera_classification.example:
@@ -9,10 +10,10 @@ services:
         class: Lanzadera\TaxonomyBundle\Admin\CategoryAdmin
         arguments: [~, Lanzadera\TaxonomyBundle\Entity\Taxon, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: Gestión de productos, label: Categorías}
+            - {name: sonata.admin, manager_type: orm, group: %lanzadera.taxonomy.admin.group%, label: category.admin.label}
     lanzadera.admin.tag:
         class: Lanzadera\TaxonomyBundle\Admin\TagAdmin
         arguments: [~, Lanzadera\TaxonomyBundle\Entity\Taxon, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: Gestión de productos, label: Etiquetas}
+            - {name: sonata.admin, manager_type: orm, group: %lanzadera.taxonomy.admin.group%, label: tag.admin.label}
 

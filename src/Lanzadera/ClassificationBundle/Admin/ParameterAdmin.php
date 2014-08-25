@@ -16,8 +16,8 @@ class ParameterAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name')
-            ->add('value')
+            ->add('name', null, array('label' => 'parameter.name.label'))
+            ->add('value', null, array('label' => 'parameter.value.label'))
         ;
     }
 
@@ -27,8 +27,8 @@ class ParameterAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('name')
-            ->add('value')
+            ->addIdentifier('name', null, array('label' => 'parameter.name.label'))
+            ->add('value', null, array('label' => 'parameter.value.label'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -46,9 +46,11 @@ class ParameterAdmin extends Admin
     {
         $formMapper
             ->add('name', 'text', array(
+                'label' => 'parameter.name.label',
                 'required' => true,
             ))
             ->add('value', 'number', array(
+                'label' => 'parameter.value.label',
                 'required' => true,
             ))
         ;
@@ -60,8 +62,8 @@ class ParameterAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('name')
-            ->add('value')
+            ->add('name', null, array('label' => 'parameter.name.label'))
+            ->add('value', null, array('label' => 'parameter.value.label'))
         ;
     }
 }

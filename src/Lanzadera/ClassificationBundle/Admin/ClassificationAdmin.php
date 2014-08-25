@@ -18,9 +18,9 @@ class ClassificationAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name')
-            ->add('description')
-            ->add('threshold')
+            ->add('name', null, array('label' => 'classification.name.label'))
+            ->add('description', null, array('label' => 'classification.description.label'))
+            ->add('threshold', null, array('label' => 'classification.threshold.label'))
         ;
     }
 
@@ -30,9 +30,9 @@ class ClassificationAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name')
-            ->add('description')
-            ->add('threshold')
+            ->addIdentifier('name', null, array('label' => 'classification.name.label'))
+            ->add('description', null, array('label' => 'classification.description.label'))
+            ->add('threshold', null, array('label' => 'classification.threshold.label'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -49,9 +49,9 @@ class ClassificationAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name')
-            ->add('description', 'textarea')
-            ->add('threshold', 'percent', array('type' => 'integer'))
+            ->add('name', null, array('label' => 'classification.name.label'))
+            ->add('description', 'textarea', array('label' => 'classification.description.label'))
+            ->add('threshold', 'percent', array('label' => 'classification.threshold.label', 'type' => 'integer'))
         ;
     }
 
@@ -61,9 +61,9 @@ class ClassificationAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('name')
-            ->add('description')
-            ->add('threshold')
+            ->add('name', null, array('label' => 'classification.name.label'))
+            ->add('description', null, array('label' => 'classification.description.label'))
+            ->add('threshold', null, array('label' => 'classification.threshold.label'))
         ;
     }
 }

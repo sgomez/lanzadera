@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class ParameterAdmin extends Admin
+class IndicatorAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -16,8 +16,8 @@ class ParameterAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name', null, array('label' => 'parameter.name.label'))
-            ->add('value', null, array('label' => 'parameter.value.label'))
+            ->add('name', null, array('label' => 'indicator.name.label'))
+            ->add('value', null, array('label' => 'indicator.value.label'))
         ;
     }
 
@@ -27,8 +27,8 @@ class ParameterAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name', null, array('label' => 'parameter.name.label'))
-            ->add('value', null, array('label' => 'parameter.value.label'))
+            ->addIdentifier('name', null, array('label' => 'indicator.name.label'))
+            ->add('value', null, array('label' => 'indicator.value.label'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -46,11 +46,11 @@ class ParameterAdmin extends Admin
     {
         $formMapper
             ->add('name', 'text', array(
-                'label' => 'parameter.name.label',
+                'label' => 'indicator.name.label',
                 'required' => true,
             ))
             ->add('value', 'number', array(
-                'label' => 'parameter.value.label',
+                'label' => 'indicator.value.label',
                 'required' => true,
             ))
         ;
@@ -62,8 +62,8 @@ class ParameterAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('name', null, array('label' => 'parameter.name.label'))
-            ->add('value', null, array('label' => 'parameter.value.label'))
+            ->add('name', null, array('label' => 'indicator.name.label'))
+            ->add('value', null, array('label' => 'indicator.value.label'))
         ;
     }
 }

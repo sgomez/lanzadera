@@ -29,7 +29,7 @@ class ClassificationContext extends DefaultContext
                 $classification = new Classification();
             }
             $classification->setName($classificationHash['nombre']);
-            $classification->setDescription($classificationHash['descripción']);
+            $classification->setDescription($this->faker->text);
             $classification->setThreshold($classificationHash['umbral']);
 
             $em->persist($classification);
@@ -52,7 +52,7 @@ class ClassificationContext extends DefaultContext
                 $criterion = new Criterion();
             }
             $criterion->setName($criterionHash['nombre']);
-            $criterion->setDescription($criterionHash['descripción']);
+            $criterion->setDescription($this->faker->text);
             $criterion->setType($criterionHash['tipo'] == "Organización" ? Criterion::ORGANIZATION : Criterion::PRODUCT);
             $criterion->setClassification($classification);
 

@@ -65,18 +65,18 @@ class Criterion
     private $classification;
 
     /**
-     * @var \Parameter
+     * @var \Indicator
      *
-     * @ORM\OneToMany(targetEntity="Parameter", mappedBy="criterion", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="Indicator", mappedBy="criterion", cascade={"persist", "remove"}, orphanRemoval=true)
      */
-    private $parameters;
+    private $indicators;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->parameters = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->indicators = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function __toString()
@@ -208,50 +208,50 @@ class Criterion
     }
 
     /**
-     * Add parameters
+     * Add indicators
      *
-     * @param \Lanzadera\ClassificationBundle\Entity\Parameter $parameter
+     * @param \Lanzadera\ClassificationBundle\Entity\Indicator $indicator
      * @return Criterion
      */
-    public function addParameter(\Lanzadera\ClassificationBundle\Entity\Parameter $parameter)
+    public function addIndicator(\Lanzadera\ClassificationBundle\Entity\Indicator $indicator)
     {
-        $parameter->setCriterion($this);
-        $this->parameters[] = $parameter;
+        $indicator->setCriterion($this);
+        $this->indicators[] = $indicator;
 
         return $this;
     }
 
     /**
-     * Remove parameters
+     * Remove indicators
      *
-     * @param \Lanzadera\ClassificationBundle\Entity\Parameter $parameter
+     * @param \Lanzadera\ClassificationBundle\Entity\Indicator $indicator
      */
-    public function removeParameter(\Lanzadera\ClassificationBundle\Entity\Parameter $parameter)
+    public function removeIndicator(\Lanzadera\ClassificationBundle\Entity\Indicator $indicator)
     {
-        $this->parameters->removeElement($parameter);
+        $this->indicators->removeElement($indicator);
     }
 
     /**
-     * Set parameters
+     * Set indicators
      *
-     * @param $parameters
+     * @param $indicators
      */
-    public function setParameters($parameters)
+    public function setIndicators($indicators)
     {
-        $this->parameters = new ArrayCollection();
+        $this->indicators = new ArrayCollection();
 
-        foreach($parameters as $parameter) {
-            $this->addParameter($parameter);
+        foreach($indicators as $indicator) {
+            $this->addIndicator($indicator);
         }
     }
 
     /**
-     * Get parameters
+     * Get indicators
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getParameters()
+    public function getIndicators()
     {
-        return $this->parameters;
+        return $this->indicators;
     }
 }

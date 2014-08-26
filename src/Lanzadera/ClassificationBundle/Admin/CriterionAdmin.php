@@ -63,10 +63,10 @@ class CriterionAdmin extends Admin
                     'required' => true,
                 ))
             ->end()
-            ->with('criterion.group.parameters')
-                ->add('parameters', 'sonata_type_collection',
+            ->with('criterion.group.indicators')
+                ->add('indicators', 'sonata_type_collection',
                     array(
-                        'label' => 'criterion.parameter.label',
+                        'label' => 'criterion.indicator.label',
                         'cascade_validation' => true,
                         'type_options' => array('delete' => true),
                         'by_reference' => false,

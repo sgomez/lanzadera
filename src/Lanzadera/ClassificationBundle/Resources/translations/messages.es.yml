@@ -7,12 +7,12 @@ criterion.admin.label: Criterios
 criterion.classification.label: Clasificación
 criterion.description.label: Descripción
 criterion.group.description: Descripción
-criterion.group.parameters: Parámetros
+criterion.group.indicators: Indicadores
 criterion.name.label: Nombre
-criterion.parameter.label: Parámetro
+criterion.indicator.label: Indicador
 criterion.type.label: Tipo
 criterion.type.organization: Organización
 criterion.type.product: Producto
 
-parameter.name.label: Nombre
-parameter.value.label: Valor
+indicator.name.label: Nombre
+indicator.value.label: Valor

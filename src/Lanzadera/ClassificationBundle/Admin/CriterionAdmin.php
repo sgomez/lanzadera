@@ -70,6 +70,7 @@ class CriterionAdmin extends Admin
                         'cascade_validation' => true,
                         'type_options' => array('delete' => true),
                         'by_reference' => false,
+                        'btn_add' => $this->trans('criterion.indicator.add')
                     ),
                     array(
                         'edit' => 'inline',

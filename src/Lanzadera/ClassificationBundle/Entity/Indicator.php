@@ -10,7 +10,7 @@ use Lanzadera\OrganizationBundle\Entity\Organization;
  * Indicator
  *
  * @ORM\Table(name="indicator")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\IndicatorRepository")
  */
 class Indicator
 {

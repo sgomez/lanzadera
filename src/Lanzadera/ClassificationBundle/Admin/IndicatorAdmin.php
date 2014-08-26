@@ -48,10 +48,12 @@ class IndicatorAdmin extends Admin
             ->add('name', 'text', array(
                 'label' => 'indicator.name.label',
                 'required' => true,
+                'attr' => array('title' => 'indicator_name_edit')
             ))
             ->add('value', 'number', array(
                 'label' => 'indicator.value.label',
                 'required' => true,
+                'attr' => array('title' => 'indicator_value_edit')
             ))
         ;
     }

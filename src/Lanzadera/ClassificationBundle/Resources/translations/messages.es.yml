@@ -9,6 +9,7 @@ criterion.description.label: Descripción
 criterion.group.description: Descripción
 criterion.group.indicators: Indicadores
 criterion.name.label: Nombre
+criterion.indicator.add: Añadir indicador
 criterion.indicator.label: Indicador
 criterion.type.label: Tipo
 criterion.type.organization: Organización

@@ -14,8 +14,8 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: %lanzadera.classification.admin.group%, label: criterion.admin.label}
 
-    lanzadera.admin.parameter:
-        class: Lanzadera\ClassificationBundle\Admin\ParameterAdmin
-        arguments: [~, Lanzadera\ClassificationBundle\Entity\Parameter, SonataAdminBundle:CRUD]
+    lanzadera.admin.indicator:
+        class: Lanzadera\ClassificationBundle\Admin\IndicatorAdmin
+        arguments: [~, Lanzadera\ClassificationBundle\Entity\Indicator, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: %lanzadera.classification.admin.group%, label: parameter.admin.label, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: %lanzadera.classification.admin.group%, label: indicator.admin.label, show_in_dashboard: false}

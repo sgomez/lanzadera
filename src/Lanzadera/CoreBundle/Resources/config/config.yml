@@ -19,6 +19,11 @@ services:
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments: ['Lanzadera\ClassificationBundle\Entity\Criterion']
+    lanzadera.repository.indicator:
+        class: Lanzadera\CoreBundle\Doctrine\ORM\IndicatorRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: ['Lanzadera\ClassificationBundle\Entity\Indicator']
     lanzadera.repository.product:
         class: Lanzadera\CoreBundle\Doctrine\ORM\ProductRepository
         factory_service: doctrine.orm.entity_manager

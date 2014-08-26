@@ -7,12 +7,12 @@ use Lanzadera\ProductBundle\Entity\Product;
 use Lanzadera\OrganizationBundle\Entity\Organization;
 
 /**
- * Parameter
+ * Indicator
  *
- * @ORM\Table(name="parameter", indexes={@ORM\Index(name="fk_parameter_criterion1_idx", columns={"criterion_id"})})
- * @ORM\Entity
+ * @ORM\Table(name="indicator")
+ * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\IndicatorRepository")
  */
-class Parameter
+class Indicator
 {
     /**
      * @var integer
@@ -40,7 +40,7 @@ class Parameter
     /**
      * @var \Criterion
      *
-     * @ORM\ManyToOne(targetEntity="Criterion", inversedBy="parameters")
+     * @ORM\ManyToOne(targetEntity="Criterion", inversedBy="indicators")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="criterion_id", referencedColumnName="id")
      * })
@@ -50,14 +50,14 @@ class Parameter
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Lanzadera\OrganizationBundle\Entity\Organization", mappedBy="parameter")
+     * @ORM\ManyToMany(targetEntity="Lanzadera\OrganizationBundle\Entity\Organization", mappedBy="indicator")
      */
     private $organization;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Lanzadera\ProductBundle\Entity\Product", mappedBy="parameter")
+     * @ORM\ManyToMany(targetEntity="Lanzadera\ProductBundle\Entity\Product", mappedBy="indicator")
      */
     private $product;
 
@@ -79,7 +79,7 @@ class Parameter
      * Set id
      *
      * @param integer $id
-     * @return Parameter
+     * @return Indicator
      */
     public function setId($id)
     {
@@ -102,7 +102,7 @@ class Parameter
      * Set name
      *
      * @param string $name
-     * @return Parameter
+     * @return Indicator
      */
     public function setName($name)
     {
@@ -125,7 +125,7 @@ class Parameter
      * Set value
      *
      * @param string $value
-     * @return Parameter
+     * @return Indicator
      */
     public function setValue($value)
     {
@@ -148,7 +148,7 @@ class Parameter
      * Set criterion
      *
      * @param \Lanzadera\ClassificationBundle\Entity\Criterion $criterion
-     * @return Parameter
+     * @return Indicator
      */
     public function setCriterion(\Lanzadera\ClassificationBundle\Entity\Criterion $criterion)
     {
@@ -171,7 +171,7 @@ class Parameter
      * Add organization
      *
      * @param \Lanzadera\OrganizationBundle\Entity\Organization $organization
-     * @return Parameter
+     * @return Indicator
      */
     public function addOrganization(\Lanzadera\OrganizationBundle\Entity\Organization $organization)
     {
@@ -204,7 +204,7 @@ class Parameter
      * Add product
      *
      * @param \Lanzadera\ProductBundle\Entity\Product $product
-     * @return Parameter
+     * @return Indicator
      */
     public function addProduct(\Lanzadera\ProductBundle\Entity\Product $product)
     {

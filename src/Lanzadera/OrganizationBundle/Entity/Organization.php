@@ -92,24 +92,24 @@ class Organization
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Lanzadera\ClassificationBundle\Entity\Parameter", inversedBy="organization")
-     * @ORM\JoinTable(name="organization_has_parameter",
+     * @ORM\ManyToMany(targetEntity="Lanzadera\ClassificationBundle\Entity\Indicator", inversedBy="organization")
+     * @ORM\JoinTable(name="organization_has_indicator",
      *   joinColumns={
      *     @ORM\JoinColumn(name="organization_id", referencedColumnName="id")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="parameter_id", referencedColumnName="id")
+     *     @ORM\JoinColumn(name="indicator_id", referencedColumnName="id")
      *   }
      * )
      */
-    private $parameter;
+    private $indicator;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->parameter = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->indicator = new \Doctrine\Common\Collections\ArrayCollection();
         $this->products = new \Doctrine\Common\Collections\ArrayCollection();
         $this->createdAt = new \DateTime();
     }
@@ -296,36 +296,36 @@ class Organization
     }
 
     /**
-     * Add parameter
+     * Add indicator
      *
-     * @param \Lanzadera\ClassificationBundle\Entity\Parameter $parameter
+     * @param \Lanzadera\ClassificationBundle\Entity\Indicator $indicator
      * @return Organization
      */
-    public function addParameter(\Lanzadera\ClassificationBundle\Entity\Parameter $parameter)
+    public function addIndicator(\Lanzadera\ClassificationBundle\Entity\Indicator $indicator)
     {
-        $this->parameter[] = $parameter;
+        $this->indicator[] = $indicator;
 
         return $this;
     }
 
     /**
-     * Remove parameter
+     * Remove indicator
      *
-     * @param \Lanzadera\ClassificationBundle\Entity\Parameter $parameter
+     * @param \Lanzadera\ClassificationBundle\Entity\Indicator $indicator
      */
-    public function removeParameter(\Lanzadera\ClassificationBundle\Entity\Parameter $parameter)
+    public function removeIndicator(\Lanzadera\ClassificationBundle\Entity\Indicator $indicator)
     {
-        $this->parameter->removeElement($parameter);
+        $this->indicator->removeElement($indicator);
     }
 
     /**
-     * Get parameter
+     * Get indicator
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getParameter()
+    public function getIndicator()
     {
-        return $this->parameter;
+        return $this->indicator;
     }
 
     /**

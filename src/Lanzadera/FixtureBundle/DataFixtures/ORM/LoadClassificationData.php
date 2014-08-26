@@ -22,9 +22,16 @@ class LoadClassificationData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        for ($i=0; $i < 15; $i++) {
+        $classifications = array(
+            'Sociales' => 'Criterios sociales',
+            'Ambientales' => 'Criterios ambientales',
+            'Comerciales' => 'Criterios comerciales y logísticos',
+        );
+
+        foreach($classifications as $id => $name) {
             $organization = $this->createClassification(
-                $this->faker->catchPhrase,
+                $id,
+                $name,
                 $this->faker->text,
                 $this->faker->numberBetween(50,80)
             );
@@ -35,17 +42,7 @@ class LoadClassificationData extends DataFixture
         $manager->flush();
     }
 
-    /**
-     * Get the order of this fixture
-     *
-     * @return integer
-     */
-    function getOrder()
-    {
-        return 3;
-    }
-
-    private function createClassification($name, $description, $threshold)
+    private function createClassification($id, $name, $description, $threshold)
     {
         $repo = $this->getClassificationRepository();
         /* @var $classification Classification */
@@ -55,6 +52,18 @@ class LoadClassificationData extends DataFixture
         $classification->setDescription($description);
         $classification->setThreshold($threshold);
 
+        $this->addReference('Lanzadera.Classification.' . $id, $classification);
+
         return $classification;
+    }
+
+    /**
+     * Get the order of this fixture
+     *
+     * @return integer
+     */
+    function getOrder()
+    {
+        return 3;
     }
 }

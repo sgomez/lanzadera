@@ -70,6 +70,11 @@ class Indicator
         $this->product = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    /**
+     * Return name
+     *
+     * @return string
+     */
     public function __toString()
     {
         return $this->getName();

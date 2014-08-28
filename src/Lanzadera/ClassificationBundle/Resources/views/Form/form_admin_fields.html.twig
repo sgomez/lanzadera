@@ -1,0 +1,52 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{% extends 'form_div_layout.html.twig' %}
+
+{% block lanzadera_indicator_widget %}
+    {% spaceless %}
+
+    <div class=" sonata-ba-field sonata-ba-field-inline-table  ">
+        <div id="field_container_s53fdffd5b1045_indicators" class="field-container">
+             <span id="field_widget_s53fdffd5b1045_indicators">
+                 <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th style="width: 250px;">Valor</th>
+                    </tr>
+                    </thead>
+                    <tbody class="sonata-ba-tbody ui-sortable">
+                    {% for child in form %}
+                        <tr>
+                            <td class="control-group">
+                                {{ child.vars.label }}
+                            </td>
+                            <td class="control-group">
+                                {{ child.vars.description }}
+                            </td>
+                            <td class="control-group">
+                                {{ form_widget(child) }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </span>
+        </div>
+    </div>
+    {% endspaceless %}
+{% endblock %}
+
+{% block choice_widget %}
+    {{ description }}
+{% endblock %}

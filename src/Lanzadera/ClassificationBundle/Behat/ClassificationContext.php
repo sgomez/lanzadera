@@ -55,7 +55,7 @@ class ClassificationContext extends DefaultContext
             }
             $criterion->setName($criterionHash['nombre']);
             $criterion->setDescription($this->faker->text);
-            $criterion->setType($criterionHash['tipo'] == "Organización" ? Criterion::ORGANIZATION : Criterion::PRODUCT);
+            $criterion->setType($criterionHash['tipo'] === "Producto" ? Criterion::PRODUCT : Criterion::ORGANIZATION);
             $criterion->setClassification($classification);
 
             $em->persist($criterion);

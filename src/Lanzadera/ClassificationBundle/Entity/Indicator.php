@@ -50,24 +50,24 @@ class Indicator
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Lanzadera\OrganizationBundle\Entity\Organization", mappedBy="indicator")
+     * @ORM\ManyToMany(targetEntity="Lanzadera\OrganizationBundle\Entity\Organization", mappedBy="indicators")
      */
-    private $organization;
+    private $organizations;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Lanzadera\ProductBundle\Entity\Product", mappedBy="indicator")
+     * @ORM\ManyToMany(targetEntity="Lanzadera\ProductBundle\Entity\Product", mappedBy="indicators")
      */
-    private $product;
+    private $products;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->organization = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->product = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->organizations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -180,7 +180,7 @@ class Indicator
      */
     public function addOrganization(\Lanzadera\OrganizationBundle\Entity\Organization $organization)
     {
-        $this->organization[] = $organization;
+        $this->organizations[] = $organization;
 
         return $this;
     }
@@ -192,7 +192,7 @@ class Indicator
      */
     public function removeOrganization(\Lanzadera\OrganizationBundle\Entity\Organization $organization)
     {
-        $this->organization->removeElement($organization);
+        $this->organizations->removeElement($organization);
     }
 
     /**
@@ -200,9 +200,9 @@ class Indicator
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getOrganization()
+    public function getOrganizations()
     {
-        return $this->organization;
+        return $this->organizations;
     }
 
     /**
@@ -213,7 +213,7 @@ class Indicator
      */
     public function addProduct(\Lanzadera\ProductBundle\Entity\Product $product)
     {
-        $this->product[] = $product;
+        $this->products[] = $product;
 
         return $this;
     }
@@ -225,7 +225,7 @@ class Indicator
      */
     public function removeProduct(\Lanzadera\ProductBundle\Entity\Product $product)
     {
-        $this->product->removeElement($product);
+        $this->products->removeElement($product);
     }
 
     /**
@@ -233,8 +233,8 @@ class Indicator
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getProduct()
+    public function getProducts()
     {
-        return $this->product;
+        return $this->products;
     }
 }

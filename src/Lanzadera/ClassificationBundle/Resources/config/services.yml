@@ -1,21 +1,44 @@
 parameters:
-    lanzadera.classification.admin.group: classification.admin.group
+    lanzadera.admin.classification.class: Lanzadera\ClassificationBundle\Admin\ClassificationAdmin
+    lanzadera.admin.criterion.class: Lanzadera\ClassificationBundle\Admin\CriterionAdmin
+    lanzadera.admin.indicator.class: Lanzadera\ClassificationBundle\Admin\IndicatorAdmin
+    lanzadera.entity.classification.class: Lanzadera\ClassificationBundle\Entity\Classification
+    lanzadera.entity.criterion.class: Lanzadera\ClassificationBundle\Entity\Criterion
+    lanzadera.entity.indicator.class: Lanzadera\ClassificationBundle\Entity\Indicator
+    lanzadera.form.extension.choice_type_extention.class: Lanzadera\ClassificationBundle\Form\Extension\ChoiceTypeExtension
+    lanzadera.form.transformer.array_to_indicators.class: Lanzadera\ClassificationBundle\Form\DataTransformer\ArrayToIndicatorsTransform
+    lanzadera.form.type.lanzadera_indicator.class: Lanzadera\ClassificationBundle\Form\Type\IndicatorType
 
 services:
     lanzadera.admin.classification:
-        class: Lanzadera\ClassificationBundle\Admin\ClassificationAdmin
-        arguments: [~, Lanzadera\ClassificationBundle\Entity\Classification, SonataAdminBundle:CRUD]
+        class: %lanzadera.admin.classification.class%
+        arguments: [~, %lanzadera.entity.classification.class%, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: %lanzadera.classification.admin.group%, label: classificacion.admin.label}
+            - {name: sonata.admin, manager_type: orm, group: classification.admin.group, label: classificacion.admin.label}
 
     lanzadera.admin.criterion:
-        class: Lanzadera\ClassificationBundle\Admin\CriterionAdmin
-        arguments: [~, Lanzadera\ClassificationBundle\Entity\Criterion, SonataAdminBundle:CRUD]
+        class: %lanzadera.admin.criterion.class%
+        arguments: [~, %lanzadera.entity.criterion.class%, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: %lanzadera.classification.admin.group%, label: criterion.admin.label}
+            - {name: sonata.admin, manager_type: orm, group: classification.admin.group, label: criterion.admin.label}
 
     lanzadera.admin.indicator:
-        class: Lanzadera\ClassificationBundle\Admin\IndicatorAdmin
-        arguments: [~, Lanzadera\ClassificationBundle\Entity\Indicator, SonataAdminBundle:CRUD]
+        class: %lanzadera.admin.indicator.class%
+        arguments: [~, %lanzadera.entity.indicator.class%, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: %lanzadera.classification.admin.group%, label: indicator.admin.label, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: classification.admin.group, label: indicator.admin.label, show_in_dashboard: false}
+
+    lanzadera.form.type.lanzadera_indicator:
+        class: %lanzadera.form.type.lanzadera_indicator.class%
+        arguments: [@lanzadera.repository.criterion, @lanzadera.form.transformer.array_to_indicators]
+        tags:
+            - { name: form.type, alias: lanzadera_indicator }
+
+    lanzadera.form.extension.choice_type_extension:
+        class: %lanzadera.form.extension.choice_type_extention.class%
+        tags:
+            - { name: form.type_extension, alias: choice }
+
+    lanzadera.form.transformer.array_to_indicators:
+        class: %lanzadera.form.transformer.array_to_indicators.class%
+        arguments: [@lanzadera.repository.indicator]

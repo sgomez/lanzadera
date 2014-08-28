@@ -11,6 +11,7 @@ criterion.group.indicators: Indicadores
 criterion.name.label: Nombre
 criterion.indicator.add: Añadir indicador
 criterion.indicator.label: Indicador
+criterion.indicator.placeholder: Escoja un indicador
 criterion.type.label: Tipo
 criterion.type.organization: Organización
 criterion.type.product: Producto

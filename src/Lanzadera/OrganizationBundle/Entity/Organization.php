@@ -92,7 +92,7 @@ class Organization
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Lanzadera\ClassificationBundle\Entity\Indicator", inversedBy="organization")
+     * @ORM\ManyToMany(targetEntity="Lanzadera\ClassificationBundle\Entity\Indicator", inversedBy="organizations")
      * @ORM\JoinTable(name="organization_has_indicator",
      *   joinColumns={
      *     @ORM\JoinColumn(name="organization_id", referencedColumnName="id")
@@ -102,14 +102,14 @@ class Organization
      *   }
      * )
      */
-    private $indicator;
+    private $indicators;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->indicator = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->indicators = new \Doctrine\Common\Collections\ArrayCollection();
         $this->products = new \Doctrine\Common\Collections\ArrayCollection();
         $this->createdAt = new \DateTime();
     }
@@ -303,7 +303,7 @@ class Organization
      */
     public function addIndicator(\Lanzadera\ClassificationBundle\Entity\Indicator $indicator)
     {
-        $this->indicator[] = $indicator;
+        $this->indicators[] = $indicator;
 
         return $this;
     }
@@ -315,7 +315,7 @@ class Organization
      */
     public function removeIndicator(\Lanzadera\ClassificationBundle\Entity\Indicator $indicator)
     {
-        $this->indicator->removeElement($indicator);
+        $this->indicators->removeElement($indicator);
     }
 
     /**
@@ -323,9 +323,23 @@ class Organization
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getIndicator()
+    public function getIndicators()
     {
-        return $this->indicator;
+        return $this->indicators;
+    }
+
+    /**
+     * Set indicators
+     *
+     * @param $indicators
+     */
+    public function setIndicators($indicators)
+    {
+        $this->indicators = new \Doctrine\Common\Collections\ArrayCollection();
+
+        foreach($indicators as $indicator) {
+            $this->addIndicator($indicator);
+        }
     }
 
     /**

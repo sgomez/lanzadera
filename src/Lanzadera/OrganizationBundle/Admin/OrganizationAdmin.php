@@ -63,6 +63,10 @@ class OrganizationAdmin extends Admin
                 ->add('email', 'email', array('label' => 'organization.email.label', 'required' => false))
                 ->add('web', 'url', array('label' => 'organization.web.label', 'required' => false))
                 ->add('enabled', 'checkbox', array('label' => 'organization.enabled.label', 'required' => false))
+                ->add('indicators', 'lanzadera_indicator', array(
+                    'label' => 'Indicadores',
+                    'indicator_type' => 'organization',
+                ))
         ;
     }
 

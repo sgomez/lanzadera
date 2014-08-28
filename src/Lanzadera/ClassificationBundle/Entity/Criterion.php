@@ -250,8 +250,16 @@ class Criterion
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getIndicators()
+    public function getIndicators($as_array = false)
     {
+        if ($as_array) {
+            $values = array();
+            /** @var Indicator $indicator */
+            foreach($this->indicators as $indicator) {
+                $values[$indicator->getId()] = $indicator->getName();
+            }
+            return $values;
+        }
         return $this->indicators;
     }
 }

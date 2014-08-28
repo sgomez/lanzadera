@@ -2,6 +2,7 @@ product.admin.label: Productos
 product.category.label: Categoría
 product.category.placeholder: Seleccione una categoría
 product.description.label: Descripción
+product.indicators.label: Indicadores
 product.name.label: Nombre
 product.organization.label: Organización
 product.state.label: Estado

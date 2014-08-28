@@ -91,12 +91,17 @@ class ProductAdmin extends Admin
                     'expanded' => false,
                     'multiple' => true,
                     'btn_add' => 'product.tags.add',
+                    'required' => false,
                     'attr' => array('placeholder' => 'product.tag.placeholder', 'class' => 'form-control')
                 ),
                 array(
                     'admin_code' => 'lanzadera.admin.tag'
                 )
             )
+            ->add('indicators', 'lanzadera_indicator', array(
+                    'label' => 'Indicadores',
+                    'indicator_type' => 'product',
+            ))
         ;
     }
 
@@ -110,7 +115,16 @@ class ProductAdmin extends Admin
             ->add('description', null, array('label' => 'product.description.label'))
             ->add('category.name', null, array('label' => 'product.category.label'))
             ->add('tags_as_list', null, array('label' => 'product.tag.label'))
-            ->add('state', null, array('label' => 'product.state.label'))
-        ;
+            ->add('state', null, array('label' => 'product.state.label'));
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function preUpdate($object)
+    {
+        $this->getConfigurationPool()->getContainer()->get('ladybug')->log($this->getForm()->getData());
+    }
+
+
 }

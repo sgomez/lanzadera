@@ -93,7 +93,7 @@ class Product
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Lanzadera\ClassificationBundle\Entity\Indicator", inversedBy="product")
+     * @ORM\ManyToMany(targetEntity="Lanzadera\ClassificationBundle\Entity\Indicator", inversedBy="products")
      * @ORM\JoinTable(name="product_has_indicator",
      *   joinColumns={
      *     @ORM\JoinColumn(name="product_id", referencedColumnName="id")
@@ -103,7 +103,7 @@ class Product
      *   }
      * )
      */
-    private $indicator;
+    private $indicators;
 
     /**
      * @var \Lanzadera\TaxonomyBundle\Entity\Taxon
@@ -137,7 +137,7 @@ class Product
     public function __construct()
     {
         $this->classification = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->indicator = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->indicators = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
 
     }
@@ -377,7 +377,7 @@ class Product
      */
     public function addIndicator(\Lanzadera\ClassificationBundle\Entity\Indicator $indicator)
     {
-        $this->indicator[] = $indicator;
+        $this->indicators[] = $indicator;
 
         return $this;
     }
@@ -389,7 +389,7 @@ class Product
      */
     public function removeIndicator(\Lanzadera\ClassificationBundle\Entity\Indicator $indicator)
     {
-        $this->indicator->removeElement($indicator);
+        $this->indicators->removeElement($indicator);
     }
 
     /**
@@ -397,9 +397,23 @@ class Product
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getIndicator()
+    public function getIndicators()
     {
-        return $this->indicator;
+        return $this->indicators;
+    }
+
+    /**
+     * Set indicators
+     *
+     * @param $indicators
+     */
+    public function setIndicators($indicators)
+    {
+        $this->indicators = new \Doctrine\Common\Collections\ArrayCollection();
+
+        foreach($indicators as $indicator) {
+            $this->addIndicator($indicator);
+        }
     }
 
     /**

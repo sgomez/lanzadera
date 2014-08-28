@@ -29,7 +29,7 @@ class ProductContext extends DefaultContext
                 $product = new Product();
             }
             $product->setName($productHash['nombre']);
-            $product->setDescription($productHash['descripción']);
+            $product->setDescription($this->faker->text);
             $product->setOrganization($this->getRepository('organization')->findOneByName($productHash['organización']));
             $product->setCategory($this->getRepository('category')->findOneByName($productHash['categoría']));
 
@@ -43,4 +43,6 @@ class ProductContext extends DefaultContext
             $em->flush();
         }
     }
+
+
 } 

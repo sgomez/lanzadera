@@ -4,6 +4,7 @@ organization.admin.label: Organizaciones
 organization.created_at.label: Fecha alta
 organization.email.label: Correo-e
 organization.enabled.label: Activo
+organization.indicators.label: Indicadores
 organization.name.label: Nombre
 organization.phone.label: Teléfono
 organization.web.label: Página web

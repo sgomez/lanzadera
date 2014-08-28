@@ -24,7 +24,7 @@ class LoadProductsData extends DataFixture
         $manager->persist($this->createProduct("Solidaridad", "Bebidas"));
         $manager->persist($this->createProduct("Justicia", "Alimentación"));
         $manager->persist($this->createProduct("Voluntario", "Ropa", "Francia"));
-        $manager->persist($this->createProduct("Pobreza", "Ropa", "Córdoba", "Alta calidad y bajo precio"));
+        $manager->persist($this->createProduct("Pobreza", "Ropa", "Córdoba", array("Alta calidad y bajo precio", "No perecedero")));
 
         $manager->flush();
     }
@@ -39,7 +39,7 @@ class LoadProductsData extends DataFixture
         return 10;
     }
 
-    private function createProduct($name, $category, $organization = "Córdoba", $indicator = null)
+    private function createProduct($name, $category, $organization = "Córdoba", $indicators = array())
     {
         $repo = $this->getProductRepository();
 
@@ -50,7 +50,7 @@ class LoadProductsData extends DataFixture
         $product->setDescription($this->faker->text);
         $product->setCategory($this->getReference("Lanzadera.Category." . $category));
         $product->setOrganization($this->getReference("Lanzadera.Organization." . $organization));
-        if ($indicator) {
+        foreach($indicators as $indicator) {
             $product->addIndicator($this->getReference("Lanzadera.Indicator." . $indicator));
         }
 

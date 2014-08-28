@@ -9,10 +9,9 @@
 namespace Lanzadera\ClassificationBundle\Form\Type;
 
 
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\Persistence\ObjectRepository;
 use Lanzadera\ClassificationBundle\Entity\Criterion;
 use Lanzadera\ClassificationBundle\Form\DataTransformer\ArrayToIndicatorsTransform;
-use Lanzadera\CoreBundle\Doctrine\ORM\CriterionRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
@@ -21,14 +20,14 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class IndicatorType extends AbstractType
 {
-    protected $om;
+    protected $criterionRepository;
 
-    protected $ladybug;
+    protected $arrayToIndicatorsTransform;
 
-    public function __construct(ObjectManager $om, $ladybug)
+    public function __construct(ObjectRepository $criterionRepository, ArrayToIndicatorsTransform $arrayToIndicatorsTransform)
     {
-        $this->om = $om;
-        $this->ladybug = $ladybug;
+        $this->criterionRepository = $criterionRepository;
+        $this->arrayToIndicatorsTransform = $arrayToIndicatorsTransform;
     }
 
     /**
@@ -36,7 +35,9 @@ class IndicatorType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $criteria = $this->om->getRepository('LanzaderaClassificationBundle:Criterion')->findByType(Criterion::PRODUCT);
+        $criteria = $this->criterionRepository->findByType(
+            $options['indicator_type'] === "Product" ? Criterion::PRODUCT : Criterion::ORGANIZATION
+        );
 
         /** @var Criterion $criterion */
         foreach ($criteria as $criterion) {
@@ -50,15 +51,7 @@ class IndicatorType extends AbstractType
             ));
         }
 
-        $transformer = new ArrayToIndicatorsTransform($this->om, $this->ladybug);
-        $builder->addModelTransformer($transformer);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function buildView(FormView $view, FormInterface $form, array $options)
-    {
+        $builder->addModelTransformer($this->arrayToIndicatorsTransform);
     }
 
     /**

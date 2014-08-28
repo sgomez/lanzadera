@@ -10,23 +10,22 @@ namespace Lanzadera\ClassificationBundle\Form\DataTransformer;
 
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\Persistence\ObjectRepository;
 use Lanzadera\ClassificationBundle\Entity\Indicator;
 use Symfony\Component\Form\DataTransformerInterface;
 
 class ArrayToIndicatorsTransform implements DataTransformerInterface
 {
     /**
-     * @var
+     * Indicator Repository
+     *
+     * @var ObjectRepository
      */
-    private $om;
+    private $indicatorRepository;
 
-    private $ladybug;
-
-    public function __construct(ObjectManager $om, $ladybug)
+    public function __construct(ObjectRepository $indicatorRepository)
     {
-        $this->om = $om;
-        $this->ladybug = $ladybug;
+        $this->indicatorRepository = $indicatorRepository;
     }
 
     public function transform($indicators)
@@ -46,7 +45,7 @@ class ArrayToIndicatorsTransform implements DataTransformerInterface
         $indicators = new ArrayCollection();
         foreach ($selected as $id) {
             if ($id) {
-                $indicators[] = $this->om->getRepository('LanzaderaClassificationBundle:Indicator')->findOneById($id);
+                $indicators[] = $this->indicatorRepository->findOneById($id);
             }
         }
         return $indicators;

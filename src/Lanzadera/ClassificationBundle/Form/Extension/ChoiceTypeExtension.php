@@ -18,7 +18,7 @@ use Symfony\Component\PropertyAccess\PropertyAccess;
 class ChoiceTypeExtension extends AbstractTypeExtension
 {
     /**
-     * Add the image_path option
+     * Add the description option
      *
      * @param OptionsResolverInterface $resolver
      */

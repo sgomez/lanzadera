@@ -24,5 +24,11 @@ class LanzaderaClassificationExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+
+        // add custom form widgets
+        $container->setParameter('twig.form.resources', array_merge(
+                $container->getParameter('twig.form.resources'),
+                array('LanzaderaClassificationBundle:Form:form_admin_fields.html.twig')
+        ));
     }
 }

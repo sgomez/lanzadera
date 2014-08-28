@@ -1,5 +1,6 @@
 parameters:
     lanzadera.classification.admin.group: classification.admin.group
+    lanzadera.model.indicator.class: Lanzadera\ClassificationBundle\Entity\Indicator
 
 services:
     lanzadera.admin.classification:
@@ -19,3 +20,14 @@ services:
         arguments: [~, Lanzadera\ClassificationBundle\Entity\Indicator, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: %lanzadera.classification.admin.group%, label: indicator.admin.label, show_in_dashboard: false}
+
+    lanzadera.form.type.lanzadera_indicator:
+        class: Lanzadera\ClassificationBundle\Form\Type\IndicatorType
+        arguments: [@doctrine.orm.entity_manager, @ladybug]
+        tags:
+            - { name: form.type, alias: lanzadera_indicator }
+
+    lanzadera.form.type.choice_type_extension:
+            class: Lanzadera\ClassificationBundle\Form\Extension\ChoiceTypeExtension
+            tags:
+                - { name: form.type_extension, alias: choice }

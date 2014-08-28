@@ -100,7 +100,7 @@ class ProductAdmin extends Admin
             )
             ->add('indicators', 'lanzadera_indicator', array(
                     'label' => 'Indicadores',
-                    'indicator_type' => 'product.indicators.label',
+                    'indicator_type' => 'product',
             ))
         ;
     }

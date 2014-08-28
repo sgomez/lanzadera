@@ -9,11 +9,10 @@
 namespace Lanzadera\CoreBundle\Behat;
 
 
-use Behat\Behat\Hook\Scope\AfterStepScope;
-use Behat\Mink\Driver\Selenium2Driver;
-use Behat\Mink\Exception\UnsupportedDriverActionException;
+use Behat\Gherkin\Node\TableNode;
+
 use Lanzadera\CoreBundle\Entity\User;
-use Behat\Behat\Hook\Call\AfterStep;
+use Symfony\Component\Intl\Exception\NotImplementedException;
 
 class CoreContext extends DefaultContext
 {
@@ -102,25 +101,56 @@ class CoreContext extends DefaultContext
         $this->pressButton('Entrar');
     }
 
+//Y selecciono el indicador "Muy bajo" del criterio "Producción ecológica"
+//Y debo ver el indicador "Muy bajo" en el criterio "Producción ecológica"
+
     /**
-     * Take screenshot when step fails.
-     * Works only with Selenium2Driver.
-     *
-     * @AfterStep
+     * @Given /^selecciono el indicador "([^".]*)" del criterio "([^".]*)"$/
      */
-    public function takeScreenshotAfterFailedStep(AfterStepScope $event)
+    public function selectIndicatorInCriterion($indicator, $criterion)
     {
-        if (99 === $event->getTestResult()->getResultCode()) {
-            $driver = $this->getSession()->getDriver();
-            if (!($driver instanceof Selenium2Driver)) {
-                return;
-            }
-            $directory = 'build/behat/'.$event->getFeature()->getTitle().'.'.$event->getFeature()->getTitle();
-            if (!is_dir($directory)) {
-                mkdir($directory, 0777, true);
-            }
-            $filename = sprintf('%s_%s_%s.%s', $this->getMinkParameter('browser_name'), date('c'), uniqid('', true), 'png');
-            file_put_contents($directory.'/'.$filename, $driver->getScreenshot());
+        file_put_contents('/tmp/out.html', $this->getSession()->getPage()->getOuterHtml());
+        $select = $this->getSession()->getPage()->find('xpath', sprintf('//tr[contains(.,"%s")]//select', $criterion));
+        $select->selectOption($indicator);
+    }
+
+    /**
+     * @Then /^debo ver el indicador "([^".]*)" en el criterio "([^".]*)"$/
+     */
+    public function iShouldSeeIndicatorInCriterion($indicator, $criterion)
+    {
+        $this->assertSession()->elementExists('xpath', sprintf('//tr[contains(.,"%s")]//select/option[@selected="selected" and contains(.,"%s")]', $criterion, $indicator));
+    }
+
+    /**
+     * @Given /^el producto "([^".]*)" tiene los siguientes indicadores:$/
+     */
+    public function productHasFollowingIndicator($name, TableNode $tableNode)
+    {
+        $em = $this->getEntityManager();
+        $em->persist($this->entityHasFollowingIndicator('product', $name, $tableNode));
+        $em->flush();
+    }
+
+    /**
+     * @Given /^la organización "([^".]*)" tiene los siguientes indicadores:$/
+     */
+    public function organizationHasFollowingIndicator($name, TableNode $tableNode)
+    {
+        $em = $this->getEntityManager();
+        $em->persist($this->entityHasFollowingIndicator('organization', $name, $tableNode));
+        $em->flush();
+    }
+
+    protected function entityHasFollowingIndicator($type, $name, TableNode $tableNode)
+    {
+        $element = $this->getRepository($type)->findOneByName($name);
+
+        foreach($tableNode->getHash() as $nodeHash) {
+            $indicator = $this->getRepository('indicator')->findOneByCriterionAndName($nodeHash['criterio'], $nodeHash['indicador']);
+            $element->addIndicator($indicator);
         }
+
+        return $element;
     }
 }

@@ -65,7 +65,7 @@ class OrganizationAdmin extends Admin
                 ->add('enabled', 'checkbox', array('label' => 'organization.enabled.label', 'required' => false))
                 ->add('indicators', 'lanzadera_indicator', array(
                     'label' => 'Indicadores',
-                    'indicator_type' => 'organization.indicators.label',
+                    'indicator_type' => 'organization',
                 ))
         ;
     }

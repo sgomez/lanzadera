@@ -36,7 +36,7 @@ class IndicatorType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $criteria = $this->criterionRepository->findByType(
-            $options['indicator_type'] === "Product" ? Criterion::PRODUCT : Criterion::ORGANIZATION
+            $options['indicator_type'] === "product" ? Criterion::PRODUCT : Criterion::ORGANIZATION
         );
 
         /** @var Criterion $criterion */
@@ -59,7 +59,16 @@ class IndicatorType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setRequired(array('indicator_type'));
+        $resolver->setRequired(array(
+            'indicator_type',
+        ));
+
+        $resolver->setAllowedValues(array(
+            'indicator_type' => array(
+                'product',
+                'organization',
+            ),
+        ));
     }
 
     public function getParent()

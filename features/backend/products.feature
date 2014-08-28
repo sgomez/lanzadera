@@ -26,16 +26,41 @@ Característica: productos
             | Etiqueta B      |
             | Etiqueta C      |
             | Etiqueta D      |
-            | Etiqueta E      |
-            | Etiqueta F      |
+        Y existen las siguientes clasificaciones:
+            | nombre        | umbral |
+            | Sociales      | 60     |
+            | Ambientales   | 75     |
+            | Comerciales   | 88     |
+        Y existen los siguientes criterios:
+            | nombre                            | tipo          | clasificación   |
+            | Producción ecológica              | Producto      | Ambientales     |
+            | Origen del producto               | Producto      | Ambientales     |
+            | Militancia en el mercao social    | Organización  | Sociales        |
+            | Respuesta a la creación de empleo | Organización  | Sociales        |
+        Y el criterio "Producción ecológica" tiene los siguientes indicadores:
+            | nombre    | valor |
+            | Bajo      | 4     |
+            | Medio     | 8     |
+            | Alto      | 12    |
+            | Muy alto  | 16    |
+        Y el criterio "Origen del producto" tiene los siguientes indicadores:
+            | nombre      | valor |
+            | Extranjero  | 4     |
+            | Andalucía   | 8     |
+            | España      | 12    |
+            | Córdoba     | 16    |
         Y existen los siguientes productos:
-            | nombre          | descripción           | organización    | categoría     | etiquetas               |
-            | Producto A1     | Características de A1 | Organización A  | Categoría A   | Etiqueta A, Etiqueta B  |
-            | Producto A2     | Características de A2 | Organización A  | Categoría B   | Etiqueta B, Etiqueta C  |
-            | Producto B1     | Características de B1 | Organización B  | Categoría A.1 | Etiqueta C, Etiqueta D  |
-            | Producto B2     | Características de B2 | Organización B  | Categoría A.1 | Etiqueta E, Etiqueta A  |
-            | Producto B3     | Características de B3 | Organización B  | Categoría B   | Etiqueta A, Etiqueta C  |
-            | Producto C1     | Características de C1 | Organización C  | Categoría C   | Etiqueta B, Etiqueta D  |
+            | nombre          | organización    | categoría     | etiquetas               |
+            | Producto A1     | Organización A  | Categoría A   | Etiqueta A, Etiqueta B  |
+            | Producto A2     | Organización A  | Categoría B   | Etiqueta B, Etiqueta C  |
+            | Producto B1     | Organización B  | Categoría A.1 | Etiqueta C, Etiqueta D  |
+            | Producto B2     | Organización B  | Categoría A.1 | Etiqueta D, Etiqueta A  |
+            | Producto B3     | Organización B  | Categoría B   | Etiqueta A, Etiqueta C  |
+            | Producto C1     | Organización C  | Categoría C   | Etiqueta B, Etiqueta D  |
+        Y el producto "Producto A1" tiene los siguientes indicadores:
+            | criterio              | indicador |
+            | Producción ecológica  | Alto      |
+            | Origen del producto   | Andalucía |
 
     Escenario: Ver el listado de productos
         Dado que estoy en la página del escritorio
@@ -87,12 +112,12 @@ Característica: productos
             | Descripción | Café 100% natural     |
         Y selecciono "Organización D" de "Organización"
         Y selecciono "Categoría B" de "Categoría"
-        Y selecciono "Etiqueta F" de "Etiquetas"
+        Y selecciono "Etiqueta A" de "Etiquetas"
         Y presiono "Crear y regresar al listado"
         Entonces debería estar en la página principal de producto
         Y debo ver "Elemento creado satisfactoriamente"
         Y debo ver "Café Torrefacto"
-        Y debo ver "Etiqueta F"
+        Y debo ver "Etiqueta A"
 
     Escenario: Acceder al formulario de edición de producto desde el listado
         Dado que estoy en la página principal de producto
@@ -119,6 +144,14 @@ Característica: productos
         Entonces debería estar en la página edición de producto con nombre "Producto A1"
         Y debo ver "Elemento actualizado satisfactoriamente."
         Y debo ver "Etiqueta G"
+
+    Escenario: Seleccionar un indicador
+        Dado que estoy en la página edición de producto con nombre "Producto A2"
+        Y selecciono el indicador "Muy alto" del criterio "Producción ecológica"
+        Y presiono "Actualizar"
+        Entonces debería estar en la página edición de producto con nombre "Producto A2"
+        Y debo ver "Elemento actualizado satisfactoriamente."
+        Y debo ver el indicador "Muy alto" en el criterio "Producción ecológica"
 
     Escenario: Borrar producto desde la página de edición
         Dado que estoy en la página edición de producto con nombre "Producto A1"

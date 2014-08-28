@@ -78,6 +78,7 @@ default:
         products:
             contexts:
                 - Behat\MinkExtension\Context\MinkContext
+                - Lanzadera\ClassificationBundle\Behat\ClassificationContext
                 - Lanzadera\CoreBundle\Behat\CoreContext
                 - Lanzadera\CoreBundle\Behat\UsersContext
                 - Lanzadera\CoreBundle\Behat\WebContext

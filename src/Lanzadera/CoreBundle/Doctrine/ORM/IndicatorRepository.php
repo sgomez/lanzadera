@@ -8,7 +8,24 @@
 
 namespace Lanzadera\CoreBundle\Doctrine\ORM;
 
+use Doctrine\ORM\Query\Expr;
 
 class IndicatorRepository extends CustomRepository
 {
+    public function findOneByCriterionAndName($criterion, $name)
+    {
+        $query = $this->createQueryBuilder('i');
+        $query->leftJoin('i.criterion', 'c')
+            ->where($query->expr()->like('c.name', '?1'))
+            ->andWhere($query->expr()->like('i.name', '?2'))
+            ->setParameter('1', $criterion)
+            ->setParameter('2', $name)
+        ;
+
+        $result = $query
+            ->getQuery()
+            ->getOneOrNullResult();
+
+        return $result;
+    }
 }

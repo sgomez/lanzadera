@@ -98,9 +98,9 @@ class ProductAdmin extends Admin
                     'admin_code' => 'lanzadera.admin.tag'
                 )
             )
-            ->add('indicators', 'lanzadera_indicator', array(
+            ->add('indicators', 'product_indicator', array(
                     'label' => 'Indicadores',
-                    'indicator_type' => 'product',
+                    'block_name' => 'lanzadera_indicator'
             ))
         ;
     }

@@ -11,6 +11,14 @@ file that was distributed with this source code.
 
 {% extends 'form_div_layout.html.twig' %}
 
+{% block product_indicator_widget %}
+    {{ block('lanzadera_indicator_widget') }}
+{% endblock %}
+
+{% block organization_indicator_widget %}
+    {{ block('lanzadera_indicator_widget') }}
+{% endblock %}
+
 {% block lanzadera_indicator_widget %}
     {% spaceless %}
 

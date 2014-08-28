@@ -16,9 +16,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
+use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class IndicatorType extends AbstractType
+abstract class IndicatorType extends AbstractType implements IndicatorTypeInterface
 {
     protected $criterionRepository;
 
@@ -35,9 +36,7 @@ class IndicatorType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $criteria = $this->criterionRepository->findByType(
-            $options['indicator_type'] === "product" ? Criterion::PRODUCT : Criterion::ORGANIZATION
-        );
+        $criteria = $this->criterionRepository->findByType($this->getType());
 
         /** @var Criterion $criterion */
         foreach ($criteria as $criterion) {
@@ -57,30 +56,25 @@ class IndicatorType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        $resolver->setRequired(array(
-            'indicator_type',
-        ));
-
-        $resolver->setAllowedValues(array(
-            'indicator_type' => array(
-                'product',
-                'organization',
-            ),
-        ));
-    }
-
-    public function getParent()
-    {
-        return 'form';
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        return 'lanzadera_indicator';
+        $resolver->setDefaults(array(
+           'block_name' => 'lanzadera_indicator',
+        ));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getParent()
+    {
+        return 'form';
     }
 } 

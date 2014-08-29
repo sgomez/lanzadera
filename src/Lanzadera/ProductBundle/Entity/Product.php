@@ -321,6 +321,11 @@ class Product
         return $this->status;
     }
 
+    /**
+     * Get all status values
+     *
+     * @return array
+     */
     public static function getStatuses()
     {
         return array(self::STATUS_APPROVED, self::STATUS_CHECK, self::STATUS_DENIED, self::STATUS_PENDING);

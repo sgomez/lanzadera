@@ -180,6 +180,11 @@ class Criterion
         return $this->type;
     }
 
+    /**
+     * Get type values
+     *
+     * @return array
+     */
     public static function getTypes()
     {
         return array(self::ORGANIZATION, self::PRODUCT);

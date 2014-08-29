@@ -27,7 +27,9 @@ class ProductAdmin extends Admin
             ))
             ->add('status', null, array(
                     'label' => 'product.status.label'
-                ), 'status'
+                ), 'status', array(
+                    'constraints' => array()
+                )
             )
             ->add('category', null, array(
                     'label' => 'product.category.label'

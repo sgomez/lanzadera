@@ -106,6 +106,10 @@ sonata_admin:
     title: Lanzadera
     title_logo: bundles/lanzaderacore/img/tejedorasm.png
 
+sonata_doctrine_orm_admin:
+    templates:
+        form: [ LanzaderaCoreBundle::form_admin_fields.html.twig ]
+
 sylius_taxonomies:
     classes:
         taxonomy:

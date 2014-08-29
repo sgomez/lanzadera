@@ -25,25 +25,25 @@ class Classification
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     * @ORM\Column(name="name", type="string", length=128, nullable=false)
      * @Assert\NotBlank(message="classification.name.not_blank")
-     * @Assert\Length(max="255")
+     * @Assert\Length(max="128")
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=45, nullable=true)
+     * @ORM\Column(name="description", type="string", length=512, nullable=true)
      * @Assert\NotBlank()
-     * @Assert\Length(max="255")
+     * @Assert\Length(max="512")
      */
     private $description;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="threshold", type="string", length=45, nullable=true)
+     * @ORM\Column(name="threshold", type="integer", nullable=false)
      * @Assert\NotBlank()
      * @Assert\Range(min="0", max="100")
      */

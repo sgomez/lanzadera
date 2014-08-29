@@ -7,3 +7,5 @@ form:
     label_credentials_expired: Credenciales caducadas
 list:
     label__action: Acciones
+
+Classification List: Lista de clasificadores

@@ -10,7 +10,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class ClassificationAdmin extends Admin
 {
-    protected $baseRouteName = "lanzadera_classification";
+    protected $baseRouteName = 'lanzadera_classification';
 
     /**
      * @param DatagridMapper $datagridMapper
@@ -18,9 +18,15 @@ class ClassificationAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name', null, array('label' => 'classification.name.label'))
-            ->add('description', null, array('label' => 'classification.description.label'))
-            ->add('threshold', null, array('label' => 'classification.threshold.label'))
+            ->add('name', null, array(
+                    'label' => 'classification.name.label'
+            ))
+            ->add('description', null, array(
+                    'label' => 'classification.description.label'
+            ))
+            ->add('threshold', null, array(
+                    'label' => 'classification.threshold.label'
+            ))
         ;
     }
 
@@ -30,9 +36,15 @@ class ClassificationAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name', null, array('label' => 'classification.name.label'))
-            ->add('description', null, array('label' => 'classification.description.label'))
-            ->add('threshold', null, array('label' => 'classification.threshold.label'))
+            ->addIdentifier('name', null, array(
+                    'label' => 'classification.name.label'
+            ))
+            ->add('description', null, array(
+                    'label' => 'classification.description.label'
+            ))
+            ->add('threshold', null, array(
+                    'label' => 'classification.threshold.label',
+            ))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -49,9 +61,21 @@ class ClassificationAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name', null, array('label' => 'classification.name.label'))
-            ->add('description', 'textarea', array('label' => 'classification.description.label'))
-            ->add('threshold', 'percent', array('label' => 'classification.threshold.label', 'type' => 'integer'))
+            ->with('classification.group.description')
+                ->add('name', null, array(
+                        'label' => 'classification.name.label'
+                ))
+                ->add('description', 'textarea', array(
+                        'label' => 'classification.description.label'
+                ))
+            ->end()
+            ->with('classification.group.parameters')
+                ->add('threshold', 'percent', array(
+                        'label' => 'classification.threshold.label',
+                        'type' => 'integer',
+                        'help' => 'classification.threshold.help'
+                ))
+            ->end()
         ;
     }
 
@@ -61,9 +85,15 @@ class ClassificationAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('name', null, array('label' => 'classification.name.label'))
-            ->add('description', null, array('label' => 'classification.description.label'))
-            ->add('threshold', null, array('label' => 'classification.threshold.label'))
+            ->add('name', null, array(
+                    'label' => 'classification.name.label'
+            ))
+            ->add('description', null, array(
+                    'label' => 'classification.description.label'
+            ))
+            ->add('threshold', null, array(
+                    'label' => 'classification.threshold.label'
+            ))
         ;
     }
 }

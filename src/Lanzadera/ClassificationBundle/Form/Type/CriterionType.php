@@ -20,16 +20,16 @@ class CriterionType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-                'choice_list' => new CriterionChoiceList(),
-                'expanded' => true,
-                'constraints' => array(
-                    new Assert\NotBlank(),
-                    new Assert\Choice(array(
-                        'choices' => Criterion::getTypes(),
-                        'message' => 'lanzadera.criterion.type.choice.invalid'
-                    )),
-                ),
-            ));
+            'choice_list' => new CriterionChoiceList(),
+            'expanded' => true,
+            'constraints' => array(
+                new Assert\NotBlank(),
+                new Assert\Choice(array(
+                    'choices' => Criterion::getTypes(),
+                    'message' => 'lanzadera.criterion.type.choice.invalid'
+                )),
+            ),
+        ));
     }
 
     public function getParent()

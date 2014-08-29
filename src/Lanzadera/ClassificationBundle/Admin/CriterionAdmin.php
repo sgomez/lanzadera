@@ -19,9 +19,19 @@ class CriterionAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name', null, array('label' => 'criterion.name.label'))
-            ->add('description', null, array('label' => 'criterion.description.label'))
-            ->add('type', null, array('label' => 'criterion.type.label'))
+            ->add('name', null, array(
+                    'label' => 'criterion.name.label'
+            ))
+            ->add('description', null, array(
+                    'label' => 'criterion.description.label'
+            ))
+            ->add('type', null, array(
+                    'label' => 'criterion.type.label'
+                ), 'criterion_type', array(
+                    'expanded' => false,
+                    'constraints' => array(),
+                )
+            )
         ;
     }
 
@@ -31,9 +41,16 @@ class CriterionAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name', null, array('label' => 'criterion.name.label'))
-            ->add('description', null, array('label' => 'criterion.description.label'))
-            ->add('type', null, array('label' => 'criterion.type.label'))
+            ->add('name', null, array(
+                    'label' => 'criterion.name.label'
+            ))
+            ->add('description', null, array(
+                    'label' => 'criterion.description.label'
+            ))
+            ->add('type', 'string', array(
+                    'label' => 'criterion.type.label',
+                    'template' => 'LanzaderaClassificationBundle:CRUD:list_criterion_type.html.twig'
+            ))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -86,9 +103,16 @@ class CriterionAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('name', null, array('label' => 'criterion.name.label'))
-            ->add('description', null, array('label' => 'criterion.description.label'))
-            ->add('type', null, array('label' => 'criterion.type.label'))
+            ->add('name', null, array(
+                    'label' => 'criterion.name.label'
+            ))
+            ->add('description', null, array(
+                    'label' => 'criterion.description.label'
+            ))
+            ->add('type', 'string', array(
+                    'label' => 'criterion.type.label',
+                    'template' => 'LanzaderaClassificationBundle:CRUD:show_criterion_type.html.twig'
+                ))
         ;
     }
 }

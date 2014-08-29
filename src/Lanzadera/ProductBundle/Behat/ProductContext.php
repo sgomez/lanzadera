@@ -32,6 +32,7 @@ class ProductContext extends DefaultContext
             $product->setDescription($this->faker->text);
             $product->setOrganization($this->getRepository('organization')->findOneByName($productHash['organización']));
             $product->setCategory($this->getRepository('category')->findOneByName($productHash['categoría']));
+            $product->setStatus('pending');
 
             $tags = explode(",", $productHash['etiquetas']);
             foreach ($tags as $tag)

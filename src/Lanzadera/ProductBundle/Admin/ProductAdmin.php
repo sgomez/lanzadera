@@ -3,6 +3,7 @@
 namespace Lanzadera\ProductBundle\Admin;
 
 use Lanzadera\CoreBundle\Admin\Admin;
+use Lanzadera\ProductBundle\Form\Extension\ChoiceList\StatusChoiceList;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -18,16 +19,27 @@ class ProductAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name', null, array('label' => 'product.name.label'))
-            ->add('description', null, array('label' => 'product.description.label'))
-            ->add('state', null, array('label' => 'product.state.label'))
-            ->add('category', null, array('label' => 'product.category.label'), null,
+            ->add('name', null, array(
+                    'label' => 'product.name.label'
+            ))
+            ->add('description', null, array(
+                    'label' => 'product.description.label'
+            ))
+            ->add('status', null, array(
+                    'label' => 'product.status.label'
+                ), 'status'
+            )
+            ->add('category', null, array(
+                    'label' => 'product.category.label'
+                ), null,
                 array(
                     'expanded' => false,
                     'multiple' => true,
                     'query_builder' => $this->getRepository('taxon')->createTaxonQuery('Category'),
             ))
-            ->add('tags', null, array('label' => 'product.tag.label'), null,
+            ->add('tags', null, array(
+                    'label' => 'product.tag.label'
+                ), null,
                 array(
                     'expanded' => false,
                     'multiple' => true,
@@ -42,11 +54,22 @@ class ProductAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('name', null, array('label' => 'product.name.label'))
-            ->add('description', null, array('label' => 'product.description.label'))
-            ->add('category.name', null, array('label' => 'product.category.label'))
-            ->add('tags_as_list', null, array('label' => 'product.tag.label'))
-            ->add('state', null, array('label' => 'product.state.label'))
+            ->add('name', null, array(
+                    'label' => 'product.name.label'
+            ))
+            ->add('description', null, array(
+                    'label' => 'product.description.label'
+            ))
+            ->add('category.name', null, array(
+                    'label' => 'product.category.label'
+            ))
+            ->add('tags_as_list', null, array(
+                    'label' => 'product.tag.label'
+            ))
+            ->add('status', 'string', array(
+                    'label' => 'product.status.label',
+                    'template' => 'LanzaderaProductBundle:CRUD:list_status.html.twig'
+            ))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -67,19 +90,29 @@ class ProductAdmin extends Admin
                     'label' => 'product.name.label',
                     'required' => true,
             ))
-            ->add('description', 'textarea', array('label' => 'product.description.label'))
-            ->add('state', null, array('label' => 'product.state.label'))
+            ->add('description', 'textarea', array(
+                    'label' => 'product.description.label'
+            ))
+            ->add('status', 'status', array(
+                    'label' => 'product.status.label'
+            ))
             ->add('organization', null, array(
                     'label' => 'product.organization.label',
                     'required' => true,
-                    'attr' => array('placeholder' => 'product.organization.placeholder', 'class' => 'form-control')
+                    'attr' => array(
+                        'placeholder' => 'product.organization.placeholder',
+                        'class' => 'form-control',
+                    )
             ))
             ->add('category', 'sonata_type_model', array(
                     'label' => 'product.category.label',
                     'query' => $this->getRepository('taxon')->createTaxonQuery('Category'),
                     'btn_add' => false,
                     'required' => true,
-                    'attr' => array('placeholder' => 'product.category.placeholder', 'class' => 'form-control')
+                    'attr' => array(
+                        'placeholder' => 'product.category.placeholder',
+                        'class' => 'form-control'
+                    )
                 ),
                 array(
                     'admin_code' => 'lanzadera.admin.category',
@@ -92,7 +125,10 @@ class ProductAdmin extends Admin
                     'multiple' => true,
                     'btn_add' => 'product.tags.add',
                     'required' => false,
-                    'attr' => array('placeholder' => 'product.tag.placeholder', 'class' => 'form-control')
+                    'attr' => array(
+                        'placeholder' => 'product.tag.placeholder',
+                        'class' => 'form-control'
+                    )
                 ),
                 array(
                     'admin_code' => 'lanzadera.admin.tag'
@@ -111,11 +147,22 @@ class ProductAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('name', null, array('label' => 'product.name.label'))
-            ->add('description', null, array('label' => 'product.description.label'))
-            ->add('category.name', null, array('label' => 'product.category.label'))
-            ->add('tags_as_list', null, array('label' => 'product.tag.label'))
-            ->add('state', null, array('label' => 'product.state.label'));
+            ->add('name', null, array(
+                    'label' => 'product.name.label'
+            ))
+            ->add('description', null, array(
+                    'label' => 'product.description.label'
+            ))
+            ->add('category.name', null, array(
+                    'label' => 'product.category.label'
+            ))
+            ->add('tags_as_list', null, array(
+                    'label' => 'product.tag.label'
+            ))
+            ->add('status', 'string', array(
+                    'label' => 'product.status.label',
+                    'template' => 'LanzaderaProductBundle:CRUD:show_status.html.twig'
+                ));
     }
 
     /**

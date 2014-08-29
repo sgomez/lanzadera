@@ -13,6 +13,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Product
 {
+    const STATUS_PENDING = 'pending';
+    const STATUS_APPROVED = 'approved';
+    const STATUS_CHECK = 'check';
+    const STATUS_DENIED = 'denied';
+
     /**
      * @var integer
      *
@@ -61,9 +66,9 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="state", type="string", length=45, nullable=true)
+     * @ORM\Column(name="status", type="string", length=45, nullable=true)
      */
-    private $state;
+    private $status;
 
     /**
      * @var \Lanzadera\OrganizationBundle\Entity\Organization
@@ -139,7 +144,7 @@ class Product
         $this->classification = new \Doctrine\Common\Collections\ArrayCollection();
         $this->indicators = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
-
+        $this->status = self::STATUS_PENDING;
     }
 
     /**
@@ -291,14 +296,17 @@ class Product
     }
 
     /**
-     * Set state
-     *
-     * @param string $state
+     * @param string $status
      * @return Product
+     * @throws \InvalidArgumentException
      */
-    public function setState($state)
+    public function setStatus($status)
     {
-        $this->state = $state;
+        if (!in_array($status, self::getStatuses())) {
+            throw new \InvalidArgumentException('Wrong status type supplied.');
+        }
+
+        $this->status = $status;
 
         return $this;
     }
@@ -308,9 +316,15 @@ class Product
      *
      * @return string 
      */
-    public function getState()
+    public function getStatus()
     {
-        return $this->state;
+        return $this->status;
+    }
+
+    public static function getStatuses()
+    {
+        return array(self::STATUS_APPROVED, self::STATUS_CHECK, self::STATUS_DENIED, self::STATUS_PENDING);
+
     }
 
     /**

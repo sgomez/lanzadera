@@ -153,6 +153,14 @@ Característica: productos
         Y debo ver "Elemento actualizado satisfactoriamente."
         Y debo ver el indicador "Muy alto" en el criterio "Producción ecológica"
 
+    Escenario: Seleccionar un estado
+        Dado que estoy en la página edición de producto con nombre "Producto A1"
+        Cuando selecciono "Aprobado" de "Estado"
+        Y presiono "Actualizar"
+        Entonces debería estar en la página edición de producto con nombre "Producto A1"
+        Y debo ver "Elemento actualizado satisfactoriamente."
+        Y debo ver "Aprobado"
+
     Escenario: Borrar producto desde la página de edición
         Dado que estoy en la página edición de producto con nombre "Producto A1"
         Cuando sigo "Borrar"

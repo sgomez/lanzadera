@@ -5,7 +5,12 @@ product.description.label: Descripción
 product.indicators.label: Indicadores
 product.name.label: Nombre
 product.organization.label: Organización
-product.state.label: Estado
+product.status.label: Estado
 product.tags.add: Añadir etiqueta
 product.tag.label: Etiquetas
 product.tag.placeholder: Seleccione una o varias etiquetas
+lanzadera.product.status.pending: Pendiente
+lanzadera.product.status.approved: Aprobado
+lanzadera.product.status.check: Revisar
+lanzadera.product.status.denied: Denegado
+lanzadera.product.status.choice.invalid: Introduzca un estado válido

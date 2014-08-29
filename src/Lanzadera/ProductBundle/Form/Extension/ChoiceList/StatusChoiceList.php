@@ -35,6 +35,4 @@ class StatusChoiceList extends LazyChoiceList
     {
         return new SimpleChoiceList($this->choices);
     }
-
-
 }

@@ -16,9 +16,8 @@ use Symfony\Component\Validator\Constraints\Collection;
  */
 class Criterion
 {
-    const ORGANIZATION = 1;
-
-    const PRODUCT = 2;
+    const ORGANIZATION = 'organization';
+    const PRODUCT = 'product';
 
     /**
      * @var integer
@@ -158,9 +157,14 @@ class Criterion
      *
      * @param string $type
      * @return Criterion
+     * @throws \InvalidArgumentException
      */
     public function setType($type)
     {
+        if (!in_array($type, self::getTypes())) {
+            throw new \InvalidArgumentException('Wrong criterion type supplied.');
+        }
+
         $this->type = $type;
 
         return $this;
@@ -174,6 +178,11 @@ class Criterion
     public function getType()
     {
         return $this->type;
+    }
+
+    public static function getTypes()
+    {
+        return array(self::ORGANIZATION, self::PRODUCT);
     }
 
     /**
@@ -197,14 +206,6 @@ class Criterion
     public function getClassification()
     {
         return $this->classification;
-    }
-
-    public static function getTypes()
-    {
-        return array(
-            self::ORGANIZATION => "criterion.type.organization",
-            self::PRODUCT => "criterion.type.product",
-        );
     }
 
     /**

@@ -53,10 +53,9 @@ class CriterionAdmin extends Admin
             ->with('criterion.group.description')
                 ->add('name', null, array('label' => 'criterion.name.label', 'required' => true))
                 ->add('description', 'textarea', array('label' => 'criterion.description.label'))
-                ->add('type', 'choice', array(
+                ->add('type', 'criterion_type', array(
                     'label' => 'criterion.type.label',
                     'expanded' => true,
-                    'choices' => Criterion::getTypes()
                 ))
                 ->add('classification', null, array(
                     'label' => 'criterion.classification.label',

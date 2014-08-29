@@ -13,8 +13,10 @@ criterion.indicator.add: Añadir indicador
 criterion.indicator.label: Indicador
 criterion.indicator.placeholder: Escoja un indicador
 criterion.type.label: Tipo
-criterion.type.organization: Organización
-criterion.type.product: Producto
+lanzadera.criterion.type.organization: Organización
+lanzadera.criterion.type.product: Producto
 
 indicator.name.label: Nombre
 indicator.value.label: Valor
+
+

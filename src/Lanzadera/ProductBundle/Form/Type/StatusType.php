@@ -9,7 +9,6 @@
 namespace Lanzadera\ProductBundle\Form\Type;
 
 use Lanzadera\ProductBundle\Entity\Product;
-use Lanzadera\ProductBundle\Entity\StatusInterface;
 use Lanzadera\ProductBundle\Form\Extension\ChoiceList\StatusChoiceList;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;

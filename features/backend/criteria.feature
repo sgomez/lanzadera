@@ -65,7 +65,7 @@ Característica: Criterios
         Cuando relleno lo siguiente:
             | Nombre        | Tipo de actividad                                     |
             | Descripción   | Describe el tipo de actividad de la organización      |
-            | Organización  | 1                                                     |
+            | Organización  | organization                                          |
         Y selecciono "Sociales" de "Clasificación"
         Y presiono "Crear y regresar al listado"
         Entonces debería estar en la página principal de criterio

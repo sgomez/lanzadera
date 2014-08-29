@@ -7,6 +7,7 @@ parameters:
     lanzadera.entity.indicator.class: Lanzadera\ClassificationBundle\Entity\Indicator
     lanzadera.form.extension.choice_type_extention.class: Lanzadera\ClassificationBundle\Form\Extension\ChoiceTypeExtension
     lanzadera.form.transformer.array_to_indicators.class: Lanzadera\ClassificationBundle\Form\DataTransformer\ArrayToIndicatorsTransform
+    lanzadera.form.type.criterion.class: Lanzadera\ClassificationBundle\Form\Type\CriterionType
     lanzadera.form.type.organization_indicator.class: Lanzadera\ClassificationBundle\Form\Type\OrganizationIndicatorType
     lanzadera.form.type.product_indicator.class: Lanzadera\ClassificationBundle\Form\Type\ProductIndicatorType
 
@@ -28,6 +29,11 @@ services:
         arguments: [~, %lanzadera.entity.indicator.class%, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: classification.admin.group, label: indicator.admin.label, show_in_dashboard: false}
+
+    lanzadera.form.type.criterion:
+        class: %lanzadera.form.type.criterion.class%
+        tags:
+            - { name: form.type, alias: criterion_type }
 
     lanzadera.form.type.lanzadera_indicator:
         class: %lanzadera.form.type.organization_indicator.class%

@@ -1,13 +1,16 @@
 parameters:
-#    lanzadera_product.example.class: Lanzadera\ProductBundle\Example
-    lanzadera.product.admin.group: product.admin.group
+    lanzadera.admin.product.class: Lanzadera\ProductBundle\Admin\ProductAdmin
+    lanzadera.entity.product.class: Lanzadera\ProductBundle\Entity\Product
+    lanzadera.form.type.status.class: Lanzadera\ProductBundle\Form\Type\StatusType
 
 services:
-#    lanzadera_product.example:
-#        class: %lanzadera_product.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
     lanzadera.admin.product:
-        class: Lanzadera\ProductBundle\Admin\ProductAdmin
-        arguments: [~, Lanzadera\ProductBundle\Entity\Product, SonataAdminBundle:CRUD]
+        class: %lanzadera.admin.product.class%
+        arguments: [~, %lanzadera.entity.product.class%, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: %lanzadera.product.admin.group%, label: product.admin.label}
+            - { name: sonata.admin, manager_type: orm, group: product.admin.group, label: product.admin.label }
+
+    lanzadera.form.type.status:
+        class: %lanzadera.form.type.status.class%
+        tags:
+            - { name: form.type, alias: status }

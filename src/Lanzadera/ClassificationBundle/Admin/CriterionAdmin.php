@@ -8,9 +8,13 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Form\FormEvents;
 
 class CriterionAdmin extends Admin
 {
+    /**
+     * {@inheritdoc}
+     */
     protected $baseRouteName = "lanzadera_criterion";
 
     /**
@@ -66,20 +70,21 @@ class CriterionAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $this->getConfigurationPool()->getContainer()->get('ladybug')->log($this->getSubject()->getId());
         $formMapper
-            ->with('criterion.group.description')
+            ->with('criterion.group.description', array('class' => 'col-md-6'))
                 ->add('name', null, array('label' => 'criterion.name.label', 'required' => true))
                 ->add('description', 'textarea', array('label' => 'criterion.description.label'))
                 ->add('type', 'criterion_type', array(
                     'label' => 'criterion.type.label',
-                    'expanded' => true,
+                    'disabled' => !$this->getSubject()->isNew(),
                 ))
                 ->add('classification', null, array(
                     'label' => 'criterion.classification.label',
                     'required' => true,
                 ))
             ->end()
-            ->with('criterion.group.indicators')
+            ->with('criterion.group.indicators', array('class' => 'col-md-6'))
                 ->add('indicators', 'sonata_type_collection',
                     array(
                         'label' => 'criterion.indicator.label',

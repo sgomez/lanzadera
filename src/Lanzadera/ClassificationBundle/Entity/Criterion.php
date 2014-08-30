@@ -78,6 +78,11 @@ class Criterion
         $this->indicators = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    /**
+     * Get Criterion name
+     *
+     * @return string
+     */
     public function __toString()
     {
         return $this->getName();
@@ -104,6 +109,16 @@ class Criterion
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get is a new entity
+     *
+     * @return bool
+     */
+    public function isNew()
+    {
+        return $this->id === null ? true : false;
     }
 
     /**

@@ -105,6 +105,8 @@ sonata_user:
 sonata_admin:
     title: Lanzadera
     title_logo: bundles/lanzaderacore/img/tejedorasm.png
+    templates:
+        layout: LanzaderaCoreBundle::standard_layout.html.twig
 
 sonata_doctrine_orm_admin:
     templates:

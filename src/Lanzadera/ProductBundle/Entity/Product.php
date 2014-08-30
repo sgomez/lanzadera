@@ -3,6 +3,7 @@
 namespace Lanzadera\ProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Lanzadera\MediaBundle\Entity\Media;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -41,13 +42,6 @@ class Product
      * @ORM\Column(name="description", type="string", length=45, nullable=true)
      */
     private $description;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="photo", type="string", length=45, nullable=true)
-     */
-    private $photo;
 
     /**
      * @var string
@@ -135,6 +129,17 @@ class Product
      * )
      */
     private $tags;
+
+
+    /**
+     * @var \Lanzadera\MediaBundle\Entity\Media
+     *
+     * @ORM\OnetoOne(targetEntity="Lanzadera\MediaBundle\Entity\Media", cascade={"remove", "persist"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="media_id", referencedColumnName="id")
+     * })
+     */
+    private $media;
 
     /**
      * Constructor
@@ -224,29 +229,6 @@ class Product
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set photo
-     *
-     * @param string $photo
-     * @return Product
-     */
-    public function setPhoto($photo)
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
-
-    /**
-     * Get photo
-     *
-     * @return string 
-     */
-    public function getPhoto()
-    {
-        return $this->photo;
     }
 
     /**
@@ -494,5 +476,28 @@ class Product
     public function getTagsAsList()
     {
         return implode(", ", $this->tags->getValues());
+    }
+
+    /**
+     * Set media
+     *
+     * @param \Lanzadera\MediaBundle\Entity\Media $media
+     * @return Product
+     */
+    public function setMedia(\Lanzadera\MediaBundle\Entity\Media $media = null)
+    {
+        $this->media = $media;
+
+        return $this;
+    }
+
+    /**
+     * Get media
+     *
+     * @return \Lanzadera\MediaBundle\Entity\Media 
+     */
+    public function getMedia()
+    {
+        return $this->media;
     }
 }

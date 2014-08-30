@@ -13,6 +13,7 @@ default:
                 default:
                     symfony2: ~
             browser_name: chrome
+            files_path: features/images/
         Behat\Symfony2Extension: ~
     suites:
         account:
@@ -111,6 +112,7 @@ javascript:
         products:
             contexts:
                 - Behat\MinkExtension\Context\MinkContext
+                - Lanzadera\ClassificationBundle\Behat\ClassificationContext
                 - Lanzadera\CoreBundle\Behat\CoreContext
                 - Lanzadera\CoreBundle\Behat\UsersContext
                 - Lanzadera\CoreBundle\Behat\WebContext

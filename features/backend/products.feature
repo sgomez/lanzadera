@@ -161,6 +161,15 @@ Característica: productos
         Y debo ver "Elemento actualizado satisfactoriamente."
         Y debo ver "Aprobado"
 
+    Escenario: Agregar una imagen al producto
+        Dado que estoy en la página edición de producto con nombre "Producto A1"
+        Cuando adjunto el archivo "kitten.jpg" a "Añadir fichero"
+        Y presiono "Actualizar"
+        Entonces debería estar en la página edición de producto con nombre "Producto A1"
+        Y debo ver "Elemento actualizado satisfactoriamente."
+        Y debo ver "kitten"
+        Y no debo ver "No existe ninguna imagen vinculada."
+
     Escenario: Borrar producto desde la página de edición
         Dado que estoy en la página edición de producto con nombre "Producto A1"
         Cuando sigo "Borrar"

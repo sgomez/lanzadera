@@ -50,7 +50,8 @@
         "fortawesome/font-awesome": "4.1.0",
         "knplabs/knp-paginator-bundle": "2.4.0",
         "knplabs/knp-menu": "v2.0.0-alpha2",
-        "knplabs/knp-menu-bundle": "v2.0.0-alpha2"
+        "knplabs/knp-menu-bundle": "v2.0.0-alpha2",
+        "sonata-project/media-bundle": "2.3.*@dev"
     },
     "require-dev": {
         "behat/behat":                       "3.0.*@dev",

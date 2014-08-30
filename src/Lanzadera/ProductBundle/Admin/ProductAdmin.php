@@ -98,6 +98,13 @@ class ProductAdmin extends Admin
             ->add('status', 'status', array(
                     'label' => 'product.status.label'
             ))
+            ->add('media', 'sonata_media_type', array(
+                    'label' => 'product.media.label',
+                    'required' => false,
+                    'provider' => 'sonata.media.provider.image',
+                    'data_class'   =>  'Lanzadera\MediaBundle\Entity\Media',
+                    'context'  => 'default'
+            ))
             ->add('organization', null, array(
                     'label' => 'product.organization.label',
                     'required' => true,
@@ -158,13 +165,18 @@ class ProductAdmin extends Admin
             ->add('category.name', null, array(
                     'label' => 'product.category.label'
             ))
+            ->add('media', null, array(
+                    'label' => 'product.media.label',
+                    'template' => 'LanzaderaProductBundle:CRUD:media_status.html.twig'
+                ))
             ->add('tags_as_list', null, array(
                     'label' => 'product.tag.label'
             ))
             ->add('status', 'string', array(
                     'label' => 'product.status.label',
                     'template' => 'LanzaderaProductBundle:CRUD:show_status.html.twig'
-                ));
+            ))
+        ;
     }
 
     /**

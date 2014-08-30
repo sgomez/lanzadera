@@ -13,6 +13,7 @@ default:
                 default:
                     symfony2: ~
             browser_name: chrome
+            files_path: features/images/
         Behat\Symfony2Extension: ~
     suites:
         account:

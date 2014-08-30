@@ -35,3 +35,11 @@ _sonata_admin:
 sonata_admin_redirect:
     pattern: /
     defaults: { _controller: FrameworkBundle:Redirect:redirect, route: sonata_admin_dashboard, permanent: true }
+
+gallery:
+    resource: '@SonataMediaBundle/Resources/config/routing/gallery.xml'
+    prefix: /media/gallery
+
+media:
+    resource: '@SonataMediaBundle/Resources/config/routing/media.xml'
+    prefix: /media

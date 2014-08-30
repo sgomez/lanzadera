@@ -3,6 +3,8 @@ product.category.label: Categoría
 product.category.placeholder: Seleccione una categoría
 product.description.label: Descripción
 product.indicators.label: Indicadores
+product.media.label: Imagen
+product.media.no_linked_media: No existe ninguna imagen vinculada.
 product.name.label: Nombre
 product.organization.label: Organización
 product.status.label: Estado

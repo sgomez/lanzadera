@@ -32,8 +32,9 @@ class AppKernel extends Kernel
             new Sonata\BlockBundle\SonataBlockBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
-            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             new Sonata\IntlBundle\SonataIntlBundle(),
+            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+            new Sonata\MediaBundle\SonataMediaBundle(),
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
 
@@ -44,6 +45,7 @@ class AppKernel extends Kernel
             new Lanzadera\ProductBundle\LanzaderaProductBundle(),
             new Lanzadera\ClassificationBundle\LanzaderaClassificationBundle(),
             new Lanzadera\TaxonomyBundle\LanzaderaTaxonomyBundle(),
+            new Lanzadera\MediaBundle\LanzaderaMediaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

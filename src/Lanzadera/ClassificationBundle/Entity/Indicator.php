@@ -11,6 +11,7 @@ use Lanzadera\OrganizationBundle\Entity\Organization;
  *
  * @ORM\Table(name="indicator")
  * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\IndicatorRepository")
+ * @ORM\EntityListeners({"Lanzadera\ClassificationBundle\EventListener\IndicatorListener"})
  */
 class Indicator
 {

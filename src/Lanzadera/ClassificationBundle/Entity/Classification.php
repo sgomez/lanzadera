@@ -50,6 +50,13 @@ class Classification
     private $threshold;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="maximum", type="integer", nullable=false)
+     */
+    private $maximum;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Lanzadera\ProductBundle\Entity\Product", mappedBy="classification")
@@ -70,6 +77,8 @@ class Classification
     {
         $this->product = new \Doctrine\Common\Collections\ArrayCollection();
         $this->criteria = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->threshold = 0;
+        $this->maximum = 0;
     }
 
     /**
@@ -226,5 +235,28 @@ class Classification
     public function getCriteria()
     {
         return $this->criteria;
+    }
+
+    /**
+     * Set maximum
+     *
+     * @param integer $maximum
+     * @return Classification
+     */
+    public function setMaximum($maximum)
+    {
+        $this->maximum = $maximum;
+
+        return $this;
+    }
+
+    /**
+     * Get maximum
+     *
+     * @return integer 
+     */
+    public function getMaximum()
+    {
+        return $this->maximum;
     }
 }

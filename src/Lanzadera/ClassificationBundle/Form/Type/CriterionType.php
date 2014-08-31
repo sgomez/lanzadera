@@ -17,6 +17,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class CriterionType extends AbstractType
 {
+    /**
+     * {@inheritdoc}
+     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
@@ -32,11 +35,17 @@ class CriterionType extends AbstractType
         ));
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getParent()
     {
         return 'choice';
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getName()
     {
         return 'criterion_type';

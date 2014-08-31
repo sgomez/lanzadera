@@ -10,6 +10,9 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class ClassificationAdmin extends Admin
 {
+    /**
+     * {@inheritdoc}
+     */
     protected $baseRouteName = 'lanzadera_classification';
 
     /**
@@ -61,7 +64,7 @@ class ClassificationAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('classification.group.description')
+            ->with('classification.group.description', array('class' => 'col-md-6'))
                 ->add('name', null, array(
                         'label' => 'classification.name.label'
                 ))
@@ -69,7 +72,7 @@ class ClassificationAdmin extends Admin
                         'label' => 'classification.description.label'
                 ))
             ->end()
-            ->with('classification.group.parameters')
+            ->with('classification.group.parameters', array('class' => 'col-md-6'))
                 ->add('threshold', 'percent', array(
                         'label' => 'classification.threshold.label',
                         'type' => 'integer',

@@ -51,6 +51,9 @@ class CriterionAdmin extends Admin
             ->add('description', null, array(
                     'label' => 'criterion.description.label'
             ))
+            ->addIdentifier('classification', null, array(
+                    'label' => 'criterion.classification.label'
+            ))
             ->add('type', 'string', array(
                     'label' => 'criterion.type.label',
                     'template' => 'LanzaderaClassificationBundle:CRUD:list_criterion_type.html.twig'

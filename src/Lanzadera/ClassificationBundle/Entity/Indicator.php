@@ -33,7 +33,7 @@ class Indicator
     /**
      * @var string
      *
-     * @ORM\Column(name="value", type="string", length=45, nullable=true)
+     * @ORM\Column(name="value", type="integer", nullable=true)
      */
     private $value;
 

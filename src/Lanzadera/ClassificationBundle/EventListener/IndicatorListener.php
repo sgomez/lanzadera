@@ -10,31 +10,31 @@ namespace Lanzadera\ClassificationBundle\EventListener;
 
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Lanzadera\ClassificationBundle\Entity\Indicator;
 
 class IndicatorListener
 {
     public function postPersist(Indicator $indicator, LifecycleEventArgs $event)
     {
-        $this->updateMaximaValue($indicator, $event);
+        $this->updateMaximalValue($indicator, $event);
     }
 
     public function postUpdate(Indicator $indicator, LifecycleEventArgs $event)
     {
-        $this->updateMaximaValue($indicator, $event);
+        $this->updateMaximalValue($indicator, $event);
     }
 
     public function postRemove(Indicator $indicator, LifecycleEventArgs $event)
     {
-        $this->updateMaximaValue($indicator, $event);
+        $this->updateMaximalValue($indicator, $event);
     }
 
-    private function updateMaximaValue(Indicator $indicator, LifecycleEventArgs $event)
+    private function updateMaximalValue(Indicator $indicator, LifecycleEventArgs $event)
     {
         $em = $event->getEntityManager();
+        $classification_id = $indicator->getCriterion()->getClassification()->getId();
         $em->getRepository('LanzaderaClassificationBundle:Classification')
-            ->setMaximalValue($indicator->getCriterion()->getClassification()->getId())
+            ->setMaximalValue($classification_id)
         ;
     }
 } 

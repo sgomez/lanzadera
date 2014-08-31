@@ -11,6 +11,12 @@ namespace Lanzadera\CoreBundle\Doctrine\ORM;
 
 class ClassificationRepository extends CustomRepository
 {
+    public function updateProducts($id)
+    {
+        $em = $this->getEntityManager();
+
+    }
+
     public function setMaximalValue($id)
     {
         $em = $this->getEntityManager();
@@ -41,6 +47,7 @@ class ClassificationRepository extends CustomRepository
 
     private function update($id, $value)
     {
+        if (null === $value) return;
         $qb = $this->createQueryBuilder('cl');
         $qb->update()
             ->set('cl.maximum', $value)

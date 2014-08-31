@@ -22,4 +22,9 @@ class Admin extends BaseAdmin
     {
         return $this->getConfigurationPool()->getContainer()->get('lanzadera.repository.' . $repository);
     }
-} 
+
+    protected function getNotificationBackend()
+    {
+        return $this->getConfigurationPool()->getContainer()->get('sonata.notification.backend');
+    }
+}

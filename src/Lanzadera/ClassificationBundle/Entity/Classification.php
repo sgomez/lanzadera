@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="classification")
  * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\ClassificationRepository")
+ * @ORM\EntityListeners({"Lanzadera\ClassificationBundle\EventListener\ClassificationListener"})
  */
 class Classification
 {

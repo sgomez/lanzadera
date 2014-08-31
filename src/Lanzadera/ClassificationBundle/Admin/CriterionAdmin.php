@@ -29,6 +29,9 @@ class CriterionAdmin extends Admin
             ->add('description', null, array(
                     'label' => 'criterion.description.label'
             ))
+            ->add('classification.name', null, array(
+                    'label' => 'criterion.classification.label',
+            ))
             ->add('type', null, array(
                     'label' => 'criterion.type.label'
                 ), 'criterion_type', array(
@@ -45,13 +48,10 @@ class CriterionAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('name', null, array(
+            ->addIdentifier('name', null, array(
                     'label' => 'criterion.name.label'
             ))
-            ->add('description', null, array(
-                    'label' => 'criterion.description.label'
-            ))
-            ->addIdentifier('classification', null, array(
+            ->addIdentifier('classification.name', null, array(
                     'label' => 'criterion.classification.label'
             ))
             ->add('type', 'string', array(

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "16822f473bd3c96173ee5ccd2423b0ef",
+    "hash": "ad4581d30ed8610deadec51bc435796d",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -2559,12 +2559,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "0dfc4c427e3a68d8cf39e3d8b6b6776791ee9046"
+                "reference": "610cfc09cda23105b18f88aa44c38ecf36c34f94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/0dfc4c427e3a68d8cf39e3d8b6b6776791ee9046",
-                "reference": "0dfc4c427e3a68d8cf39e3d8b6b6776791ee9046",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/610cfc09cda23105b18f88aa44c38ecf36c34f94",
+                "reference": "610cfc09cda23105b18f88aa44c38ecf36c34f94",
                 "shasum": ""
             },
             "require": {
@@ -2630,7 +2630,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2014-08-28 19:47:09"
+            "time": "2014-08-31 05:18:49"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -3251,16 +3251,16 @@
         },
         {
             "name": "sonata-project/notification-bundle",
-            "version": "2.2.7",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataNotificationBundle.git",
-                "reference": "edd955d502baa5cfad185f48ce82ad718d610e8b"
+                "reference": "b682b2305357930df2ed6e047695e89e817a3fb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataNotificationBundle/zipball/edd955d502baa5cfad185f48ce82ad718d610e8b",
-                "reference": "edd955d502baa5cfad185f48ce82ad718d610e8b",
+                "url": "https://api.github.com/repos/sonata-project/SonataNotificationBundle/zipball/b682b2305357930df2ed6e047695e89e817a3fb7",
+                "reference": "b682b2305357930df2ed6e047695e89e817a3fb7",
                 "shasum": ""
             },
             "require": {
@@ -3268,17 +3268,16 @@
                 "jms/serializer-bundle": "~0.11",
                 "nelmio/api-doc-bundle": "~2.4",
                 "sonata-project/core-bundle": "~2.2@dev,>2.2.4",
-                "sonata-project/doctrine-extensions": "1.*",
-                "sonata-project/easy-extends-bundle": "2.1.*",
-                "symfony/symfony": "~2.1"
+                "sonata-project/doctrine-extensions": "~1.0",
+                "sonata-project/easy-extends-bundle": "~2.1",
+                "symfony/symfony": "~2.3"
             },
             "require-dev": {
-                "guzzle/guzzle": "3.*",
-                "liip/monitor": "~1.0",
-                "liip/monitor-bundle": "~1.0",
-                "sonata-project/core-bundle": "dev-master",
-                "sonata-project/doctrine-orm-admin-bundle": "2.2.*",
-                "videlalvaro/php-amqplib": "2.0.*"
+                "guzzle/guzzle": "~3.0",
+                "liip/monitor-bundle": "~2.0",
+                "sonata-project/core-bundle": "~2.2@dev,>2.2.4",
+                "sonata-project/doctrine-orm-admin-bundle": "~2.2",
+                "videlalvaro/php-amqplib": "~2.0"
             },
             "suggest": {
                 "guzzle/guzzle": "3.*",
@@ -3289,7 +3288,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2.x-dev"
+                    "dev-master": "2.3.x-dev"
                 }
             },
             "autoload": {
@@ -3319,7 +3318,7 @@
                 "page",
                 "sonata"
             ],
-            "time": "2014-08-12 16:16:34"
+            "time": "2014-08-12 17:14:37"
         },
         {
             "name": "sonata-project/user-bundle",
@@ -5459,17 +5458,17 @@
         },
         {
             "name": "raulfraile/ladybug-bundle",
-            "version": "v1.0.4",
+            "version": "v1.0.5",
             "target-dir": "RaulFraile/Bundle/LadybugBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/raulfraile/LadybugBundle.git",
-                "reference": "8a1b4f349e6c245a7395f92a467faa59bfb9d908"
+                "reference": "e2ef2c979444300e8fe85eee292bb43d87ea908c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/raulfraile/LadybugBundle/zipball/8a1b4f349e6c245a7395f92a467faa59bfb9d908",
-                "reference": "8a1b4f349e6c245a7395f92a467faa59bfb9d908",
+                "url": "https://api.github.com/repos/raulfraile/LadybugBundle/zipball/e2ef2c979444300e8fe85eee292bb43d87ea908c",
+                "reference": "e2ef2c979444300e8fe85eee292bb43d87ea908c",
                 "shasum": ""
             },
             "require": {
@@ -5480,6 +5479,10 @@
             },
             "replace": {
                 "raulfraile/ladybugbundle": "dev-master"
+            },
+            "require-dev": {
+                "mockery/mockery": "@stable",
+                "phpunit/phpunit": "@stable"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -5506,7 +5509,7 @@
                 "tree",
                 "twig"
             ],
-            "time": "2014-08-20 10:09:23"
+            "time": "2014-08-29 20:43:09"
         },
         {
             "name": "raulfraile/ladybug-installer",
@@ -5691,6 +5694,7 @@
         "knplabs/knp-menu": 15,
         "knplabs/knp-menu-bundle": 15,
         "sonata-project/media-bundle": 20,
+        "sonata-project/notification-bundle": 20,
         "behat/behat": 20,
         "behat/symfony2-extension": 20,
         "behat/mink-extension": 20,

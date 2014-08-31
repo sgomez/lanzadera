@@ -3,6 +3,10 @@ classification.description.label: Descripción
 classification.name.label: Nombre
 classification.group.description: Descripción
 classification.group.parameters: Parámetros
+classification.maximum.label: Valor máximo
+classification.maximum.help: |
+  Este es el valor máximo que podría tener un producto si todos sus indicadores son máximos. Se indica
+  como referencia y no puede ser modificado.
 classification.threshold.label: Umbral
 classification.threshold.help: |
   Indique el porcentaje del total de puntos que debe cumplir un producto para obtener esta clasificación.

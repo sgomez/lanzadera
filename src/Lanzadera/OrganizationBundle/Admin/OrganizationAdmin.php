@@ -56,16 +56,19 @@ class OrganizationAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('General')
+            ->with('organization.group.description', array('class' => 'col-md-6'))
                 ->add('name', null, array('label' => 'organization.name.label'))
                 ->add('address', 'textarea', array('label' => 'organization.address.label', 'required' => false))
                 ->add('phone', null, array('label' => 'organization.phone.label'))
                 ->add('email', 'email', array('label' => 'organization.email.label', 'required' => false))
                 ->add('web', 'url', array('label' => 'organization.web.label', 'required' => false))
                 ->add('enabled', 'checkbox', array('label' => 'organization.enabled.label', 'required' => false))
+            ->end()
+            ->with('organization.group.indicators', array('class' => 'col-md-6'))
                 ->add('indicators', 'organization_indicator', array(
                     'label' => 'Indicadores',
                 ))
+            ->end()
         ;
     }
 

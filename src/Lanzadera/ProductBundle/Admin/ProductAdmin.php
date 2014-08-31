@@ -56,11 +56,14 @@ class ProductAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('name', null, array(
+            ->addIdentifier('name', null, array(
                     'label' => 'product.name.label'
             ))
             ->add('description', null, array(
                     'label' => 'product.description.label'
+            ))
+            ->addIdentifier('organization.name', null, array(
+                    'label' => 'product.organization.label'
             ))
             ->add('category.name', null, array(
                     'label' => 'product.category.label'
@@ -88,65 +91,71 @@ class ProductAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name', null, array(
-                    'label' => 'product.name.label',
-                    'required' => true,
-            ))
-            ->add('description', 'textarea', array(
-                    'label' => 'product.description.label'
-            ))
-            ->add('status', 'status', array(
-                    'label' => 'product.status.label'
-            ))
-            ->add('media', 'sonata_media_type', array(
-                    'label' => 'product.media.label',
+            ->with('product.group.description', array('class' => 'col-md-6'))
+                ->add('name', null, array(
+                        'label' => 'product.name.label',
+                        'required' => true,
+                ))
+                ->add('description', 'textarea', array(
+                        'label' => 'product.description.label'
+                ))
+                ->add('status', 'status', array(
+                        'label' => 'product.status.label'
+                ))
+                ->add('organization', null, array(
+                        'label' => 'product.organization.label',
+                        'required' => true,
+                        'attr' => array(
+                            'placeholder' => 'product.organization.placeholder',
+                            'class' => 'form-control',
+                        )
+                ))
+                ->add('category', 'sonata_type_model', array(
+                        'label' => 'product.category.label',
+                        'query' => $this->getRepository('taxon')->createTaxonQuery('Category'),
+                        'btn_add' => false,
+                        'required' => true,
+                        'attr' => array(
+                            'placeholder' => 'product.category.placeholder',
+                            'class' => 'form-control'
+                        )
+                    ),
+                    array(
+                        'admin_code' => 'lanzadera.admin.category',
+                    )
+                )
+                ->add('tags', 'sonata_type_model', array(
+                        'label' => 'product.tag.label',
+                        'query' => $this->getRepository('taxon')->createTaxonQuery('Tag'),
+                        'expanded' => false,
+                        'multiple' => true,
+                        'btn_add' => 'product.tags.add',
+                        'required' => false,
+                        'attr' => array(
+                            'placeholder' => 'product.tag.placeholder',
+                            'class' => 'form-control'
+                        )
+                    ),
+                    array(
+                        'admin_code' => 'lanzadera.admin.tag'
+                    )
+                )
+            ->end()
+            ->with('product.group.image', array('class' => 'col-md-6'))
+                ->add('media', 'sonata_media_type', array(
+                    'label' => false,
                     'required' => false,
                     'provider' => 'sonata.media.provider.image',
                     'data_class'   =>  'Lanzadera\MediaBundle\Entity\Media',
                     'context'  => 'default'
-            ))
-            ->add('organization', null, array(
-                    'label' => 'product.organization.label',
-                    'required' => true,
-                    'attr' => array(
-                        'placeholder' => 'product.organization.placeholder',
-                        'class' => 'form-control',
-                    )
-            ))
-            ->add('category', 'sonata_type_model', array(
-                    'label' => 'product.category.label',
-                    'query' => $this->getRepository('taxon')->createTaxonQuery('Category'),
-                    'btn_add' => false,
-                    'required' => true,
-                    'attr' => array(
-                        'placeholder' => 'product.category.placeholder',
-                        'class' => 'form-control'
-                    )
-                ),
-                array(
-                    'admin_code' => 'lanzadera.admin.category',
-                )
-            )
-            ->add('tags', 'sonata_type_model', array(
-                    'label' => 'product.tag.label',
-                    'query' => $this->getRepository('taxon')->createTaxonQuery('Tag'),
-                    'expanded' => false,
-                    'multiple' => true,
-                    'btn_add' => 'product.tags.add',
-                    'required' => false,
-                    'attr' => array(
-                        'placeholder' => 'product.tag.placeholder',
-                        'class' => 'form-control'
-                    )
-                ),
-                array(
-                    'admin_code' => 'lanzadera.admin.tag'
-                )
-            )
-            ->add('indicators', 'product_indicator', array(
+                ))
+            ->end()
+            ->with('product.group.indicators')
+                ->add('indicators', 'product_indicator', array(
                     'label' => 'Indicadores',
                     'block_name' => 'lanzadera_indicator'
-            ))
+                ))
+            ->end()
         ;
     }
 

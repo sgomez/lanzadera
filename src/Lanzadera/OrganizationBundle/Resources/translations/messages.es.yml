@@ -6,6 +6,8 @@ organization.email.label: Correo-e
 organization.enabled.label: Activo
 organization.indicators.label: Indicadores
 organization.name.label: Nombre
+organization.group.description: Datos generales de la organización
+organization.group.indicators: Indicadores de organización
 organization.phone.label: Teléfono
 organization.web.label: Página web
 lanzadera.action: Acción

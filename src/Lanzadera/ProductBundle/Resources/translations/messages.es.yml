@@ -2,6 +2,9 @@ product.admin.label: Productos
 product.category.label: Categoría
 product.category.placeholder: Seleccione una categoría
 product.description.label: Descripción
+product.group.description: Datos generales del producto
+product.group.image: Imagen
+product.group.indicators: Indicadores de producto
 product.indicators.label: Indicadores
 product.media.label: Imagen
 product.media.no_linked_media: No existe ninguna imagen vinculada.

@@ -345,7 +345,9 @@ class Product
      */
     public function addClassification(\Lanzadera\ClassificationBundle\Entity\Classification $classification)
     {
-        $this->classification[] = $classification;
+        if (false === $this->classification->contains($classification)) {
+            $this->classification[] = $classification;
+        }
 
         return $this;
     }

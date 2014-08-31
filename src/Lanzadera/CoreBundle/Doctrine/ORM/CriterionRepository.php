@@ -13,6 +13,20 @@ use Lanzadera\ClassificationBundle\Entity\Criterion;
 
 class CriterionRepository extends CustomRepository
 {
+    public function getMaximalIndicatorValue($id)
+    {
+        $query = $this->createQueryBuilder('c');
+        $result = $query
+            ->select($query->expr()->max('i.value'))
+            ->leftJoin('c.indicators', 'i')
+            ->where($query->expr()->eq('c.id', $id))
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+
+        return intval($result);
+    }
+
     public function getProductCriterion()
     {
         $query = $this->createQueryBuilder('c');

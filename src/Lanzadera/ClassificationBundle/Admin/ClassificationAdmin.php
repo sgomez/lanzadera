@@ -78,6 +78,12 @@ class ClassificationAdmin extends Admin
                         'type' => 'integer',
                         'help' => 'classification.threshold.help'
                 ))
+                ->add('maximum', null, array(
+                        'label' => 'classification.maximum.label',
+                        'help' => 'classification.maximum.help',
+                        'read_only' => true,
+                        'required' => false
+                ))
             ->end()
         ;
     }

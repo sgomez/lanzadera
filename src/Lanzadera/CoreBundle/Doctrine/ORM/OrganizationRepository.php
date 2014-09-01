@@ -14,8 +14,6 @@ class OrganizationRepository extends CustomRepository
 {
     public function evaluateProductsByClassification($classification_id)
     {
-        if (null === $classification_id) return;
-
         $em = $this->getEntityManager();
         $classification = $em->getRepository('LanzaderaClassificationBundle:Classification')->find($classification_id);
         $threshold = intval($classification->getMaximum() * $classification->getThreshold() / 100);

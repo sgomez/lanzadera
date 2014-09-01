@@ -24,11 +24,6 @@ class ClassificationListener
         $this->updateProductClassification($classification, $event);
     }
 
-    public function postRemove(Classification $classification, LifecycleEventArgs $event)
-    {
-        $this->updateProductClassification($classification, $event);
-    }
-
     private function updateProductClassification(Classification $classification, LifecycleEventArgs $event)
     {
         $em = $event->getEntityManager();

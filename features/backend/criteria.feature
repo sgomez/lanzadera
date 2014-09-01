@@ -89,11 +89,21 @@ Característica: Criterios
     Escenario: Crear nuevo indicador
         Dado que estoy en la página edición de criterio con nombre "Producción ecológica"
         Cuando sigo "Añadir indicador"
-        Y relleno un nuevo indicador "Muy bajo" con el valor "4"
+        Y relleno un nuevo indicador "Muy bajo" con el valor "2"
         Y presiono "Actualizar"
         Entonces debería estar en la página edición de criterio con nombre "Producción ecológica"
         Y debo ver "Elemento actualizado satisfactoriamente."
-        Y debo ver el indicador "Muy bajo" con valor "4"
+        Y debo ver el indicador "Muy bajo" con valor "2"
+
+    @javascript
+    Escenario: Crear un nuevo indicador con un valor repetido
+        Dado que estoy en la página edición de criterio con nombre "Producción ecológica"
+        Cuando sigo "Añadir indicador"
+        Y relleno un nuevo indicador "Muy bajo" con el valor "4"
+        Y presiono "Actualizar"
+        Entonces debería estar en la página edición de criterio con nombre "Producción ecológica"
+        Y debo ver "Se ha producido un error durante la actualización del elemento."
+        Y debo ver "Este valor ya se ha utilizado."
 
     Escenario: Borrar criterio desde la página de edición
         Dado que estoy en la página edición de criterio con nombre "Respuesta a la creación de empleo"

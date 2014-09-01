@@ -43,13 +43,7 @@ class ClassificationAdmin extends Admin
                     'label' => 'classification.name.label'
             ))
             ->add('description', null, array(
-                    'label' => 'classification.description.label'
-            ))
-            ->add('threshold', null, array(
-                    'label' => 'classification.threshold.label',
-            ))
-            ->add('maximum', null, array(
-                    'label' => 'classification.maximum.label',
+                    'label' => 'classification.description.label',
             ))
             ->add('_action', 'actions', array(
                 'actions' => array(

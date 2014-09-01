@@ -8,7 +8,11 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Symfony\Component\EventDispatcher\Event;
+use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 class CriterionAdmin extends Admin
 {
@@ -16,6 +20,10 @@ class CriterionAdmin extends Admin
      * {@inheritdoc}
      */
     protected $baseRouteName = "lanzadera_criterion";
+
+    protected $formOptions = array(
+        'cascade_validation' => true
+    );
 
     /**
      * @param DatagridMapper $datagridMapper
@@ -73,6 +81,8 @@ class CriterionAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $disabled = $this->getSubject()->isNew() ? false : true;
+
         $this->getConfigurationPool()->getContainer()->get('ladybug')->log($this->getSubject()->getId());
         $formMapper
             ->with('criterion.group.description', array('class' => 'col-md-6'))
@@ -80,7 +90,7 @@ class CriterionAdmin extends Admin
                 ->add('description', 'textarea', array('label' => 'criterion.description.label'))
                 ->add('type', 'criterion_type', array(
                     'label' => 'criterion.type.label',
-                    'disabled' => !$this->getSubject()->isNew(),
+                    'disabled' => $disabled,
                 ))
                 ->add('classification', null, array(
                     'label' => 'criterion.classification.label',
@@ -91,10 +101,9 @@ class CriterionAdmin extends Admin
                 ->add('indicators', 'sonata_type_collection',
                     array(
                         'label' => 'criterion.indicator.label',
-                        'cascade_validation' => true,
                         'type_options' => array('delete' => true),
                         'by_reference' => false,
-                        'btn_add' => $this->trans('criterion.indicator.add')
+                        'btn_add' => $this->trans('criterion.indicator.add'),
                     ),
                     array(
                         'edit' => 'inline',
@@ -111,16 +120,28 @@ class CriterionAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('name', null, array(
-                    'label' => 'criterion.name.label'
-            ))
-            ->add('description', null, array(
-                    'label' => 'criterion.description.label'
-            ))
-            ->add('type', 'string', array(
-                    'label' => 'criterion.type.label',
-                    'template' => 'LanzaderaClassificationBundle:CRUD:show_criterion_type.html.twig'
+            ->with('criterion.group.description')
+                ->add('name', null, array(
+                        'label' => 'criterion.name.label'
                 ))
+                ->add('classification.name', null, array(
+                        'label' => 'criterion.classification.label'
+                ))
+                ->add('description', null, array(
+                    'label' => 'criterion.description.label'
+                ))
+                ->add('type', 'string', array(
+                        'label' => 'criterion.type.label',
+                        'template' => 'LanzaderaClassificationBundle:CRUD:show_criterion_type.html.twig'
+                ))
+            ->end()
+            ->with('criterion.group.indicators')
+                ->add('indicators', null, array(
+                        'label' => 'criterion.indicators.label',
+                        'template' => 'LanzaderaClassificationBundle:CRUD:show_criterion_indicators.html.twig'
+                ))
+            ->end()
         ;
     }
+
 }

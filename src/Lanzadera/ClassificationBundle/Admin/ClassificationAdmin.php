@@ -27,9 +27,6 @@ class ClassificationAdmin extends Admin
             ->add('description', null, array(
                     'label' => 'classification.description.label'
             ))
-            ->add('threshold', null, array(
-                    'label' => 'classification.threshold.label'
-            ))
         ;
     }
 
@@ -97,8 +94,12 @@ class ClassificationAdmin extends Admin
             ->add('description', null, array(
                     'label' => 'classification.description.label'
             ))
-            ->add('threshold', null, array(
-                    'label' => 'classification.threshold.label'
+            ->add('threshold', 'percent', array(
+                    'label' => 'classification.threshold.label',
+                    'type' => 'integer',
+            ))
+            ->add('maximum', null, array(
+                    'label' => 'classification.maximum.label'
             ))
         ;
     }

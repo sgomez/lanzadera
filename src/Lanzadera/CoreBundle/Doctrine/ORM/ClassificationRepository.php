@@ -11,12 +11,12 @@ namespace Lanzadera\CoreBundle\Doctrine\ORM;
 
 class ClassificationRepository extends CustomRepository
 {
-    public function updateProducts($id)
-    {
-        $em = $this->getEntityManager();
 
-    }
-
+    /**
+     * Calculate the sum of the highest indicator values for each criterion.
+     *
+     * @param $id
+     */
     public function setMaximalValue($id)
     {
         $em = $this->getEntityManager();

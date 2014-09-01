@@ -4,3 +4,8 @@
     {{ parent() }}
     <link rel="stylesheet" type="text/css"  href="{{ asset('bundles/lanzaderacore/css/style.css') }}"  />
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/lanzaderacore/js/bootstrap-filestyle.js') }}" type="application/javascript"></script>
+{% endblock %}

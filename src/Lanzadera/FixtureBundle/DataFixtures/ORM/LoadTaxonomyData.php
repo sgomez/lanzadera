@@ -21,7 +21,11 @@ class LoadTaxonomyData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        $manager->persist($this->createTaxonomy("Category", array ("Ropa", "Alimentación", "Bebidas")));
+        $categories = array();
+        while(count($categories) < 10) {
+            $categories[] = $this->faker->unique()->category;
+        }
+        $manager->persist($this->createTaxonomy("Category", $categories));
         $manager->persist($this->createTaxonomy("Tag", array("pantalón", "vino", "gluten")));
 
         $manager->flush();
@@ -44,7 +48,7 @@ class LoadTaxonomyData extends DataFixture
 
         $taxonomy->setName($name);
 
-        foreach($elements as $element) {
+        foreach($elements as $idx => $element) {
             /** @var Taxon $taxon */
             $taxon = $this->getTaxonRepository()->createNew();
             $taxon->setName($element);
@@ -52,7 +56,7 @@ class LoadTaxonomyData extends DataFixture
 
             $taxonomy->addTaxon($taxon);
 
-            $this->setReference("Lanzadera." . $name .".". $element, $taxon);
+            $this->setReference("Lanzadera." . $name .".". $idx, $taxon);
         }
 
         $this->setReference("Lanzadera.Taxonomy." . $name, $taxonomy);

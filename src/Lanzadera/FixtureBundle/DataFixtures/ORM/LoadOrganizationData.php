@@ -9,12 +9,10 @@
 namespace Lanzadera\FixtureBundle\DataFixtures\ORM;
 
 
-use Doctrine\Common\DataFixtures\AbstractFixture;
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use FOS\UserBundle\Model\UserInterface;
-use Lanzadera\CoreBundle\Doctrine\ORM\UserRepository;
+use Lanzadera\CoreBundle\Doctrine\ORM\OrganizationRepository;
 use Lanzadera\FixtureBundle\DataFixtures\DataFixture;
+use Lanzadera\OrganizationBundle\Entity\Organization;
 
 class LoadOrganizationData extends DataFixture
 {
@@ -23,10 +21,10 @@ class LoadOrganizationData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        $names = array("Asturias", "Barcelona", "Córdoba", "Dinamarca", "España", "Francia", "Gerona", "Huesca");
-        foreach ($names as $name) {
+
+        for ($i=0; $i < 5; $i++) {
             $organization = $this->createOrganization(
-                $name,
+                $this->faker->unique()->collective,
                 $this->faker->address,
                 $this->faker->email,
                 $this->faker->phoneNumber,
@@ -35,6 +33,7 @@ class LoadOrganizationData extends DataFixture
             );
 
             $manager->persist($organization);
+            $this->addReference("Lanzadera.Organization." . $i, $organization);
         }
 
         $manager->flush();
@@ -62,8 +61,6 @@ class LoadOrganizationData extends DataFixture
         $organization->setWeb($web);
         $organization->setEnabled($enabled);
         $organization->setCreatedAt(new \DateTime());
-
-        $this->addReference("Lanzadera.Organization." . $name, $organization);
 
         return $organization;
     }

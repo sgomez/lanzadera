@@ -39,6 +39,7 @@ abstract class DataFixture extends AbstractFixture implements ContainerAwareInte
     public function __construct()
     {
         $this->faker = FakerFactory::create('es_ES');
+        $this->faker->addProvider(new \Lanzadera\FixtureBundle\Faker\Provider\Lanzadera($this->faker));
     }
 
     public function __call($method, $arguments)

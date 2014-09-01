@@ -20,11 +20,11 @@ class LoadProductsData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        $manager->persist($this->createProduct("Revolución", "Bebidas", "Barcelona"));
-        $manager->persist($this->createProduct("Solidaridad", "Bebidas"));
-        $manager->persist($this->createProduct("Justicia", "Alimentación"));
-        $manager->persist($this->createProduct("Voluntario", "Ropa", "Francia"));
-        $manager->persist($this->createProduct("Pobreza", "Ropa", "Córdoba", array("Alta calidad y bajo precio", "No perecedero")));
+        $manager->persist($this->createProduct("Revolución"));
+        $manager->persist($this->createProduct("Solidaridad"));
+        $manager->persist($this->createProduct("Justicia"));
+        $manager->persist($this->createProduct("Voluntario"));
+        $manager->persist($this->createProduct("Pobreza", array("Alta calidad y bajo precio", "No perecedero")));
 
         $manager->flush();
     }
@@ -39,17 +39,17 @@ class LoadProductsData extends DataFixture
         return 10;
     }
 
-    private function createProduct($name, $category, $organization = "Córdoba", $indicators = array())
+    private function createProduct($name, $indicators = array())
     {
         $repo = $this->getProductRepository();
 
         /** @var Product $product */
         $product = $repo->createNew();
 
-        $product->setName($name);
+        $product->setName($this->faker->product);
         $product->setDescription($this->faker->text);
-        $product->setCategory($this->getReference("Lanzadera.Category." . $category));
-        $product->setOrganization($this->getReference("Lanzadera.Organization." . $organization));
+        $product->setCategory($this->getReference("Lanzadera.Category." . $this->faker->numberBetween(0,9)));
+        $product->setOrganization($this->getReference("Lanzadera.Organization." . $this->faker->numberBetween(0, 4)));
         foreach($indicators as $indicator) {
             $product->addIndicator($this->getReference("Lanzadera.Indicator." . $indicator));
         }

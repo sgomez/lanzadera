@@ -3,7 +3,6 @@
 namespace Lanzadera\ProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Lanzadera\MediaBundle\Entity\Media;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -134,7 +133,7 @@ class Product
     /**
      * @var \Lanzadera\MediaBundle\Entity\Media
      *
-     * @ORM\OnetoOne(targetEntity="Lanzadera\MediaBundle\Entity\Media", cascade={"remove", "persist"})
+     * @ORM\OneToOne(targetEntity="Lanzadera\MediaBundle\Entity\Media", cascade={"remove", "persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="media_id", referencedColumnName="id")
      * })

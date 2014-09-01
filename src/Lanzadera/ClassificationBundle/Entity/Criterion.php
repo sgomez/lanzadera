@@ -31,24 +31,27 @@ class Criterion
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=45, nullable=true)
+     * @ORM\Column(name="name", type="string", length=128, nullable=false)
      * @Assert\NotBlank(message="criterion.name.not_blank")
+     * @Assert\Length(max="128")
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=45, nullable=true)
+     * @ORM\Column(name="description", type="string", length=45, nullable=false)
      * @Assert\NotBlank()
+     * @Assert\Length(max="512")
      */
     private $description;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=45, nullable=true)
+     * @ORM\Column(name="type", type="string", length=45, nullable=false)
      * @Assert\NotBlank()
+     * @Assert\Choice(choices={"organization", "product"})
      */
     private $type;
 

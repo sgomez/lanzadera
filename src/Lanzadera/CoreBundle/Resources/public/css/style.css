@@ -22,3 +22,19 @@ a.sonata-ba-action {
         width: 240px;
     }
 }
+
+.label-pending {
+    background-color: #5bc0de;
+}
+
+.label-approved {
+    background-color: #5cb85c;
+}
+
+.label-check {
+    background-color: #f0ad4e;
+}
+
+.label-denied {
+    background-color: #d9534f;
+}

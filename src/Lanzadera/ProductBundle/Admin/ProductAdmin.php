@@ -68,9 +68,6 @@ class ProductAdmin extends Admin
             ->add('category.name', null, array(
                     'label' => 'product.category.label'
             ))
-            ->add('tags_as_list', null, array(
-                    'label' => 'product.tag.label'
-            ))
             ->add('status', 'string', array(
                     'label' => 'product.status.label',
                     'template' => 'LanzaderaProductBundle:CRUD:list_status.html.twig'

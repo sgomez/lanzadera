@@ -11,6 +11,7 @@ namespace Lanzadera\FixtureBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Lanzadera\FixtureBundle\DataFixtures\DataFixture;
+use Lanzadera\FixtureBundle\Faker\Provider\Lanzadera;
 use Lanzadera\TaxonomyBundle\Entity\Taxon;
 use Lanzadera\TaxonomyBundle\Entity\Taxonomy;
 
@@ -26,7 +27,8 @@ class LoadTaxonomyData extends DataFixture
             $categories[] = $this->faker->unique()->category;
         }
         $manager->persist($this->createTaxonomy("Category", $categories));
-        $manager->persist($this->createTaxonomy("Tag", array("pantalón", "vino", "gluten")));
+
+        $manager->persist($this->createTaxonomy("Tag", $this->faker->allTags));
 
         $manager->flush();
     }
@@ -56,7 +58,7 @@ class LoadTaxonomyData extends DataFixture
 
             $taxonomy->addTaxon($taxon);
 
-            $this->setReference("Lanzadera." . $name .".". $idx, $taxon);
+            $this->setReference(sprintf("Lanzadera.%s.%s", $name, $element), $taxon);
         }
 
         $this->setReference("Lanzadera.Taxonomy." . $name, $taxonomy);

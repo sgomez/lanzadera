@@ -70,6 +70,45 @@ class Lanzadera extends \Faker\Provider\Base
         "Cuadros",
     );
 
+    protected static $tags = array(
+        "abril",
+        "actividad",
+        "actual",
+        "alimentaria",
+        "alternativas",
+        "aves",
+        "bandolera",
+        "calle",
+        "cambio",
+        "categorías",
+        "climático",
+        "comentario",
+        "comparte",
+        "concierto",
+        "economía",
+        "emergencia",
+        "entradas",
+        "guadalquivir",
+        "incongruencia",
+        "izquierda",
+        "junio",
+        "libro",
+        "mercao",
+        "mesa",
+        "noticias",
+        "palestina",
+        "portugal",
+        "proyectos",
+        "pueblo",
+        "punto",
+        "córdoba",
+        "realidad",
+        "situación",
+        "soberanía",
+        "social",
+        "tejedora",
+    );
+
     public static function collective()
     {
         return static::randomElement(static::$collective);
@@ -83,5 +122,15 @@ class Lanzadera extends \Faker\Provider\Base
     public static function category()
     {
         return static::randomElement(static::$category);
+    }
+
+    public static function tag()
+    {
+        return static::randomElement(static::$tags);
+    }
+
+    public static function allTags()
+    {
+        return static::$tags;
     }
 } 

@@ -74,6 +74,7 @@ class LoadProductsData extends DataFixture
         $image = $repo->createNew();
         $image->setBinaryContent($temp);
         $image->setProviderName('sonata.media.provider.image');
+        $image->setContext('default');
         $image->setName($name);
 
         return $image;

@@ -11,6 +11,7 @@
     <entity
         name="Lanzadera\MediaBundle\Entity\Media"
         table="media__media"
+        repository-class="Lanzadera\CoreBundle\Doctrine\ORM\MediaRepository"
         >
 
         <id name="id" type="integer" column="id">

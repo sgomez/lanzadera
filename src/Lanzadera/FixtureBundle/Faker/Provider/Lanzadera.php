@@ -54,7 +54,7 @@ class Lanzadera extends \Faker\Provider\Base
         "Apio"  
     );
 
-    protected static $category = array(
+    protected static $categories = array(
         "Productos Químicos",
         "Pinturas",
         "Aceites",
@@ -121,7 +121,12 @@ class Lanzadera extends \Faker\Provider\Base
 
     public static function category()
     {
-        return static::randomElement(static::$category);
+        return static::randomElement(static::$categories);
+    }
+
+    public static function allCategories()
+    {
+        return static::$categories;
     }
 
     public static function tag()

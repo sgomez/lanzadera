@@ -11,6 +11,7 @@ namespace Lanzadera\FixtureBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Lanzadera\FixtureBundle\DataFixtures\DataFixture;
+use Lanzadera\MediaBundle\Entity\Media;
 use Lanzadera\ProductBundle\Entity\Product;
 
 class LoadProductsData extends DataFixture
@@ -56,9 +57,25 @@ class LoadProductsData extends DataFixture
         foreach(range(0, $this->faker->numberBetween(3,8)) as $i) {
             $product->addTag($this->getReference("Lanzadera.Tag." . $this->faker->unique($reset = $i === 0)->tag));
         }
+        $product->setMedia($this->createImage($name));
 
         $this->setReference("Lanzadera.Product" . $name, $product);
 
         return $product;
+    }
+
+    private function createImage($name)
+    {
+        $repo = $this->getMediaRepository();
+        $temp = tempnam('/tmp', 'lanzadera');
+        file_put_contents($temp, file_get_contents('http://lorempixel.com/400/400/food/'));
+
+        /** @var Media $image */
+        $image = $repo->createNew();
+        $image->setBinaryContent($temp);
+        $image->setProviderName('sonata.media.provider.image');
+        $image->setName($name);
+
+        return $image;
     }
 }

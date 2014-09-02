@@ -22,14 +22,8 @@ class LoadTaxonomyData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        $categories = array();
-        while(count($categories) < 10) {
-            $categories[] = $this->faker->unique()->category;
-        }
-        $manager->persist($this->createTaxonomy("Category", $categories));
-
+        $manager->persist($this->createTaxonomy("Category", $this->faker->allCategories));
         $manager->persist($this->createTaxonomy("Tag", $this->faker->allTags));
-
         $manager->flush();
     }
 

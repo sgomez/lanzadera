@@ -24,6 +24,11 @@ services:
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments: ['Lanzadera\ClassificationBundle\Entity\Indicator']
+    lanzadera.repository.media:
+        class: Lanzadera\CoreBundle\Doctrine\ORM\MediaRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: ['Lanzadera\MediaBundle\Entity\Media']
     lanzadera.repository.product:
         class: Lanzadera\CoreBundle\Doctrine\ORM\ProductRepository
         factory_service: doctrine.orm.entity_manager

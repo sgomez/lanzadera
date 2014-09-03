@@ -12,6 +12,7 @@ namespace Lanzadera\ClassificationBundle\Form\DataTransformer;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ObjectManager;
 use Lanzadera\ClassificationBundle\Entity\Certificate;
+use Lanzadera\CoreBundle\Doctrine\ORM\ClassificationRepository;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,42 +25,13 @@ class ArrayToCertificateTransform implements DataTransformerInterface
     private $om;
 
     /**
-     * @var Request $request
-     */
-    private $request;
-
-    /**
-     * @var mixed
-     */
-    private $subject;
-
-    /**
      * Constructor
      *
-     * @param ContainerInterface $container
+     * @param ObjectManager $om
      */
-    function __construct(ContainerInterface $container)
+    function __construct(ObjectManager $om)
     {
-        $this->om = $container->get('doctrine.orm.entity_manager');
-        $this->request = $container->get('request');
-        $this->subject = null;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getProduct()
-    {
-        if ($this->subject === null && $this->request) {
-            $id = $this->request->get('id');
-            if (!preg_match('#^[0-9A-Fa-f]+$#', $id)) {
-                $this->subject = false;
-            } else {
-                $this->subject = $this->om->getRepository('LanzaderaProductBundle:Product')->find($id);
-            }
-        }
-
-        return $this->subject;
+        $this->om = $om;
     }
 
     /**
@@ -81,20 +53,13 @@ class ArrayToCertificateTransform implements DataTransformerInterface
      */
     public function reverseTransform($selected)
     {
-        // TODO - Reset lista
         $certificates = new ArrayCollection();
 
         if ($selected) {
             foreach($selected as $id) {
-                $certificate = $this->om->getRepository('LanzaderaClassificationBundle:Certificate')
-                    ->findOneBy(array('product' => $this->request->get('id'), 'classification' => $id));
-
-                if (!$certificate) {
-                    $certificate = new Certificate();
-                }
+                $certificate = new Certificate();
                 $certificate->setAuto(false);
                 $certificate->setClassification($this->om->getRepository('LanzaderaClassificationBundle:Classification')->find($id));
-                $certificate->setProduct($this->getProduct());
                 $certificates[] = $certificate;
             }
         }

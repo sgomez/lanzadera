@@ -10,7 +10,6 @@ parameters:
     lanzadera.entity.listener.classification.class: Lanzadera\ClassificationBundle\EventListener\ClassificationListener
     lanzadera.entity.listener.indicator.class: Lanzadera\ClassificationBundle\EventListener\IndicatorListener
     lanzadera.form.extension.choice_type_extention.class: Lanzadera\ClassificationBundle\Form\Extension\ChoiceTypeExtension
-    lanzadera.form.transformer.array_to_certificate.class: Lanzadera\ClassificationBundle\Form\DataTransformer\ArrayToCertificateTransform
     lanzadera.form.transformer.array_to_indicators.class: Lanzadera\ClassificationBundle\Form\DataTransformer\ArrayToIndicatorsTransform
     lanzadera.form.type.certificate.class: Lanzadera\ClassificationBundle\Form\Type\CertificateType
     lanzadera.form.type.criterion.class: Lanzadera\ClassificationBundle\Form\Type\CriterionType
@@ -44,7 +43,7 @@ services:
 
     lanzadera.form.type.certificate:
         class: %lanzadera.form.type.certificate.class%
-        arguments: [@doctrine.orm.entity_manager, @lanzadera.form.transformer.array_to_certificate]
+        arguments: [@doctrine.orm.entity_manager]
         tags:
             - { name: form.type, alias: certificate }
 
@@ -69,10 +68,6 @@ services:
         class: %lanzadera.form.extension.choice_type_extention.class%
         tags:
             - { name: form.type_extension, alias: choice }
-
-    lanzadera.form.transformer.array_to_certificate:
-        class: %lanzadera.form.transformer.array_to_certificate.class%
-        arguments: [@service_container]
 
     lanzadera.form.transformer.array_to_indicators:
         class: %lanzadera.form.transformer.array_to_indicators.class%

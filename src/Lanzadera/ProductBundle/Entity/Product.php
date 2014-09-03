@@ -78,7 +78,7 @@ class Product
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="Lanzadera\ClassificationBundle\Entity\Certificate", mappedBy="product", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="Lanzadera\ClassificationBundle\Entity\Certificate", mappedBy="product", cascade={"persist"})
      */
     private $certificates;
 
@@ -171,7 +171,7 @@ class Product
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -194,7 +194,7 @@ class Product
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -217,7 +217,7 @@ class Product
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -240,7 +240,7 @@ class Product
     /**
      * Get rawMaterialSource
      *
-     * @return string 
+     * @return string
      */
     public function getRawMaterialSource()
     {
@@ -263,7 +263,7 @@ class Product
     /**
      * Get processingSite
      *
-     * @return string 
+     * @return string
      */
     public function getProcessingSite()
     {
@@ -289,7 +289,7 @@ class Product
     /**
      * Get state
      *
-     * @return string 
+     * @return string
      */
     public function getStatus()
     {
@@ -323,7 +323,7 @@ class Product
     /**
      * Get organization
      *
-     * @return \Lanzadera\OrganizationBundle\Entity\Organization 
+     * @return \Lanzadera\OrganizationBundle\Entity\Organization
      */
     public function getOrganization()
     {
@@ -356,7 +356,7 @@ class Product
     /**
      * Get indicator
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getIndicators()
     {
@@ -393,7 +393,7 @@ class Product
     /**
      * Get category
      *
-     * @return \Lanzadera\TaxonomyBundle\Entity\Taxon 
+     * @return \Lanzadera\TaxonomyBundle\Entity\Taxon
      */
     public function getCategory()
     {
@@ -426,7 +426,7 @@ class Product
     /**
      * Get tags
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTags()
     {
@@ -454,7 +454,7 @@ class Product
     /**
      * Get media
      *
-     * @return \Lanzadera\MediaBundle\Entity\Media 
+     * @return \Lanzadera\MediaBundle\Entity\Media
      */
     public function getMedia()
     {
@@ -464,12 +464,14 @@ class Product
     /**
      * Add certificates
      *
-     * @param \Lanzadera\ClassificationBundle\Entity\Certificate $certificates
+     * @param \Lanzadera\ClassificationBundle\Entity\Certificate $certificate
      * @return Product
      */
-    public function addCertificate(\Lanzadera\ClassificationBundle\Entity\Certificate $certificates)
+    public function addCertificate(\Lanzadera\ClassificationBundle\Entity\Certificate $certificate)
     {
-        $this->certificates[] = $certificates;
+        $certificate->setProduct($this);
+
+        $this->certificates[] = $certificate;
 
         return $this;
     }
@@ -477,11 +479,11 @@ class Product
     /**
      * Remove certificates
      *
-     * @param \Lanzadera\ClassificationBundle\Entity\Certificate $certificates
+     * @param \Lanzadera\ClassificationBundle\Entity\Certificate $certificate
      */
-    public function removeCertificate(\Lanzadera\ClassificationBundle\Entity\Certificate $certificates)
+    public function removeCertificate(\Lanzadera\ClassificationBundle\Entity\Certificate $certificate)
     {
-        $this->certificates->removeElement($certificates);
+        $this->certificates->removeElement($certificate);
     }
 
     /**
@@ -501,7 +503,7 @@ class Product
     /**
      * Get certificates
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCertificates()
     {

@@ -60,7 +60,7 @@ class Classification
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="Lanzadera\ClassificationBundle\Entity\Certificate", mappedBy="classification", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="Lanzadera\ClassificationBundle\Entity\Certificate", mappedBy="classification", cascade={"persist"})
      */
     private $certificates;
 
@@ -236,6 +236,7 @@ class Classification
      */
     public function addCertificate(\Lanzadera\ClassificationBundle\Entity\Certificate $certificates)
     {
+        $certificates->setClassification($this);
         $this->certificates[] = $certificates;
 
         return $this;

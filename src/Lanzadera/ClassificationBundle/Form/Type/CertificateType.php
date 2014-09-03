@@ -10,8 +10,8 @@ namespace Lanzadera\ClassificationBundle\Form\Type;
 
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\Common\Persistence\ObjectRepository;
 use Lanzadera\ClassificationBundle\Form\DataTransformer\ArrayToCertificateTransform;
+use Lanzadera\ClassificationBundle\Form\EventListener\ClearProductCertificatesSubscriber;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -23,12 +23,9 @@ class CertificateType extends AbstractType
      */
     protected $om;
 
-    protected $arrayToCertificateTransform;
-
-    public function __construct(ObjectManager $om, ArrayToCertificateTransform $arrayToCertificateTransform)
+    public function __construct(ObjectManager $om)
     {
         $this->om = $om;
-        $this->arrayToCertificateTransform = $arrayToCertificateTransform;
     }
 
     /**
@@ -36,8 +33,8 @@ class CertificateType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->addModelTransformer($this->arrayToCertificateTransform);
-
+        $builder->addModelTransformer(new ArrayToCertificateTransform($this->om));
+        $builder->addEventSubscriber(new ClearProductCertificatesSubscriber($this->om));
     }
 
     /**
@@ -46,11 +43,7 @@ class CertificateType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-                'label' => 'product.certificates.label',
-                'help' => 'product.certificates.help',
                 'choices' => $this->om->getRepository('LanzaderaClassificationBundle:Classification')->getChoices(),
-                'class' => 'Lanzadera\ClassificationBundle\Entity\Certificate',
-                'model_manager' => null,
         ));
 
     }
@@ -59,7 +52,6 @@ class CertificateType extends AbstractType
     {
         return "choice";
     }
-
 
     /**
      * Returns the name of this type.
@@ -71,4 +63,4 @@ class CertificateType extends AbstractType
         return "certificate";
     }
 
-} 
+}

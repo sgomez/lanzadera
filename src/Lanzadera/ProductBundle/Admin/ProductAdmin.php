@@ -169,9 +169,6 @@ class ProductAdmin extends Admin
         ;
 
         $this->getSubject();
-
-//        $formMapper->getFormBuilder()->get('certificates')->addEventListener(FormEvents::POST_SUBMIT, array($this, 'onPostSubmit'));
-//        $formMapper->getFormBuilder()->get('certificates')->addEventListener(FormEvents::PRE_SET_DATA, array($this, 'onPreSubmit'));
     }
 
     function onPreSubmit(FormEvent $event)

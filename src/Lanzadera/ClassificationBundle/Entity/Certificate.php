@@ -20,15 +20,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Certificate
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
-    /**
      * @var bool
      *
      * @ORM\Column(name="auto", type="boolean", nullable=false)
@@ -39,7 +30,8 @@ class Certificate
     /**
      * @var \Lanzadera\OrganizationBundle\Entity\Product
      *
-     * @ORM\ManyToOne(targetEntity="Lanzadera\ProductBundle\Entity\Product", inversedBy="certificates", cascade={"all"})
+     * @ORM\Id
+     * @ORM\ManyToOne(targetEntity="Lanzadera\ProductBundle\Entity\Product", inversedBy="certificates", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="product_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      * })
@@ -49,7 +41,8 @@ class Certificate
     /**
      * @var \Lanzadera\ClassificationBundle\Entity\Classification
      *
-     * @ORM\ManyToOne(targetEntity="Lanzadera\ClassificationBundle\Entity\Classification", inversedBy="certificates", cascade={"all"})
+     * @ORM\Id
+     * @ORM\ManyToOne(targetEntity="Lanzadera\ClassificationBundle\Entity\Classification", inversedBy="certificates", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="classification_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      * })
@@ -62,17 +55,6 @@ class Certificate
     function __toString()
     {
         return $this->getClassification()->getName();
-    }
-
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**

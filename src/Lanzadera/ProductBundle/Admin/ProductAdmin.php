@@ -3,11 +3,14 @@
 namespace Lanzadera\ProductBundle\Admin;
 
 use Lanzadera\CoreBundle\Admin\Admin;
+use Lanzadera\ProductBundle\Entity\Product;
 use Lanzadera\ProductBundle\Form\Extension\ChoiceList\StatusChoiceList;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
 class ProductAdmin extends Admin
 {
@@ -137,6 +140,16 @@ class ProductAdmin extends Admin
                         'admin_code' => 'lanzadera.admin.tag'
                     )
                 )
+                ->add('certificates', 'certificate', array(
+                        'label' => 'product.certificates.label',
+                        'help' => 'product.certificates.help',
+                        'multiple' => true,
+                        'required' => false,
+                        'attr' => array(
+                            'placeholder' => 'product.certificates.placeholder',
+                            'class' => 'form-control'
+                      )
+                ))
             ->end()
             ->with('product.group.image', array('class' => 'col-md-6'))
                 ->add('media', 'sonata_media_type', array(
@@ -154,6 +167,26 @@ class ProductAdmin extends Admin
                 ))
             ->end()
         ;
+
+        $this->getSubject();
+
+//        $formMapper->getFormBuilder()->get('certificates')->addEventListener(FormEvents::POST_SUBMIT, array($this, 'onPostSubmit'));
+//        $formMapper->getFormBuilder()->get('certificates')->addEventListener(FormEvents::PRE_SET_DATA, array($this, 'onPreSubmit'));
+    }
+
+    function onPreSubmit(FormEvent $event)
+    {
+        $c = $this->getRepository('Classification')->findAll();
+    }
+
+    function onPostSubmit(FormEvent $event) {
+
+        ladybug_dump_die($event);
+        /** @var Product $product */
+        $product = $event->getData();
+        $form = $event->getForm();
+
+        $product->setClassifications($form->get('certificates')->getNormData());
     }
 
     /**

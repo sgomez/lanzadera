@@ -1,3 +1,6 @@
+parameters:
+    lanzadera.repository.certificate.class: Lanzadera\CoreBundle\Doctrine\ORM\CertificateRepository
+
 services:
     lanzadera.repository.user:
         class: Lanzadera\CoreBundle\Doctrine\ORM\UserRepository
@@ -9,6 +12,11 @@ services:
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments: ['Lanzadera\OrganizationBundle\Entity\Organization']
+    lanzadera.repository.certificate:
+        class: %lanzadera.repository.certificate.class%
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: ['Lanzadera\ClassificationBundle\Entity\Certificate']
     lanzadera.repository.classification:
         class: Lanzadera\CoreBundle\Doctrine\ORM\ClassificationRepository
         factory_service: doctrine.orm.entity_manager

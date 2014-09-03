@@ -6,7 +6,7 @@
  * Time: 13:33
  */
 
-namespace Lanzadera\ProductBundle\Entity;
+namespace Lanzadera\ClassificationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -14,10 +14,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Product
  *
- * @ORM\Table(name="product_classification")
- * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\ProductClassificationRepository")
+ * @ORM\Table(name="certificate")
+ * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\CertificateRepository")
  */
-class ProductClassification
+class Certificate
 {
     /**
      * @var integer
@@ -39,9 +39,9 @@ class ProductClassification
     /**
      * @var \Lanzadera\OrganizationBundle\Entity\Product
      *
-     * @ORM\ManyToOne(targetEntity="Lanzadera\ProductBundle\Entity\Product", inversedBy="classifications2")
+     * @ORM\ManyToOne(targetEntity="Lanzadera\ProductBundle\Entity\Product", inversedBy="certificates", cascade={"all"})
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="product_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      * })
      */
     private $product;
@@ -49,18 +49,26 @@ class ProductClassification
     /**
      * @var \Lanzadera\ClassificationBundle\Entity\Classification
      *
-     * @ORM\ManyToOne(targetEntity="Lanzadera\ClassificationBundle\Entity\Classification", inversedBy="products2")
+     * @ORM\ManyToOne(targetEntity="Lanzadera\ClassificationBundle\Entity\Classification", inversedBy="certificates", cascade={"all"})
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="organization_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="classification_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      * })
      */
-    private $organization;
+    private $classification;
+
+    /**
+     * @return string
+     */
+    function __toString()
+    {
+        return $this->getClassification()->getName();
+    }
 
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -71,7 +79,7 @@ class ProductClassification
      * Set auto
      *
      * @param boolean $auto
-     * @return ProductClassification
+     * @return Certificate
      */
     public function setAuto($auto)
     {
@@ -94,7 +102,7 @@ class ProductClassification
      * Set product
      *
      * @param \Lanzadera\ProductBundle\Entity\Product $product
-     * @return ProductClassification
+     * @return Certificate
      */
     public function setProduct(\Lanzadera\ProductBundle\Entity\Product $product = null)
     {
@@ -114,25 +122,25 @@ class ProductClassification
     }
 
     /**
-     * Set organization
+     * Set classification
      *
-     * @param \Lanzadera\ClassificationBundle\Entity\Classification $organization
-     * @return ProductClassification
+     * @param \Lanzadera\ClassificationBundle\Entity\Classification $classification
+     * @return Certificate
      */
-    public function setOrganization(\Lanzadera\ClassificationBundle\Entity\Classification $organization = null)
+    public function setClassification(\Lanzadera\ClassificationBundle\Entity\Classification $classification = null)
     {
-        $this->organization = $organization;
+        $this->classification = $classification;
 
         return $this;
     }
 
     /**
-     * Get organization
+     * Get classification
      *
      * @return \Lanzadera\ClassificationBundle\Entity\Classification 
      */
-    public function getOrganization()
+    public function getClassification()
     {
-        return $this->organization;
+        return $this->classification;
     }
 }

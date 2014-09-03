@@ -9,7 +9,7 @@
 namespace Lanzadera\CoreBundle\Doctrine\ORM;
 
 
-class ProductClassificationRepository extends CustomRepository
+class CertificateRepository extends CustomRepository
 {
 
 } 

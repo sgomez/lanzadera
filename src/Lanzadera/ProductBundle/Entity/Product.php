@@ -2,7 +2,9 @@
 
 namespace Lanzadera\ProductBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Lanzadera\ClassificationBundle\Entity\Certificate;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -76,17 +78,9 @@ class Product
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Lanzadera\ClassificationBundle\Entity\Classification", inversedBy="product")
-     * @ORM\JoinTable(name="product_has_classification",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="product_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="classification_id", referencedColumnName="id")
-     *   }
-     * )
+     * @ORM\OneToMany(targetEntity="Lanzadera\ClassificationBundle\Entity\Certificate", mappedBy="product", cascade={"all"})
      */
-    private $classification;
+    private $certificates;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -145,7 +139,7 @@ class Product
      */
     public function __construct()
     {
-        $this->classification = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->certificates = new \Doctrine\Common\Collections\ArrayCollection();
         $this->indicators = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
         $this->status = self::STATUS_PENDING;
@@ -337,41 +331,6 @@ class Product
     }
 
     /**
-     * Add classification
-     *
-     * @param \Lanzadera\ClassificationBundle\Entity\Classification $classification
-     * @return Product
-     */
-    public function addClassification(\Lanzadera\ClassificationBundle\Entity\Classification $classification)
-    {
-        if (false === $this->classification->contains($classification)) {
-            $this->classification[] = $classification;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Remove classification
-     *
-     * @param \Lanzadera\ClassificationBundle\Entity\Classification $classification
-     */
-    public function removeClassification(\Lanzadera\ClassificationBundle\Entity\Classification $classification)
-    {
-        $this->classification->removeElement($classification);
-    }
-
-    /**
-     * Get classification
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getClassification()
-    {
-        return $this->classification;
-    }
-
-    /**
      * Add indicator
      *
      * @param \Lanzadera\ClassificationBundle\Entity\Indicator $indicator
@@ -500,5 +459,66 @@ class Product
     public function getMedia()
     {
         return $this->media;
+    }
+
+    /**
+     * Add certificates
+     *
+     * @param \Lanzadera\ClassificationBundle\Entity\Certificate $certificates
+     * @return Product
+     */
+    public function addCertificate(\Lanzadera\ClassificationBundle\Entity\Certificate $certificates)
+    {
+        $this->certificates[] = $certificates;
+
+        return $this;
+    }
+
+    /**
+     * Remove certificates
+     *
+     * @param \Lanzadera\ClassificationBundle\Entity\Certificate $certificates
+     */
+    public function removeCertificate(\Lanzadera\ClassificationBundle\Entity\Certificate $certificates)
+    {
+        $this->certificates->removeElement($certificates);
+    }
+
+    /**
+     * Set certificates
+     *
+     * @param $certificates
+     */
+    public function setCertificates($certificates)
+    {
+        $this->certificates = new ArrayCollection();
+
+        foreach($certificates as $certificate) {
+            $this->addCertificate($certificate);
+        }
+    }
+
+    /**
+     * Get certificates
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCertificates()
+    {
+        return $this->certificates;
+    }
+
+    public function setClassifications($classifications)
+    {
+        $this->certificates = new ArrayCollection();
+        foreach($classifications as $classification) {
+            $certificate = new Certificate();
+
+            $certificate->setAuto(false);
+            $certificate->setProduct($this);
+            $certificate->setClassification($classification);
+
+            $this->addCertificate($certificate);
+        }
     }
 }

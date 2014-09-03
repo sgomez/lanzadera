@@ -60,9 +60,9 @@ class Classification
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Lanzadera\ProductBundle\Entity\Product", mappedBy="classification")
+     * @ORM\OneToMany(targetEntity="Lanzadera\ClassificationBundle\Entity\Certificate", mappedBy="classification", cascade={"all"})
      */
-    private $product;
+    private $certificates;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -76,7 +76,7 @@ class Classification
      */
     public function __construct()
     {
-        $this->product = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->certificates = new \Doctrine\Common\Collections\ArrayCollection();
         $this->criteria = new \Doctrine\Common\Collections\ArrayCollection();
         $this->threshold = 0;
         $this->maximum = 0;
@@ -173,39 +173,6 @@ class Classification
     }
 
     /**
-     * Add product
-     *
-     * @param \Lanzadera\ProductBundle\Entity\Product $product
-     * @return Classification
-     */
-    public function addProduct(\Lanzadera\ProductBundle\Entity\Product $product)
-    {
-        $this->product[] = $product;
-
-        return $this;
-    }
-
-    /**
-     * Remove product
-     *
-     * @param \Lanzadera\ProductBundle\Entity\Product $product
-     */
-    public function removeProduct(\Lanzadera\ProductBundle\Entity\Product $product)
-    {
-        $this->product->removeElement($product);
-    }
-
-    /**
-     * Get product
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getProduct()
-    {
-        return $this->product;
-    }
-
-    /**
      * Add criteria
      *
      * @param \Lanzadera\ClassificationBundle\Entity\Criterion $criteria
@@ -259,5 +226,38 @@ class Classification
     public function getMaximum()
     {
         return $this->maximum;
+    }
+
+    /**
+     * Add certificates
+     *
+     * @param \Lanzadera\ClassificationBundle\Entity\Certificate $certificates
+     * @return Classification
+     */
+    public function addCertificate(\Lanzadera\ClassificationBundle\Entity\Certificate $certificates)
+    {
+        $this->certificates[] = $certificates;
+
+        return $this;
+    }
+
+    /**
+     * Remove certificates
+     *
+     * @param \Lanzadera\ClassificationBundle\Entity\Certificate $certificates
+     */
+    public function removeCertificate(\Lanzadera\ClassificationBundle\Entity\Certificate $certificates)
+    {
+        $this->certificates->removeElement($certificates);
+    }
+
+    /**
+     * Get certificates
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCertificates()
+    {
+        return $this->certificates;
     }
 }

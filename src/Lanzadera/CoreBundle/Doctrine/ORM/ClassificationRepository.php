@@ -11,6 +11,30 @@ namespace Lanzadera\CoreBundle\Doctrine\ORM;
 
 class ClassificationRepository extends CustomRepository
 {
+    public function CertificatedByProducts($product)
+    {
+        return $this
+            ->createQueryBuilder('cl')
+            ->leftJoin('cl.certificates', 'cr')
+            ->where('cr.product = ?1')
+            ->setParameter(1, $product)
+        ;
+    }
+
+    public function getChoices()
+    {
+        $classifications = $this->createQueryBuilder('cl')
+            ->select('cl.id as id, cl.name as name')
+            ->getQuery()
+            ->getArrayResult();
+
+        $result = array();
+        foreach($classifications as $classification) {
+            $result[$classification['id']] = $classification['name'];
+        }
+
+        return $result;
+    }
 
     /**
      * Calculate the sum of the highest indicator values for each criterion.

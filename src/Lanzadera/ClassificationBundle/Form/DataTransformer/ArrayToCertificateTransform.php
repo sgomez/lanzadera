@@ -41,7 +41,9 @@ class ArrayToCertificateTransform implements DataTransformerInterface
     {
         $classifications = array();
         if ($values) {
+            /** @var Certificate $value */
             foreach ($values as $value) {
+                if (true === $value->getAuto()) continue;
                 $classifications[] = $value->getClassification()->getId();
             }
         }

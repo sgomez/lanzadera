@@ -33,7 +33,7 @@ class ClearProductCertificatesSubscriber implements EventSubscriberInterface
      */
     public static function getSubscribedEvents()
     {
-        return array(FormEvents::PRE_SUBMIT => 'preSubmit');
+        return array(FormEvents::POST_SUBMIT => 'postSubmit');
     }
 
     /**
@@ -41,13 +41,11 @@ class ClearProductCertificatesSubscriber implements EventSubscriberInterface
      *
      * @param FormEvent $event
      */
-    public function preSubmit(FormEvent $event)
+    public function postSubmit(FormEvent $event)
     {
-        $id = $event->getForm()->getParent()->getData('id');
-        $certificates = $this->om->getRepository('LanzaderaClassificationBundle:Certificate')->findBy(array('product' => $id));
-        foreach($certificates as $certificate) {
-            $this->om->remove($certificate);
-        }
+        $this->om->persist($product = $event->getForm()->getParent()->getData());
         $this->om->flush();
+
+        $this->om->getRepository('LanzaderaClassificationBundle:Certificate')->clearManualSelection($product, $event->getData());
     }
 }

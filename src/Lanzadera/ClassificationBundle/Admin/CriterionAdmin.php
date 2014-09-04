@@ -120,7 +120,7 @@ class CriterionAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->with('criterion.group.description')
+            ->with('criterion.group.description', array('class' => 'col-md-6'))
                 ->add('name', null, array(
                         'label' => 'criterion.name.label'
                 ))
@@ -135,7 +135,7 @@ class CriterionAdmin extends Admin
                         'template' => 'LanzaderaClassificationBundle:CRUD:show_criterion_type.html.twig'
                 ))
             ->end()
-            ->with('criterion.group.indicators')
+            ->with('criterion.group.indicators', array('class' => 'col-md-6'))
                 ->add('indicators', null, array(
                         'label' => 'criterion.indicators.label',
                         'template' => 'LanzaderaClassificationBundle:CRUD:show_criterion_indicators.html.twig'

@@ -3,14 +3,19 @@
 namespace Lanzadera\ClassificationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Lanzadera\ProductBundle\Entity\Product;
-use Lanzadera\OrganizationBundle\Entity\Organization;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Indicator
  *
  * @ORM\Table(name="indicator")
  * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\IndicatorRepository")
+ * @ORM\EntityListeners({"Lanzadera\ClassificationBundle\EventListener\IndicatorListener"})
+ * @UniqueEntity(
+ *      fields={"value", "criterion"},
+ *      errorPath="value"
+ * )
  */
 class Indicator
 {
@@ -33,7 +38,7 @@ class Indicator
     /**
      * @var string
      *
-     * @ORM\Column(name="value", type="string", length=45, nullable=true)
+     * @ORM\Column(name="value", type="integer", nullable=true)
      */
     private $value;
 

@@ -1,0 +1,22 @@
+{% block user_block %}
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+    <!-- User image -->
+    <li class="user-header bg-light-blue">
+        <img src="{{ asset('bundles/sonatamedia/grey.png') }}" class="img-circle" alt="User Image">
+        <p>
+            {{ app.user.firstname ~ ' ' ~ app.user.lastname }}
+            <small>Nombre de usuario: {{ app.user.username }}</small>
+        </p>
+    </li>
+    <!-- Menu Footer-->
+    <li class="user-footer">
+        <div class="pull-left">
+            <a href="{{ path('fos_user_profile_show') }}" class="btn btn-default btn-flat">{{ 'link_edit_profile'|trans({}, 'SonataUserBundle') }}</a>
+        </div>
+        <div class="pull-right">
+            <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">{{ 'user_block_logout'|trans({}, 'SonataUserBundle') }}</a>
+        </div>
+    </li>
+    {% endif %}
+{% endblock %}

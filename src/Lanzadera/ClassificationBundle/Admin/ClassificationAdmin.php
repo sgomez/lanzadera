@@ -10,6 +10,9 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class ClassificationAdmin extends Admin
 {
+    /**
+     * {@inheritdoc}
+     */
     protected $baseRouteName = 'lanzadera_classification';
 
     /**
@@ -24,9 +27,6 @@ class ClassificationAdmin extends Admin
             ->add('description', null, array(
                     'label' => 'classification.description.label'
             ))
-            ->add('threshold', null, array(
-                    'label' => 'classification.threshold.label'
-            ))
         ;
     }
 
@@ -40,10 +40,7 @@ class ClassificationAdmin extends Admin
                     'label' => 'classification.name.label'
             ))
             ->add('description', null, array(
-                    'label' => 'classification.description.label'
-            ))
-            ->add('threshold', null, array(
-                    'label' => 'classification.threshold.label',
+                    'label' => 'classification.description.label',
             ))
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -61,7 +58,7 @@ class ClassificationAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('classification.group.description')
+            ->with('classification.group.description', array('class' => 'col-md-6'))
                 ->add('name', null, array(
                         'label' => 'classification.name.label'
                 ))
@@ -69,11 +66,17 @@ class ClassificationAdmin extends Admin
                         'label' => 'classification.description.label'
                 ))
             ->end()
-            ->with('classification.group.parameters')
+            ->with('classification.group.parameters', array('class' => 'col-md-6'))
                 ->add('threshold', 'percent', array(
                         'label' => 'classification.threshold.label',
                         'type' => 'integer',
                         'help' => 'classification.threshold.help'
+                ))
+                ->add('maximum', null, array(
+                        'label' => 'classification.maximum.label',
+                        'help' => 'classification.maximum.help',
+                        'read_only' => true,
+                        'required' => false
                 ))
             ->end()
         ;
@@ -91,8 +94,12 @@ class ClassificationAdmin extends Admin
             ->add('description', null, array(
                     'label' => 'classification.description.label'
             ))
-            ->add('threshold', null, array(
-                    'label' => 'classification.threshold.label'
+            ->add('threshold', 'percent', array(
+                    'label' => 'classification.threshold.label',
+                    'type' => 'integer',
+            ))
+            ->add('maximum', null, array(
+                    'label' => 'classification.maximum.label'
             ))
         ;
     }

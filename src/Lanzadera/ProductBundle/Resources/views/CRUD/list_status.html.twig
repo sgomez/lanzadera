@@ -4,7 +4,7 @@
         {% if value is empty %}
             &nbsp;
         {% else %}
-            {{ ('lanzadera.product.status.'~value)|trans({}) }}
+            <span class="label label-{{ value }}">{{ ('lanzadera.product.status.'~value)|trans({}) }}</span>
         {% endif %}
     {% endspaceless %}
 {% endblock %}

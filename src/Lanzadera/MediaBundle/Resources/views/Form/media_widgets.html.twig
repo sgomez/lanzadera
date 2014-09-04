@@ -1,30 +1,37 @@
 {% block sonata_media_type_widget %}
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-12">
             {% if value is not empty and value.providerReference %}
-                <div class="pull-left" style="margin-right: 5px">
-                    {% thumbnail value, 'admin' with {'class': 'img-polaroid media-object'} %}
+                <div class="panel panel-default">
+                    <div class="panel-body text-center">
+                        {% media value, 'reference' with {'class': 'img-responsive img-thumbnail'} %}
+                    </div>
+                    <div class="panel-footer">
+                        {% if sonata_admin_enabled is defined and sonata_admin_enabled %}
+                            <a href="{{ url('admin_lanzadera_media_media_edit', {id: value.id}) }}"><strong>{{ value.name }}</strong></a>
+                        {% else %}
+                            <strong>{{ value.name }}</strong>
+                        {% endif %}
+                    </div>
                 </div>
-
-                {% if sonata_admin_enabled is defined and sonata_admin_enabled %}
-                    <a href="{{ url('admin_lanzadera_media_media_edit', {id: value.id}) }}"><strong>{{ value.name }}</strong></a>
-                {% else %}
-                    <strong>{{ value.name }}</strong>
-                {% endif %}
-                <br />
-                <span type="label">{{ value.providerName|trans({}, 'SonataMediaBundle') }}</span> ~ {{ value.context }}
             {% else %}
-                <div class="pull-left" style="margin-right: 5px">
-                    <img src="{{ asset('bundles/sonatamedia/grey.png') }}" class="img-polaroid media-object" style="width: 85px; height: 85px"/>
+                <div class="panel panel-default">
+                    <div class="panel-body text-center">
+                        <img src="{{ asset('bundles/sonatamedia/grey.png') }}" class="img-responsive img-thumbnail" style="width: 300px; height: 300px"/>
+                    </div>
+                    <div class="panel-footer">
+                        <span type="label">{{ form.vars['provider']|trans({}, 'SonataMediaBundle') }} ~ {{ form.vars['context']|trans({}, 'SonataMediaBundle') }}</span>
+                    </div>
                 </div>
-                <strong>{{ 'product.media.no_linked_media'|trans() }}</strong> <br />
-                <span type="label">{{ form.vars['provider']|trans({}, 'SonataMediaBundle') }} ~ {{ form.vars['context']|trans({}, 'SonataMediaBundle') }}</span>
             {% endif %}
         </div>
 
-        <div class="col-md-3">
-            {{ 'link_media'|trans({}, 'SonataMediaBundle') }}
+        <div class="col-md-12">
             {{ block('form_widget') }}
         </div>
     </div>
+
+    <script type="application/javascript">
+        $(":file").filestyle({buttonText: "Abrir archivo", buttonBefore: true});
+    </script>
 {% endblock sonata_media_type_widget %}

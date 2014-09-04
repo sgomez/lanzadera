@@ -1,7 +1,17 @@
 product.admin.label: Productos
 product.category.label: Categoría
 product.category.placeholder: Seleccione una categoría
+product.certificates.label: Clasificaciones certificadas
+product.certificates.help: |
+    El sistema selecciona automáticamente las clasificaciones que cumplen un mínimo de criterios. Si desea
+    seleccionar manualmente alguna clasificación puede hacerlo aquí. El producto será certificado aunque
+    no llegue al valor mínimo.
+product.certificates.placeholder:
+    Seleccione manualmente las certificaciones del producto.
 product.description.label: Descripción
+product.group.description: Datos generales del producto
+product.group.image: Imagen
+product.group.indicators: Indicadores de producto
 product.indicators.label: Indicadores
 product.media.label: Imagen
 product.media.no_linked_media: No existe ninguna imagen vinculada.

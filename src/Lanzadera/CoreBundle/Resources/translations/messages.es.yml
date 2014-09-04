@@ -8,4 +8,6 @@ form:
 list:
     label__action: Acciones
 
+Action: Acciones
 Classification List: Lista de clasificadores
+Criterion List: Lista de criterios

@@ -8,3 +8,5 @@ services:
         arguments: [~, %lanzadera.entity.organization.class%, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: %lanzadera.organization.admin.group%, label: organization.admin.label}
+        calls:
+            - [ setTemplate, [edit, LanzaderaCommentBundle:CRUD:edit.html.twig]]

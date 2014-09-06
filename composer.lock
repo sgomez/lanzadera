@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "450509926302c975192ce64d8c4c0315",
+    "hash": "8dfdce8ab8d45b0415438bed05d75c8a",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -432,12 +432,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "f4672bf856259f5665e8144cddf3eb0924f23d63"
+                "reference": "ccf213068a9cccc3dd7c41807782078368d09885"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/f4672bf856259f5665e8144cddf3eb0924f23d63",
-                "reference": "f4672bf856259f5665e8144cddf3eb0924f23d63",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/ccf213068a9cccc3dd7c41807782078368d09885",
+                "reference": "ccf213068a9cccc3dd7c41807782078368d09885",
                 "shasum": ""
             },
             "require": {
@@ -503,7 +503,7 @@
                 "orm",
                 "persistence"
             ],
-            "time": "2014-08-26 07:35:11"
+            "time": "2014-09-05 22:32:12"
         },
         {
             "name": "doctrine/doctrine-cache-bundle",
@@ -830,6 +830,84 @@
             "time": "2014-05-14 20:37:30"
         },
         {
+            "name": "friendsofsymfony/comment-bundle",
+            "version": "dev-master",
+            "target-dir": "FOS/CommentBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfSymfony/FOSCommentBundle.git",
+                "reference": "2363b47b6a6fe967a89f323253be9bd3a7508653"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSCommentBundle/zipball/2363b47b6a6fe967a89f323253be9bd3a7508653",
+                "reference": "2363b47b6a6fe967a89f323253be9bd3a7508653",
+                "shasum": ""
+            },
+            "require": {
+                "friendsofsymfony/rest-bundle": "~1.0",
+                "jms/serializer-bundle": "~0.11",
+                "php": ">=5.3.2",
+                "symfony/form": "~2.1",
+                "symfony/framework-bundle": "~2.1",
+                "symfony/security-bundle": "~2.1",
+                "symfony/twig-bundle": "~2.1",
+                "symfony/validator": "~2.1",
+                "symfony/yaml": "~2.1"
+            },
+            "require-dev": {
+                "doctrine/doctrine-bundle": "~1.1",
+                "doctrine/orm": "~2.3",
+                "friendsofsymfony/user-bundle": "~1.1",
+                "ornicar/akismet-bundle": "dev-master",
+                "symfony/assetic-bundle": "~2.1",
+                "symfony/browser-kit": "~2.1",
+                "symfony/css-selector": "~2.1",
+                "symfony/expression-language": "~2.4"
+            },
+            "suggest": {
+                "friendsofsymfony/user-bundle": "Allows for user integration.",
+                "ornicar/akismet-bundle": "Integrate Akismet for spamdetection."
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "FOS\\CommentBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tim Nagel",
+                    "email": "tim@nagel.com.au"
+                },
+                {
+                    "name": "FriendsOfSymfony Community",
+                    "homepage": "https://github.com/friendsofsymfony/FOSCommentBundle/contributors"
+                },
+                {
+                    "name": "Alexander Mols",
+                    "email": "iam.asm89@gmail.com"
+                }
+            ],
+            "description": "This Bundle provides threaded comment functionality for Symfony2 applications",
+            "homepage": "http://friendsofsymfony.github.com",
+            "keywords": [
+                "comment",
+                "forum",
+                "threads"
+            ],
+            "time": "2014-07-31 22:54:27"
+        },
+        {
             "name": "friendsofsymfony/rest-bundle",
             "version": "1.4.2",
             "target-dir": "FOS/RestBundle",
@@ -909,17 +987,17 @@
         },
         {
             "name": "friendsofsymfony/user-bundle",
-            "version": "v1.3.4",
+            "version": "v1.3.5",
             "target-dir": "FOS/UserBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "2deeca89551c28ae27c19bad36861d732e69217e"
+                "reference": "d66890ad3489e18be153502c5ccc3f2bf5cce442"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/2deeca89551c28ae27c19bad36861d732e69217e",
-                "reference": "2deeca89551c28ae27c19bad36861d732e69217e",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/d66890ad3489e18be153502c5ccc3f2bf5cce442",
+                "reference": "d66890ad3489e18be153502c5ccc3f2bf5cce442",
                 "shasum": ""
             },
             "require": {
@@ -959,13 +1037,12 @@
                     "email": "stof@notk.org"
                 },
                 {
-                    "name": "Thibault Duplessis",
-                    "email": "thibault.duplessis@gmail.com",
-                    "homepage": "http://ornicar.github.com"
-                },
-                {
                     "name": "FriendsOfSymfony Community",
                     "homepage": "https://github.com/friendsofsymfony/FOSUserBundle/contributors"
+                },
+                {
+                    "name": "Thibault Duplessis",
+                    "email": "thibault.duplessis@gmail.com"
                 }
             ],
             "description": "Symfony FOSUserBundle",
@@ -973,7 +1050,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2014-06-13 14:51:01"
+            "time": "2014-09-04 12:28:43"
         },
         {
             "name": "gedmo/doctrine-extensions",
@@ -2557,12 +2634,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "7654119673065e6e29f7e667a96a647ea0f84621"
+                "reference": "e72157423a5d14b4494514db0d993917aa856513"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/7654119673065e6e29f7e667a96a647ea0f84621",
-                "reference": "7654119673065e6e29f7e667a96a647ea0f84621",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/e72157423a5d14b4494514db0d993917aa856513",
+                "reference": "e72157423a5d14b4494514db0d993917aa856513",
                 "shasum": ""
             },
             "require": {
@@ -2628,7 +2705,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2014-09-03 05:44:08"
+            "time": "2014-09-06 06:39:47"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -3167,12 +3244,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataMediaBundle.git",
-                "reference": "f478e1358448c96a3a80eca198d2fa31fdff7772"
+                "reference": "6740a8d55aa94a0e8d97beb9ba60f95c24dd699f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataMediaBundle/zipball/f478e1358448c96a3a80eca198d2fa31fdff7772",
-                "reference": "f478e1358448c96a3a80eca198d2fa31fdff7772",
+                "url": "https://api.github.com/repos/sonata-project/SonataMediaBundle/zipball/6740a8d55aa94a0e8d97beb9ba60f95c24dd699f",
+                "reference": "6740a8d55aa94a0e8d97beb9ba60f95c24dd699f",
                 "shasum": ""
             },
             "require": {
@@ -3245,7 +3322,7 @@
                 "vimeo",
                 "youtube"
             ],
-            "time": "2014-09-01 08:58:53"
+            "time": "2014-09-05 11:24:02"
         },
         {
             "name": "sonata-project/notification-bundle",
@@ -4658,12 +4735,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Symfony2Extension.git",
-                "reference": "ad22eb652a5f866ea03ea2b53b38ce99ed61570c"
+                "reference": "0817709e44c5b9c678cebf280a406348a0c0e2b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Symfony2Extension/zipball/ad22eb652a5f866ea03ea2b53b38ce99ed61570c",
-                "reference": "ad22eb652a5f866ea03ea2b53b38ce99ed61570c",
+                "url": "https://api.github.com/repos/Behat/Symfony2Extension/zipball/0817709e44c5b9c678cebf280a406348a0c0e2b2",
+                "reference": "0817709e44c5b9c678cebf280a406348a0c0e2b2",
                 "shasum": ""
             },
             "require": {
@@ -4700,8 +4777,7 @@
                 },
                 {
                     "name": "Konstantin Kudryashov",
-                    "email": "ever.zet@gmail.com",
-                    "homepage": "http://everzet.com"
+                    "email": "ever.zet@gmail.com"
                 }
             ],
             "description": "Symfony2 framework extension for Behat",
@@ -4711,7 +4787,7 @@
                 "framework",
                 "symfony"
             ],
-            "time": "2014-05-09 01:46:47"
+            "time": "2014-09-05 15:28:58"
         },
         {
             "name": "behat/transliterator",
@@ -5678,6 +5754,45 @@
                 "var_dump"
             ],
             "time": "2014-08-21 08:27:46"
+        },
+        {
+            "name": "stecman/symfony-console-completion",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stecman/symfony-console-completion.git",
+                "reference": "5606fc7f46b48d6dc8d78a0714a964cbeda32d7c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stecman/symfony-console-completion/zipball/5606fc7f46b48d6dc8d78a0714a964cbeda32d7c",
+                "reference": "5606fc7f46b48d6dc8d78a0714a964cbeda32d7c",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/console": "~2.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stecman\\Component\\Symfony\\Console\\BashCompletion\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stephen Holdaway",
+                    "email": "stephen@stecman.co.nz"
+                }
+            ],
+            "description": "Automatic BASH completion for Symfony Console Component based applications.",
+            "time": "2014-08-14 21:02:07"
         }
     ],
     "aliases": [],
@@ -5693,12 +5808,14 @@
         "knplabs/knp-menu-bundle": 15,
         "sonata-project/media-bundle": 20,
         "sonata-project/notification-bundle": 20,
+        "friendsofsymfony/comment-bundle": 20,
         "behat/behat": 20,
         "behat/symfony2-extension": 20,
         "behat/mink-extension": 20,
         "behat/mink-browserkit-driver": 20,
         "behat/mink-selenium2-driver": 20,
-        "behat/mink": 20
+        "behat/mink": 20,
+        "stecman/symfony-console-completion": 20
     },
     "prefer-stable": false,
     "platform": {

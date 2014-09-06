@@ -52,7 +52,8 @@
         "knplabs/knp-menu": "v2.0.0-alpha2",
         "knplabs/knp-menu-bundle": "v2.0.0-alpha2",
         "sonata-project/media-bundle": "2.3.*@dev",
-        "sonata-project/notification-bundle": "2.3.*@dev"
+        "sonata-project/notification-bundle": "2.3.*@dev",
+        "friendsofsymfony/comment-bundle": "~2.0@dev"
     },
     "require-dev": {
         "behat/behat":                          "3.0.*@dev",

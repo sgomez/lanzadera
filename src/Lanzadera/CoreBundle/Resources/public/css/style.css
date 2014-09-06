@@ -38,3 +38,7 @@ a.sonata-ba-action {
 .label-denied {
     background-color: #d9534f;
 }
+
+.fos_comment_comment_new_form {
+    margin-bottom: 10px;
+}

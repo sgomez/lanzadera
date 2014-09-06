@@ -1,0 +1,32 @@
+{#
+
+ This file is part of the FOSCommentBundle package.
+
+ (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
+
+ This source file is subject to the MIT license that is bundled
+ with this source code in the file LICENSE.
+
+#}
+
+{% set first = first|default(false) %}
+
+{% set url_parameters = {'id': id } %}
+{% if parent is not null %}
+    {% set url_parameters = url_parameters|merge({'parentId': parent.id}) %}
+{% endif %}
+
+{% block fos_comment_comment_form_holder %}
+    <div class="box-footer chat">
+        <form class="fos_comment_comment_new_form" action="{{ url('fos_comment_post_thread_comments', url_parameters) }}" data-parent="{{ parent.id|default() }}" method="POST">
+            <div class="input-group">
+                {{ form_widget(form.body, {'attr': {'class': 'form-control custom-control', 'rows': '1', 'style': 'resize: none;', 'placeholder': 'fos_comment_comment_new_headline' | trans({}, 'FOSCommentBundle') } }) }}
+                {{ form_errors(form) }}
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i></button>
+                </div>
+                {{ form_rest(form) }}
+            </div>
+        </form>
+    </div>
+{% endblock fos_comment_comment_form_holder %}

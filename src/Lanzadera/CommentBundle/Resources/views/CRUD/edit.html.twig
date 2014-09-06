@@ -1,0 +1,13 @@
+{% extends 'SonataAdminBundle:CRUD:edit.html.twig' %}
+
+{% block sonata_admin_content %}
+    {{ parent() }}
+    {% if admin.id(object) is not null %}
+    <div class="box box-success">
+        <div class="box-header">
+            <h4 class="box-title">Notas de trabajo</h3>
+        </div>
+        {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': admin.classNameLabel ~ ':' ~ admin.id(object) } %}
+    </div>
+    {% endif %}
+{% endblock %}

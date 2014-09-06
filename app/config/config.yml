@@ -35,6 +35,7 @@ assetic:
     use_controller: false
     bundles:
       - LanzaderaCoreBundle
+      - FOSCommentBundle
     #java: /usr/bin/java
     filters:
         lessphp:
@@ -83,6 +84,13 @@ fos_user:
         group_manager: sonata.user.orm.group_manager
     service:
         user_manager: sonata.user.orm.user_manager
+
+fos_comment:
+    db_driver: orm
+    class:
+        model:
+            comment: Lanzadera\CommentBundle\Entity\Comment
+            thread: Lanzadera\CommentBundle\Entity\Thread
 
 sonata_block:
     default_contexts: [cms]

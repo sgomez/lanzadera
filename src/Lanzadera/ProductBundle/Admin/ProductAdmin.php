@@ -167,23 +167,6 @@ class ProductAdmin extends Admin
                 ))
             ->end()
         ;
-
-        $this->getSubject();
-    }
-
-    function onPreSubmit(FormEvent $event)
-    {
-        $c = $this->getRepository('Classification')->findAll();
-    }
-
-    function onPostSubmit(FormEvent $event) {
-
-        ladybug_dump_die($event);
-        /** @var Product $product */
-        $product = $event->getData();
-        $form = $event->getForm();
-
-        $product->setClassifications($form->get('certificates')->getNormData());
     }
 
     /**
@@ -214,14 +197,4 @@ class ProductAdmin extends Admin
             ))
         ;
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function preUpdate($object)
-    {
-        $this->getConfigurationPool()->getContainer()->get('ladybug')->log($this->getForm()->getData());
-    }
-
-
 }

@@ -18,6 +18,7 @@ class AppKernel extends Kernel
 
 
             new FOS\RestBundle\FOSRestBundle(),
+            new FOS\CommentBundle\FOSCommentBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle($this),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
@@ -47,6 +48,7 @@ class AppKernel extends Kernel
             new Lanzadera\ClassificationBundle\LanzaderaClassificationBundle(),
             new Lanzadera\TaxonomyBundle\LanzaderaTaxonomyBundle(),
             new Lanzadera\MediaBundle\LanzaderaMediaBundle(),
+            new Lanzadera\CommentBundle\LanzaderaCommentBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

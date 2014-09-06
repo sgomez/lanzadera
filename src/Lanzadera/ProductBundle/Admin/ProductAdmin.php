@@ -100,10 +100,12 @@ class ProductAdmin extends Admin
                         'label' => 'product.description.label'
                 ))
                 ->add('status', 'status', array(
-                        'label' => 'product.status.label'
+                        'label' => 'product.status.label',
+                        'help' => 'product.status.help',
                 ))
                 ->add('organization', null, array(
                         'label' => 'product.organization.label',
+                        'help' => 'product.organization.help',
                         'required' => true,
                         'attr' => array(
                             'placeholder' => 'product.organization.placeholder',
@@ -112,6 +114,7 @@ class ProductAdmin extends Admin
                 ))
                 ->add('category', 'sonata_type_model', array(
                         'label' => 'product.category.label',
+                        'help' => 'product.category.help',
                         'query' => $this->getRepository('taxon')->createTaxonQuery('Category'),
                         'btn_add' => false,
                         'required' => true,
@@ -126,10 +129,11 @@ class ProductAdmin extends Admin
                 )
                 ->add('tags', 'sonata_type_model', array(
                         'label' => 'product.tag.label',
+                        'help' => 'product.tag.help',
                         'query' => $this->getRepository('taxon')->createTaxonQuery('Tag'),
                         'expanded' => false,
                         'multiple' => true,
-                        'btn_add' => 'product.tags.add',
+                        'btn_add' => 'product.tag.add',
                         'required' => false,
                         'attr' => array(
                             'placeholder' => 'product.tag.placeholder',
@@ -140,10 +144,15 @@ class ProductAdmin extends Admin
                         'admin_code' => 'lanzadera.admin.tag'
                     )
                 )
+                ->add('autoCertificates', 'text', array(
+                        'label' => 'product.certificates.auto.label',
+                        'help' => 'product.certificates.auto.help',
+                        'required' => false,
+                        'disabled' => true,
+                ))
                 ->add('certificates', 'certificate', array(
                         'label' => 'product.certificates.label',
                         'help' => 'product.certificates.help',
-                        'multiple' => true,
                         'required' => false,
                         'attr' => array(
                             'placeholder' => 'product.certificates.placeholder',
@@ -196,5 +205,22 @@ class ProductAdmin extends Admin
                     'template' => 'LanzaderaProductBundle:CRUD:show_status.html.twig'
             ))
         ;
+    }
+
+    public function postPersist($object)
+    {
+        $this->getConfigurationPool()->getContainer()->get('sonata.notification.backend')->createAndPublish('backend', array(
+                'classification' => 'all',
+            )
+        );
+    }
+
+
+    public function postUpdate($object)
+    {
+        $this->getConfigurationPool()->getContainer()->get('sonata.notification.backend')->createAndPublish('backend', array(
+                'classification' => 'all',
+            )
+        );
     }
 }

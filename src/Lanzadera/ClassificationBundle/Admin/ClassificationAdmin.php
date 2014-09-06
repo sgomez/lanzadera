@@ -80,6 +80,8 @@ class ClassificationAdmin extends Admin
                 ))
             ->end()
         ;
+
+
     }
 
     /**
@@ -102,5 +104,22 @@ class ClassificationAdmin extends Admin
                     'label' => 'classification.maximum.label'
             ))
         ;
+    }
+
+    public function postPersist($object)
+    {
+        $this->getConfigurationPool()->getContainer()->get('sonata.notification.backend')->createAndPublish('backend', array(
+                'classification' => $object->getId(),
+            )
+        );
+    }
+
+
+    public function postUpdate($object)
+    {
+        $this->getConfigurationPool()->getContainer()->get('sonata.notification.backend')->createAndPublish('backend', array(
+                'classification' => $object->getId(),
+            )
+        );
     }
 }

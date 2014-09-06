@@ -9,18 +9,10 @@
 namespace Lanzadera\CoreBundle\Doctrine\ORM;
 
 
+use Doctrine\ORM\Query\ResultSetMapping;
+
 class ClassificationRepository extends CustomRepository
 {
-    public function CertificatedByProducts($product)
-    {
-        return $this
-            ->createQueryBuilder('cl')
-            ->leftJoin('cl.certificates', 'cr')
-            ->where('cr.product = ?1')
-            ->setParameter(1, $product)
-        ;
-    }
-
     public function getChoices()
     {
         $classifications = $this->createQueryBuilder('cl')
@@ -36,46 +28,55 @@ class ClassificationRepository extends CustomRepository
         return $result;
     }
 
+    public function getAllKeys()
+    {
+        $classifications = $this->createQueryBuilder('cl')
+            ->select('cl.id as id')
+            ->getQuery()
+            ->getArrayResult();
+
+        return array_column($classifications, "id");
+    }
+
     /**
      * Calculate the sum of the highest indicator values for each criterion.
      *
-     * @param $id
+     * @param $classification_id
      */
-    public function setMaximalValue($id)
+    public function setMaximalValue($classification_id)
     {
-        $em = $this->getEntityManager();
-        $query = $em->createQueryBuilder();
-        $subquery = $em->createQueryBuilder();
+        $sql = "
+                select sum(max_value) as total from (
+                        select max(i.value) as max_value from classification as cl
+                        left join criterion as c on c.classification_id = cl.id
+                        left join indicator as i on i.criterion_id = c.id
+                        where cl.id = :id
+                        group by c.id
+                ) as parcial
+        ";
+        $rsm = new ResultSetMapping();
+        $rsm->addScalarResult('total', 'total');
 
-        $subquery->select($query->expr()->max('i2.value'))
-            ->from('LanzaderaClassificationBundle:Indicator', 'i2')
-            ->where($query->expr()->eq('i2.criterion', 'i.criterion'))
-        ;
+        $result = $this->_em->createNativeQuery($sql, $rsm)
+            ->setParameter('id', $classification_id)
+            ->getSingleScalarResult();
 
-        $query
-            ->from('LanzaderaClassificationBundle:Classification', 'cl')
-            ->add('select', 'SUM(i.value)')
-            ->innerJoin('cl.criteria', 'c')
-            ->innerJoin('c.indicators', 'i')
-            ->where($query->expr()->eq('cl.id', $id))
-            ->andWhere($query->expr()->in('i.value', $subquery->getDQL()))
-        ;
-
-        $result = $query
-            ->getQuery()
-            ->getSingleScalarResult()
-        ;
-
-        $this->update($id, $result);
+        $this->updateMaximum($classification_id, intval($result));
     }
 
-    private function update($id, $value)
+    /**
+     * Update the maximum value for one Classification.
+     *
+     * @param $classification_id
+     * @param $value
+     */
+    private function updateMaximum($classification_id, $value)
     {
         if (null === $value) return;
         $qb = $this->createQueryBuilder('cl');
         $qb->update()
             ->set('cl.maximum', $value)
-            ->where($qb->expr()->eq('cl.id', $id))
+            ->where($qb->expr()->eq('cl.id', $classification_id))
             ->getQuery()
             ->execute()
         ;

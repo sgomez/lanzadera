@@ -100,4 +100,20 @@ class OrganizationAdmin extends Admin
         ;
     }
 
+    public function postPersist($object)
+    {
+        $this->getConfigurationPool()->getContainer()->get('sonata.notification.backend')->createAndPublish('backend', array(
+                'classification' => 'all',
+            )
+        );
+    }
+
+
+    public function postUpdate($object)
+    {
+        $this->getConfigurationPool()->getContainer()->get('sonata.notification.backend')->createAndPublish('backend', array(
+                'classification' => 'all',
+            )
+        );
+    }
 }

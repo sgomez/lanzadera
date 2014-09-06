@@ -10,34 +10,55 @@
 
 namespace Lanzadera\CoreBundle\Doctrine\ORM;
 
+use Lanzadera\ClassificationBundle\Entity\Certificate;
+use Lanzadera\ProductBundle\Entity\Product;
+
 class OrganizationRepository extends CustomRepository
 {
     public function evaluateProductsByClassification($classification_id)
     {
         $em = $this->getEntityManager();
         $classification = $em->getRepository('LanzaderaClassificationBundle:Classification')->find($classification_id);
-        $threshold = intval($classification->getMaximum() * $classification->getThreshold() / 100);
-
         if (!$classification) {
             throw new \InvalidArgumentException();
         }
 
-        $organizations = $this->findAllWithValuesByClassification($classification_id);
+        $em->getRepository('LanzaderaClassificationBundle:Certificate')->clearAutoSelection($classification_id);
+        $threshold = intval($classification->getMaximum() * $classification->getThreshold() / 100);
+        $organizations = $this->findAll();
 
         foreach ($organizations as $organization) {
-            $limit = $threshold - ($organization['value'] ? $organization['value'] : 0);
-            $products = $em->getRepository('LanzaderaProductBundle:Product')
-                ->getProductsWithClassificationThreshold($organization['id'], $classification_id, $limit);
+            $organization_id = $organization->getId();
+            $value =  $this->getOrganizationValueByClassification($organization_id, $classification_id);
+            $limit = $threshold - intval($value);
 
+            $products = $em->getRepository('LanzaderaProductBundle:Product')
+                ->getProductsWithClassificationThreshold($organization_id, $classification_id, $limit);
+
+            /** @var Product $product */
             foreach ($products as $product) {
-                $product['product']->addClassification($classification);
-                $em->persist($product['product']);
+                $certificate = $em->getRepository('LanzaderaClassificationBundle:Certificate')
+                    ->findOneBy(array('product' => $product, 'classification' => $classification));
+
+                if ($certificate) continue;
+
+                $certificate = new Certificate();
+                $certificate->setAuto(true);
+                $certificate->setClassification($classification);
+                $product->addCertificate($certificate);
+                $em->persist($product);
             }
 
         }
         $em->flush();
     }
 
+    /**
+     * Devuelve todas las organizaciones y la suma de los indicadores para una clasificación.
+     *
+     * @param $classification_id
+     * @return array
+     */
     public function findAllWithValuesByClassification($classification_id)
     {
         $query = $this->createQueryBuilder('o');
@@ -58,50 +79,21 @@ class OrganizationRepository extends CustomRepository
             ;
     }
 
-//SELECT o0_.id AS id0, SUM(i1_.value)
-//FROM organization o0_
-//LEFT JOIN organization_has_indicator o2_ ON o0_.id = o2_.organization_id
-//LEFT JOIN indicator i1_ ON i1_.id = o2_.indicator_id
-//LEFT JOIN criterion c3_ ON i1_.criterion_id = c3_.id
-//LEFT JOIN classification c4_ ON c3_.classification_id = c4_.id
-//WHERE c4_.id = 115 OR c4_.id IS NULL
-//GROUP BY id0
-//;
-
-    public function getProductsWithClassificationThreshold($organization_id, $classification_id, $threshold)
+    public function getOrganizationValueByClassification($organization_id, $classification_id)
     {
-        $query = $this->createQueryBuilder('o');
-        $query
-            ->select('o as organization, p as product')
-            ->addSelect('SUM(i.value) as _threshold')
-            ->innerJoin('o.products', 'p')
-            ->innerJoin('p.indicators', 'i')
+        $qb = $this->createQueryBuilder('o');
+        $query = $qb
+            ->select('SUM(i.value) as value')
+            ->leftJoin('o.indicators', 'i')
             ->leftJoin('i.criterion', 'c')
             ->leftJoin('c.classification', 'cl')
-            ->where($query->expr()->eq('o.id', $organization_id))
-            ->andWhere($query->expr()->eq('cl.id', $classification_id))
-            ->groupBy('p.id')
-            ->having($query->expr()->gte('_threshold', $threshold))
+            ->where($qb->expr()->eq('cl.id', $classification_id))
+            ->andWhere($qb->expr()->eq('o.id', $organization_id))
         ;
 
         return $query
             ->getQuery()
-            ->getResult()
+            ->getSingleScalarResult()
         ;
     }
 }
-
-
-//
-//select o.name as empresa, p.name as producto, i.name, sum(i.value)
-//from organization as o
-//inner join product as p on p.organization_id = o.id
-//inner join product_has_indicator as pi on pi.product_id = p.id
-//left join indicator as i on i.id = pi.indicator_id
-//left join criterion as c on c.id = i.criterion_id
-//left join classification as cl on cl.id = c.classification_id
-//where cl.id = 116
-//and o.id = 323
-//group by p.id
-//having sum(i.value) > 22
-//;

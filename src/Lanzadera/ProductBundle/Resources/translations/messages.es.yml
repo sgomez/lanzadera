@@ -1,7 +1,13 @@
 product.admin.label: Productos
 product.category.label: Categoría
+product.category.help: |
+    Las categorías agrupan productos similares.
 product.category.placeholder: Seleccione una categoría
-product.certificates.label: Clasificaciones certificadas
+product.certificates.auto.label: Clasificaciones automáticas
+product.certificates.auto.help: |
+    Este producto cumple con las siguientes clasificaciones. Este campo se rellena automáticamente
+    y no se puede modificar.
+product.certificates.label: Clasificaciones manuales
 product.certificates.help: |
     El sistema selecciona automáticamente las clasificaciones que cumplen un mínimo de criterios. Si desea
     seleccionar manualmente alguna clasificación puede hacerlo aquí. El producto será certificado aunque
@@ -17,9 +23,14 @@ product.media.label: Imagen
 product.media.no_linked_media: No existe ninguna imagen vinculada.
 product.name.label: Nombre
 product.organization.label: Organización
+product.organization.help: Seleccione la organización o colectivo que distribuye este producto.
 product.status.label: Estado
-product.tags.add: Añadir etiqueta
+product.status.help: |
+    Solo los productos aprobados aparecerán en la página de búsquedas del catálogo.
+product.tag.add: Añadir etiqueta
 product.tag.label: Etiquetas
+product.tag.help: |
+    Etiquetar correctamente un producto facilitará la búsqueda en el catálogo.
 product.tag.placeholder: Seleccione una o varias etiquetas
 lanzadera.product.status.pending: Pendiente
 lanzadera.product.status.approved: Aprobado

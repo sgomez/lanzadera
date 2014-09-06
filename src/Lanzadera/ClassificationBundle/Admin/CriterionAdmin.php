@@ -144,4 +144,28 @@ class CriterionAdmin extends Admin
         ;
     }
 
+    public function postRemove($object)
+    {
+        $this->getConfigurationPool()->getContainer()->get('sonata.notification.backend')->createAndPublish('backend_update_classification', array(
+                'classification' => $object->getClassification()->getId(),
+            )
+        );
+    }
+
+    public function postPersist($object)
+    {
+        $this->getConfigurationPool()->getContainer()->get('sonata.notification.backend')->createAndPublish('backend_update_classification', array(
+                'classification' => $object->getClassification()->getId(),
+            )
+        );
+    }
+
+
+    public function postUpdate($object)
+    {
+        $this->getConfigurationPool()->getContainer()->get('sonata.notification.backend')->createAndPublish('backend_update_classification', array(
+                'classification' => $object->getClassification()->getId(),
+            )
+        );
+    }
 }

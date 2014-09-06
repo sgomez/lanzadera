@@ -9,6 +9,7 @@
 namespace Lanzadera\CoreBundle\Doctrine\ORM;
 
 
+use Lanzadera\ClassificationBundle\Entity\Classification;
 use Lanzadera\ProductBundle\Entity\Product;
 
 class CertificateRepository extends CustomRepository
@@ -25,6 +26,20 @@ class CertificateRepository extends CustomRepository
                 $qb->expr()->in('cert.classification', $classification),
                 $qb->expr()->eq('cert.auto', 0)
             ))
+            ->getQuery()
+        ;
+
+        return $query->execute();
+    }
+
+    public function clearAutoSelection($classification_id)
+    {
+        $qb = $this->createQueryBuilder('cert');
+
+        $query = $qb
+            ->delete()
+            ->where($qb->expr()->eq('cert.classification', $classification_id))
+            ->andWhere($qb->expr()->eq('cert.auto', 1))
             ->getQuery()
         ;
 

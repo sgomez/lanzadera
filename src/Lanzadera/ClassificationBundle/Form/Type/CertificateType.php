@@ -33,7 +33,7 @@ class CertificateType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->addModelTransformer(new ArrayToCertificateTransform($this->om));
+        $builder->addModelTransformer(new ArrayToCertificateTransform($this->om, $options['auto']));
         $builder->addEventSubscriber(new ClearProductCertificatesSubscriber($this->om));
     }
 
@@ -44,6 +44,8 @@ class CertificateType extends AbstractType
     {
         $resolver->setDefaults(array(
                 'choices' => $this->om->getRepository('LanzaderaClassificationBundle:Classification')->getChoices(),
+                'auto' => false,
+                'multiple' => true,
         ));
 
     }

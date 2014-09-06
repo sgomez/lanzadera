@@ -7,8 +7,6 @@ parameters:
     lanzadera.entity.classification.class: Lanzadera\ClassificationBundle\Entity\Classification
     lanzadera.entity.criterion.class: Lanzadera\ClassificationBundle\Entity\Criterion
     lanzadera.entity.indicator.class: Lanzadera\ClassificationBundle\Entity\Indicator
-    lanzadera.entity.listener.classification.class: Lanzadera\ClassificationBundle\EventListener\ClassificationListener
-    lanzadera.entity.listener.indicator.class: Lanzadera\ClassificationBundle\EventListener\IndicatorListener
     lanzadera.form.extension.choice_type_extention.class: Lanzadera\ClassificationBundle\Form\Extension\ChoiceTypeExtension
     lanzadera.form.transformer.array_to_indicators.class: Lanzadera\ClassificationBundle\Form\DataTransformer\ArrayToIndicatorsTransform
     lanzadera.form.type.certificate.class: Lanzadera\ClassificationBundle\Form\Type\CertificateType
@@ -72,13 +70,3 @@ services:
     lanzadera.form.transformer.array_to_indicators:
         class: %lanzadera.form.transformer.array_to_indicators.class%
         arguments: [@lanzadera.repository.indicator]
-
-    lanzadera.entity.listener.indicator:
-        class: %lanzadera.entity.listener.indicator.class%
-        tags:
-            - { name: doctrine.orm.entity_listener, entity_manager: default }
-
-    lanzadera.entity.listener.classification:
-        class: %lanzadera.entity.listener.classification.class%
-        tags:
-            - { name: doctrine.orm.entity_listener, entity_manager: default }

@@ -11,7 +11,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="indicator")
  * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\IndicatorRepository")
- * @ORM\EntityListeners({"Lanzadera\ClassificationBundle\EventListener\IndicatorListener"})
  * @UniqueEntity(
  *      fields={"value", "criterion"},
  *      errorPath="value"
@@ -175,6 +174,16 @@ class Indicator
     public function getCriterion()
     {
         return $this->criterion;
+    }
+
+    /**
+     * Get classification
+     *
+     * @return Classification
+     */
+    public function getClassification()
+    {
+        return $this->criterion->getClassification();
     }
 
     /**

@@ -470,7 +470,6 @@ class Product
     public function addCertificate(\Lanzadera\ClassificationBundle\Entity\Certificate $certificate)
     {
         $certificate->setProduct($this);
-
         $this->certificates[] = $certificate;
 
         return $this;
@@ -510,6 +509,30 @@ class Product
         return $this->certificates;
     }
 
+    public function getAutoCertificates()
+    {
+        $isAuto = function() {
+            return function($object) {
+                return true === $object->isAuto();
+            };
+        };
+
+        $getClassificationName = function($object) {
+            return $object->getClassification()->getName();
+        };
+
+        $data = $this->certificates->filter($isAuto)->map($getClassificationName)->toArray();
+
+
+        return implode(", ", $data);
+
+    }
+
+    /**
+     * Set classifications
+     *
+     * @param $classifications
+     */
     public function setClassifications($classifications)
     {
         $this->certificates = new ArrayCollection();

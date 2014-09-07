@@ -105,6 +105,16 @@ class Organization
     private $indicators;
 
     /**
+     * @var \Lanzadera\MediaBundle\Entity\Media
+     *
+     * @ORM\OneToOne(targetEntity="Lanzadera\MediaBundle\Entity\Media", cascade={"remove", "persist"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="media_id", referencedColumnName="id", onDelete="SET NULL")
+     * })
+     */
+    private $media;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -249,6 +259,11 @@ class Organization
         return $this->web;
     }
 
+    public function getWebServerName()
+    {
+        return parse_url($this->web, PHP_URL_HOST);
+    }
+
     /**
      * Set enabled
      *
@@ -373,5 +388,28 @@ class Organization
     public function getProducts()
     {
         return $this->products;
+    }
+
+    /**
+     * Set media
+     *
+     * @param \Lanzadera\MediaBundle\Entity\Media $media
+     * @return Organization
+     */
+    public function setMedia(\Lanzadera\MediaBundle\Entity\Media $media = null)
+    {
+        $this->media = $media;
+
+        return $this;
+    }
+
+    /**
+     * Get media
+     *
+     * @return \Lanzadera\MediaBundle\Entity\Media 
+     */
+    public function getMedia()
+    {
+        return $this->media;
     }
 }

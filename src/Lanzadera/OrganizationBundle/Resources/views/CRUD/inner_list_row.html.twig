@@ -1,0 +1,19 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_flat_inner_row.html.twig' %}
+
+{% block row %}
+
+    {% if object.enabled %}
+        <span class="label label-success"><i class="fa fa-unlock"></i></span>
+        {% else %}
+        <span class="label label-danger"><i class="fa fa-lock"></i></span>
+    {% endif %}
+    {{ object|render_list_element(admin.list['name']) }}
+    <span class="pull-right lanzadera-list-field-date"><i class="fa fa-clock-o"></i> {{ object|render_list_element(admin.list['createdAt']) }} </span>
+    <br/>
+    <small>
+        <i class="fa fa-bookmark-o"></i> <a href="{{ object.web }}">{{ object.webServerName }}</a>
+        - <i class="fa fa-phone"></i> <a href="tel:{{ object.phone | replace({' ': ''}) }}">{{ object.phone }}</a>
+        - <i class="fa fa-envelope-o"></i> <a href="mailto:{{ object.email }}">{{ object.email }}</a>
+    </small>
+
+{% endblock %}

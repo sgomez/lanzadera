@@ -61,6 +61,7 @@ class LoadOrganizationData extends DataFixture
         $organization->setWeb($web);
         $organization->setEnabled($enabled);
         $organization->setCreatedAt(new \DateTime());
+        $organization->setMedia($this->createImage($name, 'business'));
 
         return $organization;
     }

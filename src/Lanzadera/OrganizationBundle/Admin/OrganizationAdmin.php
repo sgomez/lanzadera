@@ -21,7 +21,19 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class OrganizationAdmin extends Admin
 {
+    /**
+     * {@inheritdoc}
+     */
     protected $baseRouteName = "lanzadera_organization";
+
+    /**
+     * {@inheritdoc}
+     */
+    protected $datagridValues = array(
+        '_page' => 1,            // display the first page (default = 1)
+        '_sort_order' => 'ASC', // reverse order (default = 'ASC')
+        '_sort_by' => 'name'  // name of the ordered field
+    );
 
     /**
      * {@inheritdoc}
@@ -29,6 +41,9 @@ class OrganizationAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->add('enabled', null, array(
+                    'label' => 'organization.enabled.label',
+            ))
             ->addIdentifier('name', null, array(
                     'label' => 'organization.name.label'
             ))
@@ -38,11 +53,7 @@ class OrganizationAdmin extends Admin
             ->add('email', null, array(
                     'label' => 'organization.email.label'
             ))
-            ->add('enabled', null, array(
-                    'label' => 'organization.enabled.label',
-            ))
-            ->
-            add('createdAt', 'date', array(
+            ->add('createdAt', 'date', array(
                     'label' => 'organization.created_at.label',
                     'pattern' => 'dd MMMM Y',
                     'locale' => 'es',
@@ -90,7 +101,16 @@ class OrganizationAdmin extends Admin
                         'disabled' => false === $this->isGranted('ENABLED')
                 ))
             ->end()
-            ->with('organization.group.indicators', array('class' => 'col-md-6'))
+            ->with('product.group.image', array('class' => 'col-md-6'))
+                ->add('media', 'sonata_media_type', array(
+                    'label' => false,
+                    'required' => false,
+                    'provider' => 'sonata.media.provider.image',
+                    'data_class'   =>  'Lanzadera\MediaBundle\Entity\Media',
+                    'context'  => 'default'
+                ))
+            ->end()
+            ->with('organization.group.indicators')
                 ->add('indicators', 'organization_indicator', array(
                     'label' => 'Indicadores',
                 ))
@@ -122,31 +142,41 @@ class OrganizationAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('name', null, array(
-                    'label' => 'organization.name.label'
-            ))
-            ->add('address', 'textarea', array(
-                    'label' => 'organization.address.label'
-            ))
-            ->add('phone', null, array(
-                    'label' => 'organization.phone.label'
-            ))
-            ->add('email', null, array(
-                    'label' => 'organization.email.label'
-            ))
-            ->add('web', 'url', array(
-                    'label' => 'organization.web.label'
-            ))
-            ->add('enabled', null, array(
-                    'label' => 'organization.enabled.label'
-            ))
-            ->add('created_at', 'date', array(
-                    'label' => 'organization.created_at.label'
-            ))
+            ->with('organization.group.description', array('class' => 'col-md-6'))
+                ->add('name', null, array(
+                        'label' => 'organization.name.label'
+                ))
+                ->add('address', 'textarea', array(
+                        'label' => 'organization.address.label'
+                ))
+                ->add('phone', null, array(
+                        'label' => 'organization.phone.label'
+                ))
+                ->add('email', 'email', array(
+                        'label' => 'organization.email.label'
+                ))
+                ->add('web', 'url', array(
+                        'label' => 'organization.web.label'
+                ))
+                ->add('enabled', 'boolean', array(
+                        'label' => 'organization.enabled.label'
+                ))
+                ->add('created_at', 'date', array(
+                        'label' => 'organization.created_at.label'
+                ))
+            ->end()
+            ->with('product.group.image', array('class' => 'col-md-6'))
+                ->add('media', null, array(
+                    'label' => ' ',
+                    'template' => 'LanzaderaOrganizationBundle:CRUD:show_media.html.twig',
+                ))
+            ->end()
         ;
     }
 
-    public function postPersist($object)
+    /**
+     * {@inheritdoc}
+     */    public function postPersist($object)
     {
         $this->getConfigurationPool()->getContainer()->get('sonata.notification.backend')->createAndPublish('backend', array(
                 'classification' => 'all',
@@ -154,8 +184,9 @@ class OrganizationAdmin extends Admin
         );
     }
 
-
-    public function postUpdate($object)
+    /**
+     * {@inheritdoc}
+     */    public function postUpdate($object)
     {
         $this->getConfigurationPool()->getContainer()->get('sonata.notification.backend')->createAndPublish('backend', array(
                 'classification' => 'all',

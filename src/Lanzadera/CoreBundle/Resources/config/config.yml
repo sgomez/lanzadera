@@ -7,6 +7,11 @@ services:
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments: ['Lanzadera\CoreBundle\Entity\User']
+    lanzadera.repository.group:
+        class: Lanzadera\CoreBundle\Doctrine\ORM\GroupRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: ['Lanzadera\CoreBundle\Entity\Group']
     lanzadera.repository.organization:
         class: Lanzadera\CoreBundle\Doctrine\ORM\OrganizationRepository
         factory_service: doctrine.orm.entity_manager

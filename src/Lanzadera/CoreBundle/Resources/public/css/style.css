@@ -42,3 +42,7 @@ a.sonata-ba-action {
 .fos_comment_comment_new_form {
     margin-bottom: 10px;
 }
+
+.custom-search-form {
+    display: none;
+}

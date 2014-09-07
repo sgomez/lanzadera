@@ -102,6 +102,7 @@ class ProductAdmin extends Admin
                 ->add('status', 'status', array(
                         'label' => 'product.status.label',
                         'help' => 'product.status.help',
+                        'disabled' => false === $this->isGranted('STATUS')
                 ))
                 ->add('organization', null, array(
                         'label' => 'product.organization.label',

@@ -29,11 +29,20 @@ class OrganizationAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name', null, array('label' => 'organization.name.label'))
-            ->add('phone', null, array('label' => 'organization.phone.label'))
-            ->add('email', null, array('label' => 'organization.email.label'))
-            ->add('enabled', null, array('label' => 'organization.enabled.label', 'editable' => true))
-            ->add('createdAt', 'date', array(
+            ->addIdentifier('name', null, array(
+                    'label' => 'organization.name.label'
+            ))
+            ->add('phone', null, array(
+                    'label' => 'organization.phone.label'
+            ))
+            ->add('email', null, array(
+                    'label' => 'organization.email.label'
+            ))
+            ->add('enabled', null, array(
+                    'label' => 'organization.enabled.label',
+            ))
+            ->
+            add('createdAt', 'date', array(
                     'label' => 'organization.created_at.label',
                     'pattern' => 'dd MMMM Y',
                     'locale' => 'es',
@@ -57,12 +66,29 @@ class OrganizationAdmin extends Admin
     {
         $formMapper
             ->with('organization.group.description', array('class' => 'col-md-6'))
-                ->add('name', null, array('label' => 'organization.name.label'))
-                ->add('address', 'textarea', array('label' => 'organization.address.label', 'required' => false))
-                ->add('phone', null, array('label' => 'organization.phone.label'))
-                ->add('email', 'email', array('label' => 'organization.email.label', 'required' => false))
-                ->add('web', 'url', array('label' => 'organization.web.label', 'required' => false))
-                ->add('enabled', 'checkbox', array('label' => 'organization.enabled.label', 'required' => false))
+                ->add('name', null, array(
+                        'label' => 'organization.name.label'
+                ))
+                ->add('address', 'textarea', array(
+                        'label' => 'organization.address.label',
+                        'required' => false
+                ))
+                ->add('phone', null, array(
+                        'label' => 'organization.phone.label'
+                ))
+                ->add('email', 'email', array(
+                        'label' => 'organization.email.label',
+                        'required' => false
+                ))
+                ->add('web', 'url', array(
+                        'label' => 'organization.web.label',
+                        'required' => false
+                ))
+                ->add('enabled', 'checkbox', array(
+                        'label' => 'organization.enabled.label',
+                        'required' => false,
+                        'disabled' => false === $this->isGranted('ENABLED')
+                ))
             ->end()
             ->with('organization.group.indicators', array('class' => 'col-md-6'))
                 ->add('indicators', 'organization_indicator', array(
@@ -78,9 +104,15 @@ class OrganizationAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name', null, array('label' => 'organization.name.label'))
-            ->add('address', null, array('label' => 'organization.address.label'))
-            ->add('enabled', null, array('label' => 'organization.enabled.label'))
+            ->add('name', null, array(
+                    'label' => 'organization.name.label'
+            ))
+            ->add('address', null, array(
+                    'label' => 'organization.address.label'
+            ))
+            ->add('enabled', null, array(
+                    'label' => 'organization.enabled.label'
+            ))
         ;
     }
 
@@ -90,13 +122,27 @@ class OrganizationAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('name', null, array('label' => 'organization.name.label'))
-            ->add('address', 'textarea', array('label' => 'organization.address.label'))
-            ->add('phone', null, array('label' => 'organization.phone.label'))
-            ->add('email', null, array('label' => 'organization.email.label'))
-            ->add('web', 'url', array('label' => 'organization.web.label'))
-            ->add('enabled', null, array('label' => 'organization.enabled.label'))
-            ->add('created_at', 'date', array('label' => 'organization.created_at.label'))
+            ->add('name', null, array(
+                    'label' => 'organization.name.label'
+            ))
+            ->add('address', 'textarea', array(
+                    'label' => 'organization.address.label'
+            ))
+            ->add('phone', null, array(
+                    'label' => 'organization.phone.label'
+            ))
+            ->add('email', null, array(
+                    'label' => 'organization.email.label'
+            ))
+            ->add('web', 'url', array(
+                    'label' => 'organization.web.label'
+            ))
+            ->add('enabled', null, array(
+                    'label' => 'organization.enabled.label'
+            ))
+            ->add('created_at', 'date', array(
+                    'label' => 'organization.created_at.label'
+            ))
         ;
     }
 

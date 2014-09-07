@@ -14,7 +14,10 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use FOS\UserBundle\Model\UserInterface;
+use Lanzadera\CoreBundle\Doctrine\ORM\GroupRepository;
 use Lanzadera\CoreBundle\Doctrine\ORM\UserRepository;
+use Lanzadera\CoreBundle\Entity\Group;
+use Lanzadera\CoreBundle\Entity\User;
 use Lanzadera\FixtureBundle\DataFixtures\DataFixture;
 
 
@@ -26,20 +29,16 @@ class LoadUsersData extends DataFixture
     public function load(ObjectManager $manager)
     {
         $user = $this->createUser("admin", "admin@test.uco.es", "adminpw", true, array('ROLE_SUPER_ADMIN'));
-
         $manager->persist($user);
-
-        for ($i=0; $i < 15; $i++) {
-            $username = $this->faker->username;
-            $user = $this->createUser(
-                $username,
-                $username."@test.uco.es",
-                $username,
-                $this->faker->boolean
-            );
-
-            $manager->persist($user);
-        }
+        $user = $this->createUser("manager", "manager@test.uco.es", "managerpw", true);
+        $user->addGroup($this->getReference('Lanzadera.Group.Administradores'));
+        $manager->persist($user);
+        $user = $this->createUser("staff", "staff@test.uco.es", "staffpw", true);
+        $user->addGroup($this->getReference('Lanzadera.Group.Gestores'));
+        $manager->persist($user);
+        $user = $this->createUser("operator", "operator@test.uco.es", "operatorpw", true);
+        $user->addGroup($this->getReference('Lanzadera.Group.Colaboradores'));
+        $manager->persist($user);
 
         $manager->flush();
     }
@@ -49,7 +48,7 @@ class LoadUsersData extends DataFixture
      */
     public function getOrder()
     {
-        return 1;
+        return 2;
     }
 
     public function createUser($username, $email, $password, $enabled = true, array $roles = array('ROLE_USER'))
@@ -64,7 +63,9 @@ class LoadUsersData extends DataFixture
         $user->setEnabled($enabled);
         $user->setRoles($roles);
         $user->setPlainPassword($password);
+        $user->setFirstname($this->faker->name);
+        $user->setLastname($this->faker->lastName);
 
         return $user;
     }
-} 
+}

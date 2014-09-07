@@ -115,6 +115,9 @@ sonata_admin:
     title_logo: bundles/lanzaderacore/img/tejedorasm.png
     templates:
         layout: LanzaderaCoreBundle::standard_layout.html.twig
+    security:
+        handler: sonata.admin.security.handler.role
+
 
 sonata_doctrine_orm_admin:
     templates:

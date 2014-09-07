@@ -14,7 +14,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 class CertificateAdmin extends Admin
 {
     /**
-     * @param FormMapper $formMapper
+     * {@inheritdoc}
      */
     protected function configureFormFields(FormMapper $formMapper)
     {

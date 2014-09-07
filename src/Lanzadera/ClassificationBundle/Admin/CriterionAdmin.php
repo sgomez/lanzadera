@@ -2,17 +2,13 @@
 
 namespace Lanzadera\ClassificationBundle\Admin;
 
-use Lanzadera\ClassificationBundle\Entity\Criterion;
+use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
-use Sonata\AdminBundle\Validator\ErrorElement;
-use Symfony\Component\EventDispatcher\Event;
-use Symfony\Component\Form\FormEvent;
-use Symfony\Component\Form\FormEvents;
-use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 class CriterionAdmin extends Admin
 {
@@ -21,12 +17,36 @@ class CriterionAdmin extends Admin
      */
     protected $baseRouteName = "lanzadera_criterion";
 
+    /**
+     * {@inheritdoc}
+     */
     protected $formOptions = array(
         'cascade_validation' => true
     );
 
     /**
-     * @param DatagridMapper $datagridMapper
+     * {@inheritdoc}
+     */
+    protected $datagridValues = array(
+        '_page' => 1,            // display the first page (default = 1)
+        '_sort_order' => 'ASC', // reverse order (default = 'ASC')
+        '_sort_by' => 'name'  // name of the ordered field
+    );
+
+    /**
+     * {@inheritdoc}
+     */
+    public function createQuery($context = 'list')
+    {
+        /** @var QueryBuilder $query */
+        $query = parent::createQuery($context);
+        $query->leftJoin(current($query->getRootAliases()).'.classification', 'cl');
+        $query->addSelect('cl');
+        return $query;
+    }
+
+    /**
+     * {@inheritdoc}
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
@@ -51,7 +71,7 @@ class CriterionAdmin extends Admin
     }
 
     /**
-     * @param ListMapper $listMapper
+     * {@inheritdoc}
      */
     protected function configureListFields(ListMapper $listMapper)
     {
@@ -59,7 +79,7 @@ class CriterionAdmin extends Admin
             ->addIdentifier('name', null, array(
                     'label' => 'criterion.name.label'
             ))
-            ->addIdentifier('classification.name', null, array(
+            ->add('classification.name', null, array(
                     'label' => 'criterion.classification.label'
             ))
             ->add('type', 'string', array(
@@ -77,7 +97,7 @@ class CriterionAdmin extends Admin
     }
 
     /**
-     * @param FormMapper $formMapper
+     * {@inheritdoc}
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -115,7 +135,7 @@ class CriterionAdmin extends Admin
     }
 
     /**
-     * @param ShowMapper $showMapper
+     * {@inheritdoc}
      */
     protected function configureShowFields(ShowMapper $showMapper)
     {
@@ -144,26 +164,34 @@ class CriterionAdmin extends Admin
         ;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function postRemove($object)
     {
-        $this->getConfigurationPool()->getContainer()->get('sonata.notification.backend')->createAndPublish('backend_update_classification', array(
+        $this->getConfigurationPool()->getContainer()->get('sonata.notification.backend')->createAndPublish('backend', array(
                 'classification' => $object->getClassification()->getId(),
             )
         );
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function postPersist($object)
     {
-        $this->getConfigurationPool()->getContainer()->get('sonata.notification.backend')->createAndPublish('backend_update_classification', array(
+        $this->getConfigurationPool()->getContainer()->get('sonata.notification.backend')->createAndPublish('backend', array(
                 'classification' => $object->getClassification()->getId(),
             )
         );
     }
 
-
+    /**
+     * {@inheritdoc}
+     */
     public function postUpdate($object)
     {
-        $this->getConfigurationPool()->getContainer()->get('sonata.notification.backend')->createAndPublish('backend_update_classification', array(
+        $this->getConfigurationPool()->getContainer()->get('sonata.notification.backend')->createAndPublish('backend', array(
                 'classification' => $object->getClassification()->getId(),
             )
         );

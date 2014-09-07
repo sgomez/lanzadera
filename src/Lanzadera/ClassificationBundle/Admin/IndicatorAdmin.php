@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 class IndicatorAdmin extends Admin
 {
     /**
-     * @param FormMapper $formMapper
+     * {@inheritdoc}
      */
     protected function configureFormFields(FormMapper $formMapper)
     {

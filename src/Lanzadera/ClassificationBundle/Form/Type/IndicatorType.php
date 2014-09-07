@@ -9,26 +9,23 @@
 namespace Lanzadera\ClassificationBundle\Form\Type;
 
 
-use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\Common\Persistence\ObjectManager;
 use Lanzadera\ClassificationBundle\Entity\Criterion;
 use Lanzadera\ClassificationBundle\Form\DataTransformer\ArrayToIndicatorsTransform;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormView;
-use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 abstract class IndicatorType extends AbstractType implements IndicatorTypeInterface
 {
-    protected $criterionRepository;
+    /**
+     * @var ObjectManager $om
+     */
+    protected $om;
 
-    protected $arrayToIndicatorsTransform;
-
-    public function __construct(ObjectRepository $criterionRepository, ArrayToIndicatorsTransform $arrayToIndicatorsTransform)
+    public function __construct(ObjectManager $om)
     {
-        $this->criterionRepository = $criterionRepository;
-        $this->arrayToIndicatorsTransform = $arrayToIndicatorsTransform;
+        $this->om = $om;
     }
 
     /**
@@ -36,7 +33,7 @@ abstract class IndicatorType extends AbstractType implements IndicatorTypeInterf
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $criteria = $this->criterionRepository->findByType($this->getType());
+        $criteria = $this->om->getRepository('LanzaderaClassificationBundle:Criterion')->findByType($this->getType());
 
         /** @var Criterion $criterion */
         foreach ($criteria as $criterion) {
@@ -50,14 +47,7 @@ abstract class IndicatorType extends AbstractType implements IndicatorTypeInterf
             ));
         }
 
-        $builder->addModelTransformer($this->arrayToIndicatorsTransform);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function buildView(FormView $view, FormInterface $form, array $options)
-    {
+        $builder->addModelTransformer(new ArrayToIndicatorsTransform($this->om));
     }
 
     /**

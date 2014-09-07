@@ -10,7 +10,6 @@ namespace Lanzadera\ClassificationBundle\Behat;
 
 
 use Behat\Gherkin\Node\TableNode;
-use Behat\Mink\Element\NodeElement;
 use Lanzadera\ClassificationBundle\Entity\Classification;
 use Lanzadera\ClassificationBundle\Entity\Criterion;
 use Lanzadera\ClassificationBundle\Entity\Indicator;

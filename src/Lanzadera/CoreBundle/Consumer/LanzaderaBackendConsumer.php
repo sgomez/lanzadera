@@ -43,29 +43,16 @@ class LanzaderaBackendConsumer implements ConsumerInterface
             throw new InvalidParameterException();
         }
 
-        $classification_id = $message->getValue('classification');
-
-        $this->logger->debug("Se ha llamado al backend con el valor ".$classification_id);
-
         $classifications = $this->om->getRepository('LanzaderaClassificationBundle:Classification')->findAll();
 
         foreach ($classifications as $classification) {
+            $this->om->getRepository('LanzaderaClassificationBundle:Classification')->setMaximalValue(
+                $classification->getId()
+            );
+
             $this->om->getRepository('LanzaderaOrganizationBundle:Organization')->evaluateProductsByClassification(
                 $classification->getId()
             );
         }
-
-//
-//        if ("all" === $classification_id) {
-//            $classifications = $this->om->getRepository('LanzaderaClassificationBundle:Classification')->getAllKeys();
-//        } else {
-//            $classifications = array($classification_id);
-//        }
-//
-//        foreach ($classifications as $classification) {
-//            $this->om->getRepository('LanzaderaOrganizationBundle:Organization')->evaluateProductsByClassification(
-//                $classification
-//            );
-//        }
     }
 }

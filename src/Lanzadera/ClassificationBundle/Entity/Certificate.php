@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Product
+ * Certificate
  *
  * @ORM\Table(name="certificate")
  * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\CertificateRepository")

@@ -1,6 +1,5 @@
 parameters:
     lanzadera.core.backend.consumer.class: Lanzadera\CoreBundle\Consumer\LanzaderaBackendConsumer
-    lanzadera.core.update.classification.consumer.class: Lanzadera\CoreBundle\Consumer\UpdateClassificationConsumer
 
 services:
     lanzadera.core.backend.consumer:
@@ -8,9 +7,3 @@ services:
         arguments: [@logger, @doctrine.orm.entity_manager]
         tags:
             - { name: sonata.notification.consumer, type: backend }
-
-    lanzadera.core.update.classification.consumer:
-        class: %lanzadera.core.update.classification.consumer.class%
-        arguments: [@logger, @doctrine.orm.entity_manager]
-        tags:
-            - { name: sonata.notification.consumer, type: backend_update_classification }

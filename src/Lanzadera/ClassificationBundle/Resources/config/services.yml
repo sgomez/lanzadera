@@ -8,7 +8,6 @@ parameters:
     lanzadera.entity.criterion.class: Lanzadera\ClassificationBundle\Entity\Criterion
     lanzadera.entity.indicator.class: Lanzadera\ClassificationBundle\Entity\Indicator
     lanzadera.form.extension.choice_type_extention.class: Lanzadera\ClassificationBundle\Form\Extension\ChoiceTypeExtension
-    lanzadera.form.transformer.array_to_indicators.class: Lanzadera\ClassificationBundle\Form\DataTransformer\ArrayToIndicatorsTransform
     lanzadera.form.type.certificate.class: Lanzadera\ClassificationBundle\Form\Type\CertificateType
     lanzadera.form.type.criterion.class: Lanzadera\ClassificationBundle\Form\Type\CriterionType
     lanzadera.form.type.organization_indicator.class: Lanzadera\ClassificationBundle\Form\Type\OrganizationIndicatorType
@@ -52,13 +51,13 @@ services:
 
     lanzadera.form.type.organization_indicator:
         class: %lanzadera.form.type.organization_indicator.class%
-        arguments: [@lanzadera.repository.criterion, @lanzadera.form.transformer.array_to_indicators]
+        arguments: [@doctrine.orm.entity_manager]
         tags:
             - { name: form.type, alias: organization_indicator }
 
     lanzadera.form.type.product_indicator:
         class: %lanzadera.form.type.product_indicator.class%
-        arguments: [@lanzadera.repository.criterion, @lanzadera.form.transformer.array_to_indicators]
+        arguments: [@doctrine.orm.entity_manager]
         tags:
             - { name: form.type, alias: product_indicator }
 
@@ -67,6 +66,3 @@ services:
         tags:
             - { name: form.type_extension, alias: choice }
 
-    lanzadera.form.transformer.array_to_indicators:
-        class: %lanzadera.form.transformer.array_to_indicators.class%
-        arguments: [@lanzadera.repository.indicator]

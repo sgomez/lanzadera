@@ -31,7 +31,7 @@ class ClassificationAdmin extends Admin
     }
 
     /**
-     * @param ListMapper $listMapper
+     * {@inheritdoc}
      */
     protected function configureListFields(ListMapper $listMapper)
     {
@@ -53,7 +53,7 @@ class ClassificationAdmin extends Admin
     }
 
     /**
-     * @param FormMapper $formMapper
+     * {@inheritdoc}
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -63,7 +63,8 @@ class ClassificationAdmin extends Admin
                         'label' => 'classification.name.label'
                 ))
                 ->add('description', 'textarea', array(
-                        'label' => 'classification.description.label'
+                        'label' => 'classification.description.label',
+                        'attr' => array('rows' => '6'),
                 ))
             ->end()
             ->with('classification.group.parameters', array('class' => 'col-md-6'))
@@ -80,11 +81,11 @@ class ClassificationAdmin extends Admin
                 ))
             ->end()
         ;
-
-
     }
 
     /**
+     *
+     *
      * @param ShowMapper $showMapper
      */
     protected function configureShowFields(ShowMapper $showMapper)
@@ -96,9 +97,8 @@ class ClassificationAdmin extends Admin
             ->add('description', null, array(
                     'label' => 'classification.description.label'
             ))
-            ->add('threshold', 'percent', array(
+            ->add('threshold', null, array(
                     'label' => 'classification.threshold.label',
-                    'type' => 'integer',
             ))
             ->add('maximum', null, array(
                     'label' => 'classification.maximum.label'
@@ -106,6 +106,9 @@ class ClassificationAdmin extends Admin
         ;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function postPersist($object)
     {
         $this->getConfigurationPool()->getContainer()->get('sonata.notification.backend')->createAndPublish('backend', array(
@@ -114,7 +117,9 @@ class ClassificationAdmin extends Admin
         );
     }
 
-
+    /**
+     * {@inheritdoc}
+     */
     public function postUpdate($object)
     {
         $this->getConfigurationPool()->getContainer()->get('sonata.notification.backend')->createAndPublish('backend', array(

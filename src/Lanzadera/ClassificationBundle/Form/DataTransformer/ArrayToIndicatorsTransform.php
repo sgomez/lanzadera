@@ -10,24 +10,30 @@ namespace Lanzadera\ClassificationBundle\Form\DataTransformer;
 
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\Common\Persistence\ObjectManager;
 use Lanzadera\ClassificationBundle\Entity\Indicator;
 use Symfony\Component\Form\DataTransformerInterface;
 
 class ArrayToIndicatorsTransform implements DataTransformerInterface
 {
     /**
-     * Indicator Repository
-     *
-     * @var ObjectRepository
+     * @var ObjectManager $om
      */
-    private $indicatorRepository;
+    private $om;
 
-    public function __construct(ObjectRepository $indicatorRepository)
+    /**
+     * Constructor
+     *
+     * @param ObjectManager $om
+     */
+    function __construct(ObjectManager $om)
     {
-        $this->indicatorRepository = $indicatorRepository;
+        $this->om = $om;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function transform($indicators)
     {
         $selected = array();
@@ -40,12 +46,15 @@ class ArrayToIndicatorsTransform implements DataTransformerInterface
         return $selected;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function reverseTransform($selected)
     {
         $indicators = new ArrayCollection();
         foreach ($selected as $id) {
             if ($id) {
-                $indicators[] = $this->indicatorRepository->findOneById($id);
+                $indicators[] = $this->om->getRepository('LanzaderaClassificationBundle:Indicator')->findOneById($id);
             }
         }
         return $indicators;

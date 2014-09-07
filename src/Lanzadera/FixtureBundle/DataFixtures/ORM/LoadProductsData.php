@@ -21,7 +21,7 @@ class LoadProductsData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        for ($i = 0; $i < 50; $i ++) {
+        for ($i = 0; $i < 10; $i ++) {
             $manager->persist($this->createProduct($i));
 
         }
@@ -62,26 +62,12 @@ class LoadProductsData extends DataFixture
             $product->addTag($this->getReference("Lanzadera.Tag." . $this->faker->unique($reset = $i === 0)->tag));
         }
 
-        $product->setMedia($this->createImage($product->getName()));
+        $product->setMedia($this->createImage($product->getName(), 'food'));
 
         $this->setReference("Lanzadera.Product" . $index, $product);
 
         return $product;
     }
 
-    private function createImage($name)
-    {
-        $repo = $this->getMediaRepository();
-        $temp = tempnam('/tmp', 'lanzadera');
-        file_put_contents($temp, file_get_contents('http://lorempixel.com/400/400/food/'));
 
-        /** @var Media $image */
-        $image = $repo->createNew();
-        $image->setBinaryContent($temp);
-        $image->setProviderName('sonata.media.provider.image');
-        $image->setContext('default');
-        $image->setName($name);
-
-        return $image;
-    }
 }

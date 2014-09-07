@@ -3,7 +3,11 @@
 
     <!-- User image -->
     <li class="user-header bg-light-blue">
-        <img src="{{ asset('bundles/sonatamedia/grey.png') }}" class="img-circle" alt="User Image">
+        {% if app.user.media %}
+            {% thumbnail app.user.media, 'admin' with {'class': 'img-circle'} %}
+        {% else %}
+            <img src="{{ asset('bundles/sonatamedia/grey.png') }}" class="img-circle" alt="User Image">
+        {% endif %}
         <p>
             {{ app.user.firstname ~ ' ' ~ app.user.lastname }}
             <small>Nombre de usuario: {{ app.user.username }}</small>

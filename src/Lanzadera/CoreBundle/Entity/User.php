@@ -23,4 +23,38 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-} 
+
+    /**
+     * @var \Lanzadera\MediaBundle\Entity\Media
+     *
+     * @ORM\OneToOne(targetEntity="Lanzadera\MediaBundle\Entity\Media", cascade={"remove", "persist"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="media_id", referencedColumnName="id", onDelete="SET NULL")
+     * })
+     */
+    protected $media;
+
+    /**
+     * Set media
+     *
+     * @param \Lanzadera\MediaBundle\Entity\Media $media
+     * @return User
+     */
+    public function setMedia(\Lanzadera\MediaBundle\Entity\Media $media = null)
+    {
+        $this->media = $media;
+
+        return $this;
+    }
+
+    /**
+     * Get media
+     *
+     * @return \Lanzadera\MediaBundle\Entity\Media 
+     */
+    public function getMedia()
+    {
+        return $this->media;
+    }
+
+}

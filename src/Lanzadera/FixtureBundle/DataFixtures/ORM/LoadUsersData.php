@@ -65,6 +65,7 @@ class LoadUsersData extends DataFixture
         $user->setPlainPassword($password);
         $user->setFirstname($this->faker->name);
         $user->setLastname($this->faker->lastName);
+        $user->setMedia($this->createImage($username, 'cats'));
 
         return $user;
     }

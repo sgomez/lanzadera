@@ -11,7 +11,11 @@
 
 {% block fos_comment_comment %}
     <div class="item">
-        <img class="online" src="{{ asset('bundles/sonatamedia/grey.png') }}" alt=""/>
+        {% if app.user.media %}
+            {% thumbnail app.user.media, 'admin' with {'class': 'online'} %}
+        {% else %}
+            <img src="{{ asset('bundles/sonatamedia/grey.png') }}" class="online" alt="{{ app.user.username }}">
+        {% endif %}
         <p class="message">
             <span class="name" href="#">
                 <small class="text-mutex pull-right"><i class="fa fa-clock-o"></i> {{ comment.createdAt| format_datetime }}</small>

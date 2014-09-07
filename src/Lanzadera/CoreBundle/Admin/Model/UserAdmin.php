@@ -113,23 +113,37 @@ class UserAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('General')
+            ->with('General', array('class' => 'col-md-6'))
+                ->add('firstname', null, array(
+                        'required' => true
+                ))
+                ->add('lastname', null, array(
+                        'required' => true
+                ))
                 ->add('username')
                 ->add('email')
                 ->add('plainPassword', 'text', array(
-                    'required' => (!$this->getSubject() || is_null($this->getSubject()->getId()))
+                        'required' => (!$this->getSubject() || is_null($this->getSubject()->getId()))
                 ))
-            ->end()
-            ->with('Groups')
                 ->add('groups', 'sonata_type_model', array(
-                    'required' => false,
-                    'expanded' => true,
-                    'multiple' => true
+                        'required' => false,
+                        'expanded' => false,
+                        'multiple' => true,
+                        'btn_add' => false,
+                        'attr' => array(
+                            'placeholder' => 'product.certificates.placeholder',
+                            'class' => 'form-control'
+                        )
                 ))
             ->end()
-            ->with('Profile')
-                ->add('firstname', null, array('required' => false))
-                ->add('lastname', null, array('required' => false))
+            ->with('Imagen', array('class' => 'col-md-6'))
+                ->add('media', 'sonata_media_type', array(
+                    'label' => false,
+                    'required' => false,
+                    'provider' => 'sonata.media.provider.image',
+                    'data_class'   =>  'Lanzadera\MediaBundle\Entity\Media',
+                    'context'  => 'default'
+                ))
             ->end()
         ;
 

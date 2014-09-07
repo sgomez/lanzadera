@@ -70,4 +70,20 @@ abstract class DataFixture extends AbstractFixture implements ContainerAwareInte
     {
         return $this->container->get($id);
     }
+
+    protected function createImage($name, $type='cats')
+    {
+        $repo = $this->getMediaRepository();
+        //$temp = tempnam('/tmp', 'lanzadera');
+        //file_put_contents($temp, file_get_contents('http://lorempixel.com/400/400/food/'));
+
+        /** @var Media $image */
+        $image = $repo->createNew();
+        $image->setBinaryContent($this->faker->image('/tmp', 400, 400, $type));
+        $image->setProviderName('sonata.media.provider.image');
+        $image->setContext('default');
+        $image->setName($name);
+
+        return $image;
+    }
 } 

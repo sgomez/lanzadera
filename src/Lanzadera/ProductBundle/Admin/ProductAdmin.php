@@ -2,22 +2,53 @@
 
 namespace Lanzadera\ProductBundle\Admin;
 
+use Doctrine\ORM\QueryBuilder;
 use Lanzadera\CoreBundle\Admin\Admin;
-use Lanzadera\ProductBundle\Entity\Product;
-use Lanzadera\ProductBundle\Form\Extension\ChoiceList\StatusChoiceList;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
-use Symfony\Component\Form\FormEvent;
-use Symfony\Component\Form\FormEvents;
 
 class ProductAdmin extends Admin
 {
+
+    /**
+     * {@inheritdoc}
+     */
     protected $baseRouteName = "lanzadera_product";
 
     /**
-     * @param DatagridMapper $datagridMapper
+     * {@inheritdoc}
+     */
+    protected $datagridValues = array(
+        '_page' => 1,            // display the first page (default = 1)
+        '_sort_order' => 'ASC', // reverse order (default = 'ASC')
+        '_sort_by' => 'name'  // name of the ordered field
+    );
+
+    /**
+     * {@inheritdoc}
+     */
+    public function createQuery($context = 'list')
+    {
+        /** @var QueryBuilder $query */
+        $query = parent::createQuery($context);
+        $alias = current($query->getRootAliases());
+        $query->leftJoin($alias . '.organization', 'o2');
+        $query->leftJoin($alias . '.tags', 't');
+        $query->leftJoin($alias . '.category', 'c');
+        $query->leftJoin($alias . '.certificates', 'q');
+        $query->leftJoin('q.classification', 'r');
+        $query->addSelect('partial o2.{id, name}');
+        $query->addSelect('t');
+        $query->addSelect('c');
+        $query->addSelect('q');
+        $query->addSelect('partial r.{id, name}');
+        return $query;
+    }
+
+    /**
+     * {@inheritdoc}
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
@@ -34,6 +65,13 @@ class ProductAdmin extends Admin
                     'constraints' => array()
                 )
             )
+            ->add('certificates.classification', null, array(
+                    'label' => 'product.certificate.label'
+                ), null,
+                array(
+                    'expanded' => false,
+                    'multiple' => false,
+            ))
             ->add('category', null, array(
                     'label' => 'product.category.label'
                 ), null,
@@ -59,21 +97,18 @@ class ProductAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name', null, array(
-                    'label' => 'product.name.label'
-            ))
-            ->add('description', null, array(
-                    'label' => 'product.description.label'
-            ))
-            ->addIdentifier('organization.name', null, array(
-                    'label' => 'product.organization.label'
-            ))
-            ->add('category.name', null, array(
-                    'label' => 'product.category.label'
-            ))
             ->add('status', 'string', array(
                     'label' => 'product.status.label',
                     'template' => 'LanzaderaProductBundle:CRUD:list_status.html.twig'
+            ))
+            ->addIdentifier('name', null, array(
+                    'label' => 'product.name.label'
+            ))
+            ->add('organization.name', null, array(
+                    'label' => 'product.organization.label'
+            ))
+            ->add('certificates', null, array(
+                    'label' => 'product.certificate.label'
             ))
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -180,34 +215,47 @@ class ProductAdmin extends Admin
     }
 
     /**
-     * @param ShowMapper $showMapper
+     * {@inheritdoc}
      */
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('name', null, array(
-                    'label' => 'product.name.label'
-            ))
-            ->add('description', null, array(
-                    'label' => 'product.description.label'
-            ))
-            ->add('category.name', null, array(
-                    'label' => 'product.category.label'
-            ))
-            ->add('media', null, array(
-                    'label' => 'product.media.label',
-                    'template' => 'LanzaderaProductBundle:CRUD:media_status.html.twig'
+            ->with('product.group.description', array('class' => 'col-md-6'))
+                ->add('name', null, array(
+                        'label' => 'product.name.label'
                 ))
-            ->add('tags_as_list', null, array(
-                    'label' => 'product.tag.label'
-            ))
-            ->add('status', 'string', array(
+                ->add('description', null, array(
+                        'label' => 'product.description.label'
+                ))
+                ->add('status', 'string', array(
                     'label' => 'product.status.label',
                     'template' => 'LanzaderaProductBundle:CRUD:show_status.html.twig'
-            ))
+                ))
+                ->add('organization.name', null, array(
+                    'label' => 'product.organization.label'
+                ))
+                ->add('category.name', null, array(
+                        'label' => 'product.category.label'
+                ))
+                ->add('tags_as_list', null, array(
+                        'label' => 'product.tag.label'
+                ))
+                ->add('certificates', 'collection', array(
+                        'label' => 'product.certificate.label',
+                ))
+            ->end()
+            ->with('product.group.image', array('class' => 'col-md-6'))
+                ->add('media', null, array(
+                    'label' => ' ',
+                    'template' => 'LanzaderaProductBundle:CRUD:show_media.html.twig',
+                ))
+            ->end()
         ;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function postPersist($object)
     {
         $this->getConfigurationPool()->getContainer()->get('sonata.notification.backend')->createAndPublish('backend', array(
@@ -216,7 +264,9 @@ class ProductAdmin extends Admin
         );
     }
 
-
+    /**
+     * {@inheritdoc}
+     */
     public function postUpdate($object)
     {
         $this->getConfigurationPool()->getContainer()->get('sonata.notification.backend')->createAndPublish('backend', array(

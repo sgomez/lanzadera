@@ -21,11 +21,11 @@ class LoadProductsData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        $manager->persist($this->createProduct("Revolución"));
-        $manager->persist($this->createProduct("Solidaridad"));
-        $manager->persist($this->createProduct("Justicia"));
-        $manager->persist($this->createProduct("Voluntario"));
-        $manager->persist($this->createProduct("Pobreza", array("Alta calidad y bajo precio", "No perecedero")));
+        for ($i = 0; $i < 50; $i ++) {
+            $manager->persist($this->createProduct($i));
+
+        }
+        $manager->persist($this->createProduct($i, array("Alta calidad y bajo precio", "No perecedero")));
 
         $manager->flush();
     }
@@ -40,26 +40,31 @@ class LoadProductsData extends DataFixture
         return 10;
     }
 
-    private function createProduct($name, $indicators = array())
+    private function createProduct($index, $indicators = array())
     {
         $repo = $this->getProductRepository();
+        $status = Product::getStatuses();
 
         /** @var Product $product */
         $product = $repo->createNew();
 
-        $product->setName($this->faker->product);
+        $product->setName($this->faker->unique()->product);
         $product->setDescription($this->faker->text);
         $product->setCategory($this->getReference("Lanzadera.Category." . $this->faker->category));
         $product->setOrganization($this->getReference("Lanzadera.Organization." . $this->faker->numberBetween(0, 4)));
+        $product->setStatus($status[array_rand($status)]);
+
         foreach($indicators as $indicator) {
             $product->addIndicator($this->getReference("Lanzadera.Indicator." . $indicator));
         }
+
         foreach(range(0, $this->faker->numberBetween(3,8)) as $i) {
             $product->addTag($this->getReference("Lanzadera.Tag." . $this->faker->unique($reset = $i === 0)->tag));
         }
-        $product->setMedia($this->createImage($name));
 
-        $this->setReference("Lanzadera.Product" . $name, $product);
+        $product->setMedia($this->createImage($product->getName()));
+
+        $this->setReference("Lanzadera.Product" . $index, $product);
 
         return $product;
     }

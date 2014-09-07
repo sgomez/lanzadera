@@ -32,36 +32,24 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=45, nullable=true)
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
      * @Assert\NotBlank(message="product.name.not_blank")
+     * @Assert\Length(max="255")
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=45, nullable=true)
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="raw_material_source", type="string", length=45, nullable=true)
-     */
-    private $rawMaterialSource;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="processing_site", type="string", length=45, nullable=true)
-     */
-    private $processingSite;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="status", type="string", length=45, nullable=true)
+     * @ORM\Column(name="status", type="string", length=45, nullable=false)
+     * @Assert\Choice(choices={"pending", "approved", "check", "denied"})
      */
     private $status;
 
@@ -70,8 +58,9 @@ class Product
      *
      * @ORM\ManyToOne(targetEntity="Lanzadera\OrganizationBundle\Entity\Organization", inversedBy="products")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="organization_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="organization_id", referencedColumnName="id", onDelete="CASCADE")
      * })
+     * @Assert\Valid()
      */
     private $organization;
 
@@ -88,10 +77,10 @@ class Product
      * @ORM\ManyToMany(targetEntity="Lanzadera\ClassificationBundle\Entity\Indicator", inversedBy="products")
      * @ORM\JoinTable(name="product_has_indicator",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     *     @ORM\JoinColumn(name="product_id", referencedColumnName="id", onDelete="CASCADE")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="indicator_id", referencedColumnName="id")
+     *     @ORM\JoinColumn(name="indicator_id", referencedColumnName="id", onDelete="CASCADE")
      *   }
      * )
      */
@@ -102,7 +91,7 @@ class Product
      *
      * @ORM\ManyToOne(targetEntity="Lanzadera\TaxonomyBundle\Entity\Taxon")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete="SET NULL")
      * })
      * @Assert\Valid()
      */
@@ -123,13 +112,12 @@ class Product
      */
     private $tags;
 
-
     /**
      * @var \Lanzadera\MediaBundle\Entity\Media
      *
      * @ORM\OneToOne(targetEntity="Lanzadera\MediaBundle\Entity\Media", cascade={"remove", "persist"})
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="media_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="media_id", referencedColumnName="id", onDelete="SET NULL")
      * })
      */
     private $media;
@@ -222,52 +210,6 @@ class Product
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set rawMaterialSource
-     *
-     * @param string $rawMaterialSource
-     * @return Product
-     */
-    public function setRawMaterialSource($rawMaterialSource)
-    {
-        $this->rawMaterialSource = $rawMaterialSource;
-
-        return $this;
-    }
-
-    /**
-     * Get rawMaterialSource
-     *
-     * @return string
-     */
-    public function getRawMaterialSource()
-    {
-        return $this->rawMaterialSource;
-    }
-
-    /**
-     * Set processingSite
-     *
-     * @param string $processingSite
-     * @return Product
-     */
-    public function setProcessingSite($processingSite)
-    {
-        $this->processingSite = $processingSite;
-
-        return $this;
-    }
-
-    /**
-     * Get processingSite
-     *
-     * @return string
-     */
-    public function getProcessingSite()
-    {
-        return $this->processingSite;
     }
 
     /**
@@ -509,20 +451,22 @@ class Product
         return $this->certificates;
     }
 
+    /**
+     * Get a list of active certificates
+     *
+     * @return string
+     */
     public function getAutoCertificates()
     {
-        $isAuto = function() {
-            return function($object) {
-                return true === $object->isAuto();
+        $isAuto =  function(Certificate $certificate) {
+                return $certificate->getAuto();
             };
-        };
 
         $getClassificationName = function($object) {
             return $object->getClassification()->getName();
         };
 
         $data = $this->certificates->filter($isAuto)->map($getClassificationName)->toArray();
-
 
         return implode(", ", $data);
 

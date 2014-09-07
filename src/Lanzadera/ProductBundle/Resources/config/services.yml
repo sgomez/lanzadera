@@ -11,6 +11,8 @@ services:
             - { name: sonata.admin, manager_type: orm, group: product.admin.group, label: product.admin.label }
         calls:
             - [ setTemplate, [edit, LanzaderaCommentBundle:CRUD:edit.html.twig]]
+            - [ setTemplate, [inner_list_row, LanzaderaProductBundle:CRUD:inner_list_row.html.twig]]
+            - [ setTemplate, [base_list_field, SonataAdminBundle:CRUD:base_list_flat_field.html.twig]]
 
     lanzadera.form.type.status:
         class: %lanzadera.form.type.status.class%

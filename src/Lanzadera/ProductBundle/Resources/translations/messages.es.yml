@@ -3,6 +3,7 @@ product.category.label: Categoría
 product.category.help: |
     Las categorías agrupan productos similares.
 product.category.placeholder: Seleccione una categoría
+product.certificate.label: Certificado como
 product.certificates.auto.label: Clasificaciones automáticas
 product.certificates.auto.help: |
     Este producto cumple con las siguientes clasificaciones. Este campo se rellena automáticamente

@@ -12,7 +12,6 @@ namespace Lanzadera\ProductBundle\Behat;
 use Behat\Gherkin\Node\TableNode;
 use Lanzadera\CoreBundle\Behat\DefaultContext;
 use Lanzadera\ProductBundle\Entity\Product;
-use Lanzadera\TaxonomyBundle\Entity\Taxon;
 
 class ProductContext extends DefaultContext
 {
@@ -22,6 +21,8 @@ class ProductContext extends DefaultContext
     public function createProducts(TableNode $tableNode)
     {
         $em = $this->getEntityManager();
+        $status = Product::getStatuses();
+
         foreach ($tableNode->getHash() as $productHash) {
             /** @var Product $product */
             $product = $this->getRepository('product')->findOneByName($productHash['nombre']);
@@ -32,7 +33,7 @@ class ProductContext extends DefaultContext
             $product->setDescription($this->faker->text);
             $product->setOrganization($this->getRepository('organization')->findOneByName($productHash['organización']));
             $product->setCategory($this->getRepository('category')->findOneByName($productHash['categoría']));
-            $product->setStatus('pending');
+            $product->setStatus($status[array_rand($status)]);
 
             $tags = explode(",", $productHash['etiquetas']);
             foreach ($tags as $tag)

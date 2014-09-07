@@ -1,0 +1,22 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_flat_inner_row.html.twig' %}
+
+{% block row %}
+
+    {# you can use fields defined in the the Admin class #}
+    <span class="label label-{{ object.status }}">{{ ('lanzadera.product.status.'~object.status)|trans({}) }}</span>
+    {{ object|render_list_element(admin.list['name']) }} <small>producido por</small>
+    <a href="{{ path('lanzadera_organization_show', {'id': object.organization.id}) }}">{{ object.organization }}</a>
+    <div class="pull-right">
+        {% for certification in object.certificates %}
+            {% set color = certification.auto ? 'success' : 'danger' %}
+            <span class="label {{ 'label-' ~ color }} label-xs" >{{ certification }}</span>
+        {% endfor %}
+    </div>
+    <br />
+    <small>
+        Categoría: {{ object.category }} - Etiquetas: {{ object.tagsAsList }}
+    </small>
+    <br />
+    {{ object.description }}
+
+{% endblock %}

@@ -15,6 +15,19 @@ use Lanzadera\ProductBundle\Entity\Product;
 
 class OrganizationRepository extends CustomRepository
 {
+    public function findAllActives()
+    {
+        $qb = $this->createQueryBuilder('o');
+        $query = $qb
+            ->select('partial o.{id, name}')
+            ->addSelect('partial m.{id, providerReference}')
+            ->leftJoin('o.media', 'm')
+            ->where($qb->expr()->eq('o.enabled', 1))
+        ;
+
+        return $query->getQuery()->getArrayResult();
+    }
+
     public function evaluateProductsByClassification($classification_id)
     {
         $em = $this->getEntityManager();

@@ -44,8 +44,17 @@ media:
     resource: '@SonataMediaBundle/Resources/config/routing/media.xml'
     prefix: /media
 
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
+
 fos_comment_api:
     type: rest
     resource: "@FOSCommentBundle/Resources/config/routing.yml"
     prefix: /api
     defaults: { _format: html }
+
+lanzadera_organization_api:
+    type: rest
+    resource: '@LanzaderaOrganizationBundle/Resources/config/routing.yml'
+    prefix: /api/v1

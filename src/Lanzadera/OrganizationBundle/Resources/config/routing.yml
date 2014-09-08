@@ -1,0 +1,3 @@
+lanzadera_organization_api_organization:
+    type: rest
+    resource: "@LanzaderaOrganizationBundle/Controller/OrganizationController.php"

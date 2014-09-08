@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6dab821839f760458a1d1d1be51f7145",
+    "hash": "4c26d43dd176c280ec28032ec9df2396",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -2163,55 +2163,6 @@
             "time": "2014-07-30 09:11:08"
         },
         {
-            "name": "oh/color-picker-type-bundle",
-            "version": "dev-master",
-            "target-dir": "Oh/ColorPickerTypeBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ollieLtd/OhColorPickerTypeBundle.git",
-                "reference": "f4f6da5bbe2a7f29000024aa9d3dbca932668d95"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ollieLtd/OhColorPickerTypeBundle/zipball/f4f6da5bbe2a7f29000024aa9d3dbca932668d95",
-                "reference": "f4f6da5bbe2a7f29000024aa9d3dbca932668d95",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2",
-                "symfony/framework-bundle": "~2.1",
-                "tkrotoff/jquery-simplecolorpicker": "dev-master"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-0": {
-                    "Oh\\ColorPickerTypeBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ollie Harridge",
-                    "email": "code@oll.ie"
-                },
-                {
-                    "name": "Tanguy Krotoff",
-                    "email": "tkrotoff@gmail.com"
-                }
-            ],
-            "description": "A simple jQuery color picker list for Symfony2",
-            "homepage": "https://github.com/ollieLtd/OhColorPickerTypeBundle",
-            "keywords": [
-                "color picker",
-                "form",
-                "symfony"
-            ],
-            "time": "2014-06-03 16:15:24"
-        },
-        {
             "name": "oyejorge/less.php",
             "version": "v1.7.0.2",
             "source": {
@@ -2723,12 +2674,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "05b20e179f6f59c6fa7cfae3177e660bed60d511"
+                "reference": "a36965d696dedb5901eb05fe9bc7188bbf45547a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/05b20e179f6f59c6fa7cfae3177e660bed60d511",
-                "reference": "05b20e179f6f59c6fa7cfae3177e660bed60d511",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/a36965d696dedb5901eb05fe9bc7188bbf45547a",
+                "reference": "a36965d696dedb5901eb05fe9bc7188bbf45547a",
                 "shasum": ""
             },
             "require": {
@@ -2794,7 +2745,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2014-09-07 11:57:49"
+            "time": "2014-09-08 09:39:08"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -4158,17 +4109,6 @@
                 "framework"
             ],
             "time": "2014-09-03 09:51:48"
-        },
-        {
-            "name": "tkrotoff/jquery-simplecolorpicker",
-            "version": "master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/tkrotoff/jquery-simplecolorpicker.git",
-                "reference": "master"
-            },
-            "type": "library",
-            "time": "2013-11-12 18:18:13"
         },
         {
             "name": "twbs/bootstrap",
@@ -5904,13 +5844,11 @@
         "sylius/resource-bundle": 20,
         "sylius/taxonomies-bundle": 20,
         "braincrafted/bootstrap-bundle": 10,
-        "tkrotoff/jquery-simplecolorpicker": 20,
         "knplabs/knp-menu": 15,
         "knplabs/knp-menu-bundle": 15,
         "sonata-project/media-bundle": 20,
         "sonata-project/notification-bundle": 20,
         "friendsofsymfony/comment-bundle": 20,
-        "oh/color-picker-type-bundle": 20,
         "behat/behat": 20,
         "behat/symfony2-extension": 20,
         "behat/mink-extension": 20,

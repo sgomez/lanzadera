@@ -171,6 +171,11 @@ class Classification
         return $this->threshold;
     }
 
+    public function getThresholdPoints()
+    {
+        return intval($this->maximum * $this->threshold / 100);
+    }
+
     /**
      * Add criteria
      *

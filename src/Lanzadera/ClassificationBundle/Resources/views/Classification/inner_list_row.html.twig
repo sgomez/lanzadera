@@ -1,0 +1,20 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_flat_inner_row.html.twig' %}
+
+{% block row %}
+
+    {# you can use fields defined in the the Admin class #}
+    {{ object|render_list_element(admin.list['name']) }}
+    <div class="col-sm-3 pull-right">
+        <!-- Progress bars -->
+        <div class="clearfix">
+            <small class="pull-left">Clasifica con {{ object.thresholdPoints }} de {{ object.maximum }} puntos</small>
+            <small class="pull-right">{{ object.threshold }}%</small>
+        </div>
+        <div class="progress xs">
+            <div class="progress-bar progress-bar-green" style="width: {{ object.threshold }}%;"></div>
+        </div>
+    </div>
+    <br />
+    {{ object.description }}
+
+{% endblock %}

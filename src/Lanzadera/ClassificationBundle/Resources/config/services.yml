@@ -34,6 +34,9 @@ services:
         arguments: [~, %lanzadera.entity.criterion.class%, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: classification.admin.group, label: criterion.admin.label}
+        calls:
+            - [ setTemplate, [inner_list_row, LanzaderaClassificationBundle:Criterion:inner_list_row.html.twig]]
+            - [ setTemplate, [base_list_field, SonataAdminBundle:CRUD:base_list_flat_field.html.twig]]
 
     lanzadera.admin.indicator:
         class: %lanzadera.admin.indicator.class%

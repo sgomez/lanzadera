@@ -193,3 +193,9 @@ fos_rest:
             html: true
         failed_validation: HTTP_BAD_REQUEST
         default_engine: twig
+
+bazinga_hateoas:
+    metadata:
+        cache:                file
+        file_cache:
+            dir:              %kernel.cache_dir%/hateoas

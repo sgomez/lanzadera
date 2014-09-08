@@ -8,14 +8,11 @@
 
 namespace Lanzadera\OrganizationBundle\Controller;
 
-use FOS\RestBundle\Controller\Annotations\RouteResource;
-use FOS\RestBundle\Controller\FOSRestController;
-use FOS\RestBundle\FOSRestBundle;
-use FOS\RestBundle\View\View as FOSView;
-use Nelmio\ApiDocBundle\Controller\ApiDocController;
+use Hateoas\HateoasBuilder;
+use Lanzadera\OrganizationBundle\Entity\Organization;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class OrganizationController
@@ -39,4 +36,21 @@ class OrganizationController extends FOSRestController
         return $this->handleView($view);
     }
 
+    /**
+     * Return one organization
+     *
+     * @ApiDoc()
+     *
+     * @param Organization $organization
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getOrganizationAction(Organization $organization)
+    {
+        $hateos = HateoasBuilder::create()->build();
+
+        $json = $hateos->serialize($organization, 'json');
+
+        return new Response($json);
+    }
 } 

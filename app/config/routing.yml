@@ -54,6 +54,11 @@ fos_comment_api:
     prefix: /api
     defaults: { _format: html }
 
+lanzadera_media_api:
+    type: rest
+    resource: '@LanzaderaMediaBundle/Resources/config/routing.yml'
+    prefix: /api/v1
+
 lanzadera_organization_api:
     type: rest
     resource: '@LanzaderaOrganizationBundle/Resources/config/routing.yml'

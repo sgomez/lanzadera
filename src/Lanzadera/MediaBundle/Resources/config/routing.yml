@@ -1,0 +1,3 @@
+lanzadera_media_api_organization:
+    type: rest
+    resource: "@LanzaderaMediaBundle/Controller/MediaController.php"

@@ -19,6 +19,7 @@ class AppKernel extends Kernel
 
             new FOS\CommentBundle\FOSCommentBundle(),
             new FOS\RestBundle\FOSRestBundle(),
+            new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle($this),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),

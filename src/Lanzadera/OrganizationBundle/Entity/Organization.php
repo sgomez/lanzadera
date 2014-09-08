@@ -3,6 +3,8 @@
 namespace Lanzadera\OrganizationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Hateoas\Configuration\Annotation as Hateoas;
+use JMS\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -10,6 +12,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="organization")
  * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\OrganizationRepository")
+ * @Hateoas\Relation("self", href = "expr('/api/v1/organizations/' ~ object.getId())")
+ * @Hateoas\Relation("media", href = "expr(link(object.getMedia(), 'self', true))")
  */
 class Organization
 {
@@ -19,6 +23,7 @@ class Organization
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Serializer\XmlAttribute
      */
     private $id;
 
@@ -85,6 +90,7 @@ class Organization
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\OneToMany(targetEntity="Lanzadera\ProductBundle\Entity\Product", mappedBy="organization", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @Serializer\Exclude
      */
     private $products;
 
@@ -101,6 +107,7 @@ class Organization
      *     @ORM\JoinColumn(name="indicator_id", referencedColumnName="id")
      *   }
      * )
+     * @Serializer\Exclude
      */
     private $indicators;
 
@@ -111,6 +118,7 @@ class Organization
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="media_id", referencedColumnName="id", onDelete="SET NULL")
      * })
+     * @Serializer\Exclude
      */
     private $media;
 

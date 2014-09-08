@@ -57,7 +57,8 @@
         "sonata-project/media-bundle": "2.3.*@dev",
         "sonata-project/notification-bundle": "2.3.*@dev",
         "friendsofsymfony/comment-bundle": "~2.0@dev",
-        "rhumsaa/array_column": "~1.1"
+        "rhumsaa/array_column": "~1.1",
+        "willdurand/hateoas-bundle": "@stable"
     },
     "require-dev": {
         "behat/behat":                          "3.0.*@dev",

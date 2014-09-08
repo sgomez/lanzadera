@@ -20,6 +20,15 @@ class TagAdmin extends Admin
     /**
      * {@inheritdoc}
      */
+    protected $datagridValues = array(
+        '_page' => 1,            // display the first page (default = 1)
+        '_sort_order' => 'ASC', // reverse order (default = 'ASC')
+        '_sort_by' => 'name'  // name of the ordered field
+    );
+
+    /**
+     * {@inheritdoc}
+     */
     public function createQuery($context = 'list')
     {
         /** @var QueryBuilder $query */

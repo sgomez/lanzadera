@@ -17,11 +17,10 @@ class CategoryAdmin extends Admin
 
     protected $baseRoutePattern = 'lanzadera/taxonomy/category';
 
-
     protected $datagridValues = array(
         '_page' => 1,
         '_sort_order' => 'ASC',
-        '_sort_by' => 'left',
+        '_sort_by' => 'name',
     );
 
     /**

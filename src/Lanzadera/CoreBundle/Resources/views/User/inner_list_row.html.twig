@@ -1,0 +1,28 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_flat_inner_row.html.twig' %}
+
+{% block row %}
+
+    <div class="media">
+        <span class="pull-left">
+            {% if object.media %}
+                {% thumbnail object.media, 'small' with {'class': 'media-object img-thumbnail', 'style': 'width: 70px;'} %}
+            {% else %}
+                <img src="{{ asset('bundles/sonatamedia/grey.png') }}" class="media-object img-thumbnail" alt="User Image" style="width: 70px;">
+            {% endif %}
+        </span>
+        <div class="media-content">
+            {% if not object.enabled %}
+                <code><i class="fa fa-lock"></i></code>
+            {% endif %}
+            {{ object|render_list_element(admin.list['username']) }}
+            <br />
+            {{ object.firstName }} {{ object.lastName }}
+            <br />
+            <small><i class="fa fa-envelope-o"></i> <a href="mailto:{{ object.email }}">{{ object.email }}</a></small>
+            <br />
+            {% if object.groups | length > 0 %}
+                Grupos: {{ object.groups | join(', ') }}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

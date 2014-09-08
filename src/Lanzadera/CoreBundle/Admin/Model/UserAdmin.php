@@ -26,6 +26,15 @@ class UserAdmin extends Admin
     /**
      * {@inheritdoc}
      */
+    protected $datagridValues = array(
+        '_page' => 1,            // display the first page (default = 1)
+        '_sort_order' => 'ASC', // reverse order (default = 'ASC')
+        '_sort_by' => 'username'  // name of the ordered field
+    );
+
+    /**
+     * {@inheritdoc}
+     */
     public function getFormBuilder()
     {
         $this->formOptions['data_class'] = $this->getClass();
@@ -58,11 +67,10 @@ class UserAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('username')
-            ->add('email')
-            ->add('groups')
+            ->add('groups.name', null, array(
+                'label' => 'Groups'
+            ))
             ->add('enabled', null, array('editable' => true))
-            ->add('locked', null, array('editable' => true))
-            ->add('createdAt')
             ->add('_action', 'actions', array(
                 'label' => 'Acciones',
                 'actions' => array(
@@ -72,6 +80,9 @@ class UserAdmin extends Admin
                 )
             ))
         ;
+
+        $this->setTemplate('inner_list_row', 'LanzaderaCoreBundle:User:inner_list_row.html.twig');
+        $this->setTemplate('base_list_field', 'SonataAdminBundle:CRUD:base_list_flat_field.html.twig');
     }
 
     /**

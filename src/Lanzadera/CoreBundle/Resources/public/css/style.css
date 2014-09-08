@@ -50,3 +50,9 @@ a.sonata-ba-action {
 .lanzadera-list-field-date {
     font-size: 75%;
 }
+
+.lanzadera-list-field-description,
+.lanzadera-list-field-taxonomies {
+    margin-top: 5px;
+}
+

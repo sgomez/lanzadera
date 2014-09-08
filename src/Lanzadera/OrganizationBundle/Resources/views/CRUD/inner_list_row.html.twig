@@ -1,17 +1,31 @@
 {% extends 'SonataAdminBundle:CRUD:base_list_flat_inner_row.html.twig' %}
 
 {% block row %}
-
-    {% if not object.enabled %}
-        <code><i class="fa fa-lock"></i></code>
-    {% endif %}
-    {{ object|render_list_element(admin.list['name']) }}
-    <span class="pull-right lanzadera-list-field-date"><i class="fa fa-clock-o"></i> {{ object|render_list_element(admin.list['createdAt']) }} </span>
-    <br/>
-    <small>
-        <i class="fa fa-bookmark-o"></i> <a href="{{ object.web }}">{{ object.webServerName }}</a>
-        - <i class="fa fa-phone"></i> <a href="tel:{{ object.phone | replace({' ': ''}) }}">{{ object.phone }}</a>
-        - <i class="fa fa-envelope-o"></i> <a href="mailto:{{ object.email }}">{{ object.email }}</a>
-    </small>
-
+    <div class="media">
+        <span class="pull-left">
+            {% if object.media %}
+                {% thumbnail object.media, 'small' with {'class': 'media-object img-thumbnail', 'style': 'width: 80px;'} %}
+            {% else %}
+                <img src="{{ asset('bundles/sonatamedia/grey.png') }}" class="media-object img-thumbnail" alt="User Image" style="width: 80px;">
+            {% endif %}
+        </span>
+        <div class="media-body">
+            {% if not object.enabled %}
+                <code><i class="fa fa-lock"></i></code>
+            {% endif %}
+            {{ object|render_list_element(admin.list['name']) }}
+            <span class="pull-right lanzadera-list-field-date"><i class="fa fa-clock-o"></i> {{ object|render_list_element(admin.list['createdAt']) }} </span>
+            <br/>
+            <div class="lanzadera-list-field-taxonomies">
+                <small class="text-muted">
+                    <i class="fa fa-bookmark-o"></i> <a href="{{ object.web }}">{{ object.webServerName }}</a>
+                    - <i class="fa fa-phone"></i> <a href="tel:{{ object.phone | replace({' ': ''}) }}">{{ object.phone }}</a>
+                    - <i class="fa fa-envelope-o"></i> <a href="mailto:{{ object.email }}">{{ object.email }}</a>
+                </small>
+            </div>
+            <div class="lanzadera-list-field-description">
+                {{ object.address }}
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -97,10 +97,6 @@ class ProductAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('status', 'string', array(
-                    'label' => 'product.status.label',
-                    'template' => 'LanzaderaProductBundle:CRUD:list_status.html.twig'
-            ))
             ->addIdentifier('name', null, array(
                     'label' => 'product.name.label'
             ))

@@ -2,10 +2,8 @@
 
 {% block row %}
 
-    {% if object.enabled %}
-        <span class="label label-success"><i class="fa fa-unlock"></i></span>
-        {% else %}
-        <span class="label label-danger"><i class="fa fa-lock"></i></span>
+    {% if not object.enabled %}
+        <code><i class="fa fa-lock"></i></code>
     {% endif %}
     {{ object|render_list_element(admin.list['name']) }}
     <span class="pull-right lanzadera-list-field-date"><i class="fa fa-clock-o"></i> {{ object|render_list_element(admin.list['createdAt']) }} </span>

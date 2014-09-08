@@ -39,7 +39,7 @@ class ProductAdmin extends Admin
         $query->leftJoin($alias . '.category', 'c');
         $query->leftJoin($alias . '.certificates', 'q');
         $query->leftJoin('q.classification', 'r');
-        $query->addSelect('partial o2.{id, name}');
+        $query->addSelect('partial o2.{id, name, enabled}');
         $query->addSelect('t');
         $query->addSelect('c');
         $query->addSelect('q');

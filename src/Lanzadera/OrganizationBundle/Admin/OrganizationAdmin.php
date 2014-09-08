@@ -41,17 +41,8 @@ class OrganizationAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('enabled', null, array(
-                    'label' => 'organization.enabled.label',
-            ))
             ->addIdentifier('name', null, array(
                     'label' => 'organization.name.label'
-            ))
-            ->add('phone', null, array(
-                    'label' => 'organization.phone.label'
-            ))
-            ->add('email', null, array(
-                    'label' => 'organization.email.label'
             ))
             ->add('createdAt', 'date', array(
                     'label' => 'organization.created_at.label',

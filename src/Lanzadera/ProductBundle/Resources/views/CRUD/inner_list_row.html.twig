@@ -6,6 +6,7 @@
     <span class="label label-{{ object.status }}">{{ ('lanzadera.product.status.'~object.status)|trans({}) }}</span>
     {{ object|render_list_element(admin.list['name']) }} <small>producido por</small>
     <a href="{{ path('lanzadera_organization_show', {'id': object.organization.id}) }}">{{ object.organization }}</a>
+    {% if not object.organization.enabled %}<code><i class="fa fa-lock"></i></code>{% endif %}
     <div class="pull-right">
         {% for certification in object.certificates %}
             {% set color = certification.auto ? 'success' : 'danger' %}

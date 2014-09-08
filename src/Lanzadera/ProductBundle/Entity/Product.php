@@ -32,7 +32,7 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      * @Assert\NotBlank(message="product.name.not_blank")
      * @Assert\Length(max="255")
      */
@@ -42,6 +42,8 @@ class Product
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="255")
      */
     private $description;
 

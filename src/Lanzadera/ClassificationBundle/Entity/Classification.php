@@ -34,9 +34,8 @@ class Classification
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=512, nullable=true)
+     * @ORM\Column(name="description", type="text", nullable=true)
      * @Assert\NotBlank()
-     * @Assert\Length(max="512")
      */
     private $description;
 

@@ -40,9 +40,8 @@ class Criterion
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=45, nullable=false)
+     * @ORM\Column(name="description", type="text", nullable=false)
      * @Assert\NotBlank()
-     * @Assert\Length(max="512")
      */
     private $description;
 

@@ -10,20 +10,22 @@
 
 namespace Lanzadera\CoreBundle\Doctrine\ORM;
 
-use Doctrine\ORM\EntityRepository as BaseEntityRepository;
-use Lanzadera\CoreBundle\Repository\RepositoryInterface;
+use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 
-class CustomRepository extends BaseEntityRepository implements RepositoryInterface
+class CustomRepository extends EntityRepository
 {
     /**
-     * {@inheritdoc}
+     * @param mixed $id
+     *
+     * @return null|object
      */
-    public function createNew()
+    public function find($id)
     {
-        $className = $this->getClassName();
+        if (is_array($id)) {
+            $id = current($id);
+        }
 
-        return new $className;
+        return parent::find($id);
     }
-
 } 

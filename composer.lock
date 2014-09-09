@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8ab34a7c6e522138c25c49b54e43f105",
+    "hash": "13635d381adedc708d5aff14b390fb52",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -181,7 +181,7 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan H. Wage",
+                    "name": "Jonathan Wage",
                     "email": "jonwage@gmail.com",
                     "homepage": "http://www.jwage.com/",
                     "role": "Creator"
@@ -202,7 +202,7 @@
                 {
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -269,7 +269,7 @@
                 {
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -345,7 +345,7 @@
                 {
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -639,7 +639,7 @@
                 {
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -693,7 +693,7 @@
                 {
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -1450,17 +1450,17 @@
         },
         {
             "name": "jms/serializer-bundle",
-            "version": "0.12.0",
+            "version": "0.13.0",
             "target-dir": "JMS/SerializerBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/JMSSerializerBundle.git",
-                "reference": "5531198a73c4adee669a8a2d1452999349822771"
+                "reference": "bb15db3e661168f4310fad48b86915ff1ca33795"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/JMSSerializerBundle/zipball/5531198a73c4adee669a8a2d1452999349822771",
-                "reference": "5531198a73c4adee669a8a2d1452999349822771",
+                "url": "https://api.github.com/repos/schmittjoh/JMSSerializerBundle/zipball/bb15db3e661168f4310fad48b86915ff1ca33795",
+                "reference": "bb15db3e661168f4310fad48b86915ff1ca33795",
                 "shasum": ""
             },
             "require": {
@@ -1487,7 +1487,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.12-dev"
+                    "dev-master": "0.13-dev"
                 }
             },
             "autoload": {
@@ -1516,7 +1516,7 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2013-07-29 12:36:36"
+            "time": "2013-12-05 14:36:11"
         },
         {
             "name": "jquery/jquery",
@@ -2674,12 +2674,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "a36965d696dedb5901eb05fe9bc7188bbf45547a"
+                "reference": "68a836e5dbcb89a9bec36586186d4fdf3fedf6f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/a36965d696dedb5901eb05fe9bc7188bbf45547a",
-                "reference": "a36965d696dedb5901eb05fe9bc7188bbf45547a",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/68a836e5dbcb89a9bec36586186d4fdf3fedf6f5",
+                "reference": "68a836e5dbcb89a9bec36586186d4fdf3fedf6f5",
                 "shasum": ""
             },
             "require": {
@@ -2745,7 +2745,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2014-09-08 09:39:08"
+            "time": "2014-09-09 13:52:07"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -3284,12 +3284,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataMediaBundle.git",
-                "reference": "6740a8d55aa94a0e8d97beb9ba60f95c24dd699f"
+                "reference": "1a1e89f5a6daf586969be210ed41e1b38aba7ac2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataMediaBundle/zipball/6740a8d55aa94a0e8d97beb9ba60f95c24dd699f",
-                "reference": "6740a8d55aa94a0e8d97beb9ba60f95c24dd699f",
+                "url": "https://api.github.com/repos/sonata-project/SonataMediaBundle/zipball/1a1e89f5a6daf586969be210ed41e1b38aba7ac2",
+                "reference": "1a1e89f5a6daf586969be210ed41e1b38aba7ac2",
                 "shasum": ""
             },
             "require": {
@@ -3362,7 +3362,7 @@
                 "vimeo",
                 "youtube"
             ],
-            "time": "2014-09-05 11:24:02"
+            "time": "2014-09-09 15:05:56"
         },
         {
             "name": "sonata-project/notification-bundle",
@@ -3622,51 +3622,37 @@
             "time": "2014-06-13 11:44:54"
         },
         {
-            "name": "sylius/resource-bundle",
-            "version": "v0.9.0",
-            "target-dir": "Sylius/Bundle/ResourceBundle",
+            "name": "sylius/resource",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Sylius/SyliusResourceBundle.git",
-                "reference": "b0c19178688ed85087c23a061b985a4bab8c9b5f"
+                "url": "https://github.com/Sylius/Resource.git",
+                "reference": "876cd30740fc838b2428cccd04b0cc8ecacf84ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/b0c19178688ed85087c23a061b985a4bab8c9b5f",
-                "reference": "b0c19178688ed85087c23a061b985a4bab8c9b5f",
+                "url": "https://api.github.com/repos/Sylius/Resource/zipball/876cd30740fc838b2428cccd04b0cc8ecacf84ac",
+                "reference": "876cd30740fc838b2428cccd04b0cc8ecacf84ac",
                 "shasum": ""
             },
             "require": {
-                "doctrine/doctrine-bundle": "~1.3@dev",
-                "friendsofsymfony/rest-bundle": "~1.0",
-                "jms/serializer-bundle": "0.12.*",
+                "doctrine/collections": "~1.0",
+                "doctrine/common": "~2.3",
                 "php": ">=5.3.3",
-                "symfony/expression-language": "~2.4",
-                "symfony/form": "~2.3",
-                "symfony/framework-bundle": "~2.3",
-                "symfony/twig-bundle": "~2.3",
-                "white-october/pagerfanta-bundle": "1.0.*"
+                "winzou/state-machine": "~0.1"
             },
             "require-dev": {
-                "doctrine/mongodb-odm": "1.0.*@dev",
-                "doctrine/orm": "~2.3",
-                "phpspec/phpspec": "~2.0",
-                "twig/twig": "~1.11"
+                "phpspec/phpspec": "~2.0"
             },
-            "suggest": {
-                "doctrine/mongodb-odm": "1.0.*@dev",
-                "doctrine/orm": "~2.3",
-                "fsc/hateoas-bundle": "0.3.*@dev"
-            },
-            "type": "symfony-bundle",
+            "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.9-dev"
+                    "dev-master": "0.11-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Sylius\\Bundle\\ResourceBundle\\": ""
+                "psr-4": {
+                    "Sylius\\Component\\Resource\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3688,6 +3674,87 @@
                     "homepage": "http://github.com/Sylius/Sylius/contributors"
                 }
             ],
+            "description": "Basic resource interfaces for PHP applications.",
+            "homepage": "http://sylius.org",
+            "keywords": [
+                "api",
+                "doctrine",
+                "ecommerce",
+                "resource",
+                "shop",
+                "sylius"
+            ],
+            "time": "2014-06-30 09:46:03"
+        },
+        {
+            "name": "sylius/resource-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Sylius/SyliusResourceBundle.git",
+                "reference": "a0ab74b4a42758b53c35cdc5ab6cb82ecbb38455"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/a0ab74b4a42758b53c35cdc5ab6cb82ecbb38455",
+                "reference": "a0ab74b4a42758b53c35cdc5ab6cb82ecbb38455",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/doctrine-bundle": "~1.3@dev",
+                "friendsofsymfony/rest-bundle": "~1.0",
+                "jms/serializer-bundle": "~0.12",
+                "php": ">=5.3.3",
+                "sylius/resource": "0.11.*@dev",
+                "symfony/expression-language": "~2.4",
+                "symfony/form": "~2.3",
+                "symfony/framework-bundle": "~2.3",
+                "symfony/twig-bundle": "~2.3",
+                "white-october/pagerfanta-bundle": "1.0.*",
+                "willdurand/hateoas-bundle": "@stable"
+            },
+            "require-dev": {
+                "doctrine/mongodb-odm": "1.0.*@dev",
+                "doctrine/orm": "~2.3",
+                "doctrine/phpcr-bundle": "~1.1",
+                "phpspec/phpspec": "~2.0",
+                "twig/twig": "~1.11"
+            },
+            "suggest": {
+                "doctrine/mongodb-odm": "1.0.*@dev",
+                "doctrine/orm": "~2.3",
+                "doctrine/phpcr-bundle": "~1.1",
+                "fsc/hateoas-bundle": "0.3.*@dev"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.11-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sylius\\Bundle\\ResourceBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sylius project",
+                    "homepage": "http://sylius.org"
+                },
+                {
+                    "name": "Community contributions",
+                    "homepage": "http://github.com/Sylius/Sylius/contributors"
+                },
+                {
+                    "name": "Paweł Jędrzejewski",
+                    "homepage": "http://pjedrzejewski.com"
+                }
+            ],
             "description": "Resource component for Sylius.",
             "homepage": "http://sylius.org",
             "keywords": [
@@ -3696,27 +3763,89 @@
                 "storage",
                 "sylius"
             ],
-            "time": "2014-04-09 23:26:19"
+            "time": "2014-09-09 11:27:10"
         },
         {
-            "name": "sylius/taxonomies-bundle",
+            "name": "sylius/taxonomy",
             "version": "dev-master",
-            "target-dir": "Sylius/Bundle/TaxonomiesBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/pjedrzejewski/SyliusTaxonomiesBundle.git",
-                "reference": "2711aa33aa126f77a339e782c1007b5755bd2522"
+                "url": "https://github.com/Sylius/Taxonomy.git",
+                "reference": "6976348a688ad37881f80c59232a5f489ca1374d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pjedrzejewski/SyliusTaxonomiesBundle/zipball/2711aa33aa126f77a339e782c1007b5755bd2522",
-                "reference": "2711aa33aa126f77a339e782c1007b5755bd2522",
+                "url": "https://api.github.com/repos/Sylius/Taxonomy/zipball/6976348a688ad37881f80c59232a5f489ca1374d",
+                "reference": "6976348a688ad37881f80c59232a5f489ca1374d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "sylius/resource": "0.11.*@dev"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.11-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sylius\\Component\\Taxonomy\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paweł Jędrzejewski",
+                    "email": "pjedrzejewski@diweb.pl",
+                    "homepage": "http://pjedrzejewski.com"
+                },
+                {
+                    "name": "Sylius project",
+                    "homepage": "http://sylius.org"
+                },
+                {
+                    "name": "Community contributions",
+                    "homepage": "http://github.com/Sylius/Sylius/contributors"
+                }
+            ],
+            "description": "Taxonomies - categorization of domain models in PHP projects.",
+            "homepage": "http://sylius.org",
+            "keywords": [
+                "categorization",
+                "classification",
+                "ecommerce",
+                "taxon",
+                "taxonomy"
+            ],
+            "time": "2014-07-15 11:11:15"
+        },
+        {
+            "name": "sylius/taxonomy-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Sylius/SyliusTaxonomyBundle.git",
+                "reference": "2cc16a1afb79aeca0e4453539628eb5d914dd069"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Sylius/SyliusTaxonomyBundle/zipball/2cc16a1afb79aeca0e4453539628eb5d914dd069",
+                "reference": "2cc16a1afb79aeca0e4453539628eb5d914dd069",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
                 "stof/doctrine-extensions-bundle": "1.1.*",
-                "sylius/resource-bundle": "0.9.*@dev",
+                "sylius/resource-bundle": "0.11.*@dev",
+                "sylius/taxonomy": "0.11.*@dev",
                 "symfony/framework-bundle": "~2.3"
             },
             "require-dev": {
@@ -3728,12 +3857,12 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.9-dev"
+                    "dev-master": "0.11-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Sylius\\Bundle\\TaxonomiesBundle\\": ""
+                "psr-4": {
+                    "Sylius\\Bundle\\TaxonomyBundle\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3742,17 +3871,16 @@
             ],
             "authors": [
                 {
-                    "name": "Paweł Jędrzejewski",
-                    "email": "pjedrzejewski@diweb.pl",
-                    "homepage": "http://pjedrzejewski.com"
-                },
-                {
                     "name": "Sylius project",
                     "homepage": "http://sylius.org"
                 },
                 {
                     "name": "Community contributions",
                     "homepage": "http://github.com/Sylius/Sylius/contributors"
+                },
+                {
+                    "name": "Paweł Jędrzejewski",
+                    "homepage": "http://pjedrzejewski.com"
                 }
             ],
             "description": "Flexible categorization system for Symfony2.",
@@ -3766,7 +3894,7 @@
                 "taxonomies",
                 "taxonomy"
             ],
-            "time": "2014-04-09 23:26:19"
+            "time": "2014-09-04 09:00:13"
         },
         {
             "name": "symfony/assetic-bundle",
@@ -4378,23 +4506,23 @@
         },
         {
             "name": "willdurand/hateoas-bundle",
-            "version": "0.0.7",
+            "version": "0.3.0",
             "target-dir": "Bazinga/Bundle/HateoasBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/willdurand/BazingaHateoasBundle.git",
-                "reference": "d0a317f1dce1b0e20819bd46e19543171897e48d"
+                "reference": "2776be35729b27e31b15a49c05dae8fe3c03692f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/willdurand/BazingaHateoasBundle/zipball/d0a317f1dce1b0e20819bd46e19543171897e48d",
-                "reference": "d0a317f1dce1b0e20819bd46e19543171897e48d",
+                "url": "https://api.github.com/repos/willdurand/BazingaHateoasBundle/zipball/2776be35729b27e31b15a49c05dae8fe3c03692f",
+                "reference": "2776be35729b27e31b15a49c05dae8fe3c03692f",
                 "shasum": ""
             },
             "require": {
-                "jms/serializer-bundle": "~0.12",
-                "symfony/framework-bundle": "~2.1",
-                "willdurand/hateoas": "~2.0@dev"
+                "jms/serializer-bundle": "~0.13",
+                "symfony/framework-bundle": "~2.2",
+                "willdurand/hateoas": "~2.0"
             },
             "require-dev": {
                 "symfony/expression-language": "~2.4"
@@ -4426,7 +4554,7 @@
                 "HATEOAS",
                 "rest"
             ],
-            "time": "2013-12-16 14:58:15"
+            "time": "2014-06-03 07:39:08"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
@@ -4460,7 +4588,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com",
                     "homepage": "http://www.willdurand.fr"
                 }
@@ -4517,6 +4645,56 @@
                 "negotiation"
             ],
             "time": "2014-05-16 12:34:51"
+        },
+        {
+            "name": "winzou/state-machine",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/winzou/state-machine.git",
+                "reference": "3a17ce7f816e5cfc876b49cca4484f2695b8b0ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/winzou/state-machine/zipball/3a17ce7f816e5cfc876b49cca4484f2695b8b0ae",
+                "reference": "3a17ce7f816e5cfc876b49cca4484f2695b8b0ae",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "symfony/event-dispatcher": "~2.1",
+                "symfony/expression-language": "~2.4",
+                "symfony/property-access": "~2.1"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "SM": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexandre Bacco",
+                    "email": "alexandre.bacco@gmail.com",
+                    "homepage": "http://alex.bacco.fr"
+                }
+            ],
+            "description": "A very lightweight yet powerful PHP state machine",
+            "homepage": "https://github.com/winzou/StateMachine",
+            "keywords": [
+                "callback",
+                "event",
+                "state",
+                "statemachine"
+            ],
+            "time": "2014-07-31 03:35:50"
         }
     ],
     "packages-dev": [
@@ -5958,8 +6136,10 @@
         "doctrine/doctrine-bundle": 20,
         "sonata-project/admin-bundle": 20,
         "sonata-project/doctrine-orm-admin-bundle": 20,
+        "sylius/resource": 20,
+        "sylius/taxonomy": 20,
         "sylius/resource-bundle": 20,
-        "sylius/taxonomies-bundle": 20,
+        "sylius/taxonomy-bundle": 20,
         "braincrafted/bootstrap-bundle": 10,
         "knplabs/knp-menu": 15,
         "knplabs/knp-menu-bundle": 15,

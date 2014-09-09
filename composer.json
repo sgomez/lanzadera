@@ -43,8 +43,10 @@
         "sonata-project/user-bundle":               "~2.2",
         "sonata-project/easy-extends-bundle":       "~2.1",
         "sonata-project/intl-bundle":               "~2.2",
-        "sylius/resource-bundle":                   "0.9@dev",
-        "sylius/taxonomies-bundle":                 "~0.9@dev",
+        "sylius/resource":                          "~0.11@dev",
+        "sylius/taxonomy":                          "~0.11@dev",
+        "sylius/resource-bundle":                   "~0.11@dev",
+        "sylius/taxonomy-bundle":                   "~0.11@dev",
 
         "braincrafted/bootstrap-bundle": "v2.1.0-beta1",
         "twbs/bootstrap": "v3.1.1",

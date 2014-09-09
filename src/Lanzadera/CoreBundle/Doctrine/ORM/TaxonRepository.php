@@ -9,10 +9,9 @@
 namespace Lanzadera\CoreBundle\Doctrine\ORM;
 
 
-use Sylius\Bundle\TaxonomiesBundle\Model\TaxonomyInterface;
-use Sylius\Bundle\TaxonomiesBundle\Repository\TaxonRepositoryInterface;
 use Doctrine\ORM\Query\Expr;
-use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
+use Sylius\Component\Taxonomy\Model\TaxonomyInterface;
+use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 
 class TaxonRepository extends CustomRepository implements TaxonRepositoryInterface
 {

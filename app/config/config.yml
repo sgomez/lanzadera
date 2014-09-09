@@ -164,7 +164,15 @@ sonata_notification:
     admin:
         enabled: false
 
-sylius_taxonomies:
+sylius_resource:
+    resources:
+        lanzadera.organization:
+            driver: doctrine/orm
+            templates: LanzaderaOrganizationBundle:Organization
+            classes:
+                model: Lanzadera\OrganizationBundle\Entity\User
+
+sylius_taxonomy:
     classes:
         taxonomy:
             model: Lanzadera\TaxonomyBundle\Entity\Taxonomy

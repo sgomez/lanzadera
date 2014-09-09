@@ -1,3 +1,14 @@
-lanzadera_organization_api_organization:
-    type: rest
-    resource: "@LanzaderaOrganizationBundle/Controller/OrganizationController.php"
+lanzadera_api_organization_index:
+    pattern: /organizations
+    methods: [GET]
+    defaults:
+        _controller: lanzadera.controller.organization:indexAction
+        _sylius:
+            criteria: { enabled: true }
+lanzadera_api_organization_show:
+    pattern: /organizations/{id}
+    methods: [GET]
+    defaults:
+        _controller: lanzadera.controller.organization:showAction
+        _sylius:
+            criteria: { enabled: true }

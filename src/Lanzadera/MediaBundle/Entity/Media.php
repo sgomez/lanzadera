@@ -22,7 +22,10 @@ use JMS\Serializer\Annotation as Serializer;
  *   working with object : http://www.doctrine-project.org/projects/orm/2.0/docs/reference/working-with-objects/en
  *
  * @author <yourname> <youremail>
- * @Hateoas\Relation("self", href = "expr('/api/v1/media/' ~ object.getId())")
+ * @Hateoas\Relation(
+ *      "self",
+ *      href = "expr('/api/v1/media/' ~ object.getId())"
+ * )
  */
 class Media extends BaseMedia
 {

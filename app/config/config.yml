@@ -166,6 +166,11 @@ sonata_notification:
 
 sylius_resource:
     resources:
+        lanzadera.media:
+            driver: doctrine/orm
+            templates: LanzaderaMediaBundle:Media
+            classes:
+                model: Lanzadera\MediaBundle\Entity\Media
         lanzadera.organization:
             driver: doctrine/orm
             templates: LanzaderaOrganizationBundle:Organization
@@ -189,6 +194,10 @@ stof_doctrine_extensions:
 nelmio_api_doc: ~
 
 fos_rest:
+    format_listener:
+        rules:
+            - { path: '^/api', priorities: [ html, json, xml ], fallback_format: html }
+            - { path: '^/', priorities: [ 'html', '*/*'], fallback_format: html }
     routing_loader:
         default_format: json
     view:

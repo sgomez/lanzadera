@@ -1,3 +1,7 @@
-lanzadera_media_api_organization:
-    type: rest
-    resource: "@LanzaderaMediaBundle/Controller/MediaController.php"
+lanzadera_api_media_show:
+    pattern: /medias/{id}
+    methods: [GET]
+    defaults:
+        _controller: lanzadera.controller.media:showAction
+        _sylius:
+            criteria: { enabled: true }

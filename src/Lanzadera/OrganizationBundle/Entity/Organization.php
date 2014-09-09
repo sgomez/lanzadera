@@ -12,8 +12,22 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="organization")
  * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\OrganizationRepository")
- * @Hateoas\Relation("self", href = "expr('/api/v1/organizations/' ~ object.getId())")
- * @Hateoas\Relation("media", href = "expr(link(object.getMedia(), 'self', true))")
+ * @Hateoas\Relation(
+ *      "self",
+ *      href = @Hateoas\Route(
+ *          "lanzadera_api_organization_show",
+ *          parameters = { "id" = "expr(object.getId())" },
+ *          absolute = true
+ *      )
+ * )
+ * @Hateoas\Relation(
+ *      "media",
+ *      href = @Hateoas\Route(
+ *          "lanzadera_api_media_show",
+ *          parameters = { "id" = "expr(object.getMedia().getId())" },
+ *          absolute = true
+ *      )
+ * )
  */
 class Organization
 {

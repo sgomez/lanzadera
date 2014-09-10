@@ -22,9 +22,9 @@ class LoadOrganizationData extends DataFixture
     public function load(ObjectManager $manager)
     {
 
-        for ($i=0; $i < 5; $i++) {
+        for ($i=0; $i < 50; $i++) {
             $organization = $this->createOrganization(
-                $this->faker->unique()->collective,
+                $this->faker->company,
                 $this->faker->address,
                 $this->faker->email,
                 $this->faker->phoneNumber,

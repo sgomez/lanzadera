@@ -28,4 +28,4 @@ class CustomRepository extends EntityRepository
 
         return parent::find($id);
     }
-} 
+}

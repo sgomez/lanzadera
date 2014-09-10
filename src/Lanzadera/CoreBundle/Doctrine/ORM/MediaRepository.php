@@ -9,7 +9,21 @@
 namespace Lanzadera\CoreBundle\Doctrine\ORM;
 
 
+use Lanzadera\MediaBundle\Entity\Media;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 class MediaRepository extends CustomRepository
 {
+    public function generatePublicUrl($id)
+    {
+        /** @var Media $media */
+        $media = $this->find($id);
 
+        if (!$media) {
+            throw new NotFoundHttpException();
+        }
+
+        return array("filename" => $media->getProviderReference());
+
+    }
 } 

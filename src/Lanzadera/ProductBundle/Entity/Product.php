@@ -14,6 +14,30 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="product", indexes={@ORM\Index(name="fk_product_organization_idx", columns={"organization_id"})})
  * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\ProductRepository")
+ * @Hateoas\Relation(
+ *      "self",
+ *      href = @Hateoas\Route(
+ *          "lanzadera_api_product_show",
+ *          parameters = { "id" = "expr(object.getId())" },
+ *          absolute = true
+ *      )
+ * )
+ * @Hateoas\Relation(
+ *      "media",
+ *      href = @Hateoas\Route(
+ *          "lanzadera_api_media_show",
+ *          parameters = { "id" = "expr(object.getMedia().getId())" },
+ *          absolute = true
+ *      )
+ * )
+ * @Hateoas\Relation(
+ *      "organization",
+ *      href = @Hateoas\Route(
+ *          "lanzadera_api_organization_show",
+ *          parameters = { "id" = "expr(object.getOrganization().getId())" },
+ *          absolute = true
+ *      )
+ * )
  */
 class Product
 {

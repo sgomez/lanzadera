@@ -23,8 +23,16 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @Hateoas\Relation(
  *      "media",
  *      href = @Hateoas\Route(
- *          "lanzadera_api_media_show",
- *          parameters = { "id" = "expr(object.getMedia().getId())" },
+ *          "sonata_api_media_media_get_medium_binary",
+ *          parameters = { "id" = "expr(object.getMedia().getId())", "format" = "default_big" },
+ *          absolute = true
+ *      )
+ * )
+ * @Hateoas\Relation(
+ *      "products",
+ *      href = @Hateoas\Route(
+ *          "lanzadera_api_organization_product_index",
+ *          parameters = { "id" = "expr(object.getId())" },
  *          absolute = true
  *      )
  * )
@@ -55,6 +63,7 @@ class Organization
      *
      * @ORM\Column(name="address", type="string", length=255, nullable=true)
      * @Assert\Length(max="255")
+     * @Serializer\Exclude
      */
     private $address;
 
@@ -63,6 +72,7 @@ class Organization
      *
      * @ORM\Column(name="phone", type="string", length=255, nullable=true)
      * @Assert\Length(max="255")
+     * @Serializer\Exclude
      */
     private $phone;
 
@@ -72,6 +82,7 @@ class Organization
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
      * @Assert\Email()
      * @Assert\Length(max="255")
+     * @Serializer\Exclude
      */
     private $email;
 
@@ -81,6 +92,7 @@ class Organization
      * @ORM\Column(name="web", type="string", length=255, nullable=true)
      * @Assert\Url()
      * @Assert\Length(max="255")
+     * @Serializer\Exclude
      */
     private $web;
 
@@ -89,6 +101,7 @@ class Organization
      *
      * @ORM\Column(name="enabled", type="boolean", nullable=false)
      * @Assert\Type(type="bool")
+     * @Serializer\Exclude
      */
     private $enabled;
 
@@ -97,6 +110,7 @@ class Organization
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      * @Assert\DateTime()
+     * @Serializer\Exclude
      */
     private $createdAt;
 
@@ -307,6 +321,16 @@ class Organization
     public function getEnabled()
     {
         return $this->enabled;
+    }
+
+    /**
+     * Check if the organization is enabled
+     *
+     * @return bool
+     */
+    public function isEnabled()
+    {
+        return $this->enabled ? true : false;
     }
 
     /**

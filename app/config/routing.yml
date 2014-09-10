@@ -48,15 +48,16 @@ NelmioApiDocBundle:
     resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
     prefix:   /api/doc
 
+sonata_api_media:
+    type:         rest
+    prefix:       /api/v1
+    resource:     "@SonataMediaBundle/Resources/config/routing/api.xml"
+
 fos_comment_api:
     type: rest
     resource: "@FOSCommentBundle/Resources/config/routing.yml"
     prefix: /api
     defaults: { _format: html }
-
-lanzadera_media_api:
-    resource: '@LanzaderaMediaBundle/Resources/config/routing.yml'
-    prefix: /api/v1
 
 lanzadera_organization_api:
     resource: '@LanzaderaOrganizationBundle/Resources/config/routing.yml'

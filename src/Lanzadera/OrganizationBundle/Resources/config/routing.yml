@@ -4,11 +4,27 @@ lanzadera_api_organization_index:
     defaults:
         _controller: lanzadera.controller.organization:indexAction
         _sylius:
-            criteria: { enabled: true }
+            paginate: 9
+            filterable: true
+            criteria:
+                enabled: true
+
+lanzadera_api_organization_product_index:
+    pattern: /organizations/{id}/products
+    methods: [GET]
+    defaults:
+        _controller: lanzadera.controller.product:indexAction
+        _sylius:
+            criteria:
+                organization: $id
+                status: approved
+
 lanzadera_api_organization_show:
     pattern: /organizations/{id}
     methods: [GET]
     defaults:
         _controller: lanzadera.controller.organization:showAction
         _sylius:
-            criteria: { enabled: true }
+            filterable: true
+            criteria:
+                enabled: true

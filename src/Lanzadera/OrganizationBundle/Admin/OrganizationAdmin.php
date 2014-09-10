@@ -101,7 +101,7 @@ class OrganizationAdmin extends Admin
                     'context'  => 'default'
                 ))
             ->end()
-            ->with('organization.group.indicators')
+            ->with('organization.group.indicators', array('class' => 'col-md-12'))
                 ->add('indicators', 'organization_indicator', array(
                     'label' => 'Indicadores',
                 ))

@@ -61,3 +61,7 @@ lanzadera_media_api:
 lanzadera_organization_api:
     resource: '@LanzaderaOrganizationBundle/Resources/config/routing.yml'
     prefix: /api/v1
+
+lanzadera_product_api:
+    resource: '@LanzaderaProductBundle/Resources/config/routing.yml'
+    prefix: /api/v1

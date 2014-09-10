@@ -4,6 +4,8 @@ namespace Lanzadera\ProductBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Hateoas\Configuration\Annotation as Hateoas;
+use JMS\Serializer\Annotation as Serializer;
 use Lanzadera\ClassificationBundle\Entity\Certificate;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -26,6 +28,7 @@ class Product
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Serializer\XmlAttribute
      */
     private $id;
 
@@ -52,6 +55,7 @@ class Product
      *
      * @ORM\Column(name="status", type="string", length=45, nullable=false)
      * @Assert\Choice(choices={"pending", "approved", "check", "denied"})
+     * @Serializer\Exclude
      */
     private $status;
 
@@ -63,6 +67,7 @@ class Product
      *   @ORM\JoinColumn(name="organization_id", referencedColumnName="id", onDelete="CASCADE")
      * })
      * @Assert\Valid()
+     * @Serializer\Exclude
      */
     private $organization;
 
@@ -70,6 +75,7 @@ class Product
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\OneToMany(targetEntity="Lanzadera\ClassificationBundle\Entity\Certificate", mappedBy="product", cascade={"persist"})
+     * @Serializer\Exclude
      */
     private $certificates;
 
@@ -85,6 +91,7 @@ class Product
      *     @ORM\JoinColumn(name="indicator_id", referencedColumnName="id", onDelete="CASCADE")
      *   }
      * )
+     * @Serializer\Exclude
      */
     private $indicators;
 
@@ -96,6 +103,7 @@ class Product
      *   @ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete="SET NULL")
      * })
      * @Assert\Valid()
+     * @Serializer\Exclude
      */
     private $category;
 
@@ -111,6 +119,7 @@ class Product
      *     @ORM\JoinColumn(name="taxon_id", referencedColumnName="id", onDelete="CASCADE")
      *   }
      * )
+     * @Serializer\Exclude
      */
     private $tags;
 
@@ -121,6 +130,7 @@ class Product
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="media_id", referencedColumnName="id", onDelete="SET NULL")
      * })
+     * @Serializer\Exclude
      */
     private $media;
 

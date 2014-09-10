@@ -175,7 +175,12 @@ sylius_resource:
             driver: doctrine/orm
             templates: LanzaderaOrganizationBundle:Organization
             classes:
-                model: Lanzadera\OrganizationBundle\Entity\User
+                model: Lanzadera\OrganizationBundle\Entity\Organization
+        lanzadera.product:
+            driver: doctrine/orm
+            templates: LanzaderaProductBundle:Product
+            classes:
+                model: Lanzadera\ProductBundle\Entity\Product
 
 sylius_taxonomy:
     classes:

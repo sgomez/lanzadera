@@ -53,6 +53,8 @@ class LoadProductsData extends DataFixture
         $product->setCategory($this->getReference("Lanzadera.Category." . $this->faker->category));
         $product->setOrganization($this->getReference("Lanzadera.Organization." . $this->faker->numberBetween(0, 4)));
         $product->setStatus($status[array_rand($status)]);
+	    $product->setRegularPrice($this->faker->optional()->randomNumber(2));
+	    $product->setReducedPrice($this->faker->optional()->randomNumber(2));
 
         foreach($indicators as $indicator) {
             $product->addIndicator($this->getReference("Lanzadera.Indicator." . $indicator));

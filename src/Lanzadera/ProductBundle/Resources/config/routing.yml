@@ -4,9 +4,11 @@ lanzadera_api_product_index:
     defaults:
         _controller: lanzadera.controller.product:indexAction
 lanzadera_api_product_show:
-    pattern: /products/{id}
+    pattern: /products/{slug}
     methods: [GET]
     defaults:
         _controller: lanzadera.controller.product:showAction
         _sylius:
-            criteria: { status: approved }
+            criteria:
+                slug: $slug
+                status: approved

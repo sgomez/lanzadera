@@ -12,5 +12,6 @@ organization.name.label: Nombre
 organization.group.description: Datos generales de la organización
 organization.group.indicators: Indicadores de organización
 organization.phone.label: Teléfono
+organization.slug.label: Identificador
 organization.web.label: Página web
 lanzadera.action: Acción

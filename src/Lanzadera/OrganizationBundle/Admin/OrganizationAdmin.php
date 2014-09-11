@@ -142,7 +142,10 @@ class OrganizationAdmin extends Admin
                 ->add('name', null, array(
                         'label' => 'organization.name.label'
                 ))
-                ->add('description', null, array(
+		        ->add('slug', null, array(
+			        'label' => 'organization.slug.label'
+		        ))
+		        ->add('description', null, array(
                         'label' => 'organization.description.label',
                 ))
                 ->add('address', 'textarea', array(

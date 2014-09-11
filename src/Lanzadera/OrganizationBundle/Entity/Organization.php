@@ -3,6 +3,7 @@
 namespace Lanzadera\OrganizationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Hateoas\Configuration\Annotation as Hateoas;
 use JMS\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -16,7 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *      "self",
  *      href = @Hateoas\Route(
  *          "lanzadera_api_organization_show",
- *          parameters = { "id" = "expr(object.getId())" },
+ *          parameters = { "slug" = "expr(object.getSlug())" },
  *          absolute = true
  *      )
  * )
@@ -45,9 +46,18 @@ class Organization
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @Serializer\XmlAttribute
+     * @Serializer\Exclude
      */
     private $id;
+
+	/**
+	 * @var string
+	 *
+	 * @Gedmo\Slug(fields={"name"})
+	 * @ORM\Column(length=128, unique=true)
+	 * @Serializer\XmlAttribute
+	 */
+	private $slug;
 
     /**
      * @var string
@@ -489,5 +499,28 @@ class Organization
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Organization
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

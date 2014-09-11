@@ -4,6 +4,7 @@ namespace Lanzadera\ProductBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Hateoas\Configuration\Annotation as Hateoas;
 use JMS\Serializer\Annotation as Serializer;
 use Lanzadera\ClassificationBundle\Entity\Certificate;
@@ -18,7 +19,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *      "self",
  *      href = @Hateoas\Route(
  *          "lanzadera_api_product_show",
- *          parameters = { "id" = "expr(object.getId())" },
+ *          parameters = { "slug" = "expr(object.getSlug())" },
  *          absolute = true
  *      )
  * )
@@ -34,7 +35,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *      "organization",
  *      href = @Hateoas\Route(
  *          "lanzadera_api_organization_show",
- *          parameters = { "id" = "expr(object.getOrganization().getId())" },
+ *          parameters = { "slug" = "expr(object.getOrganization().getSlug())" },
  *          absolute = true
  *      )
  * )
@@ -52,9 +53,18 @@ class Product
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @Serializer\XmlAttribute
+     * @Serializer\Exclude
      */
     private $id;
+
+	/**
+	 * @var string
+	 *
+	 * @Gedmo\Slug(fields={"id", "name"})
+	 * @ORM\Column(length=128, unique=true)
+	 * @Serializer\XmlAttribute
+	 */
+	private $slug;
 
     /**
      * @var string
@@ -525,5 +535,28 @@ class Product
 
             $this->addCertificate($certificate);
         }
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Product
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

@@ -10,21 +10,22 @@ lanzadera_api_organization_index:
                 enabled: true
 
 lanzadera_api_organization_product_index:
-    pattern: /organizations/{id}/products
+    pattern: /organizations/{slug}/products
     methods: [GET]
     defaults:
         _controller: lanzadera.controller.product:indexAction
         _sylius:
-            criteria:
-                organization: $id
-                status: approved
+            paginate: 9
+            method: findAllAvailableProductsByOrganizationSlug
+            arguments: [ $slug ]
 
 lanzadera_api_organization_show:
-    pattern: /organizations/{id}
+    pattern: /organizations/{slug}
     methods: [GET]
     defaults:
         _controller: lanzadera.controller.organization:showAction
         _sylius:
-            filterable: true
+            paginate: 9
             criteria:
+                slug: $slug
                 enabled: true

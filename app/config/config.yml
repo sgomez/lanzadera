@@ -166,6 +166,11 @@ sonata_notification:
         enabled: false
 
 sylius_resource:
+    settings:
+        paginate: true
+        default_page_size: 9
+        sortable: true
+        filterable: true
     resources:
         lanzadera.media:
             driver: doctrine/orm
@@ -219,6 +224,7 @@ fos_rest:
             'Doctrine\ORM\OptimisticLockException': HTTP_CONFLICT
     format_listener:
         rules:
+            - { path: '^/api/thread', priorities: [ 'html'], fallback_format: html }
             - { path: '^/api', priorities: [ json, xml ], fallback_format: json }
             - { path: '^/', priorities: [ 'html', '*/*'], fallback_format: html }
     routing_loader:

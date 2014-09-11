@@ -25,8 +25,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @Hateoas\Relation(
  *      "media",
  *      href = @Hateoas\Route(
- *          "lanzadera_api_media_show",
- *          parameters = { "id" = "expr(object.getMedia().getId())" },
+ *          "sonata_api_media_media_get_medium_binary",
+ *          parameters = { "id" = "expr(object.getMedia().getId())", "format" = "default_big" },
  *          absolute = true
  *      )
  * )

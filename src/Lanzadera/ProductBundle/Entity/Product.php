@@ -84,7 +84,41 @@ class Product
      */
     private $description;
 
-    /**
+	/**
+	 * @var float
+	 *
+	 * @ORM\Column(name="regular_price", type="decimal", precision=10, scale=2, nullable=true)
+	 * @Assert\Type(type="numeric")
+	 */
+	private $regularPrice;
+
+	/**
+	 * @var float
+	 *
+	 * @ORM\Column(name="reduced_price", type="decimal", precision=10, scale=2, nullable=true)
+	 * @Assert\Type(type="numeric")
+	 */
+	private $reducedPrice;
+
+	/**
+	 * @var datetime $created
+	 *
+	 * @Gedmo\Timestampable(on="create")
+	 * @ORM\Column(name="created_at", type="datetime")
+	 * @Serializer\Exclude
+	 */
+	private $createdAt;
+
+	/**
+	 * @var datetime $updated
+	 *
+	 * @Gedmo\Timestampable(on="update")
+	 * @ORM\Column(name="updated_at", type="datetime")
+	 * @Serializer\Exclude
+	 */
+	private $updatedAt;
+
+	/**
      * @var string
      *
      * @ORM\Column(name="status", type="string", length=45, nullable=false)
@@ -558,5 +592,97 @@ class Product
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set regularPrice
+     *
+     * @param string $regularPrice
+     * @return Product
+     */
+    public function setRegularPrice($regularPrice)
+    {
+        $this->regularPrice = $regularPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get regularPrice
+     *
+     * @return string 
+     */
+    public function getRegularPrice()
+    {
+        return $this->regularPrice;
+    }
+
+    /**
+     * Set reducedPrice
+     *
+     * @param string $reducedPrice
+     * @return Product
+     */
+    public function setReducedPrice($reducedPrice)
+    {
+        $this->reducedPrice = $reducedPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get reducedPrice
+     *
+     * @return string 
+     */
+    public function getReducedPrice()
+    {
+        return $this->reducedPrice;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return Product
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return Product
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }

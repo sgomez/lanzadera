@@ -68,6 +68,14 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
 
+stof_doctrine_extensions:
+    default_locale: es
+    orm:
+        default:
+            timestampable: true
+            tree: true
+            sluggable: true
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
@@ -168,7 +176,6 @@ sonata_notification:
 sylius_resource:
     settings:
         paginate: true
-        default_page_size: 9
         sortable: true
         filterable: true
     resources:

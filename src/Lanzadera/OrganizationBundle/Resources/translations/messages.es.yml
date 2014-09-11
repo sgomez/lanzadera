@@ -2,6 +2,9 @@ organization.address.label: Dirección
 organization.admin.group: Gestión de Organizaciones
 organization.admin.label: Organizaciones
 organization.created_at.label: Fecha alta
+organization.description.label: Descripción
+organization.description.help: |
+    Indique una breve referencia sobre la actividad de la organización.
 organization.email.label: Correo-e
 organization.enabled.label: Activo
 organization.indicators.label: Indicadores

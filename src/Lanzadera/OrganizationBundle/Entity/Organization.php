@@ -61,6 +61,15 @@ class Organization
     /**
      * @var string
      *
+     * @ORM\Column(name="description", type="string", nullable=true)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="255")
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="address", type="string", length=255, nullable=true)
      * @Assert\Length(max="255")
      * @Serializer\Exclude
@@ -457,5 +466,28 @@ class Organization
     public function getMedia()
     {
         return $this->media;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Organization
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

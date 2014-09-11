@@ -29,14 +29,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  *          absolute = true
  *      )
  * )
- * @Hateoas\Relation(
- *      "products",
- *      href = @Hateoas\Route(
- *          "lanzadera_api_organization_product_index",
- *          parameters = { "id" = "expr(object.getId())" },
- *          absolute = true
- *      )
- * )
  */
 class Organization
 {
@@ -124,14 +116,23 @@ class Organization
      */
     private $enabled;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false)
-     * @Assert\DateTime()
-     * @Serializer\Exclude
-     */
-    private $createdAt;
+	/**
+	 * @var datetime $created
+	 *
+	 * @Gedmo\Timestampable(on="create")
+	 * @ORM\Column(name="created_at", type="datetime")
+	 * @Serializer\Exclude
+	 */
+	private $createdAt;
+
+	/**
+	 * @var datetime $updated
+	 *
+	 * @Gedmo\Timestampable(on="update")
+	 * @ORM\Column(name="updated_at", type="datetime")
+	 * @Serializer\Exclude
+	 */
+	private $updatedAt;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -176,7 +177,6 @@ class Organization
     {
         $this->indicators = new \Doctrine\Common\Collections\ArrayCollection();
         $this->products = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->createdAt = new \DateTime();
     }
 
     /**
@@ -522,5 +522,28 @@ class Organization
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return Organization
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }

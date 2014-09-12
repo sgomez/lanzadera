@@ -9,3 +9,14 @@
         </div>
     {% endspaceless %}
 {% endblock percent_widget %}
+
+
+{% block money_widget %}
+    {% spaceless %}
+        {% set type = type|default('text') %}
+        <div class="input-group">
+            {{ block('form_widget_simple') }}
+            <span class="input-group-addon">€</span>
+        </div>
+    {% endspaceless %}
+{% endblock money_widget %}

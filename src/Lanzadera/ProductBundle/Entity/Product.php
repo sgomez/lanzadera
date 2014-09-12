@@ -33,10 +33,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * )
  * @Hateoas\Relation(
  *      "organization",
- *      href = @Hateoas\Route(
- *          "lanzadera_api_organization_show",
- *          parameters = { "slug" = "expr(object.getOrganization().getSlug())" },
- *          absolute = true
+ *      embedded = @Hateoas\Embedded(
+ *          "expr(object.getOrganization())",
+ *          xmlElementName = "organization",
  *      )
  * )
  */

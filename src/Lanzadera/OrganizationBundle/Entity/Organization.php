@@ -27,7 +27,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  *          "sonata_api_media_media_get_medium_binary",
  *          parameters = { "id" = "expr(object.getMedia().getId())", "format" = "default_big" },
  *          absolute = true
- *      )
+ *      ),
+ *      exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getMedia() === null)")
  * )
  */
 class Organization

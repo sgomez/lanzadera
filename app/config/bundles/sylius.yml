@@ -1,0 +1,29 @@
+sylius_resource:
+    settings:
+        paginate: true
+        sortable: true
+        filterable: true
+    resources:
+        lanzadera.media:
+            driver: doctrine/orm
+            templates: LanzaderaMediaBundle:Media
+            classes:
+                model: Lanzadera\MediaBundle\Entity\Media
+        lanzadera.organization:
+            driver: doctrine/orm
+            templates: LanzaderaOrganizationBundle:Organization
+            classes:
+                model: Lanzadera\OrganizationBundle\Entity\Organization
+        lanzadera.product:
+            driver: doctrine/orm
+            templates: LanzaderaProductBundle:Product
+            classes:
+                model: Lanzadera\ProductBundle\Entity\Product
+
+sylius_taxonomy:
+    classes:
+        taxonomy:
+            model: Lanzadera\TaxonomyBundle\Entity\Taxonomy
+        taxon:
+            model: Lanzadera\TaxonomyBundle\Entity\Taxon
+    driver: doctrine/orm # Configure the doctrine orm driver used in documentation.

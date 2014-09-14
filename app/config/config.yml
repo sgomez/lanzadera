@@ -1,6 +1,9 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: bundles/rest.yml }
+    - { resource: bundles/sonata.yml }
+    - { resource: bundles/sylius.yml }
 
 framework:
     #esi:             ~
@@ -101,157 +104,8 @@ fos_comment:
             comment: Lanzadera\CommentBundle\Entity\Comment
             thread: Lanzadera\CommentBundle\Entity\Thread
 
-sonata_block:
-    default_contexts: [cms]
-    blocks:
-        sonata.user.block.menu: ~
-        sonata.user.block.account: ~
-        sonata.admin.block.admin_list:
-            contexts: [admin]
-
-sonata_user:
-    security_acl: true
-    manager_type: orm
-    class:
-        user:         Lanzadera\CoreBundle\Entity\User
-        group:        Lanzadera\CoreBundle\Entity\Group
-    admin:
-        user:
-            class:    Lanzadera\CoreBundle\Admin\Model\UserAdmin
-
-sonata_admin:
-    title: Lanzadera
-    title_logo: bundles/lanzaderacore/img/tejedorasm.png
-    templates:
-        layout: LanzaderaCoreBundle::standard_layout.html.twig
-    security:
-        handler: sonata.admin.security.handler.role
-
-
-sonata_doctrine_orm_admin:
-    templates:
-        form: [ LanzaderaCoreBundle::form_admin_fields.html.twig ]
-
-sonata_media:
-    class:
-        media: Lanzadera\MediaBundle\Entity\Media
-        gallery: Lanzadera\MediaBundle\Entity\Gallery
-        gallery_has_media: Lanzadera\MediaBundle\Entity\GalleryHasMedia
-    default_context: default
-    db_driver: doctrine_orm
-    contexts:
-        default:
-            providers:
-                - sonata.media.provider.image
-                - sonata.media.provider.file
-            formats:
-                small: { width: 100 , quality: 70}
-                big:   { width: 500 , quality: 70}
-    providers:
-        image:
-            resizer: sonata.media.resizer.square
-            allowed_mime_types:
-              - image/gif
-              - image/jpeg
-              - image/png
-              - image/pjpeg
-            allowed_extensions:
-              - gif
-              - png
-              - jpeg
-              - jpg
-    cdn:
-        server:
-            path: /uploads/media # http://media.sonata-project.org/
-    filesystem:
-        local:
-            directory:  %kernel.root_dir%/../web/uploads/media
-            create:     false
-
-sonata_notification:
-    backend: sonata.notification.backend.runtime
-    admin:
-        enabled: false
-
-sylius_resource:
-    settings:
-        paginate: true
-        sortable: true
-        filterable: true
-    resources:
-        lanzadera.media:
-            driver: doctrine/orm
-            templates: LanzaderaMediaBundle:Media
-            classes:
-                model: Lanzadera\MediaBundle\Entity\Media
-        lanzadera.organization:
-            driver: doctrine/orm
-            templates: LanzaderaOrganizationBundle:Organization
-            classes:
-                model: Lanzadera\OrganizationBundle\Entity\Organization
-        lanzadera.product:
-            driver: doctrine/orm
-            templates: LanzaderaProductBundle:Product
-            classes:
-                model: Lanzadera\ProductBundle\Entity\Product
-
-sylius_taxonomy:
-    classes:
-        taxonomy:
-            model: Lanzadera\TaxonomyBundle\Entity\Taxonomy
-        taxon:
-            model: Lanzadera\TaxonomyBundle\Entity\Taxon
-    driver: doctrine/orm # Configure the doctrine orm driver used in documentation.
-
 stof_doctrine_extensions:
     orm:
         default:
             tree: true
             sluggable: true
-
-nelmio_api_doc: ~
-
-nelmio_cors:
-    paths:
-        '^/api/':
-            allow_origin: ['*']
-            allow_headers: ['X-Custom-Auth']
-            allow_methods: ['POST', 'PUT', 'GET', 'DELETE']
-            max_age: 3600
-
-fos_rest:
-    param_fetcher_listener: true
-    body_listener:          true
-    body_converter:
-        enabled: true
-        validate: true
-    exception:
-        codes:
-            'Symfony\Component\Routing\Exception\ResourceNotFoundException': 404
-            'Doctrine\ORM\OptimisticLockException': HTTP_CONFLICT
-    format_listener:
-        rules:
-            - { path: '^/api/thread', priorities: [ 'html'], fallback_format: html }
-            - { path: '^/api', priorities: [ json, xml ], fallback_format: json }
-            - { path: '^/', priorities: [ 'html', '*/*'], fallback_format: html }
-    routing_loader:
-        default_format: json
-    view:
-        view_response_listener: force
-        empty_content:        204
-        exception_wrapper_handler:  FOS\RestBundle\View\ExceptionWrapperHandler
-        serialize_null:       false
-        formats:
-            json: true
-            xml: true
-        templating_formats:
-            html: true
-        force_redirects:
-            html: true
-        default_engine: twig
-
-bazinga_hateoas:
-    metadata:
-        cache:                file
-        file_cache:
-            dir:              %kernel.cache_dir%/hateoas

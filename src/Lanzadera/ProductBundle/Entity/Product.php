@@ -4,6 +4,9 @@ namespace Lanzadera\ProductBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Hateoas\Configuration\Annotation as Hateoas;
+use JMS\Serializer\Annotation as Serializer;
 use Lanzadera\ClassificationBundle\Entity\Certificate;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -12,6 +15,36 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="product", indexes={@ORM\Index(name="fk_product_organization_idx", columns={"organization_id"})})
  * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\ProductRepository")
+ * @Hateoas\Relation(
+ *      "self",
+ *      href = @Hateoas\Route(
+ *          "lanzadera_api_product_show",
+ *          parameters = { "slug" = "expr(object.getSlug())" },
+ *          absolute = true
+ *      )
+ * )
+ * @Hateoas\Relation(
+ *      "media",
+ *      href = @Hateoas\Route(
+ *          "sonata_api_media_media_get_medium_binary",
+ *          parameters = { "id" = "expr(object.getMedia().getId())", "format" = "default_big" },
+ *          absolute = true
+ *      )
+ * )
+ * @Hateoas\Relation(
+ *      "organization",
+ *      embedded = @Hateoas\Embedded(
+ *          "expr(object.getOrganization())",
+ *          xmlElementName = "organization",
+ *      )
+ * )
+ * @Hateoas\Relation(
+ *      "certificates",
+ *      embedded = @Hateoas\Embedded(
+ *          "expr(object.getClassifications())",
+ *          xmlElementName = "certificates",
+ *      )
+ * )
  */
 class Product
 {
@@ -26,8 +59,18 @@ class Product
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Serializer\Exclude
      */
     private $id;
+
+	/**
+	 * @var string
+	 *
+	 * @Gedmo\Slug(fields={"id", "name"})
+	 * @ORM\Column(length=128, unique=true)
+	 * @Serializer\XmlAttribute
+	 */
+	private $slug;
 
     /**
      * @var string
@@ -47,11 +90,46 @@ class Product
      */
     private $description;
 
-    /**
+	/**
+	 * @var float
+	 *
+	 * @ORM\Column(name="regular_price", type="decimal", precision=10, scale=2, nullable=true)
+	 * @Assert\Type(type="numeric")
+	 */
+	private $regularPrice;
+
+	/**
+	 * @var float
+	 *
+	 * @ORM\Column(name="reduced_price", type="decimal", precision=10, scale=2, nullable=true)
+	 * @Assert\Type(type="numeric")
+	 */
+	private $reducedPrice;
+
+	/**
+	 * @var datetime $created
+	 *
+	 * @Gedmo\Timestampable(on="create")
+	 * @ORM\Column(name="created_at", type="datetime")
+	 * @Serializer\Exclude
+	 */
+	private $createdAt;
+
+	/**
+	 * @var datetime $updated
+	 *
+	 * @Gedmo\Timestampable(on="update")
+	 * @ORM\Column(name="updated_at", type="datetime")
+	 * @Serializer\Exclude
+	 */
+	private $updatedAt;
+
+	/**
      * @var string
      *
      * @ORM\Column(name="status", type="string", length=45, nullable=false)
      * @Assert\Choice(choices={"pending", "approved", "check", "denied"})
+     * @Serializer\Exclude
      */
     private $status;
 
@@ -63,6 +141,7 @@ class Product
      *   @ORM\JoinColumn(name="organization_id", referencedColumnName="id", onDelete="CASCADE")
      * })
      * @Assert\Valid()
+     * @Serializer\Exclude
      */
     private $organization;
 
@@ -70,6 +149,7 @@ class Product
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\OneToMany(targetEntity="Lanzadera\ClassificationBundle\Entity\Certificate", mappedBy="product", cascade={"persist"})
+     * @Serializer\Exclude
      */
     private $certificates;
 
@@ -85,6 +165,7 @@ class Product
      *     @ORM\JoinColumn(name="indicator_id", referencedColumnName="id", onDelete="CASCADE")
      *   }
      * )
+     * @Serializer\Exclude
      */
     private $indicators;
 
@@ -96,6 +177,7 @@ class Product
      *   @ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete="SET NULL")
      * })
      * @Assert\Valid()
+     * @Serializer\Exclude
      */
     private $category;
 
@@ -111,6 +193,7 @@ class Product
      *     @ORM\JoinColumn(name="taxon_id", referencedColumnName="id", onDelete="CASCADE")
      *   }
      * )
+     * @Serializer\Exclude
      */
     private $tags;
 
@@ -121,6 +204,7 @@ class Product
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="media_id", referencedColumnName="id", onDelete="SET NULL")
      * })
+     * @Serializer\Exclude
      */
     private $media;
 
@@ -491,5 +575,136 @@ class Product
 
             $this->addCertificate($certificate);
         }
+    }
+
+	/**
+	 * Get an array of active certificates
+	 *
+	 * @return array
+	 */
+	public function getClassifications()
+	{
+		$selected = array();
+		foreach ($this->getCertificates() as $certificate)
+		{
+			$selected[] = $certificate->getClassification()->getName();
+		}
+
+		return $selected;
+	}
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Product
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set regularPrice
+     *
+     * @param string $regularPrice
+     * @return Product
+     */
+    public function setRegularPrice($regularPrice)
+    {
+        $this->regularPrice = $regularPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get regularPrice
+     *
+     * @return string 
+     */
+    public function getRegularPrice()
+    {
+        return $this->regularPrice;
+    }
+
+    /**
+     * Set reducedPrice
+     *
+     * @param string $reducedPrice
+     * @return Product
+     */
+    public function setReducedPrice($reducedPrice)
+    {
+        $this->reducedPrice = $reducedPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get reducedPrice
+     *
+     * @return string 
+     */
+    public function getReducedPrice()
+    {
+        return $this->reducedPrice;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return Product
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return Product
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }

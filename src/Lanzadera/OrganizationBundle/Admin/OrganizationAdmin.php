@@ -71,6 +71,11 @@ class OrganizationAdmin extends Admin
                 ->add('name', null, array(
                         'label' => 'organization.name.label'
                 ))
+                ->add('description', 'textarea', array(
+                        'label' => 'organization.description.label',
+                        'help' => 'organization.description.help',
+                        'required' => false,
+                ))
                 ->add('address', 'textarea', array(
                         'label' => 'organization.address.label',
                         'required' => false
@@ -101,7 +106,7 @@ class OrganizationAdmin extends Admin
                     'context'  => 'default'
                 ))
             ->end()
-            ->with('organization.group.indicators')
+            ->with('organization.group.indicators', array('class' => 'col-md-12'))
                 ->add('indicators', 'organization_indicator', array(
                     'label' => 'Indicadores',
                 ))
@@ -136,6 +141,12 @@ class OrganizationAdmin extends Admin
             ->with('organization.group.description', array('class' => 'col-md-6'))
                 ->add('name', null, array(
                         'label' => 'organization.name.label'
+                ))
+		        ->add('slug', null, array(
+			        'label' => 'organization.slug.label'
+		        ))
+		        ->add('description', null, array(
+                        'label' => 'organization.description.label',
                 ))
                 ->add('address', 'textarea', array(
                         'label' => 'organization.address.label'

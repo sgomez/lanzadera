@@ -3,6 +3,9 @@
 namespace Lanzadera\OrganizationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Hateoas\Configuration\Annotation as Hateoas;
+use JMS\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -10,6 +13,22 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="organization")
  * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\OrganizationRepository")
+ * @Hateoas\Relation(
+ *      "self",
+ *      href = @Hateoas\Route(
+ *          "lanzadera_api_organization_show",
+ *          parameters = { "slug" = "expr(object.getSlug())" },
+ *          absolute = true
+ *      )
+ * )
+ * @Hateoas\Relation(
+ *      "media",
+ *      href = @Hateoas\Route(
+ *          "sonata_api_media_media_get_medium_binary",
+ *          parameters = { "id" = "expr(object.getMedia().getId())", "format" = "default_big" },
+ *          absolute = true
+ *      )
+ * )
  */
 class Organization
 {
@@ -19,8 +38,18 @@ class Organization
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Serializer\Exclude
      */
     private $id;
+
+	/**
+	 * @var string
+	 *
+	 * @Gedmo\Slug(fields={"name"})
+	 * @ORM\Column(length=128, unique=true)
+	 * @Serializer\XmlAttribute
+	 */
+	private $slug;
 
     /**
      * @var string
@@ -34,8 +63,18 @@ class Organization
     /**
      * @var string
      *
+     * @ORM\Column(name="description", type="string", nullable=true)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="255")
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="address", type="string", length=255, nullable=true)
      * @Assert\Length(max="255")
+     * @Serializer\Exclude
      */
     private $address;
 
@@ -44,6 +83,7 @@ class Organization
      *
      * @ORM\Column(name="phone", type="string", length=255, nullable=true)
      * @Assert\Length(max="255")
+     * @Serializer\Exclude
      */
     private $phone;
 
@@ -53,6 +93,7 @@ class Organization
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
      * @Assert\Email()
      * @Assert\Length(max="255")
+     * @Serializer\Exclude
      */
     private $email;
 
@@ -62,6 +103,7 @@ class Organization
      * @ORM\Column(name="web", type="string", length=255, nullable=true)
      * @Assert\Url()
      * @Assert\Length(max="255")
+     * @Serializer\Exclude
      */
     private $web;
 
@@ -70,21 +112,33 @@ class Organization
      *
      * @ORM\Column(name="enabled", type="boolean", nullable=false)
      * @Assert\Type(type="bool")
+     * @Serializer\Exclude
      */
     private $enabled;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false)
-     * @Assert\DateTime()
-     */
-    private $createdAt;
+	/**
+	 * @var datetime $created
+	 *
+	 * @Gedmo\Timestampable(on="create")
+	 * @ORM\Column(name="created_at", type="datetime")
+	 * @Serializer\Exclude
+	 */
+	private $createdAt;
+
+	/**
+	 * @var datetime $updated
+	 *
+	 * @Gedmo\Timestampable(on="update")
+	 * @ORM\Column(name="updated_at", type="datetime")
+	 * @Serializer\Exclude
+	 */
+	private $updatedAt;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\OneToMany(targetEntity="Lanzadera\ProductBundle\Entity\Product", mappedBy="organization", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @Serializer\Exclude
      */
     private $products;
 
@@ -101,6 +155,7 @@ class Organization
      *     @ORM\JoinColumn(name="indicator_id", referencedColumnName="id")
      *   }
      * )
+     * @Serializer\Exclude
      */
     private $indicators;
 
@@ -111,6 +166,7 @@ class Organization
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="media_id", referencedColumnName="id", onDelete="SET NULL")
      * })
+     * @Serializer\Exclude
      */
     private $media;
 
@@ -121,7 +177,6 @@ class Organization
     {
         $this->indicators = new \Doctrine\Common\Collections\ArrayCollection();
         $this->products = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->createdAt = new \DateTime();
     }
 
     /**
@@ -288,6 +343,16 @@ class Organization
     }
 
     /**
+     * Check if the organization is enabled
+     *
+     * @return bool
+     */
+    public function isEnabled()
+    {
+        return $this->enabled ? true : false;
+    }
+
+    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -411,5 +476,74 @@ class Organization
     public function getMedia()
     {
         return $this->media;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Organization
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Organization
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return Organization
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }

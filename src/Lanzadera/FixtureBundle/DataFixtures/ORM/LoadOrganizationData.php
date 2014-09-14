@@ -22,9 +22,10 @@ class LoadOrganizationData extends DataFixture
     public function load(ObjectManager $manager)
     {
 
-        for ($i=0; $i < 5; $i++) {
+        for ($i=0; $i < 50; $i++) {
             $organization = $this->createOrganization(
-                $this->faker->unique()->collective,
+                $this->faker->company,
+                $this->faker->text,
                 $this->faker->address,
                 $this->faker->email,
                 $this->faker->phoneNumber,
@@ -47,7 +48,7 @@ class LoadOrganizationData extends DataFixture
         return 2;
     }
 
-    public function createOrganization($name, $address = "", $email = "", $phone = "", $web = "", $enabled = true)
+    public function createOrganization($name, $description = "", $address = "", $email = "", $phone = "", $web = "", $enabled = true)
     {
         /* @var $repo OrganizationRepository */
         $repo = $this->getOrganizationRepository();
@@ -55,6 +56,7 @@ class LoadOrganizationData extends DataFixture
         $organization = $repo->createNew();
 
         $organization->setName($name);
+        $organization->setDescription($description);
         $organization->setAddress($address);
         $organization->setEmail($email);
         $organization->setPhone($phone);

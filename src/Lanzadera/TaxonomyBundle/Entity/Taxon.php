@@ -9,8 +9,9 @@
 namespace Lanzadera\TaxonomyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Sylius\Bundle\TaxonomiesBundle\Model\Taxon as SyliusTaxon;
-use Sylius\Bundle\TaxonomiesBundle\Model\TaxonInterface;
+use Sylius\Component\Taxonomy\Model\Taxon as SyliusTaxon;
+use Sylius\Component\Taxonomy\Model\TaxonInterface;
+
 
 /**
  * Class Taxon

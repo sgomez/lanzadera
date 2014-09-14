@@ -144,7 +144,17 @@ class ProductAdmin extends Admin
                             'class' => 'form-control',
                         )
                 ))
-                ->add('category', 'sonata_type_model', array(
+                ->add('regularPrice', 'money', array(
+                        'label' => 'product.regular_price.label',
+                        'required' => false,
+                ))
+                ->add('reducedPrice', 'money', array(
+                        'label' => 'product.reduced_price.label',
+                        'required' => false,
+                ))
+            ->end()
+            ->with('product.group.metadata', array('class' => 'col-md-6'))
+                 ->add('category', 'sonata_type_model', array(
                         'label' => 'product.category.label',
                         'help' => 'product.category.help',
                         'query' => $this->getRepository('taxon')->createTaxonQuery('Category'),
@@ -201,7 +211,7 @@ class ProductAdmin extends Admin
                     'context'  => 'default'
                 ))
             ->end()
-            ->with('product.group.indicators')
+            ->with('product.group.indicators', array('class' => 'col-md-6'))
                 ->add('indicators', 'product_indicator', array(
                     'label' => 'Indicadores',
                     'block_name' => 'lanzadera_indicator'
@@ -220,6 +230,9 @@ class ProductAdmin extends Admin
                 ->add('name', null, array(
                         'label' => 'product.name.label'
                 ))
+	            ->add('slug', null, array(
+		                'label' => 'product.slug.label'
+	            ))
                 ->add('description', null, array(
                         'label' => 'product.description.label'
                 ))

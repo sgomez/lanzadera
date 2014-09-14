@@ -10,6 +10,7 @@ namespace Lanzadera\CoreBundle\Doctrine\ORM;
 
 
 use Doctrine\ORM\Query\Expr;
+use Lanzadera\ProductBundle\Entity\Product;
 use Sylius\Component\Taxonomy\Model\TaxonomyInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 
@@ -41,4 +42,30 @@ class TaxonRepository extends CustomRepository implements TaxonRepositoryInterfa
 
         return $query;
     }
+
+	public function findAllCategories()
+	{
+		$queryBuilder = $this->getCollectionQueryBuilder();
+		$query = $queryBuilder
+			->select('PARTIAL o.{id,name,slug}')
+			->addSelect('COUNT(product.id) as _count')
+			->leftJoin('o.taxonomy', 'taxonomy')
+			->leftJoin('o.products', 'product')
+			->leftJoin('product.organization', 'organization')
+			->where($queryBuilder->expr()->eq('taxonomy.name', ':taxonomy'))
+			->andWhere($queryBuilder->expr()->isNotNull('o.parent'))
+			->andWhere($queryBuilder->expr()->eq('product.status', ':status'))
+			->andWhere($queryBuilder->expr()->eq('organization.enabled', ':enabled'))
+			->groupBy('o.id')
+			->orderBy('o.name')
+			->setParameter('taxonomy', 'Category')
+			->setParameter(':status', Product::STATUS_APPROVED)
+			->setParameter(':enabled', 1)
+			->getQuery()
+			->getArrayResult()
+		;
+
+		return $query;
+	}
+
 } 

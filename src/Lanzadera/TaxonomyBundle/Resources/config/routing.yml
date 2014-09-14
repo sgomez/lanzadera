@@ -1,0 +1,21 @@
+lanzadera_api_taxonomy_category_index:
+    pattern: /categories
+    methods: [GET]
+    defaults:
+        _controller: lanzadera.controller.taxon:indexAction
+        _sylius:
+            paginate: false
+            method: findAllCategories
+
+
+lanzadera_api_taxonomy_category_product_index:
+    pattern: /categories/{slug}/products
+    methods: [GET]
+    defaults:
+        _controller: lanzadera.controller.product:indexAction
+        _sylius:
+            paginate: 9
+            method: findAllAvailableProductsByCategorySlug
+            arguments: [ $slug ]
+            sorting:
+                name: asc

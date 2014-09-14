@@ -13,25 +13,6 @@ use Lanzadera\ProductBundle\Entity\Product;
 
 class ProductRepository extends CustomRepository
 {
-	public function findAllAvailableProductsByOrganizationSlug($slug)
-	{
-		$queryBuilder = $this->getCollectionQueryBuilder();
-		$query = $queryBuilder
-			->leftJoin('o.organization', 'organization')
-			->leftJoin('o.certificates', 'certificates')
-			->leftJoin('certificates.classification', 'classification')
-			->where($queryBuilder->expr()->eq('o.status', ':status'))
-			->andWhere($queryBuilder->expr()->eq('organization.slug', ':slug'))
-			->andWhere($queryBuilder->expr()->eq('organization.enabled', ':enabled'))
-			->orderBy('o.name', 'asc')
-			->setParameter(':status', Product::STATUS_APPROVED)
-			->setParameter('slug', $slug)
-			->setParameter('enabled', 1)
-			;
-
-		return $this->getPaginator($query);
-	}
-
 	private function getAllAvailableProductsQuery()
 	{
 		$queryBuilder = $this->getCollectionQueryBuilder();
@@ -55,6 +36,18 @@ class ProductRepository extends CustomRepository
 		return $this->getPaginator($this->getAllAvailableProductsQuery());
 	}
 
+	public function findAllAvailableProductsByOrganizationSlug($slug)
+	{
+		$query = $this->getAllAvailableProductsQuery();
+
+		$query
+			->andWhere($query->expr()->eq('organization.slug', ':slug'))
+			->setParameter('slug', $slug)
+		;
+
+		return $this->getPaginator($query);
+	}
+
 	public function findAllAvailableProductsByKeyword($keyword)
 	{
 		$query = $this->getAllAvailableProductsQuery();
@@ -65,6 +58,19 @@ class ProductRepository extends CustomRepository
 				$query->expr()->like('o.name', ':keyword')
 			))
 			->setParameter('keyword', '%' . $keyword . '%')
+		;
+
+		return $this->getPaginator($query);
+	}
+
+	public function findAllAvailableProductsByCategorySlug($slug)
+	{
+		$query = $this->getAllAvailableProductsQuery();
+
+		$query
+			->leftJoin('o.category', 'category')
+			->andWhere($query->expr()->eq('category.slug', ':slug'))
+			->setParameter('slug', $slug)
 		;
 
 		return $this->getPaginator($query);

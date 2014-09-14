@@ -19,6 +19,11 @@ sylius_resource:
             templates: LanzaderaProductBundle:Product
             classes:
                 model: Lanzadera\ProductBundle\Entity\Product
+        lanzadera.taxon:
+            driver: doctrine/orm
+            templates: LanzaderaTaxonomyBundle:Taxon
+            classes:
+                model: Lanzadera\TaxonomyBundle\Entity\Taxon
 
 sylius_taxonomy:
     classes:

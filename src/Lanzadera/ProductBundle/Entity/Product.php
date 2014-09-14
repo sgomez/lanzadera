@@ -173,7 +173,7 @@ class Product
     /**
      * @var \Lanzadera\TaxonomyBundle\Entity\Taxon
      *
-     * @ORM\ManyToOne(targetEntity="Lanzadera\TaxonomyBundle\Entity\Taxon")
+     * @ORM\ManyToOne(targetEntity="Lanzadera\TaxonomyBundle\Entity\Taxon", inversedBy="products")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete="SET NULL")
      * })

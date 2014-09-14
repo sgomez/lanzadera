@@ -21,6 +21,14 @@ use Sylius\Component\Taxonomy\Model\TaxonInterface;
  */
 class Taxon extends SyliusTaxon implements TaxonInterface
 {
+
+	/**
+	* @var \Doctrine\Common\Collections\Collection
+	*
+	* @ORM\OneToMany(targetEntity="Lanzadera\ProductBundle\Entity\Product", mappedBy="category", cascade={"persist"})
+    */
+	protected $products;
+
     /**
      * {@inheritdoc}
      */

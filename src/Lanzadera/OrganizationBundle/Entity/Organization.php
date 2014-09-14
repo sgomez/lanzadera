@@ -65,7 +65,6 @@ class Organization
      * @var string
      *
      * @ORM\Column(name="description", type="string", nullable=true)
-     * @Assert\NotBlank()
      * @Assert\Length(max="255")
      */
     private $description;

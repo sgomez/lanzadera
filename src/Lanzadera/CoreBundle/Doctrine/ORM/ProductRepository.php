@@ -18,13 +18,54 @@ class ProductRepository extends CustomRepository
 		$queryBuilder = $this->getCollectionQueryBuilder();
 		$query = $queryBuilder
 			->leftJoin('o.organization', 'organization')
+			->leftJoin('o.certificates', 'certificates')
+			->leftJoin('certificates.classification', 'classification')
 			->where($queryBuilder->expr()->eq('o.status', ':status'))
 			->andWhere($queryBuilder->expr()->eq('organization.slug', ':slug'))
 			->andWhere($queryBuilder->expr()->eq('organization.enabled', ':enabled'))
+			->orderBy('o.name', 'asc')
 			->setParameter(':status', Product::STATUS_APPROVED)
 			->setParameter('slug', $slug)
 			->setParameter('enabled', 1)
 			;
+
+		return $this->getPaginator($query);
+	}
+
+	private function getAllAvailableProductsQuery()
+	{
+		$queryBuilder = $this->getCollectionQueryBuilder();
+		$query = $queryBuilder
+			->leftJoin('o.organization', 'organization')
+			->leftJoin('o.certificates', 'certificates')
+			->leftJoin('certificates.classification', 'classification')
+			->leftJoin('o.tags', 'tag')
+			->where($queryBuilder->expr()->eq('o.status', ':status'))
+			->andWhere($queryBuilder->expr()->eq('organization.enabled', ':enabled'))
+			->orderBy('o.name', 'asc')
+			->setParameter(':status', Product::STATUS_APPROVED)
+			->setParameter('enabled', 1)
+		;
+
+		return $query;
+	}
+
+	public function findAllAvailableProducts()
+	{
+		return $this->getPaginator($this->getAllAvailableProductsQuery());
+	}
+
+	public function findAllAvailableProductsByKeyword($keyword)
+	{
+		$query = $this->getAllAvailableProductsQuery();
+
+		$query
+			->andWhere($query->expr()->orX(
+				$query->expr()->like('tag.name', ':keyword'),
+				$query->expr()->like('o.name', ':keyword')
+			))
+			->setParameter('keyword', '%' . $keyword . '%')
+		;
 
 		return $this->getPaginator($query);
 	}

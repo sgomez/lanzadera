@@ -38,6 +38,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  *          xmlElementName = "organization",
  *      )
  * )
+ * @Hateoas\Relation(
+ *      "certificates",
+ *      embedded = @Hateoas\Embedded(
+ *          "expr(object.getClassifications())",
+ *          xmlElementName = "certificates",
+ *      )
+ * )
  */
 class Product
 {
@@ -569,6 +576,22 @@ class Product
             $this->addCertificate($certificate);
         }
     }
+
+	/**
+	 * Get an array of active certificates
+	 *
+	 * @return array
+	 */
+	public function getClassifications()
+	{
+		$selected = array();
+		foreach ($this->getCertificates() as $certificate)
+		{
+			$selected[] = $certificate->getClassification()->getName();
+		}
+
+		return $selected;
+	}
 
     /**
      * Set slug

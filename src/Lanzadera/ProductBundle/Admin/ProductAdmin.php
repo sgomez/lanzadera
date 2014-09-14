@@ -230,6 +230,9 @@ class ProductAdmin extends Admin
                 ->add('name', null, array(
                         'label' => 'product.name.label'
                 ))
+	            ->add('slug', null, array(
+		                'label' => 'product.slug.label'
+	            ))
                 ->add('description', null, array(
                         'label' => 'product.description.label'
                 ))

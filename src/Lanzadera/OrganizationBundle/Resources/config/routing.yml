@@ -5,7 +5,8 @@ lanzadera_api_organization_index:
         _controller: lanzadera.controller.organization:indexAction
         _sylius:
             paginate: 9
-            filterable: true
+            sorting:
+                name: asc
             criteria:
                 enabled: true
 
@@ -18,6 +19,8 @@ lanzadera_api_organization_product_index:
             paginate: 9
             method: findAllAvailableProductsByOrganizationSlug
             arguments: [ $slug ]
+            sorting:
+                name: asc
 
 lanzadera_api_organization_show:
     pattern: /organizations/{slug}

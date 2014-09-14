@@ -74,8 +74,6 @@ abstract class DataFixture extends AbstractFixture implements ContainerAwareInte
     protected function createImage($name, $type='cats')
     {
         $repo = $this->getMediaRepository();
-        //$temp = tempnam('/tmp', 'lanzadera');
-        //file_put_contents($temp, file_get_contents('http://lorempixel.com/400/400/food/'));
 
         /** @var Media $image */
         $image = $repo->createNew();

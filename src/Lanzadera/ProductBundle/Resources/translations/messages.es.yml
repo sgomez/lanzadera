@@ -28,6 +28,7 @@ product.organization.label: Organización
 product.organization.help: Seleccione la organización o colectivo que distribuye este producto.
 product.regular_price.label: Precio normal
 product.reduced_price.label: Precio socios
+product.slug.label: Identificador
 product.status.label: Estado
 product.status.help: |
     Solo los productos aprobados aparecerán en la página de búsquedas del catálogo.

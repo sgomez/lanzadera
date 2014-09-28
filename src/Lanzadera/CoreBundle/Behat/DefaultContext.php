@@ -11,6 +11,7 @@ namespace Lanzadera\CoreBundle\Behat;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\AfterScenarioScope;
+use Behat\Gherkin\Node\TableNode;
 use Behat\Mink\Driver\Selenium2Driver;
 use Behat\MinkExtension\Context\RawMinkContext;
 use Behat\Symfony2Extension\Context\KernelAwareContext;
@@ -45,6 +46,18 @@ abstract class DefaultContext extends RawMinkContext
         "categoría" => "category",
         "etiqueta" => "tag"
     );
+
+	protected function entityHasFollowingIndicator($type, $name, TableNode $tableNode)
+	{
+		$element = $this->getRepository($type)->findOneByName($name);
+
+		foreach($tableNode->getHash() as $nodeHash) {
+			$indicator = $this->getRepository('indicator')->findOneByCriterionAndName($nodeHash['criterio'], $nodeHash['indicador']);
+			$element->addIndicator($indicator);
+		}
+
+		return $element;
+	}
 
     /**
      * @var KernelInterface

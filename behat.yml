@@ -83,6 +83,7 @@ default:
                 - Lanzadera\CoreBundle\Behat\CoreContext
                 - Lanzadera\CoreBundle\Behat\UsersContext
                 - Lanzadera\CoreBundle\Behat\WebContext
+                - Lanzadera\CoreBundle\Behat\ProductContext
                 - Lanzadera\OrganizationBundle\Behat\OrganizationContext
                 - Lanzadera\ProductBundle\Behat\ProductContext
                 - Lanzadera\TaxonomyBundle\Behat\TaxonomyContext
@@ -116,6 +117,7 @@ javascript:
                 - Lanzadera\CoreBundle\Behat\CoreContext
                 - Lanzadera\CoreBundle\Behat\UsersContext
                 - Lanzadera\CoreBundle\Behat\WebContext
+                - Lanzadera\CoreBundle\Behat\ProductContext
                 - Lanzadera\OrganizationBundle\Behat\OrganizationContext
                 - Lanzadera\ProductBundle\Behat\ProductContext
                 - Lanzadera\TaxonomyBundle\Behat\TaxonomyContext

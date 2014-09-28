@@ -101,9 +101,6 @@ class CoreContext extends DefaultContext
         $this->pressButton('Entrar');
     }
 
-//Y selecciono el indicador "Muy bajo" del criterio "Producción ecológica"
-//Y debo ver el indicador "Muy bajo" en el criterio "Producción ecológica"
-
     /**
      * @Given /^selecciono el indicador "([^".]*)" del criterio "([^".]*)"$/
      */
@@ -122,35 +119,4 @@ class CoreContext extends DefaultContext
         $this->assertSession()->elementExists('xpath', sprintf('//tr[contains(.,"%s")]//select/option[@selected="selected" and contains(.,"%s")]', $criterion, $indicator));
     }
 
-    /**
-     * @Given /^el producto "([^".]*)" tiene los siguientes indicadores:$/
-     */
-    public function productHasFollowingIndicator($name, TableNode $tableNode)
-    {
-        $em = $this->getEntityManager();
-        $em->persist($this->entityHasFollowingIndicator('product', $name, $tableNode));
-        $em->flush();
-    }
-
-    /**
-     * @Given /^la organización "([^".]*)" tiene los siguientes indicadores:$/
-     */
-    public function organizationHasFollowingIndicator($name, TableNode $tableNode)
-    {
-        $em = $this->getEntityManager();
-        $em->persist($this->entityHasFollowingIndicator('organization', $name, $tableNode));
-        $em->flush();
-    }
-
-    protected function entityHasFollowingIndicator($type, $name, TableNode $tableNode)
-    {
-        $element = $this->getRepository($type)->findOneByName($name);
-
-        foreach($tableNode->getHash() as $nodeHash) {
-            $indicator = $this->getRepository('indicator')->findOneByCriterionAndName($nodeHash['criterio'], $nodeHash['indicador']);
-            $element->addIndicator($indicator);
-        }
-
-        return $element;
-    }
 }

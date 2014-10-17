@@ -2,7 +2,7 @@ sonata_admin:
     title: Lanzadera
     title_logo: bundles/lanzaderacore/img/tejedorasm.png
     templates:
-        layout: LanzaderaCoreBundle::standard_layout.html.twig
+        layout: AppBundle::standard_layout.html.twig
     security:
         handler: sonata.admin.security.handler.role
 

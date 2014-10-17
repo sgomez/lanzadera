@@ -51,6 +51,7 @@ class AppKernel extends Kernel
             new Lanzadera\TaxonomyBundle\LanzaderaTaxonomyBundle(),
             new Lanzadera\MediaBundle\LanzaderaMediaBundle(),
             new Lanzadera\CommentBundle\LanzaderaCommentBundle(),
+            new AppBundle\AppBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

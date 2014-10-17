@@ -1,0 +1,65 @@
+parameters: ~
+
+services:
+
+    lanzadera.admin.category:
+        class: AppBundle\Admin\CategoryAdmin
+        arguments: [~, Lanzadera\TaxonomyBundle\Entity\Taxon, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: product.admin.group, label: category.admin.label}
+
+    lanzadera.admin.certificate:
+        class: AppBundle\Admin\CertificateAdmin
+        arguments: [~, Lanzadera\ClassificationBundle\Entity\Certificate, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: classification.admin.group, label: certificate.admin.label, show_in_dashboard: false}
+
+    lanzadera.admin.classification:
+        class: AppBundle\Admin\ClassificationAdmin
+        arguments: [~, Lanzadera\ClassificationBundle\Entity\Classification, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: classification.admin.group, label: classificacion.admin.label}
+        calls:
+            - [ setTemplate, [inner_list_row, LanzaderaClassificationBundle:Classification:inner_list_row.html.twig]]
+            - [ setTemplate, [base_list_field, SonataAdminBundle:CRUD:base_list_flat_field.html.twig]]
+
+    lanzadera.admin.criterion:
+        class: AppBundle\Admin\CriterionAdmin
+        arguments: [~, Lanzadera\ClassificationBundle\Entity\Criterion, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: classification.admin.group, label: criterion.admin.label}
+        calls:
+            - [ setTemplate, [inner_list_row, LanzaderaClassificationBundle:Criterion:inner_list_row.html.twig]]
+            - [ setTemplate, [base_list_field, SonataAdminBundle:CRUD:base_list_flat_field.html.twig]]
+
+    lanzadera.admin.indicator:
+        class: AppBundle\Admin\IndicatorAdmin
+        arguments: [~, Lanzadera\ClassificationBundle\Entity\Indicator, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: classification.admin.group, label: indicator.admin.label, show_in_dashboard: false}
+
+    lanzadera.admin.organization:
+        class: AppBundle\Admin\OrganizationAdmin
+        arguments: [~, Lanzadera\OrganizationBundle\Entity\Organization, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: product.admin.group, label: organization.admin.label}
+        calls:
+            - [ setTemplate, [edit, LanzaderaCommentBundle:CRUD:edit.html.twig]]
+            - [ setTemplate, [inner_list_row, LanzaderaOrganizationBundle:CRUD:inner_list_row.html.twig]]
+            - [ setTemplate, [base_list_field, SonataAdminBundle:CRUD:base_list_flat_field.html.twig]]
+
+    lanzadera.admin.product:
+        class: AppBundle\Admin\ProductAdmin
+        arguments: [~, Lanzadera\ProductBundle\Entity\Product, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: product.admin.group, label: product.admin.label }
+        calls:
+            - [ setTemplate, [edit, LanzaderaCommentBundle:CRUD:edit.html.twig]]
+            - [ setTemplate, [inner_list_row, LanzaderaProductBundle:CRUD:inner_list_row.html.twig]]
+            - [ setTemplate, [base_list_field, SonataAdminBundle:CRUD:base_list_flat_field.html.twig]]
+
+    lanzadera.admin.tag:
+        class: AppBundle\Admin\TagAdmin
+        arguments: [~, Lanzadera\TaxonomyBundle\Entity\Taxon, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: product.admin.group, label: tag.admin.label}

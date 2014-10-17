@@ -1,12 +1,5 @@
 parameters:
-    lanzadera.admin.certificate.class: Lanzadera\ClassificationBundle\Admin\CertificateAdmin
-    lanzadera.admin.classification.class: Lanzadera\ClassificationBundle\Admin\ClassificationAdmin
-    lanzadera.admin.criterion.class: Lanzadera\ClassificationBundle\Admin\CriterionAdmin
-    lanzadera.admin.indicator.class: Lanzadera\ClassificationBundle\Admin\IndicatorAdmin
-    lanzadera.entity.certificate.class: Lanzadera\ClassificationBundle\Entity\Certificate
-    lanzadera.entity.classification.class: Lanzadera\ClassificationBundle\Entity\Classification
-    lanzadera.entity.criterion.class: Lanzadera\ClassificationBundle\Entity\Criterion
-    lanzadera.entity.indicator.class: Lanzadera\ClassificationBundle\Entity\Indicator
+
     lanzadera.form.extension.choice_type_extention.class: Lanzadera\ClassificationBundle\Form\Extension\ChoiceTypeExtension
     lanzadera.form.type.certificate.class: Lanzadera\ClassificationBundle\Form\Type\CertificateType
     lanzadera.form.type.criterion.class: Lanzadera\ClassificationBundle\Form\Type\CriterionType
@@ -14,35 +7,7 @@ parameters:
     lanzadera.form.type.product_indicator.class: Lanzadera\ClassificationBundle\Form\Type\ProductIndicatorType
 
 services:
-    lanzadera.admin.certificate:
-        class: %lanzadera.admin.certificate.class%
-        arguments: [~, %lanzadera.entity.certificate.class%, SonataAdminBundle:CRUD]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: classification.admin.group, label: certificate.admin.label, show_in_dashboard: false}
 
-    lanzadera.admin.classification:
-        class: %lanzadera.admin.classification.class%
-        arguments: [~, %lanzadera.entity.classification.class%, SonataAdminBundle:CRUD]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: classification.admin.group, label: classificacion.admin.label}
-        calls:
-            - [ setTemplate, [inner_list_row, LanzaderaClassificationBundle:Classification:inner_list_row.html.twig]]
-            - [ setTemplate, [base_list_field, SonataAdminBundle:CRUD:base_list_flat_field.html.twig]]
-
-    lanzadera.admin.criterion:
-        class: %lanzadera.admin.criterion.class%
-        arguments: [~, %lanzadera.entity.criterion.class%, SonataAdminBundle:CRUD]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: classification.admin.group, label: criterion.admin.label}
-        calls:
-            - [ setTemplate, [inner_list_row, LanzaderaClassificationBundle:Criterion:inner_list_row.html.twig]]
-            - [ setTemplate, [base_list_field, SonataAdminBundle:CRUD:base_list_flat_field.html.twig]]
-
-    lanzadera.admin.indicator:
-        class: %lanzadera.admin.indicator.class%
-        arguments: [~, %lanzadera.entity.indicator.class%, SonataAdminBundle:CRUD]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: classification.admin.group, label: indicator.admin.label, show_in_dashboard: false}
 
     lanzadera.form.type.certificate:
         class: %lanzadera.form.type.certificate.class%

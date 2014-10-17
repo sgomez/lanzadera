@@ -1,9 +1,8 @@
 <?php
 
-namespace Lanzadera\ProductBundle\Admin;
+namespace AppBundle\Admin;
 
 use Doctrine\ORM\QueryBuilder;
-use Lanzadera\CoreBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;

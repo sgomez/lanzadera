@@ -6,7 +6,7 @@
  * Time: 19:40
  */
 
-namespace Lanzadera\CoreBundle\Admin;
+namespace AppBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin as BaseAdmin;
 

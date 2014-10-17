@@ -6,9 +6,8 @@
  * Time: 17:40
  */
 
-namespace Lanzadera\ClassificationBundle\Admin;
+namespace AppBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 
 class CertificateAdmin extends Admin

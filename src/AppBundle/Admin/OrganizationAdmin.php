@@ -6,9 +6,8 @@
  * Time: 17:14
  */
 
-namespace Lanzadera\OrganizationBundle\Admin;
+namespace AppBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;

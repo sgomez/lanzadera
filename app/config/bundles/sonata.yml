@@ -67,4 +67,4 @@ sonata_user:
         group:        Lanzadera\CoreBundle\Entity\Group
     admin:
         user:
-            class:    Lanzadera\CoreBundle\Admin\Model\UserAdmin
+            class:    AppBundle\Admin\UserAdmin

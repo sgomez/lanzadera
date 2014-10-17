@@ -1,18 +1,8 @@
 <?php
 
-namespace Lanzadera\CoreBundle\Behat;
+namespace AppBundle\Behat;
 
-use Behat\Behat\Context\SnippetAcceptingContext;
-use Behat\Behat\Definition\Call\When as StepWhen;
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\TableNode;
-use Behat\Mink\Driver\BrowserKitDriver;
-use Behat\Mink\Exception\ExpectationException;
-use Behat\Mink\Exception\UnsupportedDriverActionException;
-use Behat\MinkExtension\Context\MinkContext;
-use Behat\Symfony2Extension\Context\KernelAwareContext;
-use Symfony\Component\HttpKernel\KernelInterface;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Lanzadera\CoreBundle\Entity\User;
 
 /**

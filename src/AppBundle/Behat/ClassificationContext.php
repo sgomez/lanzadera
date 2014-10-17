@@ -6,14 +6,12 @@
  * Time: 19:26
  */
 
-namespace Lanzadera\ClassificationBundle\Behat;
-
+namespace AppBundle\Behat;
 
 use Behat\Gherkin\Node\TableNode;
 use Lanzadera\ClassificationBundle\Entity\Classification;
 use Lanzadera\ClassificationBundle\Entity\Criterion;
 use Lanzadera\ClassificationBundle\Entity\Indicator;
-use Lanzadera\CoreBundle\Behat\DefaultContext;
 
 class ClassificationContext extends DefaultContext
 {

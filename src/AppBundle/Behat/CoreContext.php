@@ -6,13 +6,9 @@
  * Time: 13:07
  */
 
-namespace Lanzadera\CoreBundle\Behat;
-
-
-use Behat\Gherkin\Node\TableNode;
+namespace AppBundle\Behat;
 
 use Lanzadera\CoreBundle\Entity\User;
-use Symfony\Component\Intl\Exception\NotImplementedException;
 
 class CoreContext extends DefaultContext
 {

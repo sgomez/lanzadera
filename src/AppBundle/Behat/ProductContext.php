@@ -2,15 +2,13 @@
 /**
  * Created by PhpStorm.
  * User: sergio
- * Date: 22/08/14
- * Time: 06:35
+ * Date: 27/09/14
+ * Time: 22:45
  */
 
-namespace Lanzadera\ProductBundle\Behat;
-
+namespace AppBundle\Behat;
 
 use Behat\Gherkin\Node\TableNode;
-use Lanzadera\CoreBundle\Behat\DefaultContext;
 use Lanzadera\ProductBundle\Entity\Product;
 
 class ProductContext extends DefaultContext
@@ -46,5 +44,13 @@ class ProductContext extends DefaultContext
         }
     }
 
-
+	/**
+	 * @Given /^el producto "([^".]*)" tiene los siguientes indicadores:$/
+	 */
+	public function productHasFollowingIndicator($name, TableNode $tableNode)
+	{
+		$em = $this->getEntityManager();
+		$em->persist($this->entityHasFollowingIndicator('product', $name, $tableNode));
+		$em->flush();
+	}
 } 

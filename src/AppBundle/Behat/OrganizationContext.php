@@ -2,15 +2,14 @@
 /**
  * Created by PhpStorm.
  * User: sergio
- * Date: 21/08/14
- * Time: 10:57
+ * Date: 27/09/14
+ * Time: 22:39
  */
 
-namespace Lanzadera\OrganizationBundle\Behat;
+namespace AppBundle\Behat;
 
 
 use Behat\Gherkin\Node\TableNode;
-use Lanzadera\CoreBundle\Behat\DefaultContext;
 use Lanzadera\OrganizationBundle\Entity\Organization;
 
 class OrganizationContext extends DefaultContext
@@ -38,4 +37,14 @@ class OrganizationContext extends DefaultContext
             $em->flush();
         }
     }
+
+	/**
+	 * @Given /^la organización "([^".]*)" tiene los siguientes indicadores:$/
+	 */
+	public function organizationHasFollowingIndicator($name, TableNode $tableNode)
+	{
+		$em = $this->getEntityManager();
+		$em->persist($this->entityHasFollowingIndicator('organization', $name, $tableNode));
+		$em->flush();
+	}
 } 

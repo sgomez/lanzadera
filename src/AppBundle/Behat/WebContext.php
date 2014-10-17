@@ -6,11 +6,7 @@
  * Time: 22:57
  */
 
-namespace Lanzadera\CoreBundle\Behat;
-
-
-use Behat\Gherkin\Node\TableNode;
-use Symfony\Component\Intl\Exception\NotImplementedException;
+namespace AppBundle\Behat;
 
 class WebContext extends DefaultContext
 {

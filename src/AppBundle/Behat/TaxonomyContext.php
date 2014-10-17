@@ -6,12 +6,9 @@
  * Time: 06:01
  */
 
-namespace Lanzadera\TaxonomyBundle\Behat;
-
+namespace AppBundle\Behat;
 
 use Behat\Gherkin\Node\TableNode;
-use Lanzadera\CoreBundle\Behat\DefaultContext;
-use Lanzadera\TaxonomyBundle\Entity\Taxon;
 use Lanzadera\TaxonomyBundle\Entity\Taxonomy;
 
 class TaxonomyContext extends DefaultContext

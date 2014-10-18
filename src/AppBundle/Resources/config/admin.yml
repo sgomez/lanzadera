@@ -2,11 +2,43 @@ parameters: ~
 
 services:
 
+    lanzadera.admin.indicator:
+        class: AppBundle\Admin\IndicatorAdmin
+        arguments: [~, AppBundle\Entity\Indicator, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: classification.admin.group, label: label.indicators, show_in_dashboard: false}
+
+    lanzadera.admin.organization:
+        class: AppBundle\Admin\OrganizationAdmin
+        arguments: [~, AppBundle\Entity\Organization, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: product.admin.group, label: label.organizations}
+        calls:
+            - [ setTemplate, [edit, AppBundle:Comment/CRUD:edit.html.twig]]
+            - [ setTemplate, [inner_list_row, AppBundle:Organization:CRUD/inner_list_row.html.twig]]
+            - [ setTemplate, [base_list_field, SonataAdminBundle:CRUD:base_list_flat_field.html.twig]]
+
+    lanzadera.admin.product:
+        class: AppBundle\Admin\ProductAdmin
+        arguments: [~, AppBundle\Entity\Product, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: product.admin.group, label: label.products }
+        calls:
+            - [ setTemplate, [edit, AppBundle:Comment:CRUD/edit.html.twig]]
+            - [ setTemplate, [inner_list_row, AppBundle:Product:CRUD/inner_list_row.html.twig]]
+            - [ setTemplate, [base_list_field, SonataAdminBundle:CRUD:base_list_flat_field.html.twig]]
+
     lanzadera.admin.category:
         class: AppBundle\Admin\CategoryAdmin
         arguments: [~, AppBundle\Entity\Taxon, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: product.admin.group, label: label.categories}
+
+    lanzadera.admin.tag:
+        class: AppBundle\Admin\TagAdmin
+        arguments: [~, AppBundle\Entity\Taxon, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: product.admin.group, label: label.tags}
 
     lanzadera.admin.certificate:
         class: AppBundle\Admin\CertificateAdmin
@@ -31,36 +63,3 @@ services:
         calls:
             - [ setTemplate, [inner_list_row, AppBundle:Criterion:inner_list_row.html.twig]]
             - [ setTemplate, [base_list_field, SonataAdminBundle:CRUD:base_list_flat_field.html.twig]]
-
-    lanzadera.admin.indicator:
-        class: AppBundle\Admin\IndicatorAdmin
-        arguments: [~, AppBundle\Entity\Indicator, SonataAdminBundle:CRUD]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: classification.admin.group, label: label.indicators, show_in_dashboard: false}
-
-    lanzadera.admin.organization:
-        class: AppBundle\Admin\OrganizationAdmin
-        arguments: [~, Lanzadera\OrganizationBundle\Entity\Organization, SonataAdminBundle:CRUD]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: product.admin.group, label: organization.admin.label}
-        calls:
-            - [ setTemplate, [edit, AppBundle:Comment/CRUD:edit.html.twig]]
-            - [ setTemplate, [inner_list_row, LanzaderaOrganizationBundle:CRUD:inner_list_row.html.twig]]
-            - [ setTemplate, [base_list_field, SonataAdminBundle:CRUD:base_list_flat_field.html.twig]]
-
-    lanzadera.admin.product:
-        class: AppBundle\Admin\ProductAdmin
-        arguments: [~, Lanzadera\ProductBundle\Entity\Product, SonataAdminBundle:CRUD]
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: product.admin.group, label: product.admin.label }
-        calls:
-            - [ setTemplate, [edit, AppBundle:Comment:CRUD/edit.html.twig]]
-            - [ setTemplate, [inner_list_row, LanzaderaProductBundle:CRUD:inner_list_row.html.twig]]
-            - [ setTemplate, [base_list_field, SonataAdminBundle:CRUD:base_list_flat_field.html.twig]]
-
-    lanzadera.admin.tag:
-        class: AppBundle\Admin\TagAdmin
-        arguments: [~, AppBundle\Entity\Taxon, SonataAdminBundle:CRUD]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: product.admin.group, label: label.tags}
-

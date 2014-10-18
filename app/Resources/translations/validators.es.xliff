@@ -22,6 +22,18 @@
         <source>criterion.indicator.not_unique</source>
         <target>El indicador &quot;{{ name }}&quot; tiene un valor repetido ({{ value }}).</target>
       </trans-unit>
+      <trans-unit id="5">
+        <source>organization.name.not_blank</source>
+        <target>Por favor, indique el nombre de la organización.</target>
+      </trans-unit>
+      <trans-unit id="6">
+        <source>organization.name.max_message</source>
+        <target>El nombre no puede ser mayor que {{ limit }} caracteres.</target>
+      </trans-unit>
+      <trans-unit id="7">
+        <source>product.name.not_blank</source>
+        <target>Por favor, indique el nombre del producto.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

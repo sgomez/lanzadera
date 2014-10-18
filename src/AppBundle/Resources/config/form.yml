@@ -29,3 +29,8 @@ services:
         class: AppBundle\Form\Extension\ChoiceTypeExtension
         tags:
             - { name: form.type_extension, alias: choice }
+
+    lanzadera.form.type.status:
+        class: AppBundle\Form\Type\StatusType
+        tags:
+            - { name: form.type, alias: status }

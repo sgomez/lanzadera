@@ -1,20 +1,19 @@
 <?php
 
-namespace Lanzadera\ProductBundle\Entity;
+namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Hateoas\Configuration\Annotation as Hateoas;
 use JMS\Serializer\Annotation as Serializer;
-use AppBundle\Entity\Certificate;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Product
  *
  * @ORM\Table(name="product", indexes={@ORM\Index(name="fk_product_organization_idx", columns={"organization_id"})})
- * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\ProductRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Doctrine\ORM\ProductRepository")
  * @Hateoas\Relation(
  *      "self",
  *      href = @Hateoas\Route(
@@ -135,9 +134,9 @@ class Product
     private $status;
 
     /**
-     * @var \Lanzadera\OrganizationBundle\Entity\Organization
+     * @var Organization
      *
-     * @ORM\ManyToOne(targetEntity="Lanzadera\OrganizationBundle\Entity\Organization", inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="Organization", inversedBy="products")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="organization_id", referencedColumnName="id", onDelete="CASCADE")
      * })
@@ -171,9 +170,9 @@ class Product
     private $indicators;
 
     /**
-     * @var \AppBundle\Entity\Taxon
+     * @var Taxon
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Taxon", inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="Taxon", inversedBy="products")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete="SET NULL")
      * })
@@ -185,7 +184,7 @@ class Product
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Taxon", cascade={"remove"})
+     * @ORM\ManyToMany(targetEntity="Taxon", cascade={"remove"})
      * @ORM\JoinTable(name="product_has_tag",
      *   joinColumns={
      *     @ORM\JoinColumn(name="product_id", referencedColumnName="id", onDelete="CASCADE")
@@ -339,10 +338,10 @@ class Product
     /**
      * Set organization
      *
-     * @param \Lanzadera\OrganizationBundle\Entity\Organization $organization
+     * @param Organization $organization
      * @return Product
      */
-    public function setOrganization(\Lanzadera\OrganizationBundle\Entity\Organization $organization)
+    public function setOrganization(Organization $organization)
     {
         $this->organization = $organization;
 
@@ -352,7 +351,7 @@ class Product
     /**
      * Get organization
      *
-     * @return \Lanzadera\OrganizationBundle\Entity\Organization
+     * @return Organization
      */
     public function getOrganization()
     {
@@ -362,10 +361,10 @@ class Product
     /**
      * Add indicator
      *
-     * @param \AppBundle\Entity\Indicator $indicator
+     * @param Indicator $indicator
      * @return Product
      */
-    public function addIndicator(\AppBundle\Entity\Indicator $indicator)
+    public function addIndicator(Indicator $indicator)
     {
         $this->indicators[] = $indicator;
 
@@ -375,9 +374,9 @@ class Product
     /**
      * Remove indicator
      *
-     * @param \AppBundle\Entity\Indicator $indicator
+     * @param Indicator $indicator
      */
-    public function removeIndicator(\AppBundle\Entity\Indicator $indicator)
+    public function removeIndicator(Indicator $indicator)
     {
         $this->indicators->removeElement($indicator);
     }
@@ -409,10 +408,10 @@ class Product
     /**
      * Set category
      *
-     * @param \AppBundle\Entity\Taxon $category
+     * @param Taxon $category
      * @return Product
      */
-    public function setCategory(\AppBundle\Entity\Taxon $category = null)
+    public function setCategory(Taxon $category = null)
     {
         $this->category = $category;
 
@@ -422,7 +421,7 @@ class Product
     /**
      * Get category
      *
-     * @return \AppBundle\Entity\Taxon
+     * @return Taxon
      */
     public function getCategory()
     {
@@ -432,10 +431,10 @@ class Product
     /**
      * Add tags
      *
-     * @param \AppBundle\Entity\Taxon $tags
+     * @param Taxon $tags
      * @return Product
      */
-    public function addTag(\AppBundle\Entity\Taxon $tags)
+    public function addTag(Taxon $tags)
     {
         $this->tags[] = $tags;
 
@@ -445,9 +444,9 @@ class Product
     /**
      * Remove tags
      *
-     * @param \AppBundle\Entity\Taxon $tags
+     * @param Taxon $tags
      */
-    public function removeTag(\AppBundle\Entity\Taxon $tags)
+    public function removeTag(Taxon $tags)
     {
         $this->tags->removeElement($tags);
     }
@@ -493,7 +492,7 @@ class Product
     /**
      * Add certificates
      *
-     * @param \AppBundle\Entity\Certificate $certificate
+     * @param Certificate $certificate
      * @return Product
      */
     public function addCertificate(\AppBundle\Entity\Certificate $certificate)
@@ -507,7 +506,7 @@ class Product
     /**
      * Remove certificates
      *
-     * @param \AppBundle\Entity\Certificate $certificate
+     * @param Certificate $certificate
      */
     public function removeCertificate(\AppBundle\Entity\Certificate $certificate)
     {

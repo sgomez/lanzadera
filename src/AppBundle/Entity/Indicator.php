@@ -54,14 +54,14 @@ class Indicator
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Lanzadera\OrganizationBundle\Entity\Organization", mappedBy="indicators")
+     * @ORM\ManyToMany(targetEntity="Organization", mappedBy="indicators")
      */
     private $organizations;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Lanzadera\ProductBundle\Entity\Product", mappedBy="indicators")
+     * @ORM\ManyToMany(targetEntity="Product", mappedBy="indicators")
      */
     private $products;
 
@@ -189,10 +189,10 @@ class Indicator
     /**
      * Add organization
      *
-     * @param \Lanzadera\OrganizationBundle\Entity\Organization $organization
+     * @param Organization $organization
      * @return Indicator
      */
-    public function addOrganization(\Lanzadera\OrganizationBundle\Entity\Organization $organization)
+    public function addOrganization(Organization $organization)
     {
         $this->organizations[] = $organization;
 
@@ -202,9 +202,9 @@ class Indicator
     /**
      * Remove organization
      *
-     * @param \Lanzadera\OrganizationBundle\Entity\Organization $organization
+     * @param Organization $organization
      */
-    public function removeOrganization(\Lanzadera\OrganizationBundle\Entity\Organization $organization)
+    public function removeOrganization(Organization $organization)
     {
         $this->organizations->removeElement($organization);
     }
@@ -222,10 +222,10 @@ class Indicator
     /**
      * Add product
      *
-     * @param \Lanzadera\ProductBundle\Entity\Product $product
+     * @param Product $product
      * @return Indicator
      */
-    public function addProduct(\Lanzadera\ProductBundle\Entity\Product $product)
+    public function addProduct(Product $product)
     {
         $this->products[] = $product;
 
@@ -235,9 +235,9 @@ class Indicator
     /**
      * Remove product
      *
-     * @param \Lanzadera\ProductBundle\Entity\Product $product
+     * @param Product $product
      */
-    public function removeProduct(\Lanzadera\ProductBundle\Entity\Product $product)
+    public function removeProduct(Product $product)
     {
         $this->products->removeElement($product);
     }

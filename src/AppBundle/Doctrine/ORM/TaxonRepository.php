@@ -8,8 +8,8 @@
 
 namespace AppBundle\Doctrine\ORM;
 
+use AppBundle\Entity\Product;
 use Doctrine\ORM\Query\Expr;
-use Lanzadera\ProductBundle\Entity\Product;
 use Sylius\Component\Taxonomy\Model\TaxonomyInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 

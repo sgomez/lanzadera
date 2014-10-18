@@ -28,10 +28,10 @@ class Certificate
     private $auto;
 
     /**
-     * @var \Lanzadera\ProductBundle\Entity\Product
+     * @var Product
      *
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Lanzadera\ProductBundle\Entity\Product", inversedBy="certificates", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Product", inversedBy="certificates", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="product_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      * })
@@ -83,10 +83,10 @@ class Certificate
     /**
      * Set product
      *
-     * @param \Lanzadera\ProductBundle\Entity\Product $product
+     * @param Product $product
      * @return Certificate
      */
-    public function setProduct(\Lanzadera\ProductBundle\Entity\Product $product = null)
+    public function setProduct(Product $product = null)
     {
         $this->product = $product;
 
@@ -96,7 +96,7 @@ class Certificate
     /**
      * Get product
      *
-     * @return \Lanzadera\ProductBundle\Entity\Product 
+     * @return Product 
      */
     public function getProduct()
     {

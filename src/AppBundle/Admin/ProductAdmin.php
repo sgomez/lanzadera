@@ -10,11 +10,15 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class ProductAdmin extends Admin
 {
-    /**
-     * {@inheritdoc}
-     */
-    protected $baseRouteName = "lanzadera_product";
+	/**
+	 * {@inheritdoc}
+	 */
+	protected $baseRouteName = "lanzadera_product";
 
+	/**
+	 * {@inheritdoc}
+	 */
+	protected $baseRoutePattern = 'lanzadera/product';
     /**
      * {@inheritdoc}
      */
@@ -52,26 +56,26 @@ class ProductAdmin extends Admin
     {
         $datagridMapper
             ->add('name', null, array(
-                    'label' => 'product.name.label'
+                    'label' => 'label.name'
             ))
             ->add('description', null, array(
-                    'label' => 'product.description.label'
+                    'label' => 'label.description'
             ))
             ->add('status', null, array(
-                    'label' => 'product.status.label'
+                    'label' => 'label.status'
                 ), 'status', array(
                     'constraints' => array()
                 )
             )
             ->add('certificates.classification', null, array(
-                    'label' => 'product.certificate.label'
+                    'label' => 'label.certificate'
                 ), null,
                 array(
                     'expanded' => false,
                     'multiple' => false,
             ))
             ->add('category', null, array(
-                    'label' => 'product.category.label'
+                    'label' => 'label.category'
                 ), null,
                 array(
                     'expanded' => false,
@@ -79,7 +83,7 @@ class ProductAdmin extends Admin
                     'query_builder' => $this->getRepository('taxon')->createTaxonQuery('Category'),
             ))
             ->add('tags', null, array(
-                    'label' => 'product.tag.label'
+                    'label' => 'label.tags'
                 ), null,
                 array(
                     'expanded' => false,
@@ -96,13 +100,13 @@ class ProductAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('name', null, array(
-                    'label' => 'product.name.label'
+                    'label' => 'label.name'
             ))
             ->add('organization.name', null, array(
-                    'label' => 'product.organization.label'
+                    'label' => 'label.organization'
             ))
             ->add('certificates', null, array(
-                    'label' => 'product.certificate.label'
+                    'label' => 'label.certificate'
             ))
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -120,22 +124,22 @@ class ProductAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('product.group.description', array('class' => 'col-md-6'))
+            ->with('group.product_description', array('class' => 'col-md-6'))
                 ->add('name', null, array(
-                        'label' => 'product.name.label',
+                        'label' => 'label.name',
                         'required' => true,
                 ))
                 ->add('description', 'textarea', array(
-                        'label' => 'product.description.label'
+                        'label' => 'label.description'
                 ))
                 ->add('status', 'status', array(
-                        'label' => 'product.status.label',
-                        'help' => 'product.status.help',
+                        'label' => 'label.status',
+                        'help' => 'help.status',
                         'disabled' => false === $this->isGranted('STATUS')
                 ))
                 ->add('organization', null, array(
-                        'label' => 'product.organization.label',
-                        'help' => 'product.organization.help',
+                        'label' => 'label.organization',
+                        'help' => 'help.organization',
                         'required' => true,
                         'attr' => array(
                             'placeholder' => 'product.organization.placeholder',
@@ -143,18 +147,27 @@ class ProductAdmin extends Admin
                         )
                 ))
                 ->add('regularPrice', 'money', array(
-                        'label' => 'product.regular_price.label',
+                        'label' => 'label.regular_price',
                         'required' => false,
                 ))
                 ->add('reducedPrice', 'money', array(
-                        'label' => 'product.reduced_price.label',
+                        'label' => 'label.reduced_price',
                         'required' => false,
                 ))
             ->end()
-            ->with('product.group.metadata', array('class' => 'col-md-6'))
+	        ->with('group.image', array('class' => 'col-md-6'))
+		        ->add('media', 'sonata_media_type', array(
+			        'label' => false,
+			        'required' => false,
+			        'provider' => 'sonata.media.provider.image',
+			        'data_class'   =>  'Application\Sonata\MediaBundle\Entity\Media',
+			        'context'  => 'default'
+		        ))
+	        ->end()
+            ->with('group.metadata', array('class' => 'col-md-6'))
                  ->add('category', 'sonata_type_model', array(
-                        'label' => 'product.category.label',
-                        'help' => 'product.category.help',
+                        'label' => 'label.category',
+                        'help' => 'help.category',
                         'query' => $this->getRepository('taxon')->createTaxonQuery('Category'),
                         'btn_add' => false,
                         'required' => true,
@@ -168,15 +181,15 @@ class ProductAdmin extends Admin
                     )
                 )
                 ->add('tags', 'sonata_type_model', array(
-                        'label' => 'product.tag.label',
-                        'help' => 'product.tag.help',
+                        'label' => 'label.tags',
+                        'help' => 'help.tag',
                         'query' => $this->getRepository('taxon')->createTaxonQuery('Tag'),
                         'expanded' => false,
                         'multiple' => true,
-                        'btn_add' => 'product.tag.add',
+                        'btn_add' => $this->trans('label.tag_add'),
                         'required' => false,
                         'attr' => array(
-                            'placeholder' => 'product.tag.placeholder',
+                            'placeholder' => 'label.tag_placeholder',
                             'class' => 'form-control'
                         )
                     ),
@@ -185,14 +198,14 @@ class ProductAdmin extends Admin
                     )
                 )
                 ->add('autoCertificates', 'text', array(
-                        'label' => 'product.certificates.auto.label',
-                        'help' => 'product.certificates.auto.help',
+                        'label' => 'label.certificates_auto',
+                        'help' => 'help.certificates_auto',
                         'required' => false,
                         'disabled' => true,
                 ))
                 ->add('certificates', 'certificate', array(
-                        'label' => 'product.certificates.label',
-                        'help' => 'product.certificates.help',
+                        'label' => 'label.certificates_manual',
+                        'help' => 'help.certificates_manual',
                         'required' => false,
                         'attr' => array(
                             'placeholder' => 'product.certificates.placeholder',
@@ -200,18 +213,9 @@ class ProductAdmin extends Admin
                       )
                 ))
             ->end()
-            ->with('product.group.image', array('class' => 'col-md-6'))
-                ->add('media', 'sonata_media_type', array(
-                    'label' => false,
-                    'required' => false,
-                    'provider' => 'sonata.media.provider.image',
-                    'data_class'   =>  'Application\Sonata\MediaBundle\Entity\Media',
-                    'context'  => 'default'
-                ))
-            ->end()
-            ->with('product.group.indicators', array('class' => 'col-md-6'))
+            ->with('group.indicators', array('class' => 'col-md-6'))
                 ->add('indicators', 'product_indicator', array(
-                    'label' => 'Indicadores',
+                    'label' => 'label.indicators',
                     'block_name' => 'lanzadera_indicator'
                 ))
             ->end()
@@ -224,37 +228,37 @@ class ProductAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->with('product.group.description', array('class' => 'col-md-6'))
+            ->with('group.product_description', array('class' => 'col-md-6'))
                 ->add('name', null, array(
-                        'label' => 'product.name.label'
+                        'label' => 'label.name'
                 ))
 	            ->add('slug', null, array(
-		                'label' => 'product.slug.label'
+		                'label' => 'label.slug'
 	            ))
                 ->add('description', null, array(
-                        'label' => 'product.description.label'
+                        'label' => 'label.description'
                 ))
                 ->add('status', 'string', array(
-                    'label' => 'product.status.label',
-                    'template' => 'LanzaderaProductBundle:CRUD:show_status.html.twig'
+                    'label' => 'label.status',
+                    'template' => 'AppBundle:Product:CRUD/show_status.html.twig'
                 ))
                 ->add('organization.name', null, array(
-                    'label' => 'product.organization.label'
+                    'label' => 'label.organization'
                 ))
                 ->add('category.name', null, array(
-                        'label' => 'product.category.label'
+                        'label' => 'label.category'
                 ))
                 ->add('tags_as_list', null, array(
-                        'label' => 'product.tag.label'
+                        'label' => 'label.tags'
                 ))
                 ->add('certificates', 'collection', array(
-                        'label' => 'product.certificate.label',
+                        'label' => 'label.certificate',
                 ))
             ->end()
-            ->with('product.group.image', array('class' => 'col-md-6'))
+            ->with('group.image', array('class' => 'col-md-6'))
                 ->add('media', null, array(
                     'label' => ' ',
-                    'template' => 'LanzaderaProductBundle:CRUD:show_media.html.twig',
+                    'template' => 'AppBundle:Product:CRUD/show_media.html.twig',
                 ))
             ->end()
         ;

@@ -8,9 +8,8 @@
 
 namespace AppBundle\Behat;
 
-
 use Behat\Gherkin\Node\TableNode;
-use Lanzadera\OrganizationBundle\Entity\Organization;
+use AppBundle\Entity\Organization;
 
 class OrganizationContext extends DefaultContext
 {

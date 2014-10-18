@@ -1,8 +1,0 @@
-parameters:
-    lanzadera.form.type.status.class: Lanzadera\ProductBundle\Form\Type\StatusType
-
-services:
-    lanzadera.form.type.status:
-        class: %lanzadera.form.type.status.class%
-        tags:
-            - { name: form.type, alias: status }

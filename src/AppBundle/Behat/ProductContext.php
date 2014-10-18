@@ -9,7 +9,7 @@
 namespace AppBundle\Behat;
 
 use Behat\Gherkin\Node\TableNode;
-use Lanzadera\ProductBundle\Entity\Product;
+use AppBundle\Entity\Product;
 
 class ProductContext extends DefaultContext
 {

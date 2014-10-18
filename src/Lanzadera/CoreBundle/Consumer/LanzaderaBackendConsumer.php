@@ -49,7 +49,7 @@ class LanzaderaBackendConsumer implements ConsumerInterface
                 $classification->getId()
             );
 
-            $this->om->getRepository('LanzaderaOrganizationBundle:Organization')->evaluateProductsByClassification(
+            $this->om->getRepository('AppBundle:Organization')->evaluateProductsByClassification(
                 $classification->getId()
             );
         }

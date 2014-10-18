@@ -6,10 +6,9 @@
  * Time: 07:34
  */
 
-namespace Lanzadera\CoreBundle\Doctrine\ORM;
+namespace AppBundle\Doctrine\ORM;
 
-
-use Lanzadera\ProductBundle\Entity\Product;
+use AppBundle\Entity\Product;
 
 class ProductRepository extends CustomRepository
 {

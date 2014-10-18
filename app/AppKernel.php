@@ -45,8 +45,6 @@ class AppKernel extends Kernel
 
             new Lanzadera\FixtureBundle\LanzaderaFixtureBundle(),
             new Lanzadera\CoreBundle\LanzaderaCoreBundle(),
-            new Lanzadera\OrganizationBundle\LanzaderaOrganizationBundle(),
-            new Lanzadera\ProductBundle\LanzaderaProductBundle(),
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new AppBundle\AppBundle(),
         );

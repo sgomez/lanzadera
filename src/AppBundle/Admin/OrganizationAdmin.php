@@ -20,10 +20,15 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class OrganizationAdmin extends Admin
 {
-    /**
-     * {@inheritdoc}
-     */
-    protected $baseRouteName = "lanzadera_organization";
+	/**
+	 * {@inheritdoc}
+	 */
+	protected $baseRouteName = "lanzadera_organization";
+
+	/**
+	 * {@inheritdoc}
+	 */
+	protected $baseRoutePattern = 'lanzadera/organization';
 
     /**
      * {@inheritdoc}
@@ -41,16 +46,15 @@ class OrganizationAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('name', null, array(
-                    'label' => 'organization.name.label'
+                    'label' => 'label.name'
             ))
             ->add('createdAt', 'date', array(
-                    'label' => 'organization.created_at.label',
+                    'label' => 'label.created_at',
                     'pattern' => 'dd MMMM Y',
                     'locale' => 'es',
                     'timezone' => 'Europe/Madrid',
             ))
             ->add('_action', 'actions', array(
-                    'label' => 'lanzadera.action',
                     'actions' => array(
                         'show' => array(),
                         'edit' => array(),
@@ -66,37 +70,37 @@ class OrganizationAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('organization.group.description', array('class' => 'col-md-6'))
+            ->with('group.organization_description', array('class' => 'col-md-6'))
                 ->add('name', null, array(
-                        'label' => 'organization.name.label'
+                        'label' => 'label.name'
                 ))
                 ->add('description', 'textarea', array(
-                        'label' => 'organization.description.label',
-                        'help' => 'organization.description.help',
+                        'label' => 'label.description',
+                        'help' => 'help.description_organization',
                         'required' => false,
                 ))
                 ->add('address', 'textarea', array(
-                        'label' => 'organization.address.label',
+                        'label' => 'label.address',
                         'required' => false
                 ))
                 ->add('phone', null, array(
-                        'label' => 'organization.phone.label'
+                        'label' => 'label.phone'
                 ))
                 ->add('email', 'email', array(
-                        'label' => 'organization.email.label',
+                        'label' => 'label.email',
                         'required' => false
                 ))
                 ->add('web', 'url', array(
-                        'label' => 'organization.web.label',
+                        'label' => 'label.web',
                         'required' => false
                 ))
                 ->add('enabled', 'checkbox', array(
-                        'label' => 'organization.enabled.label',
+                        'label' => 'label.enabled',
                         'required' => false,
                         'disabled' => false === $this->isGranted('ENABLED')
                 ))
             ->end()
-            ->with('product.group.image', array('class' => 'col-md-6'))
+            ->with('group.image', array('class' => 'col-md-6'))
                 ->add('media', 'sonata_media_type', array(
                     'label' => false,
                     'required' => false,
@@ -105,9 +109,9 @@ class OrganizationAdmin extends Admin
                     'context'  => 'default'
                 ))
             ->end()
-            ->with('organization.group.indicators', array('class' => 'col-md-12'))
+            ->with('group.organization_indicators', array('class' => 'col-md-12'))
                 ->add('indicators', 'organization_indicator', array(
-                    'label' => 'Indicadores',
+                    'label' => 'label.indicators',
                 ))
             ->end()
         ;
@@ -120,13 +124,13 @@ class OrganizationAdmin extends Admin
     {
         $datagridMapper
             ->add('name', null, array(
-                    'label' => 'organization.name.label'
+                    'label' => 'label.name'
             ))
             ->add('address', null, array(
-                    'label' => 'organization.address.label'
+                    'label' => 'label.address'
             ))
             ->add('enabled', null, array(
-                    'label' => 'organization.enabled.label'
+                    'label' => 'label.enabled'
             ))
         ;
     }
@@ -137,39 +141,39 @@ class OrganizationAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->with('organization.group.description', array('class' => 'col-md-6'))
+            ->with('group.organization_description', array('class' => 'col-md-6'))
                 ->add('name', null, array(
-                        'label' => 'organization.name.label'
+                        'label' => 'label.name'
                 ))
 		        ->add('slug', null, array(
-			        'label' => 'organization.slug.label'
+			        'label' => 'label.slug'
 		        ))
 		        ->add('description', null, array(
-                        'label' => 'organization.description.label',
+                        'label' => 'label.description',
                 ))
                 ->add('address', 'textarea', array(
-                        'label' => 'organization.address.label'
+                        'label' => 'label.address'
                 ))
                 ->add('phone', null, array(
-                        'label' => 'organization.phone.label'
+                        'label' => 'label.phone'
                 ))
                 ->add('email', 'email', array(
-                        'label' => 'organization.email.label'
+                        'label' => 'label.email'
                 ))
                 ->add('web', 'url', array(
-                        'label' => 'organization.web.label'
+                        'label' => 'label.web'
                 ))
                 ->add('enabled', 'boolean', array(
-                        'label' => 'organization.enabled.label'
+                        'label' => 'label.enabled'
                 ))
                 ->add('created_at', 'date', array(
-                        'label' => 'organization.created_at.label'
+                        'label' => 'label.created_at'
                 ))
             ->end()
-            ->with('product.group.image', array('class' => 'col-md-6'))
+            ->with('group.image', array('class' => 'col-md-6'))
                 ->add('media', null, array(
                     'label' => ' ',
-                    'template' => 'LanzaderaOrganizationBundle:CRUD:show_media.html.twig',
+                    'template' => 'AppBundle:Organization:CRUD/show_media.html.twig',
                 ))
             ->end()
         ;

@@ -8,10 +8,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Lanzadera\CoreBundle\Doctrine\ORM;
+namespace AppBundle\Doctrine\ORM;
 
 use AppBundle\Entity\Certificate;
-use Lanzadera\ProductBundle\Entity\Product;
+use AppBundle\Entity\Product;
 
 class OrganizationRepository extends CustomRepository
 {
@@ -45,7 +45,7 @@ class OrganizationRepository extends CustomRepository
             $value =  $this->getOrganizationValueByClassification($organization_id, $classification_id);
             $limit = $threshold - intval($value);
 
-            $products = $em->getRepository('LanzaderaProductBundle:Product')
+            $products = $em->getRepository('AppBundle:Product')
                 ->getProductsWithClassificationThreshold($organization_id, $classification_id, $limit);
 
             /** @var Product $product */

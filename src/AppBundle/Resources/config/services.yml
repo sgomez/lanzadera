@@ -39,22 +39,22 @@ services:
         arguments: ['AppBundle\Entity\Indicator']
 
     lanzadera.repository.media:
-        class: Lanzadera\AppBundle\Doctrine\ORM\MediaRepository
+        class: AppBundle\Doctrine\ORM\MediaRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments: ['Application\Sonata\MediaBundle\Entity\Media']
 
     lanzadera.repository.organization:
-        class: Lanzadera\CoreBundle\Doctrine\ORM\OrganizationRepository
+        class: AppBundle\Doctrine\ORM\OrganizationRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
-        arguments: ['Lanzadera\OrganizationBundle\Entity\Organization']
+        arguments: ['AppBundle\Entity\Organization']
 
     lanzadera.repository.product:
-        class: Lanzadera\CoreBundle\Doctrine\ORM\ProductRepository
+        class: AppBundle\Doctrine\ORM\ProductRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
-        arguments: ['Lanzadera\ProductBundle\Entity\Product']
+        arguments: ['AppBundle\Entity\Product']
 
     lanzadera.repository.tag:
         class: AppBundle\Doctrine\ORM\TaxonRepository

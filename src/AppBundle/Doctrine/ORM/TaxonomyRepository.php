@@ -8,7 +8,6 @@
 
 namespace AppBundle\Doctrine\ORM;
 
-
 class TaxonomyRepository extends CustomRepository
 {
     /**

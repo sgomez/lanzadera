@@ -12,7 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Taxonomy\Model\Taxon as SyliusTaxon;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
 
-
 /**
  * Class Taxon
  * @package AppBundle\Entity
@@ -25,7 +24,7 @@ class Taxon extends SyliusTaxon implements TaxonInterface
 	/**
 	* @var \Doctrine\Common\Collections\Collection
 	*
-	* @ORM\OneToMany(targetEntity="Lanzadera\ProductBundle\Entity\Product", mappedBy="category", cascade={"persist"})
+	* @ORM\OneToMany(targetEntity="Product", mappedBy="category", cascade={"persist"})
     */
 	protected $products;
 

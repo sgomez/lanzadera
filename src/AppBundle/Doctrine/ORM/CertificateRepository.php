@@ -8,7 +8,7 @@
 
 namespace AppBundle\Doctrine\ORM;
 
-use Lanzadera\ProductBundle\Entity\Product;
+use AppBundle\Entity\Product;
 
 class CertificateRepository extends CustomRepository
 {

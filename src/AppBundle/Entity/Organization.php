@@ -1,6 +1,6 @@
 <?php
 
-namespace Lanzadera\OrganizationBundle\Entity;
+namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Organization
  *
  * @ORM\Table(name="organization")
- * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\OrganizationRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Doctrine\ORM\OrganizationRepository")
  * @Hateoas\Relation(
  *      "self",
  *      href = @Hateoas\Route(
@@ -137,7 +137,7 @@ class Organization
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="Lanzadera\ProductBundle\Entity\Product", mappedBy="organization", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="organization", cascade={"persist", "remove"}, orphanRemoval=true)
      * @Serializer\Exclude
      */
     private $products;
@@ -378,10 +378,10 @@ class Organization
     /**
      * Add indicator
      *
-     * @param \AppBundle\Entity\Indicator $indicator
+     * @param Indicator $indicator
      * @return Organization
      */
-    public function addIndicator(\AppBundle\Entity\Indicator $indicator)
+    public function addIndicator(Indicator $indicator)
     {
         $this->indicators[] = $indicator;
 
@@ -391,9 +391,9 @@ class Organization
     /**
      * Remove indicator
      *
-     * @param \AppBundle\Entity\Indicator $indicator
+     * @param Indicator $indicator
      */
-    public function removeIndicator(\AppBundle\Entity\Indicator $indicator)
+    public function removeIndicator(Indicator $indicator)
     {
         $this->indicators->removeElement($indicator);
     }
@@ -425,10 +425,10 @@ class Organization
     /**
      * Add products
      *
-     * @param \Lanzadera\ProductBundle\Entity\Product $products
+     * @param Product $products
      * @return Organization
      */
-    public function addProduct(\Lanzadera\ProductBundle\Entity\Product $products)
+    public function addProduct(Product $products)
     {
         $this->products[] = $products;
 
@@ -438,9 +438,9 @@ class Organization
     /**
      * Remove products
      *
-     * @param \Lanzadera\ProductBundle\Entity\Product $products
+     * @param Product $products
      */
-    public function removeProduct(\Lanzadera\ProductBundle\Entity\Product $products)
+    public function removeProduct(Product $products)
     {
         $this->products->removeElement($products);
     }

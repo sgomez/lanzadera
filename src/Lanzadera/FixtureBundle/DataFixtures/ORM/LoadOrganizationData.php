@@ -8,11 +8,10 @@
 
 namespace Lanzadera\FixtureBundle\DataFixtures\ORM;
 
-
 use Doctrine\Common\Persistence\ObjectManager;
 use Lanzadera\CoreBundle\Doctrine\ORM\OrganizationRepository;
 use Lanzadera\FixtureBundle\DataFixtures\DataFixture;
-use Lanzadera\OrganizationBundle\Entity\Organization;
+use AppBundle\Entity\Organization;
 
 class LoadOrganizationData extends DataFixture
 {

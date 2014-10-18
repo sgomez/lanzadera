@@ -111,8 +111,164 @@
         <target>Borrar</target>
       </trans-unit>
       <trans-unit id="27">
-          <source>label.indicator_add</source>
-          <target>Añadir indicador</target>
+        <source>label.indicator_add</source>
+        <target>Añadir indicador</target>
+      </trans-unit>
+      <trans-unit id="28">
+        <source>label.address</source>
+        <target>Dirección</target>
+      </trans-unit>
+      <trans-unit id="29">
+        <source>label.created_at</source>
+        <target>Fecha alta</target>
+      </trans-unit>
+      <trans-unit id="30">
+        <source>help.description_organization</source>
+        <target>Indique una breve referencia sobre la actividad de la organización.</target>
+      </trans-unit>
+      <trans-unit id="31">
+        <source>label.email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="32">
+        <source>label.enabled</source>
+        <target>Activo</target>
+      </trans-unit>
+      <trans-unit id="33">
+        <source>group.organization_description</source>
+        <target>Datos generales de la organización</target>
+      </trans-unit>
+      <trans-unit id="34">
+        <source>group.organization_indicators</source>
+        <target>Indicadores de la organización</target>
+      </trans-unit>
+      <trans-unit id="35">
+        <source>label.phone</source>
+        <target>Teléfono</target>
+      </trans-unit>
+      <trans-unit id="36">
+        <source>label.slug</source>
+        <target>Identificador</target>
+      </trans-unit>
+      <trans-unit id="37">
+        <source>label.web</source>
+        <target>Página web</target>
+      </trans-unit>
+      <trans-unit id="38">
+        <source>label.action</source>
+        <target>Acción</target>
+      </trans-unit>
+      <trans-unit id="39">
+        <source>label.category</source>
+        <target>Categoría</target>
+      </trans-unit>
+      <trans-unit id="40">
+        <source>label.category_placeholder</source>
+        <target>Seleccione una categoría</target>
+      </trans-unit>
+      <trans-unit id="41">
+        <source>help.category</source>
+        <target>Las categorías agrupan productos similares.</target>
+      </trans-unit>
+      <trans-unit id="42">
+        <source>label.certificate</source>
+        <target>Clasificado como</target>
+      </trans-unit>
+      <trans-unit id="43">
+        <source>label.certificates_auto</source>
+        <target>Clasificaciones automáticas</target>
+      </trans-unit>
+      <trans-unit id="44">
+        <source>help.certificates_auto</source>
+        <target>Este producto cumple con las siguientes clasificaciones. Este campo se rellena automáticamente y no se puede modificar.</target>
+      </trans-unit>
+      <trans-unit id="45">
+        <source>label.certificates_manual</source>
+        <target>Clasificaciones manuales</target>
+      </trans-unit>
+      <trans-unit id="46">
+        <source>help.certificates_manual</source>
+        <target>El sistema selecciona automáticamente las clasificaciones que cumplen un mínimo de criterios. Si desea seleccionar manualmente alguna clasificación puede hacerlo aquí. El producto será certificado aunque no llegue al valor mínimo.</target>
+      </trans-unit>
+      <trans-unit id="47">
+        <source>label.certificate_placeholder</source>
+        <target>Seleccione manualmente las certificaciones del producto.</target>
+      </trans-unit>
+      <trans-unit id="48">
+        <source>group.product_description</source>
+        <target>Datos generales del producto</target>
+      </trans-unit>
+      <trans-unit id="49">
+        <source>group.image</source>
+        <target>Imagen</target>
+      </trans-unit>
+      <trans-unit id="50">
+        <source>group.metadata</source>
+        <target>Metadatos del producto</target>
+      </trans-unit>
+      <trans-unit id="51">
+        <source>label.media</source>
+        <target>Imagen</target>
+      </trans-unit>
+      <trans-unit id="52">
+        <source>label.not_linked_media</source>
+        <target>No existe ninguna imagen vinculada.</target>
+      </trans-unit>
+      <trans-unit id="53">
+        <source>help.organization</source>
+        <target>Seleccione la organización o colectivo que distribuye este producto.</target>
+      </trans-unit>
+      <trans-unit id="54">
+        <source>label.regular_price</source>
+        <target>Precio normal</target>
+      </trans-unit>
+      <trans-unit id="55">
+        <source>label.reduced_price</source>
+        <target>Precio socios</target>
+      </trans-unit>
+      <trans-unit id="56">
+        <source>label.status</source>
+        <target>Estado</target>
+      </trans-unit>
+      <trans-unit id="57">
+        <source>help.status</source>
+        <target>Solo los productos aprobados aparecerán en la página de búsquedas del catálogo.</target>
+      </trans-unit>
+      <trans-unit id="58">
+        <source>label.tag_add</source>
+        <target>Añadir etiqueta</target>
+      </trans-unit>
+      <trans-unit id="59">
+        <source>help.tag</source>
+        <target>Etiquetar correctamente un producto facilitará la búsqueda en el catálogo.</target>
+      </trans-unit>
+      <trans-unit id="60">
+        <source>label.tag_placeholder</source>
+        <target>Seleccione una o varias etiquetas</target>
+      </trans-unit>
+      <trans-unit id="61">
+        <source>status.pending</source>
+        <target>Pendiente</target>
+      </trans-unit>
+      <trans-unit id="62">
+        <source>status.approved</source>
+        <target>Aprobado</target>
+      </trans-unit>
+      <trans-unit id="63">
+        <source>status.check</source>
+        <target>Revisar</target>
+      </trans-unit>
+      <trans-unit id="64">
+        <source>status.denied</source>
+        <target>Denegado</target>
+      </trans-unit>
+      <trans-unit id="65">
+        <source>status.choice_invalid</source>
+        <target>Introduzca un estado válido</target>
+      </trans-unit>
+      <trans-unit id="66">
+        <source>group.indicators</source>
+        <target>Indicadores</target>
       </trans-unit>
     </body>
   </file>

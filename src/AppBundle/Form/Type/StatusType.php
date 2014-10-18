@@ -6,10 +6,10 @@
  * Time: 8:26
  */
 
-namespace Lanzadera\ProductBundle\Form\Type;
+namespace AppBundle\Form\Type;
 
-use Lanzadera\ProductBundle\Entity\Product;
-use Lanzadera\ProductBundle\Form\Extension\ChoiceList\StatusChoiceList;
+use AppBundle\Entity\Product;
+use AppBundle\Form\Extension\ChoiceList\StatusChoiceList;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -27,7 +27,7 @@ class StatusType extends AbstractType
                 new Assert\NotBlank(),
                 new Assert\Choice(array(
                     'choices' => Product::getStatuses(),
-                    'message' => 'lanzadera.product.status.choice.invalid'
+                    'message' => 'status.choice_invalid'
                 )),
             ),
             'attr' => array('class' => 'form-control')

@@ -88,7 +88,7 @@ class CriterionAdmin extends Admin
             ))
             ->add('type', 'string', array(
                     'label' => 'label.type',
-                    'template' => 'AppBundle:Criterion:CRUD/list_criterion_type.html.twig'
+                    'template' => 'Criterion/CRUD/list_criterion_type.html.twig'
             ))
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -156,13 +156,13 @@ class CriterionAdmin extends Admin
                 ))
                 ->add('type', 'string', array(
                         'label' => 'label.type',
-                        'template' => 'AppBundle:Criterion:CRUD/show_criterion_type.html.twig'
+                        'template' => 'Criterion/CRUD/show_criterion_type.html.twig'
                 ))
             ->end()
             ->with('criterion.group.indicators', array('class' => 'col-md-6'))
                 ->add('indicators', null, array(
                         'label' => 'label.indicators',
-                        'template' => 'AppBundle:Criterion:CRUD/show_criterion_indicators.html.twig'
+                        'template' => 'Criterion/CRUD/show_criterion_indicators.html.twig'
                 ))
             ->end()
         ;

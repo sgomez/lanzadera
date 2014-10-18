@@ -14,8 +14,8 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: product.admin.group, label: label.organizations}
         calls:
-            - [ setTemplate, [edit, AppBundle:Comment/CRUD:edit.html.twig]]
-            - [ setTemplate, [inner_list_row, AppBundle:Organization:CRUD/inner_list_row.html.twig]]
+            - [ setTemplate, [edit, Comment/CRUD/edit.html.twig]]
+            - [ setTemplate, [inner_list_row, Organization/CRUD/inner_list_row.html.twig]]
             - [ setTemplate, [base_list_field, SonataAdminBundle:CRUD:base_list_flat_field.html.twig]]
 
     lanzadera.admin.product:
@@ -24,8 +24,8 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: product.admin.group, label: label.products }
         calls:
-            - [ setTemplate, [edit, AppBundle:Comment:CRUD/edit.html.twig]]
-            - [ setTemplate, [inner_list_row, AppBundle:Product:CRUD/inner_list_row.html.twig]]
+            - [ setTemplate, [edit, Comment/CRUD/edit.html.twig]]
+            - [ setTemplate, [inner_list_row, Product/CRUD/inner_list_row.html.twig]]
             - [ setTemplate, [base_list_field, SonataAdminBundle:CRUD:base_list_flat_field.html.twig]]
 
     lanzadera.admin.category:
@@ -52,7 +52,7 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: classification.admin.group, label: label.classifications}
         calls:
-            - [ setTemplate, [inner_list_row, AppBundle:Classification:inner_list_row.html.twig]]
+            - [ setTemplate, [inner_list_row, Classification/inner_list_row.html.twig]]
             - [ setTemplate, [base_list_field, SonataAdminBundle:CRUD:base_list_flat_field.html.twig]]
 
     lanzadera.admin.criterion:
@@ -61,5 +61,5 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: classification.admin.group, label: label.criteria}
         calls:
-            - [ setTemplate, [inner_list_row, AppBundle:Criterion:inner_list_row.html.twig]]
+            - [ setTemplate, [inner_list_row, Criterion/inner_list_row.html.twig]]
             - [ setTemplate, [base_list_field, SonataAdminBundle:CRUD:base_list_flat_field.html.twig]]

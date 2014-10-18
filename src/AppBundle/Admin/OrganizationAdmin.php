@@ -173,7 +173,7 @@ class OrganizationAdmin extends Admin
             ->with('group.image', array('class' => 'col-md-6'))
                 ->add('media', null, array(
                     'label' => ' ',
-                    'template' => 'AppBundle:Organization:CRUD/show_media.html.twig',
+                    'template' => 'Organization/CRUD/show_media.html.twig',
                 ))
             ->end()
         ;

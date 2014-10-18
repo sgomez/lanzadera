@@ -240,7 +240,7 @@ class ProductAdmin extends Admin
                 ))
                 ->add('status', 'string', array(
                     'label' => 'label.status',
-                    'template' => 'AppBundle:Product:CRUD/show_status.html.twig'
+                    'template' => 'Product/CRUD/show_status.html.twig'
                 ))
                 ->add('organization.name', null, array(
                     'label' => 'label.organization'
@@ -258,7 +258,7 @@ class ProductAdmin extends Admin
             ->with('group.image', array('class' => 'col-md-6'))
                 ->add('media', null, array(
                     'label' => ' ',
-                    'template' => 'AppBundle:Product:CRUD/show_media.html.twig',
+                    'template' => 'Product/CRUD/show_media.html.twig',
                 ))
             ->end()
         ;

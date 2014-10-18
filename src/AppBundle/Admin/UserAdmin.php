@@ -79,7 +79,7 @@ class UserAdmin extends Admin
             ))
         ;
 
-        $this->setTemplate('inner_list_row', 'AppBundle:User:inner_list_row.html.twig');
+        $this->setTemplate('inner_list_row', 'User/inner_list_row.html.twig');
         $this->setTemplate('base_list_field', 'SonataAdminBundle:CRUD:base_list_flat_field.html.twig');
     }
 

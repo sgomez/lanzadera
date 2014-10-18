@@ -6,7 +6,7 @@
  * Time: 10:16
  */
 
-namespace Lanzadera\TaxonomyBundle\Entity;
+namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Taxonomy\Model\Taxon as SyliusTaxon;
@@ -17,7 +17,7 @@ use Sylius\Component\Taxonomy\Model\TaxonInterface;
  * Class Taxon
  * @package Lanzadera\ClassificationBundle\Entity
  * @ORM\MappedSuperclass()
- * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\TaxonRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Doctrine\ORM\TaxonRepository")
  */
 class Taxon extends SyliusTaxon implements TaxonInterface
 {

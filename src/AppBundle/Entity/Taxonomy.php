@@ -6,7 +6,7 @@
  * Time: 10:33
  */
 
-namespace Lanzadera\TaxonomyBundle\Entity;
+namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Taxonomy\Model\Taxonomy as SyriusTaxonomy;
@@ -16,7 +16,7 @@ use Sylius\Component\Taxonomy\Model\TaxonomyInterface;
  * Class Taxonomy
  * @package Lanzadera\ClassificationBundle\Entity
  * @ORM\MappedSuperclass()
- * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\TaxonomyRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Doctrine\ORM\TaxonomyRepository")
  */
 class Taxonomy extends SyriusTaxonomy implements TaxonomyInterface
 {

@@ -21,14 +21,14 @@ sylius_resource:
                 model: Lanzadera\ProductBundle\Entity\Product
         lanzadera.taxon:
             driver: doctrine/orm
-            templates: LanzaderaTaxonomyBundle:Taxon
+            templates: AppBundle:Taxon
             classes:
-                model: Lanzadera\TaxonomyBundle\Entity\Taxon
+                model: AppBundle\Entity\Taxon
 
 sylius_taxonomy:
     classes:
         taxonomy:
-            model: Lanzadera\TaxonomyBundle\Entity\Taxonomy
+            model: AppBundle\Entity\Taxonomy
         taxon:
-            model: Lanzadera\TaxonomyBundle\Entity\Taxon
+            model: AppBundle\Entity\Taxon
     driver: doctrine/orm # Configure the doctrine orm driver used in documentation.

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" source-language="en" datatype="plaintext">
+        <body>
+            <trans-unit id="0">
+                <source>category.name.not_blank</source>
+                <target>Por favor, indique el nombre de la categoría.</target>
+            </trans-unit>
+            <trans-unit id="1">
+                <source>tag.name.not_blank</source>
+                <target>Por favor, indique el nombre de la etiqueta.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

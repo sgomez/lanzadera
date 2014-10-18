@@ -6,7 +6,7 @@
  * Time: 09:20
  */
 
-namespace Lanzadera\CoreBundle\Doctrine\ORM;
+namespace AppBundle\Doctrine\ORM;
 
 
 class TaxonomyRepository extends CustomRepository

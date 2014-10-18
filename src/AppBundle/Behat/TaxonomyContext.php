@@ -9,7 +9,7 @@
 namespace AppBundle\Behat;
 
 use Behat\Gherkin\Node\TableNode;
-use Lanzadera\TaxonomyBundle\Entity\Taxonomy;
+use AppBundle\Entity\Taxonomy;
 
 class TaxonomyContext extends DefaultContext
 {

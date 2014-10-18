@@ -50,8 +50,8 @@ class TagAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name', null, array('label' => 'tag.name.label'))
-            ->add('description', null, array('label' => 'tag.description.label'))
+            ->add('name', null, array('label' => 'label.tag_name'))
+            ->add('description', null, array('label' => 'label.description'))
         ;
     }
 
@@ -61,7 +61,7 @@ class TagAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name', null, array('label' => 'tag.name.label'))
+            ->addIdentifier('name', null, array('label' => 'label.tag_name'))
             ->add('_action', 'actions', array(
                     'actions' => array(
                         'show' => array(),
@@ -79,8 +79,8 @@ class TagAdmin extends Admin
     {
 
         $formMapper
-            ->add('name', null, array('label' => 'tag.name.label', 'attr' => array('title' => 'tag-name')))
-            ->add('description', null, array('label' => 'tag.description.label'))
+            ->add('name', null, array('label' => 'label.tag_name', 'attr' => array('title' => 'tag-name')))
+            ->add('description', null, array('label' => 'label.description'))
         ;
     }
 
@@ -90,9 +90,8 @@ class TagAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('name', null, array('label' => 'tag.name.label'))
-            ->add('description', null, array('label' => 'tag.description.label'))
-            ->add('parent.name', null, array('label' => 'tag.parent.label'))
+            ->add('name', null, array('label' => 'label.tag_name'))
+            ->add('description', null, array('label' => 'label.description'))
         ;
     }
 

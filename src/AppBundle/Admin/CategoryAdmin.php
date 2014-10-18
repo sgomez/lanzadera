@@ -47,8 +47,8 @@ class CategoryAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name', null, array('label' => 'category.name.label'))
-            ->add('description', null, array('label' => 'category.description.label'))
+            ->add('name', null, array('label' => 'label.name'))
+            ->add('description', null, array('label' => 'label.description'))
         ;
     }
 
@@ -62,7 +62,7 @@ class CategoryAdmin extends Admin
 
         $listMapper
             ->addIdentifier($mainColumn, 'string', array(
-                    'label' => 'category.name.label',
+                    'label' => 'label.categories',
                     'name' => 'name',
                     'sortable'=>true,
                     'sort_field_mapping'=> array('fieldName'=>'name'),
@@ -85,15 +85,15 @@ class CategoryAdmin extends Admin
     {
 
             $formMapper
-            ->add('name', null, array('label' => 'category.name.label'))
-            ->add('description', null, array('label' => 'category.description.label'))
+            ->add('name', null, array('label' => 'label.name'))
+            ->add('description', null, array('label' => 'label.description'))
             ->add('parent', 'sonata_type_model',
                     array(
-                        'label' => 'category.parent.label',
+                        'label' => 'label.parent',
                         'query' => $this->getRepository('taxon')->createTaxonQuery('Category'),
                         'btn_add' => false,
                         'required' => false,
-                        'attr' => array('placeholder' => 'category.parent.placeholder', 'class' => 'form-control')
+                        'attr' => array('placeholder' => 'label.category.placeholder', 'class' => 'form-control')
                     ),
                     array(
                         'admin_code' => 'lanzadera.admin.category',
@@ -108,9 +108,9 @@ class CategoryAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('name', null, array('label' => 'category.name.label'))
-            ->add('description', null, array('label' => 'category.description.label'))
-            ->add('parent.name', null, array('label' => 'category.parent.label'))
+            ->add('name', null, array('label' => 'label.name'))
+            ->add('description', null, array('label' => 'label.description'))
+            ->add('parent.name', null, array('label' => 'label.parent'))
         ;
     }
 

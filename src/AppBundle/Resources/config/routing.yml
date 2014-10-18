@@ -1,0 +1,2 @@
+comment_api:
+    resource: @AppBundle/Resources/config/routing/taxonomy.yml

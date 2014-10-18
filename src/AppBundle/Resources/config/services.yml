@@ -1,69 +1,81 @@
-parameters:
-    lanzadera.repository.certificate.class: Lanzadera\CoreBundle\Doctrine\ORM\CertificateRepository
+parameters: ~
 
 services:
-    lanzadera.repository.user:
-        class: Lanzadera\CoreBundle\Doctrine\ORM\UserRepository
+
+    lanzadera.repository.category:
+        class: AppBundle\Doctrine\ORM\TaxonRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
-        arguments: ['Lanzadera\CoreBundle\Entity\User']
-    lanzadera.repository.group:
-        class: Lanzadera\CoreBundle\Doctrine\ORM\GroupRepository
-        factory_service: doctrine.orm.entity_manager
-        factory_method: getRepository
-        arguments: ['Lanzadera\CoreBundle\Entity\Group']
-    lanzadera.repository.organization:
-        class: Lanzadera\CoreBundle\Doctrine\ORM\OrganizationRepository
-        factory_service: doctrine.orm.entity_manager
-        factory_method: getRepository
-        arguments: ['Lanzadera\OrganizationBundle\Entity\Organization']
+        arguments: ['AppBundle\Entity\Taxon']
+
     lanzadera.repository.certificate:
-        class: %lanzadera.repository.certificate.class%
+        class: Lanzadera\CoreBundle\Doctrine\ORM\CertificateRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments: ['Lanzadera\ClassificationBundle\Entity\Certificate']
+
     lanzadera.repository.classification:
         class: Lanzadera\CoreBundle\Doctrine\ORM\ClassificationRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments: ['Lanzadera\ClassificationBundle\Entity\Classification']
+
     lanzadera.repository.criterion:
         class: Lanzadera\CoreBundle\Doctrine\ORM\CriterionRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments: ['Lanzadera\ClassificationBundle\Entity\Criterion']
+
+    lanzadera.repository.group:
+        class: Lanzadera\CoreBundle\Doctrine\ORM\GroupRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: ['Lanzadera\CoreBundle\Entity\Group']
+
     lanzadera.repository.indicator:
         class: Lanzadera\CoreBundle\Doctrine\ORM\IndicatorRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments: ['Lanzadera\ClassificationBundle\Entity\Indicator']
+
     lanzadera.repository.media:
         class: Lanzadera\CoreBundle\Doctrine\ORM\MediaRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments: ['Lanzadera\MediaBundle\Entity\Media']
+
+    lanzadera.repository.organization:
+        class: Lanzadera\CoreBundle\Doctrine\ORM\OrganizationRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: ['Lanzadera\OrganizationBundle\Entity\Organization']
+
     lanzadera.repository.product:
         class: Lanzadera\CoreBundle\Doctrine\ORM\ProductRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments: ['Lanzadera\ProductBundle\Entity\Product']
-    lanzadera.repository.taxon:
-        class: Lanzadera\CoreBundle\Doctrine\ORM\TaxonRepository
-        factory_service: doctrine.orm.entity_manager
-        factory_method: getRepository
-        arguments: ['Lanzadera\TaxonomyBundle\Entity\Taxon']
-    lanzadera.repository.category:
-        class: Lanzadera\CoreBundle\Doctrine\ORM\TaxonRepository
-        factory_service: doctrine.orm.entity_manager
-        factory_method: getRepository
-        arguments: ['Lanzadera\TaxonomyBundle\Entity\Taxon']
+
     lanzadera.repository.tag:
-        class: Lanzadera\CoreBundle\Doctrine\ORM\TaxonRepository
+        class: AppBundle\Doctrine\ORM\TaxonRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
-        arguments: ['Lanzadera\TaxonomyBundle\Entity\Taxon']
+        arguments: ['AppBundle\Entity\Taxon']
+
+    lanzadera.repository.taxon:
+        class: AppBundle\Doctrine\ORM\TaxonRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: ['AppBundle\Entity\Taxon']
+
     lanzadera.repository.taxonomy:
-        class: Lanzadera\CoreBundle\Doctrine\ORM\TaxonomyRepository
+        class: AppBundle\Doctrine\ORM\TaxonomyRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
-        arguments: ['Lanzadera\TaxonomyBundle\Entity\Taxonomy']
+        arguments: ['AppBundle\Entity\Taxonomy']
+
+    lanzadera.repository.user:
+        class: Lanzadera\CoreBundle\Doctrine\ORM\UserRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: ['Lanzadera\CoreBundle\Entity\User']

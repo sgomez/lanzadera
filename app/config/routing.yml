@@ -64,5 +64,5 @@ lanzadera_product_api:
     prefix: /api/v1
 
 lanzadera_taxonomy_api:
-    resource: '@LanzaderaTaxonomyBundle/Resources/config/routing.yml'
+    resource: '@AppBundle/Resources/config/routing.yml'
     prefix: /api/v1

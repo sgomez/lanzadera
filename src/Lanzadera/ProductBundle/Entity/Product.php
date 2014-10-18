@@ -171,9 +171,9 @@ class Product
     private $indicators;
 
     /**
-     * @var \Lanzadera\TaxonomyBundle\Entity\Taxon
+     * @var \AppBundle\Entity\Taxon
      *
-     * @ORM\ManyToOne(targetEntity="Lanzadera\TaxonomyBundle\Entity\Taxon", inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Taxon", inversedBy="products")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete="SET NULL")
      * })
@@ -185,7 +185,7 @@ class Product
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Lanzadera\TaxonomyBundle\Entity\Taxon", cascade={"remove"})
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Taxon", cascade={"remove"})
      * @ORM\JoinTable(name="product_has_tag",
      *   joinColumns={
      *     @ORM\JoinColumn(name="product_id", referencedColumnName="id", onDelete="CASCADE")
@@ -409,10 +409,10 @@ class Product
     /**
      * Set category
      *
-     * @param \Lanzadera\TaxonomyBundle\Entity\Taxon $category
+     * @param \AppBundle\Entity\Taxon $category
      * @return Product
      */
-    public function setCategory(\Lanzadera\TaxonomyBundle\Entity\Taxon $category = null)
+    public function setCategory(\AppBundle\Entity\Taxon $category = null)
     {
         $this->category = $category;
 
@@ -422,7 +422,7 @@ class Product
     /**
      * Get category
      *
-     * @return \Lanzadera\TaxonomyBundle\Entity\Taxon
+     * @return \AppBundle\Entity\Taxon
      */
     public function getCategory()
     {
@@ -432,10 +432,10 @@ class Product
     /**
      * Add tags
      *
-     * @param \Lanzadera\TaxonomyBundle\Entity\Taxon $tags
+     * @param \AppBundle\Entity\Taxon $tags
      * @return Product
      */
-    public function addTag(\Lanzadera\TaxonomyBundle\Entity\Taxon $tags)
+    public function addTag(\AppBundle\Entity\Taxon $tags)
     {
         $this->tags[] = $tags;
 
@@ -445,9 +445,9 @@ class Product
     /**
      * Remove tags
      *
-     * @param \Lanzadera\TaxonomyBundle\Entity\Taxon $tags
+     * @param \AppBundle\Entity\Taxon $tags
      */
-    public function removeTag(\Lanzadera\TaxonomyBundle\Entity\Taxon $tags)
+    public function removeTag(\AppBundle\Entity\Taxon $tags)
     {
         $this->tags->removeElement($tags);
     }

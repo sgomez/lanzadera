@@ -11,9 +11,8 @@ namespace Lanzadera\FixtureBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Lanzadera\FixtureBundle\DataFixtures\DataFixture;
-use Lanzadera\FixtureBundle\Faker\Provider\Lanzadera;
-use Lanzadera\TaxonomyBundle\Entity\Taxon;
-use Lanzadera\TaxonomyBundle\Entity\Taxonomy;
+use AppBundle\Entity\Taxon;
+use AppBundle\Entity\Taxonomy;
 
 class LoadTaxonomyData extends DataFixture
 {

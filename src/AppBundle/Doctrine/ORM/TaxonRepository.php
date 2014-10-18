@@ -6,8 +6,7 @@
  * Time: 08:05
  */
 
-namespace Lanzadera\CoreBundle\Doctrine\ORM;
-
+namespace AppBundle\Doctrine\ORM;
 
 use Doctrine\ORM\Query\Expr;
 use Lanzadera\ProductBundle\Entity\Product;

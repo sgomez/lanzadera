@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="" source-language="en" datatype="plaintext">
+    <body>
+      <trans-unit id="0">
+        <source>label.categories</source>
+        <target>Categorías</target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>label.name</source>
+        <target>Nombre</target>
+      </trans-unit>
+      <trans-unit id="2">
+        <source>label.description</source>
+        <target>Descripción</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>label.parent</source>
+        <target>Superior</target>
+      </trans-unit>
+      <trans-unit id="4">
+        <source>label.category.placeholder</source>
+        <target>Seleccione una categoría</target>
+      </trans-unit>
+      <trans-unit id="5">
+        <source>label.tags</source>
+        <target>Etiquetas</target>
+      </trans-unit>
+      <trans-unit id="6">
+        <source>label.tag_name</source>
+        <target>Nombre de etiqueta</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

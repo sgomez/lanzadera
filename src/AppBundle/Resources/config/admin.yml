@@ -4,9 +4,9 @@ services:
 
     lanzadera.admin.category:
         class: AppBundle\Admin\CategoryAdmin
-        arguments: [~, Lanzadera\TaxonomyBundle\Entity\Taxon, SonataAdminBundle:CRUD]
+        arguments: [~, AppBundle\Entity\Taxon, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: product.admin.group, label: category.admin.label}
+            - {name: sonata.admin, manager_type: orm, group: product.admin.group, label: label.categories}
 
     lanzadera.admin.certificate:
         class: AppBundle\Admin\CertificateAdmin
@@ -60,6 +60,6 @@ services:
 
     lanzadera.admin.tag:
         class: AppBundle\Admin\TagAdmin
-        arguments: [~, Lanzadera\TaxonomyBundle\Entity\Taxon, SonataAdminBundle:CRUD]
+        arguments: [~, AppBundle\Entity\Taxon, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: product.admin.group, label: tag.admin.label}
+            - {name: sonata.admin, manager_type: orm, group: product.admin.group, label: label.tags}

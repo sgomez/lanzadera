@@ -6,11 +6,11 @@
  * Time: 15:23
  */
 
-namespace Lanzadera\FixtureBundle\DataFixtures\ORM;
+namespace AppBundle\DataFixtures\ORM;
 
-use Doctrine\Common\Persistence\ObjectManager;
+use AppBundle\DataFixtures\DataFixture;
 use AppBundle\Entity\Group;
-use Lanzadera\FixtureBundle\DataFixtures\DataFixture;
+use Doctrine\Common\Persistence\ObjectManager;
 
 class LoadGroupsData extends DataFixture
 {

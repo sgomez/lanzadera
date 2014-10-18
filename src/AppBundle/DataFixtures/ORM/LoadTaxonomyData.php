@@ -6,13 +6,12 @@
  * Time: 10:38
  */
 
-namespace Lanzadera\FixtureBundle\DataFixtures\ORM;
+namespace AppBundle\DataFixtures\ORM;
 
-
-use Doctrine\Common\Persistence\ObjectManager;
-use Lanzadera\FixtureBundle\DataFixtures\DataFixture;
+use AppBundle\DataFixtures\DataFixture;
 use AppBundle\Entity\Taxon;
 use AppBundle\Entity\Taxonomy;
+use Doctrine\Common\Persistence\ObjectManager;
 
 class LoadTaxonomyData extends DataFixture
 {

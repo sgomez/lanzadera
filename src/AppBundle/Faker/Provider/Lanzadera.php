@@ -6,10 +6,11 @@
  * Time: 12:55
  */
 
-namespace Lanzadera\FixtureBundle\Faker\Provider;
+namespace AppBundle\Faker\Provider;
 
+use Faker\Provider\Base;
 
-class Lanzadera extends \Faker\Provider\Base
+class Lanzadera extends Base
 {
     protected static $collective = array(
         "Adismar",

@@ -8,12 +8,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Lanzadera\FixtureBundle\DataFixtures\ORM;
+namespace AppBundle\DataFixtures\ORM;
 
-use Doctrine\Common\Persistence\ObjectManager;
+use AppBundle\DataFixtures\DataFixture;
 use AppBundle\Doctrine\ORM\UserRepository;
 use AppBundle\Entity\User;
-use Lanzadera\FixtureBundle\DataFixtures\DataFixture;
+use Doctrine\Common\Persistence\ObjectManager;
 
 class LoadUsersData extends DataFixture
 {

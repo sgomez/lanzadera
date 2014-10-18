@@ -6,12 +6,12 @@
  * Time: 04:35
  */
 
-namespace Lanzadera\FixtureBundle\DataFixtures\ORM;
+namespace AppBundle\DataFixtures\ORM;
 
-use Doctrine\Common\Persistence\ObjectManager;
+use AppBundle\DataFixtures\DataFixture;
 use AppBundle\Doctrine\ORM\OrganizationRepository;
-use Lanzadera\FixtureBundle\DataFixtures\DataFixture;
 use AppBundle\Entity\Organization;
+use Doctrine\Common\Persistence\ObjectManager;
 
 class LoadOrganizationData extends DataFixture
 {

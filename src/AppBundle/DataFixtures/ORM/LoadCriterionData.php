@@ -8,10 +8,10 @@
 
 namespace AppBundle\DataFixtures\ORM;
 
-use Doctrine\Common\Persistence\ObjectManager;
+use AppBundle\DataFixtures\DataFixture;
 use AppBundle\Entity\Criterion;
 use AppBundle\Entity\Indicator;
-use Lanzadera\FixtureBundle\DataFixtures\DataFixture;
+use Doctrine\Common\Persistence\ObjectManager;
 
 class LoadCriterionData extends DataFixture
 {

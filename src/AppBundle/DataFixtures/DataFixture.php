@@ -8,8 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Lanzadera\FixtureBundle\DataFixtures;
-
+namespace AppBundle\DataFixtures;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
@@ -39,7 +38,7 @@ abstract class DataFixture extends AbstractFixture implements ContainerAwareInte
     public function __construct()
     {
         $this->faker = FakerFactory::create('es_ES');
-        $this->faker->addProvider(new \Lanzadera\FixtureBundle\Faker\Provider\Lanzadera($this->faker));
+        $this->faker->addProvider(new \AppBundle\Faker\Provider\Lanzadera($this->faker));
     }
 
     public function __call($method, $arguments)

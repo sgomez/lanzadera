@@ -8,10 +8,10 @@
 
 namespace AppBundle\DataFixtures\ORM;
 
+use AppBundle\DataFixtures\DataFixture;
+use AppBundle\Entity\Classification;
 use Doctrine\Common\DataFixtures\Doctrine;
 use Doctrine\Common\Persistence\ObjectManager;
-use AppBundle\Entity\Classification;
-use Lanzadera\FixtureBundle\DataFixtures\DataFixture;
 
 class LoadClassificationData extends DataFixture
 {

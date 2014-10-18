@@ -6,12 +6,11 @@
  * Time: 12:09
  */
 
-namespace Lanzadera\FixtureBundle\DataFixtures\ORM;
+namespace AppBundle\DataFixtures\ORM;
 
-
-use Doctrine\Common\Persistence\ObjectManager;
-use Lanzadera\FixtureBundle\DataFixtures\DataFixture;
+use AppBundle\DataFixtures\DataFixture;
 use AppBundle\Entity\Product;
+use Doctrine\Common\Persistence\ObjectManager;
 
 class LoadProductsData extends DataFixture
 {

@@ -101,8 +101,8 @@ fos_comment:
     db_driver: orm
     class:
         model:
-            comment: Lanzadera\CommentBundle\Entity\Comment
-            thread: Lanzadera\CommentBundle\Entity\Thread
+            comment: AppBundle\Entity\Comment
+            thread: AppBundle\Entity\Thread
 
 stof_doctrine_extensions:
     orm:

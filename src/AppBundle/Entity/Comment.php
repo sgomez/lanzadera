@@ -6,7 +6,7 @@
  * Time: 8:57
  */
 
-namespace Lanzadera\CommentBundle\Entity;
+namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\CommentBundle\Entity\Comment as BaseComment;

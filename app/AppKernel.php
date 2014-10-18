@@ -50,7 +50,6 @@ class AppKernel extends Kernel
             new Lanzadera\ClassificationBundle\LanzaderaClassificationBundle(),
             new Lanzadera\TaxonomyBundle\LanzaderaTaxonomyBundle(),
             new Lanzadera\MediaBundle\LanzaderaMediaBundle(),
-            new Lanzadera\CommentBundle\LanzaderaCommentBundle(),
             new AppBundle\AppBundle(),
         );
 

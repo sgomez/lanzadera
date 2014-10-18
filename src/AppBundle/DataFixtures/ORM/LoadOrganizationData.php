@@ -21,7 +21,7 @@ class LoadOrganizationData extends DataFixture
     public function load(ObjectManager $manager)
     {
 
-        for ($i=0; $i < 50; $i++) {
+        for ($i=0; $i < 5; $i++) {
             $organization = $this->createOrganization(
                 $this->faker->company,
                 $this->faker->text,

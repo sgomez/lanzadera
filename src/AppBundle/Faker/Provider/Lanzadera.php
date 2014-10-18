@@ -13,19 +13,18 @@ use Faker\Provider\Base;
 class Lanzadera extends Base
 {
     protected static $collective = array(
-        "Adismar",
-        "Editorial Atrapasueños",
-        "Transformando SCA",
-        "La industria de Mayka",
-        "Cervezas Artesanas Son",
-        "Cooperativa El Humoso de Marinaleda",
-        "Finca Ocupada Somonte",
-        "La Vuelta al Mundo",
-        "Agua de Coco",
-        "COPADE",
-        "Mosayco Mediterraneo",
-        "Efecto Tortuga",
-        "Mimarte",
+        "Altamar",
+        "Editorial Dulces Sueños",
+        "Cambiando el mundo",
+        "La industria de Eva",
+        "Cervezas Artesanas Hijos del Sol",
+        "Cooperativa El Marino",
+        "Finca Sotomayor",
+        "Ochenta días",
+        "Agua de día",
+        "Puzzle",
+        "Efecto Mariposa",
+        "AmArte",
     );
 
     protected static $product = array(

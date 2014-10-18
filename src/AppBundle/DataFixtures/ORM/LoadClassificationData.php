@@ -22,9 +22,9 @@ class LoadClassificationData extends DataFixture
     public function load(ObjectManager $manager)
     {
         $classifications = array(
-            'Sociales' => 'Criterios sociales',
-            'Ambientales' => 'Criterios ambientales',
-            'Comerciales' => 'Criterios comerciales y logísticos',
+            'CriterioA' => 'Criterios A',
+            'CriterioB' => 'Criterios B',
+            'CriterioC' => 'Criterios C',
         );
 
         foreach($classifications as $id => $name) {

@@ -19,11 +19,9 @@ class LoadProductsData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        for ($i = 0; $i < 10; $i ++) {
+        for ($i = 0; $i < 30; $i ++) {
             $manager->persist($this->createProduct($i));
-
         }
-        $manager->persist($this->createProduct($i, array("Alta calidad y bajo precio", "No perecedero")));
 
         $manager->flush();
     }

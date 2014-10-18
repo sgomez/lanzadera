@@ -39,7 +39,7 @@
                     </div>
                     <div class="panel-footer">
                         {% if sonata_admin_enabled is defined and sonata_admin_enabled %}
-                            <a href="{{ url('admin_lanzadera_media_media_edit', {id: value.id}) }}"><strong>{{ value.name }}</strong></a>
+                            <a href="{{ url('admin_sonata_media_media_edit', {id: value.id}) }}"><strong>{{ value.name }}</strong></a>
                         {% else %}
                             <strong>{{ value.name }}</strong>
                         {% endif %}

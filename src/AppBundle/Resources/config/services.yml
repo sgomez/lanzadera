@@ -39,10 +39,10 @@ services:
         arguments: ['AppBundle\Entity\Indicator']
 
     lanzadera.repository.media:
-        class: Lanzadera\CoreBundle\Doctrine\ORM\MediaRepository
+        class: Lanzadera\AppBundle\Doctrine\ORM\MediaRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
-        arguments: ['Lanzadera\MediaBundle\Entity\Media']
+        arguments: ['Application\Sonata\MediaBundle\Entity\Media']
 
     lanzadera.repository.organization:
         class: Lanzadera\CoreBundle\Doctrine\ORM\OrganizationRepository

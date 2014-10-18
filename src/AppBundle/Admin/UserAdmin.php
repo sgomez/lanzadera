@@ -142,7 +142,7 @@ class UserAdmin extends Admin
                     'label' => false,
                     'required' => false,
                     'provider' => 'sonata.media.provider.image',
-                    'data_class'   =>  'Lanzadera\MediaBundle\Entity\Media',
+                    'data_class'   =>  'Application\Sonata\MediaBundle\Entity\Media',
                     'context'  => 'default'
                 ))
             ->end()

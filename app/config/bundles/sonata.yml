@@ -20,9 +20,9 @@ sonata_doctrine_orm_admin:
 
 sonata_media:
     class:
-        media: Lanzadera\MediaBundle\Entity\Media
-        gallery: Lanzadera\MediaBundle\Entity\Gallery
-        gallery_has_media: Lanzadera\MediaBundle\Entity\GalleryHasMedia
+        media: Application\Sonata\MediaBundle\Entity\Media
+        gallery: Application\Sonata\MediaBundle\Entity\Gallery
+        gallery_has_media: Application\Sonata\MediaBundle\Entity\GalleryHasMedia
     default_context: default
     db_driver: doctrine_orm
     contexts:

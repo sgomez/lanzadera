@@ -41,7 +41,7 @@ abstract class IndicatorType extends AbstractType implements IndicatorTypeInterf
                     'description' => $criterion->getDescription(),
                     'choices' => $criterion->getIndicators(true),
                     'required' => false,
-                    'empty_value' => 'criterion.indicator.placeholder',
+                    'empty_value' => 'label.indicator_placeholder',
                     'attr' => array('class' => 'form-control'),
             ));
         }

@@ -160,9 +160,9 @@ class Organization
     private $indicators;
 
     /**
-     * @var \Lanzadera\MediaBundle\Entity\Media
+     * @var \Application\Sonata\MediaBundle\Entity\Media
      *
-     * @ORM\OneToOne(targetEntity="Lanzadera\MediaBundle\Entity\Media", cascade={"remove", "persist"})
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"remove", "persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="media_id", referencedColumnName="id", onDelete="SET NULL")
      * })
@@ -458,10 +458,10 @@ class Organization
     /**
      * Set media
      *
-     * @param \Lanzadera\MediaBundle\Entity\Media $media
+     * @param \Application\Sonata\MediaBundle\Entity\Media $media
      * @return Organization
      */
-    public function setMedia(\Lanzadera\MediaBundle\Entity\Media $media = null)
+    public function setMedia(\Application\Sonata\MediaBundle\Entity\Media $media = null)
     {
         $this->media = $media;
 
@@ -471,7 +471,7 @@ class Organization
     /**
      * Get media
      *
-     * @return \Lanzadera\MediaBundle\Entity\Media 
+     * @return \Application\Sonata\MediaBundle\Entity\Media
      */
     public function getMedia()
     {

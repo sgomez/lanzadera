@@ -6,9 +6,9 @@ sylius_resource:
     resources:
         lanzadera.media:
             driver: doctrine/orm
-            templates: LanzaderaMediaBundle:Media
+            templates: ApplicationSonataMediaBundle:Media
             classes:
-                model: Lanzadera\MediaBundle\Entity\Media
+                model: Application\Sonata\MediaBundle\Entity\Media
         lanzadera.organization:
             driver: doctrine/orm
             templates: LanzaderaOrganizationBundle:Organization

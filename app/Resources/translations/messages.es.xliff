@@ -102,6 +102,18 @@
         <source>label.value</source>
         <target>Valor</target>
       </trans-unit>
+      <trans-unit id="25">
+        <source>media.binary_content.label</source>
+        <target>Añadir fichero</target>
+      </trans-unit>
+      <trans-unit id="26">
+        <source>Unlink</source>
+        <target>Borrar</target>
+      </trans-unit>
+      <trans-unit id="27">
+          <source>label.indicator_add</source>
+          <target>Añadir indicador</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -11,7 +11,6 @@ namespace Lanzadera\FixtureBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Lanzadera\FixtureBundle\DataFixtures\DataFixture;
-use Lanzadera\MediaBundle\Entity\Media;
 use Lanzadera\ProductBundle\Entity\Product;
 
 class LoadProductsData extends DataFixture

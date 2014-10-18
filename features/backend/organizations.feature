@@ -52,7 +52,7 @@ Característica: Organizaciones
           | Nombre      | La Tejedora           |
           | Dirección   | Plaza de la Tejedora  |
           | Teléfono    | 555-123456            |
-          | Correo-e    | info@latejedora.com   |
+          | Email    | info@latejedora.com   |
           | Página web  | http://latejedora.com |
           | Activo      | 1                     |
         Y presiono "Crear y regresar al listado"
@@ -67,11 +67,11 @@ Característica: Organizaciones
 
     Escenario: Actualizar organización
         Dado que estoy en la página edición de organización con nombre "Organización A"
-        Cuando relleno "Correo-e" con "info@organizaciona.com"
+        Cuando relleno "Email" con "info@organizaciona.com"
         Y presiono "Actualizar"
         Entonces debería estar en la página edición de organización con nombre "Organización A"
         Y debo ver "Elemento actualizado satisfactoriamente."
-        Y el campo "Correo-e" debe contener "info@organizaciona.com"
+        Y el campo "Email" debe contener "info@organizaciona.com"
 
     Escenario: Borrar organización desde la página de edición
         Dado que estoy en la página edición de organización con nombre "Organización A"

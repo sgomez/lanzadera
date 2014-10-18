@@ -1,9 +1,0 @@
-parameters:
-    lanzadera.core.backend.consumer.class: Lanzadera\CoreBundle\Consumer\LanzaderaBackendConsumer
-
-services:
-    lanzadera.core.backend.consumer:
-        class: %lanzadera.core.backend.consumer.class%
-        arguments: [@logger, @doctrine.orm.entity_manager]
-        tags:
-            - { name: sonata.notification.consumer, type: backend }

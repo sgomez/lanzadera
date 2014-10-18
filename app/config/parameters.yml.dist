@@ -14,5 +14,5 @@ parameters:
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
 
-    sonata.media.provider.file.class: Lanzadera\MediaBundle\Provider\FileProvider
-    sonata.media.provider.image.class: Lanzadera\MediaBundle\Provider\ImageProvider
+    sonata.media.provider.file.class: Application\Sonata\MediaBundle\Provider\FileProvider
+    sonata.media.provider.image.class: Application\Sonata\MediaBundle\Provider\ImageProvider

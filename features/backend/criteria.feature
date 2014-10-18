@@ -66,7 +66,7 @@ Característica: Criterios
             | Nombre        | Tipo de actividad                                     |
             | Descripción   | Describe el tipo de actividad de la organización      |
             | Organización  | organization                                          |
-        Y selecciono "Sociales" de "Clasificación"
+        Y selecciono "Sociales" de "Clasificador"
         Y presiono "Crear y regresar al listado"
         Entonces debería estar en la página principal de criterio
         Y debo ver "Elemento creado satisfactoriamente"

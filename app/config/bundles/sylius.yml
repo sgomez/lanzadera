@@ -6,29 +6,29 @@ sylius_resource:
     resources:
         lanzadera.media:
             driver: doctrine/orm
-            templates: LanzaderaMediaBundle:Media
+            templates: ApplicationSonataMediaBundle:Media
             classes:
-                model: Lanzadera\MediaBundle\Entity\Media
+                model: Application\Sonata\MediaBundle\Entity\Media
         lanzadera.organization:
             driver: doctrine/orm
-            templates: LanzaderaOrganizationBundle:Organization
+            templates: AppBundle:Organization
             classes:
-                model: Lanzadera\OrganizationBundle\Entity\Organization
+                model: AppBundle\Entity\Organization
         lanzadera.product:
             driver: doctrine/orm
-            templates: LanzaderaProductBundle:Product
+            templates: AppBundle:Product
             classes:
-                model: Lanzadera\ProductBundle\Entity\Product
+                model: AppBundle\Entity\Product
         lanzadera.taxon:
             driver: doctrine/orm
-            templates: LanzaderaTaxonomyBundle:Taxon
+            templates: AppBundle:Taxon
             classes:
-                model: Lanzadera\TaxonomyBundle\Entity\Taxon
+                model: AppBundle\Entity\Taxon
 
 sylius_taxonomy:
     classes:
         taxonomy:
-            model: Lanzadera\TaxonomyBundle\Entity\Taxonomy
+            model: AppBundle\Entity\Taxonomy
         taxon:
-            model: Lanzadera\TaxonomyBundle\Entity\Taxon
+            model: AppBundle\Entity\Taxon
     driver: doctrine/orm # Configure the doctrine orm driver used in documentation.

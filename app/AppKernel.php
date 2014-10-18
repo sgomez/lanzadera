@@ -18,6 +18,7 @@ class AppKernel extends Kernel
 
 
             new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
+	        new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new FOS\CommentBundle\FOSCommentBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new FOS\UserBundle\FOSUserBundle(),
@@ -32,25 +33,18 @@ class AppKernel extends Kernel
 
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
 
-            new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
+	        new Sonata\AdminBundle\SonataAdminBundle(),
+	        new Sonata\BlockBundle\SonataBlockBundle(),
             new Sonata\CoreBundle\SonataCoreBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
-            new Sonata\AdminBundle\SonataAdminBundle(),
-            new Sonata\BlockBundle\SonataBlockBundle(),
-            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
-            new Sonata\IntlBundle\SonataIntlBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+	        new Sonata\IntlBundle\SonataIntlBundle(),
             new Sonata\MediaBundle\SonataMediaBundle(),
             new Sonata\NotificationBundle\SonataNotificationBundle(),
+	        new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
 
-            new Lanzadera\FixtureBundle\LanzaderaFixtureBundle(),
-            new Lanzadera\CoreBundle\LanzaderaCoreBundle(),
-            new Lanzadera\OrganizationBundle\LanzaderaOrganizationBundle(),
-            new Lanzadera\ProductBundle\LanzaderaProductBundle(),
-            new Lanzadera\ClassificationBundle\LanzaderaClassificationBundle(),
-            new Lanzadera\TaxonomyBundle\LanzaderaTaxonomyBundle(),
-            new Lanzadera\MediaBundle\LanzaderaMediaBundle(),
-            new Lanzadera\CommentBundle\LanzaderaCommentBundle(),
+            new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
+            new AppBundle\AppBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

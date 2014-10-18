@@ -1,0 +1,36 @@
+parameters: ~
+
+services:
+
+    lanzadera.form.type.certificate:
+        class: AppBundle\Form\Type\CertificateType
+        arguments: [@doctrine.orm.entity_manager]
+        tags:
+            - { name: form.type, alias: certificate }
+
+    lanzadera.form.type.criterion:
+        class: AppBundle\Form\Type\CriterionType
+        tags:
+            - { name: form.type, alias: criterion_type }
+
+    lanzadera.form.type.organization_indicator:
+        class: AppBundle\Form\Type\OrganizationIndicatorType
+        arguments: [@doctrine.orm.entity_manager]
+        tags:
+            - { name: form.type, alias: organization_indicator }
+
+    lanzadera.form.type.product_indicator:
+        class: AppBundle\Form\Type\ProductIndicatorType
+        arguments: [@doctrine.orm.entity_manager]
+        tags:
+            - { name: form.type, alias: product_indicator }
+
+    lanzadera.form.extension.choice_type_extension:
+        class: AppBundle\Form\Extension\ChoiceTypeExtension
+        tags:
+            - { name: form.type_extension, alias: choice }
+
+    lanzadera.form.type.status:
+        class: AppBundle\Form\Type\StatusType
+        tags:
+            - { name: form.type, alias: status }

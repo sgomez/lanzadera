@@ -19,74 +19,73 @@ default:
         account:
             contexts:
                 - Behat\MinkExtension\Context\MinkContext
-                - Lanzadera\CoreBundle\Behat\UsersContext
-                - Lanzadera\CoreBundle\Behat\WebContext
+                - AppBundle\Behat\UsersContext
+                - AppBundle\Behat\WebContext
             filters:
                 tags: "@login"
         users:
             contexts:
                 - Behat\MinkExtension\Context\MinkContext
-                - Lanzadera\CoreBundle\Behat\CoreContext
-                - Lanzadera\CoreBundle\Behat\UsersContext
-                - Lanzadera\CoreBundle\Behat\WebContext
+                - AppBundle\Behat\CoreContext
+                - AppBundle\Behat\UsersContext
+                - AppBundle\Behat\WebContext
             filters:
                 tags: "@users"
         organizations:
             contexts:
                 - Behat\MinkExtension\Context\MinkContext
-                - Lanzadera\CoreBundle\Behat\CoreContext
-                - Lanzadera\CoreBundle\Behat\UsersContext
-                - Lanzadera\CoreBundle\Behat\WebContext
-                - Lanzadera\OrganizationBundle\Behat\OrganizationContext
+                - AppBundle\Behat\CoreContext
+                - AppBundle\Behat\UsersContext
+                - AppBundle\Behat\WebContext
+                - AppBundle\Behat\OrganizationContext
             filters:
                 tags: "@organizations"
         classificators:
             contexts:
                 - Behat\MinkExtension\Context\MinkContext
-                - Lanzadera\CoreBundle\Behat\CoreContext
-                - Lanzadera\CoreBundle\Behat\UsersContext
-                - Lanzadera\CoreBundle\Behat\WebContext
-                - Lanzadera\ClassificationBundle\Behat\ClassificationContext
+                - AppBundle\Behat\CoreContext
+                - AppBundle\Behat\UsersContext
+                - AppBundle\Behat\WebContext
+                - AppBundle\Behat\ClassificationContext
             filters:
                 tags: "@classificators"
         criteria:
             contexts:
                 - Behat\MinkExtension\Context\MinkContext
-                - Lanzadera\CoreBundle\Behat\CoreContext
-                - Lanzadera\CoreBundle\Behat\UsersContext
-                - Lanzadera\CoreBundle\Behat\WebContext
-                - Lanzadera\ClassificationBundle\Behat\ClassificationContext
+                - AppBundle\Behat\CoreContext
+                - AppBundle\Behat\UsersContext
+                - AppBundle\Behat\WebContext
+                - AppBundle\Behat\ClassificationContext
             filters:
                 tags: "@criteria"
         categories:
             contexts:
                 - Behat\MinkExtension\Context\MinkContext
-                - Lanzadera\CoreBundle\Behat\CoreContext
-                - Lanzadera\CoreBundle\Behat\UsersContext
-                - Lanzadera\CoreBundle\Behat\WebContext
-                - Lanzadera\TaxonomyBundle\Behat\TaxonomyContext
+                - AppBundle\Behat\CoreContext
+                - AppBundle\Behat\UsersContext
+                - AppBundle\Behat\WebContext
+                - AppBundle\Behat\TaxonomyContext
             filters:
                 tags: "@categories"
         tags:
             contexts:
                 - Behat\MinkExtension\Context\MinkContext
-                - Lanzadera\CoreBundle\Behat\CoreContext
-                - Lanzadera\CoreBundle\Behat\UsersContext
-                - Lanzadera\CoreBundle\Behat\WebContext
-                - Lanzadera\TaxonomyBundle\Behat\TaxonomyContext
+                - AppBundle\Behat\CoreContext
+                - AppBundle\Behat\UsersContext
+                - AppBundle\Behat\WebContext
+                - AppBundle\Behat\TaxonomyContext
             filters:
                 tags: "@tags"
         products:
             contexts:
                 - Behat\MinkExtension\Context\MinkContext
-                - Lanzadera\ClassificationBundle\Behat\ClassificationContext
-                - Lanzadera\CoreBundle\Behat\CoreContext
-                - Lanzadera\CoreBundle\Behat\UsersContext
-                - Lanzadera\CoreBundle\Behat\WebContext
-                - Lanzadera\CoreBundle\Behat\ProductContext
-                - Lanzadera\OrganizationBundle\Behat\OrganizationContext
-                - Lanzadera\ProductBundle\Behat\ProductContext
-                - Lanzadera\TaxonomyBundle\Behat\TaxonomyContext
+                - AppBundle\Behat\ClassificationContext
+                - AppBundle\Behat\CoreContext
+                - AppBundle\Behat\UsersContext
+                - AppBundle\Behat\WebContext
+                - AppBundle\Behat\ProductContext
+                - AppBundle\Behat\OrganizationContext
+                - AppBundle\Behat\TaxonomyContext
             filters:
                 tags: "@products"
 
@@ -113,13 +112,12 @@ javascript:
         products:
             contexts:
                 - Behat\MinkExtension\Context\MinkContext
-                - Lanzadera\ClassificationBundle\Behat\ClassificationContext
-                - Lanzadera\CoreBundle\Behat\CoreContext
-                - Lanzadera\CoreBundle\Behat\UsersContext
-                - Lanzadera\CoreBundle\Behat\WebContext
-                - Lanzadera\CoreBundle\Behat\ProductContext
-                - Lanzadera\OrganizationBundle\Behat\OrganizationContext
-                - Lanzadera\ProductBundle\Behat\ProductContext
-                - Lanzadera\TaxonomyBundle\Behat\TaxonomyContext
+                - AppBundle\Behat\ClassificationContext
+                - AppBundle\Behat\CoreContext
+                - AppBundle\Behat\UsersContext
+                - AppBundle\Behat\WebContext
+                - AppBundle\Behat\ProductContext
+                - AppBundle\Behat\OrganizationContext
+                - AppBundle\Behat\TaxonomyContext
             filters:
                 tags: "@products"

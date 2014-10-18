@@ -38,7 +38,7 @@ class Comment extends BaseComment implements SignedCommentInterface
     /**
      * Author of the comment
      *
-     * @ORM\ManyToOne(targetEntity="Lanzadera\CoreBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="User")
      * @var User
      */
     protected $author;

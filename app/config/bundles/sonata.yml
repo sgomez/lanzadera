@@ -1,6 +1,6 @@
 sonata_admin:
     title: Lanzadera
-    title_logo: bundles/lanzaderacore/img/tejedorasm.png
+    title_logo: bundles/app/img/tejedorasm.png
     templates:
         layout: AppBundle:Default:standard_layout.html.twig
     security:
@@ -63,8 +63,10 @@ sonata_user:
     security_acl: true
     manager_type: orm
     class:
-        user:         Lanzadera\CoreBundle\Entity\User
-        group:        Lanzadera\CoreBundle\Entity\Group
+        user:         AppBundle\Entity\User
+        group:        AppBundle\Entity\Group
     admin:
         user:
             class:    AppBundle\Admin\UserAdmin
+        group:
+            class:    AppBundle\Admin\GroupAdmin

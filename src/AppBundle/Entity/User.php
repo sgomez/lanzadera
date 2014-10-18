@@ -6,13 +6,13 @@
  * Time: 17:35
  */
 
-namespace Lanzadera\CoreBundle\Entity;
+namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Sonata\UserBundle\Entity\BaseUser;
 
 /**
- * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\UserRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Doctrine\ORM\UserRepository")
  * @ORM\Table(name="fos_user")
  */
 class User extends BaseUser

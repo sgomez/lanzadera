@@ -11,7 +11,15 @@ use FOS\UserBundle\Model\UserManagerInterface;
 
 class UserAdmin extends Admin
 {
-    protected $baseRouteName = "lanzadera_user";
+	/**
+	 * {@inheritdoc}
+	 */
+	protected $baseRouteName = "lanzadera_user";
+
+	/**
+	 * {@inheritdoc}
+	 */
+	protected $baseRoutePattern = 'lanzadera/user';
 
     /**
      * {@inheritdoc}
@@ -71,7 +79,7 @@ class UserAdmin extends Admin
             ))
         ;
 
-        $this->setTemplate('inner_list_row', 'LanzaderaCoreBundle:User:inner_list_row.html.twig');
+        $this->setTemplate('inner_list_row', 'AppBundle:User:inner_list_row.html.twig');
         $this->setTemplate('base_list_field', 'SonataAdminBundle:CRUD:base_list_flat_field.html.twig');
     }
 
@@ -132,7 +140,7 @@ class UserAdmin extends Admin
                         'multiple' => true,
                         'btn_add' => false,
                         'attr' => array(
-                            'placeholder' => 'product.certificates.placeholder',
+                            'placeholder' => 'label.group_placeholder',
                             'class' => 'form-control'
                         )
                 ))

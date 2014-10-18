@@ -6,7 +6,7 @@
  * Time: 18:31
  */
 
-namespace Lanzadera\CoreBundle\Consumer;
+namespace AppBundle\Consumer;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Psr\Log\LoggerInterface;

@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Lanzadera\CoreBundle\Doctrine\ORM;
+namespace AppBundle\Doctrine\ORM;
 
 class UserRepository extends CustomRepository
 {

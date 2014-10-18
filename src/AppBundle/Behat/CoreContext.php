@@ -8,7 +8,7 @@
 
 namespace AppBundle\Behat;
 
-use Lanzadera\CoreBundle\Entity\User;
+use AppBundle\Entity\User;
 
 class CoreContext extends DefaultContext
 {

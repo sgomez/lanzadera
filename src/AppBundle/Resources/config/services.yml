@@ -27,10 +27,10 @@ services:
         arguments: ['AppBundle\Entity\Criterion']
 
     lanzadera.repository.group:
-        class: Lanzadera\CoreBundle\Doctrine\ORM\GroupRepository
+        class: AppBundle\Doctrine\ORM\GroupRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
-        arguments: ['Lanzadera\CoreBundle\Entity\Group']
+        arguments: ['AppBundle\Entity\Group']
 
     lanzadera.repository.indicator:
         class: AppBundle\Doctrine\ORM\IndicatorRepository
@@ -75,7 +75,13 @@ services:
         arguments: ['AppBundle\Entity\Taxonomy']
 
     lanzadera.repository.user:
-        class: Lanzadera\CoreBundle\Doctrine\ORM\UserRepository
+        class: AppBundle\Doctrine\ORM\UserRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
-        arguments: ['Lanzadera\CoreBundle\Entity\User']
+        arguments: ['AppBundle\Entity\User']
+
+    lanzadera.core.backend.consumer:
+        class: AppBundle\Consumer\LanzaderaBackendConsumer
+        arguments: [@logger, @doctrine.orm.entity_manager]
+        tags:
+            - { name: sonata.notification.consumer, type: backend }

@@ -15,7 +15,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
  * Class OrganizationAdmin
- * @package Tejedora\Lanzadera\CoreBundle\Admin
+ * @package AppBundle\Admin
  */
 
 class OrganizationAdmin extends Admin

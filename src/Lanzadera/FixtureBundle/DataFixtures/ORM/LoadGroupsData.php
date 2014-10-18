@@ -8,9 +8,8 @@
 
 namespace Lanzadera\FixtureBundle\DataFixtures\ORM;
 
-
 use Doctrine\Common\Persistence\ObjectManager;
-use Lanzadera\CoreBundle\Entity\Group;
+use AppBundle\Entity\Group;
 use Lanzadera\FixtureBundle\DataFixtures\DataFixture;
 
 class LoadGroupsData extends DataFixture

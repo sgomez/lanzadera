@@ -270,6 +270,46 @@
         <source>group.indicators</source>
         <target>Indicadores</target>
       </trans-unit>
+      <trans-unit id="67">
+        <source>Action</source>
+        <target>Acciones</target>
+      </trans-unit>
+      <trans-unit id="68">
+        <source>Classification List</source>
+        <target>Lista de clasificadores</target>
+      </trans-unit>
+      <trans-unit id="69">
+        <source>Organization List</source>
+        <target>Lista de organizaciones</target>
+      </trans-unit>
+      <trans-unit id="70">
+        <source>Product List</source>
+        <target>Lista de productos</target>
+      </trans-unit>
+      <trans-unit id="71">
+        <source>form.label_locked</source>
+        <target>Bloqueada</target>
+      </trans-unit>
+      <trans-unit id="72">
+        <source>form.label_expired</source>
+        <target>Caducada</target>
+      </trans-unit>
+      <trans-unit id="73">
+        <source>form.label_enabled</source>
+        <target>Habilitada</target>
+      </trans-unit>
+      <trans-unit id="74">
+        <source>form.label_credentials_expired</source>
+        <target>Credenciales caducadas</target>
+      </trans-unit>
+      <trans-unit id="75">
+        <source>list.label__action</source>
+        <target>Acciones</target>
+      </trans-unit>
+      <trans-unit id="76">
+        <source>label.group_placeholder</source>
+        <target>Selecciona un grupo</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

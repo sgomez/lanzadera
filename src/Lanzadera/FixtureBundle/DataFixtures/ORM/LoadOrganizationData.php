@@ -9,7 +9,7 @@
 namespace Lanzadera\FixtureBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Lanzadera\CoreBundle\Doctrine\ORM\OrganizationRepository;
+use AppBundle\Doctrine\ORM\OrganizationRepository;
 use Lanzadera\FixtureBundle\DataFixtures\DataFixture;
 use AppBundle\Entity\Organization;
 

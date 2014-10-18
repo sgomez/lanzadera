@@ -3,7 +3,7 @@
 namespace AppBundle\Behat;
 
 use Behat\Gherkin\Node\TableNode;
-use Lanzadera\CoreBundle\Entity\User;
+use AppBundle\Entity\User;
 
 /**
  * Behat context class.

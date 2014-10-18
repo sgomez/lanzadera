@@ -44,7 +44,6 @@ class AppKernel extends Kernel
             new Sonata\NotificationBundle\SonataNotificationBundle(),
 
             new Lanzadera\FixtureBundle\LanzaderaFixtureBundle(),
-            new Lanzadera\CoreBundle\LanzaderaCoreBundle(),
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new AppBundle\AppBundle(),
         );

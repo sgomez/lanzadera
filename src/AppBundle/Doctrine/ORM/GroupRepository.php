@@ -6,7 +6,7 @@
  * Time: 15:11
  */
 
-namespace Lanzadera\CoreBundle\Doctrine\ORM;
+namespace AppBundle\Doctrine\ORM;
 
 
 class GroupRepository extends CustomRepository

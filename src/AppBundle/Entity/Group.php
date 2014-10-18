@@ -6,13 +6,13 @@
  * Time: 17:37
  */
 
-namespace Lanzadera\CoreBundle\Entity;
+namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Sonata\UserBundle\Entity\BaseGroup;
 
 /**
- * @ORM\Entity(repositoryClass="Lanzadera\CoreBundle\Doctrine\ORM\GroupRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Doctrine\ORM\GroupRepository")
  * @ORM\Table(name="fos_group")
  */
 class Group extends BaseGroup

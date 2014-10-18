@@ -10,16 +10,10 @@
 
 namespace Lanzadera\FixtureBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\AbstractFixture;
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use FOS\UserBundle\Model\UserInterface;
-use Lanzadera\CoreBundle\Doctrine\ORM\GroupRepository;
-use Lanzadera\CoreBundle\Doctrine\ORM\UserRepository;
-use Lanzadera\CoreBundle\Entity\Group;
-use Lanzadera\CoreBundle\Entity\User;
+use AppBundle\Doctrine\ORM\UserRepository;
+use AppBundle\Entity\User;
 use Lanzadera\FixtureBundle\DataFixtures\DataFixture;
-
 
 class LoadUsersData extends DataFixture
 {

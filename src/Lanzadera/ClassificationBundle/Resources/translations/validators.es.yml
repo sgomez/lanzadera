@@ -1,4 +1,0 @@
-classification.name.not_blank: Por favor, indique el nombre de la clasificación.
-
-criterion.name.not_blank: Por favor, indique el nombre del criterio.
-criterion.indicator.not_unique: El indicador "{{ name }}" tiene un valor repetido ({{ value }}).

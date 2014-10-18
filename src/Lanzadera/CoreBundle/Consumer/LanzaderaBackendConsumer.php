@@ -8,7 +8,6 @@
 
 namespace Lanzadera\CoreBundle\Consumer;
 
-
 use Doctrine\Common\Persistence\ObjectManager;
 use Psr\Log\LoggerInterface;
 use Sonata\CoreBundle\Exception\InvalidParameterException;
@@ -43,10 +42,10 @@ class LanzaderaBackendConsumer implements ConsumerInterface
             throw new InvalidParameterException();
         }
 
-        $classifications = $this->om->getRepository('LanzaderaClassificationBundle:Classification')->findAll();
+        $classifications = $this->om->getRepository('AppBundle:Classification')->findAll();
 
         foreach ($classifications as $classification) {
-            $this->om->getRepository('LanzaderaClassificationBundle:Classification')->setMaximalValue(
+            $this->om->getRepository('AppBundle:Classification')->setMaximalValue(
                 $classification->getId()
             );
 

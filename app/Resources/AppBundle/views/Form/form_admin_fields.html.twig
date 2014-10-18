@@ -1,0 +1,75 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{% extends 'SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig' %}
+
+{% block percent_widget %}
+    {% spaceless %}
+        {% set type = type|default('text') %}
+        <div class="input-group">
+            {{ block('form_widget_simple') }}
+            <span class="input-group-addon">%</span>
+        </div>
+    {% endspaceless %}
+{% endblock percent_widget %}
+
+{% block money_widget %}
+    {% spaceless %}
+        {% set type = type|default('text') %}
+        <div class="input-group">
+            {{ block('form_widget_simple') }}
+            <span class="input-group-addon">€</span>
+        </div>
+    {% endspaceless %}
+{% endblock money_widget %}
+
+{% block product_indicator_widget %}
+    {{ block('lanzadera_indicator_widget') }}
+{% endblock %}
+
+{% block organization_indicator_widget %}
+    {{ block('lanzadera_indicator_widget') }}
+{% endblock %}
+
+{% block lanzadera_indicator_widget %}
+    {% spaceless %}
+    <div class=" sonata-ba-field sonata-ba-field-inline-table  ">
+        <div class="field-container">
+             <span>
+                 <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th style="width: 250px;">Valor</th>
+                    </tr>
+                    </thead>
+                    <tbody class="sonata-ba-tbody ui-sortable">
+                    {% for child in form %}
+                        <tr>
+                            <td class="control-group">
+                                {{ child.vars.label }}
+                            </td>
+                            <td class="control-group">
+                                {{ child.vars.description }}
+                            </td>
+                            <td class="control-group">
+                                {{ form_widget(child) }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </span>
+        </div>
+    </div>
+    {% endspaceless %}
+{% endblock %}

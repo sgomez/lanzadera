@@ -12,14 +12,24 @@ use Sonata\AdminBundle\Form\FormMapper;
 
 class CertificateAdmin extends Admin
 {
-    /**
+	/**
+	 * {@inheritdoc}
+	 */
+	protected $baseRouteName = "lanzadera_certificate";
+
+	/**
+	 * {@inheritdoc}
+	 */
+	protected $baseRoutePattern = 'lanzadera/certificate';
+
+	/**
      * {@inheritdoc}
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
             ->add('classification', null, array(
-                    'label' => 'certificate.classification.label',
+                    'label' => 'label.classification',
                     'required' => true,
             ))
         ;

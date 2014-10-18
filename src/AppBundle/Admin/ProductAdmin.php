@@ -10,7 +10,6 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class ProductAdmin extends Admin
 {
-
     /**
      * {@inheritdoc}
      */

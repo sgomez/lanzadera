@@ -9,9 +9,9 @@
 namespace AppBundle\Behat;
 
 use Behat\Gherkin\Node\TableNode;
-use Lanzadera\ClassificationBundle\Entity\Classification;
-use Lanzadera\ClassificationBundle\Entity\Criterion;
-use Lanzadera\ClassificationBundle\Entity\Indicator;
+use AppBundle\Entity\Classification;
+use AppBundle\Entity\Criterion;
+use AppBundle\Entity\Indicator;
 
 class ClassificationContext extends DefaultContext
 {

@@ -6,6 +6,16 @@ use Sonata\AdminBundle\Form\FormMapper;
 
 class IndicatorAdmin extends Admin
 {
+	/**
+	 * {@inheritdoc}
+	 */
+	protected $baseRouteName = "lanzadera_indicator";
+
+	/**
+	 * {@inheritdoc}
+	 */
+	protected $baseRoutePattern = 'lanzadera/indicator';
+	
     /**
      * {@inheritdoc}
      */
@@ -13,12 +23,12 @@ class IndicatorAdmin extends Admin
     {
         $formMapper
             ->add('name', 'text', array(
-                'label' => 'indicator.name.label',
+                'label' => 'label.name',
                 'required' => true,
                 'attr' => array('title' => 'indicator_name_edit')
             ))
             ->add('value', 'number', array(
-                'label' => 'indicator.value.label',
+                'label' => 'label.value',
                 'required' => true,
                 'attr' => array('title' => 'indicator_value_edit')
             ))

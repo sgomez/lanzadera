@@ -14,6 +14,11 @@ class ClassificationAdmin extends Admin
      */
     protected $baseRouteName = 'lanzadera_classification';
 
+	/**
+	 * {@inheritdoc}
+	 */
+	protected $baseRoutePattern = 'lanzadera/classification';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -21,10 +26,10 @@ class ClassificationAdmin extends Admin
     {
         $datagridMapper
             ->add('name', null, array(
-                    'label' => 'classification.name.label'
+                    'label' => 'label.name'
             ))
             ->add('description', null, array(
-                    'label' => 'classification.description.label'
+                    'label' => 'label.description'
             ))
         ;
     }
@@ -36,10 +41,10 @@ class ClassificationAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('name', null, array(
-                    'label' => 'classification.name.label'
+                    'label' => 'label.name'
             ))
             ->add('description', null, array(
-                    'label' => 'classification.description.label',
+                    'label' => 'label.description',
             ))
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -57,24 +62,24 @@ class ClassificationAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('classification.group.description', array('class' => 'col-md-6'))
+            ->with('label.description', array('class' => 'col-md-6'))
                 ->add('name', null, array(
-                        'label' => 'classification.name.label'
+                        'label' => 'label.name'
                 ))
                 ->add('description', 'textarea', array(
-                        'label' => 'classification.description.label',
+                        'label' => 'label.description',
                         'attr' => array('rows' => '6'),
                 ))
             ->end()
-            ->with('classification.group.parameters', array('class' => 'col-md-6'))
+            ->with('label.parameters', array('class' => 'col-md-6'))
                 ->add('threshold', 'percent', array(
-                        'label' => 'classification.threshold.label',
+                        'label' => 'label.threshold',
                         'type' => 'integer',
-                        'help' => 'classification.threshold.help'
+                        'help' => 'help.threshold'
                 ))
                 ->add('maximum', null, array(
-                        'label' => 'classification.maximum.label',
-                        'help' => 'classification.maximum.help',
+                        'label' => 'label.maximum_value',
+                        'help' => 'help.maximum_value',
                         'read_only' => true,
                         'required' => false
                 ))
@@ -91,16 +96,16 @@ class ClassificationAdmin extends Admin
     {
         $showMapper
             ->add('name', null, array(
-                    'label' => 'classification.name.label'
+                    'label' => 'label.name'
             ))
             ->add('description', null, array(
-                    'label' => 'classification.description.label'
+                    'label' => 'label.description'
             ))
             ->add('threshold', null, array(
-                    'label' => 'classification.threshold.label',
+                    'label' => 'label.threshold',
             ))
             ->add('maximum', null, array(
-                    'label' => 'classification.maximum.label'
+                    'label' => 'label.maximum_value'
             ))
         ;
     }

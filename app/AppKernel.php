@@ -47,7 +47,6 @@ class AppKernel extends Kernel
             new Lanzadera\CoreBundle\LanzaderaCoreBundle(),
             new Lanzadera\OrganizationBundle\LanzaderaOrganizationBundle(),
             new Lanzadera\ProductBundle\LanzaderaProductBundle(),
-            new Lanzadera\ClassificationBundle\LanzaderaClassificationBundle(),
             new Lanzadera\MediaBundle\LanzaderaMediaBundle(),
             new AppBundle\AppBundle(),
         );

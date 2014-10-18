@@ -10,7 +10,7 @@
 
 namespace Lanzadera\CoreBundle\Doctrine\ORM;
 
-use Lanzadera\ClassificationBundle\Entity\Certificate;
+use AppBundle\Entity\Certificate;
 use Lanzadera\ProductBundle\Entity\Product;
 
 class OrganizationRepository extends CustomRepository
@@ -31,12 +31,12 @@ class OrganizationRepository extends CustomRepository
     public function evaluateProductsByClassification($classification_id)
     {
         $em = $this->getEntityManager();
-        $classification = $em->getRepository('LanzaderaClassificationBundle:Classification')->find($classification_id);
+        $classification = $em->getRepository('AppBundle:Classification')->find($classification_id);
         if (!$classification) {
             throw new \InvalidArgumentException();
         }
 
-        $em->getRepository('LanzaderaClassificationBundle:Certificate')->clearAutoSelection($classification_id);
+        $em->getRepository('AppBundle:Certificate')->clearAutoSelection($classification_id);
         $threshold = intval($classification->getMaximum() * $classification->getThreshold() / 100);
         $organizations = $this->findAll();
 
@@ -50,7 +50,7 @@ class OrganizationRepository extends CustomRepository
 
             /** @var Product $product */
             foreach ($products as $product) {
-                $certificate = $em->getRepository('LanzaderaClassificationBundle:Certificate')
+                $certificate = $em->getRepository('AppBundle:Certificate')
                     ->findOneBy(array('product' => $product, 'classification' => $classification));
 
                 if ($certificate) continue;

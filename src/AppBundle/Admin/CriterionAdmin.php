@@ -16,6 +16,11 @@ class CriterionAdmin extends Admin
      */
     protected $baseRouteName = "lanzadera_criterion";
 
+	/**
+	 * {@inheritdoc}
+	 */
+	protected $baseRoutePattern = 'lanzadera/criterion';
+
     /**
      * {@inheritdoc}
      */
@@ -51,16 +56,16 @@ class CriterionAdmin extends Admin
     {
         $datagridMapper
             ->add('name', null, array(
-                    'label' => 'criterion.name.label'
+                    'label' => 'label.name'
             ))
             ->add('description', null, array(
-                    'label' => 'criterion.description.label'
+                    'label' => 'label.description'
             ))
             ->add('classification.name', null, array(
-                    'label' => 'criterion.classification.label',
+                    'label' => 'label.classification',
             ))
             ->add('type', null, array(
-                    'label' => 'criterion.type.label'
+                    'label' => 'label.type'
                 ), 'criterion_type', array(
                     'expanded' => false,
                     'constraints' => array(),
@@ -76,14 +81,14 @@ class CriterionAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('name', null, array(
-                    'label' => 'criterion.name.label'
+                    'label' => 'label.name'
             ))
             ->add('classification.name', null, array(
-                    'label' => 'criterion.classification.label'
+                    'label' => 'label.classification'
             ))
             ->add('type', 'string', array(
-                    'label' => 'criterion.type.label',
-                    'template' => 'LanzaderaClassificationBundle:CRUD:list_criterion_type.html.twig'
+                    'label' => 'label.type',
+                    'template' => 'AppBundle:Criterion:CRUD/list_criterion_type.html.twig'
             ))
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -104,25 +109,25 @@ class CriterionAdmin extends Admin
 
         $this->getConfigurationPool()->getContainer()->get('ladybug')->log($this->getSubject()->getId());
         $formMapper
-            ->with('criterion.group.description', array('class' => 'col-md-6'))
-                ->add('name', null, array('label' => 'criterion.name.label', 'required' => true))
-                ->add('description', 'textarea', array('label' => 'criterion.description.label'))
+            ->with('label.description', array('class' => 'col-md-6'))
+                ->add('name', null, array('label' => 'label.name', 'required' => true))
+                ->add('description', 'textarea', array('label' => 'label.description'))
                 ->add('type', 'criterion_type', array(
-                    'label' => 'criterion.type.label',
+                    'label' => 'label.type',
                     'disabled' => $disabled,
                 ))
                 ->add('classification', null, array(
-                    'label' => 'criterion.classification.label',
+                    'label' => 'label.classification',
                     'required' => true,
                 ))
             ->end()
-            ->with('criterion.group.indicators', array('class' => 'col-md-6'))
+            ->with('label.indicators', array('class' => 'col-md-6'))
                 ->add('indicators', 'sonata_type_collection',
                     array(
-                        'label' => 'criterion.indicator.label',
+                        'label' => 'label.indicators',
                         'type_options' => array('delete' => true),
                         'by_reference' => false,
-                        'btn_add' => $this->trans('criterion.indicator.add'),
+                        'btn_add' => $this->trans('label.indicator_add'),
                     ),
                     array(
                         'edit' => 'inline',
@@ -141,23 +146,23 @@ class CriterionAdmin extends Admin
         $showMapper
             ->with('criterion.group.description', array('class' => 'col-md-6'))
                 ->add('name', null, array(
-                        'label' => 'criterion.name.label'
+                        'label' => 'label.name'
                 ))
                 ->add('classification.name', null, array(
-                        'label' => 'criterion.classification.label'
+                        'label' => 'label.classification'
                 ))
                 ->add('description', null, array(
-                    'label' => 'criterion.description.label'
+                    'label' => 'label.description'
                 ))
                 ->add('type', 'string', array(
-                        'label' => 'criterion.type.label',
-                        'template' => 'LanzaderaClassificationBundle:CRUD:show_criterion_type.html.twig'
+                        'label' => 'label.type',
+                        'template' => 'AppBundle:Criterion:CRUD/show_criterion_type.html.twig'
                 ))
             ->end()
             ->with('criterion.group.indicators', array('class' => 'col-md-6'))
                 ->add('indicators', null, array(
-                        'label' => 'criterion.indicators.label',
-                        'template' => 'LanzaderaClassificationBundle:CRUD:show_criterion_indicators.html.twig'
+                        'label' => 'label.indicators',
+                        'template' => 'AppBundle:Criterion:CRUD/show_criterion_indicators.html.twig'
                 ))
             ->end()
         ;

@@ -14,7 +14,7 @@ use Sylius\Component\Taxonomy\Model\TaxonomyInterface;
 
 /**
  * Class Taxonomy
- * @package Lanzadera\ClassificationBundle\Entity
+ * @package AppBundle\Entity
  * @ORM\MappedSuperclass()
  * @ORM\Entity(repositoryClass="AppBundle\Doctrine\ORM\TaxonomyRepository")
  */

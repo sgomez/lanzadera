@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file original="" source-language="en" datatype="plaintext">
-        <body>
-            <trans-unit id="0">
-                <source>category.name.not_blank</source>
-                <target>Por favor, indique el nombre de la categoría.</target>
-            </trans-unit>
-            <trans-unit id="1">
-                <source>tag.name.not_blank</source>
-                <target>Por favor, indique el nombre de la etiqueta.</target>
-            </trans-unit>
-        </body>
-    </file>
+  <file original="" source-language="en" datatype="plaintext">
+    <body>
+      <trans-unit id="0">
+        <source>category.name.not_blank</source>
+        <target>Por favor, indique el nombre de la categoría.</target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>tag.name.not_blank</source>
+        <target>Por favor, indique el nombre de la etiqueta.</target>
+      </trans-unit>
+      <trans-unit id="2">
+        <source>classification.name.not_blank</source>
+        <target>Por favor, indique el nombre de la clasificación.</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>criterion.name.not_blank</source>
+        <target>Por favor, indique el nombre del criterio.</target>
+      </trans-unit>
+      <trans-unit id="4">
+        <source>criterion.indicator.not_unique</source>
+        <target>El indicador &quot;{{ name }}&quot; tiene un valor repetido ({{ value }}).</target>
+      </trans-unit>
+    </body>
+  </file>
 </xliff>

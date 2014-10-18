@@ -6,12 +6,11 @@
  * Time: 07:41
  */
 
-namespace Lanzadera\FixtureBundle\DataFixtures\ORM;
-
+namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\Doctrine;
 use Doctrine\Common\Persistence\ObjectManager;
-use Lanzadera\ClassificationBundle\Entity\Classification;
+use AppBundle\Entity\Classification;
 use Lanzadera\FixtureBundle\DataFixtures\DataFixture;
 
 class LoadClassificationData extends DataFixture

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Hateoas\Configuration\Annotation as Hateoas;
 use JMS\Serializer\Annotation as Serializer;
-use Lanzadera\ClassificationBundle\Entity\Certificate;
+use AppBundle\Entity\Certificate;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -149,7 +149,7 @@ class Product
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="Lanzadera\ClassificationBundle\Entity\Certificate", mappedBy="product", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Certificate", mappedBy="product", cascade={"persist"})
      * @Serializer\Exclude
      */
     private $certificates;
@@ -157,7 +157,7 @@ class Product
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Lanzadera\ClassificationBundle\Entity\Indicator", inversedBy="products")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Indicator", inversedBy="products")
      * @ORM\JoinTable(name="product_has_indicator",
      *   joinColumns={
      *     @ORM\JoinColumn(name="product_id", referencedColumnName="id", onDelete="CASCADE")
@@ -362,10 +362,10 @@ class Product
     /**
      * Add indicator
      *
-     * @param \Lanzadera\ClassificationBundle\Entity\Indicator $indicator
+     * @param \AppBundle\Entity\Indicator $indicator
      * @return Product
      */
-    public function addIndicator(\Lanzadera\ClassificationBundle\Entity\Indicator $indicator)
+    public function addIndicator(\AppBundle\Entity\Indicator $indicator)
     {
         $this->indicators[] = $indicator;
 
@@ -375,9 +375,9 @@ class Product
     /**
      * Remove indicator
      *
-     * @param \Lanzadera\ClassificationBundle\Entity\Indicator $indicator
+     * @param \AppBundle\Entity\Indicator $indicator
      */
-    public function removeIndicator(\Lanzadera\ClassificationBundle\Entity\Indicator $indicator)
+    public function removeIndicator(\AppBundle\Entity\Indicator $indicator)
     {
         $this->indicators->removeElement($indicator);
     }
@@ -493,10 +493,10 @@ class Product
     /**
      * Add certificates
      *
-     * @param \Lanzadera\ClassificationBundle\Entity\Certificate $certificate
+     * @param \AppBundle\Entity\Certificate $certificate
      * @return Product
      */
-    public function addCertificate(\Lanzadera\ClassificationBundle\Entity\Certificate $certificate)
+    public function addCertificate(\AppBundle\Entity\Certificate $certificate)
     {
         $certificate->setProduct($this);
         $this->certificates[] = $certificate;
@@ -507,9 +507,9 @@ class Product
     /**
      * Remove certificates
      *
-     * @param \Lanzadera\ClassificationBundle\Entity\Certificate $certificate
+     * @param \AppBundle\Entity\Certificate $certificate
      */
-    public function removeCertificate(\Lanzadera\ClassificationBundle\Entity\Certificate $certificate)
+    public function removeCertificate(\AppBundle\Entity\Certificate $certificate)
     {
         $this->certificates->removeElement($certificate);
     }

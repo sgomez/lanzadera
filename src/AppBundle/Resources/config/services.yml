@@ -9,22 +9,22 @@ services:
         arguments: ['AppBundle\Entity\Taxon']
 
     lanzadera.repository.certificate:
-        class: Lanzadera\CoreBundle\Doctrine\ORM\CertificateRepository
+        class: AppBundle\Doctrine\ORM\CertificateRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
-        arguments: ['Lanzadera\ClassificationBundle\Entity\Certificate']
+        arguments: ['AppBundle\Entity\Certificate']
 
     lanzadera.repository.classification:
-        class: Lanzadera\CoreBundle\Doctrine\ORM\ClassificationRepository
+        class: AppBundle\Doctrine\ORM\ClassificationRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
-        arguments: ['Lanzadera\ClassificationBundle\Entity\Classification']
+        arguments: ['AppBundle\Entity\Classification']
 
     lanzadera.repository.criterion:
-        class: Lanzadera\CoreBundle\Doctrine\ORM\CriterionRepository
+        class: AppBundle\Doctrine\ORM\CriterionRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
-        arguments: ['Lanzadera\ClassificationBundle\Entity\Criterion']
+        arguments: ['AppBundle\Entity\Criterion']
 
     lanzadera.repository.group:
         class: Lanzadera\CoreBundle\Doctrine\ORM\GroupRepository
@@ -33,10 +33,10 @@ services:
         arguments: ['Lanzadera\CoreBundle\Entity\Group']
 
     lanzadera.repository.indicator:
-        class: Lanzadera\CoreBundle\Doctrine\ORM\IndicatorRepository
+        class: AppBundle\Doctrine\ORM\IndicatorRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
-        arguments: ['Lanzadera\ClassificationBundle\Entity\Indicator']
+        arguments: ['AppBundle\Entity\Indicator']
 
     lanzadera.repository.media:
         class: Lanzadera\CoreBundle\Doctrine\ORM\MediaRepository

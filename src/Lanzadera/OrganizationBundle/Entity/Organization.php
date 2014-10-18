@@ -146,7 +146,7 @@ class Organization
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Lanzadera\ClassificationBundle\Entity\Indicator", inversedBy="organizations")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Indicator", inversedBy="organizations")
      * @ORM\JoinTable(name="organization_has_indicator",
      *   joinColumns={
      *     @ORM\JoinColumn(name="organization_id", referencedColumnName="id")
@@ -378,10 +378,10 @@ class Organization
     /**
      * Add indicator
      *
-     * @param \Lanzadera\ClassificationBundle\Entity\Indicator $indicator
+     * @param \AppBundle\Entity\Indicator $indicator
      * @return Organization
      */
-    public function addIndicator(\Lanzadera\ClassificationBundle\Entity\Indicator $indicator)
+    public function addIndicator(\AppBundle\Entity\Indicator $indicator)
     {
         $this->indicators[] = $indicator;
 
@@ -391,9 +391,9 @@ class Organization
     /**
      * Remove indicator
      *
-     * @param \Lanzadera\ClassificationBundle\Entity\Indicator $indicator
+     * @param \AppBundle\Entity\Indicator $indicator
      */
-    public function removeIndicator(\Lanzadera\ClassificationBundle\Entity\Indicator $indicator)
+    public function removeIndicator(\AppBundle\Entity\Indicator $indicator)
     {
         $this->indicators->removeElement($indicator);
     }

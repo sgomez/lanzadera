@@ -6,12 +6,11 @@
  * Time: 17:57
  */
 
-namespace Lanzadera\FixtureBundle\DataFixtures\ORM;
-
+namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Lanzadera\ClassificationBundle\Entity\Criterion;
-use Lanzadera\ClassificationBundle\Entity\Indicator;
+use AppBundle\Entity\Criterion;
+use AppBundle\Entity\Indicator;
 use Lanzadera\FixtureBundle\DataFixtures\DataFixture;
 
 class LoadCriterionData extends DataFixture

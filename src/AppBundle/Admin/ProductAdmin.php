@@ -142,7 +142,7 @@ class ProductAdmin extends Admin
                         'help' => 'help.organization',
                         'required' => true,
                         'attr' => array(
-                            'placeholder' => 'product.organization.placeholder',
+                            'placeholder' => 'product.organization_placeholder',
                             'class' => 'form-control',
                         )
                 ))
@@ -172,7 +172,7 @@ class ProductAdmin extends Admin
                         'btn_add' => false,
                         'required' => true,
                         'attr' => array(
-                            'placeholder' => 'product.category.placeholder',
+                            'placeholder' => 'label.category_placeholder',
                             'class' => 'form-control'
                         )
                     ),
@@ -208,7 +208,7 @@ class ProductAdmin extends Admin
                         'help' => 'help.certificates_manual',
                         'required' => false,
                         'attr' => array(
-                            'placeholder' => 'product.certificates.placeholder',
+                            'placeholder' => 'label.certificate_placeholder',
                             'class' => 'form-control'
                       )
                 ))

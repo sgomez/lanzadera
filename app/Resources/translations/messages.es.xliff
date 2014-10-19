@@ -19,8 +19,8 @@
         <target>Superior</target>
       </trans-unit>
       <trans-unit id="4">
-        <source>label.category.placeholder</source>
-        <target>Seleccione una categoría</target>
+        <source>label.organization_placeholder</source>
+        <target>Seleccione una organización</target>
       </trans-unit>
       <trans-unit id="5">
         <source>label.tags</source>

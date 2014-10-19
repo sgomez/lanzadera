@@ -11,9 +11,9 @@
             "type": "package",
             "package": {
                 "name": "jquery/jquery",
-                "version": "1.11.0",
+                "version": "1.11.1",
                 "dist": {
-                    "url": "http://code.jquery.com/jquery-1.11.0.js",
+                    "url": "http://code.jquery.com/jquery-1.11.1.js",
                     "type": "file"
                 }
             }
@@ -54,7 +54,7 @@
 
         "braincrafted/bootstrap-bundle":            "~2.1",
         "twbs/bootstrap":                           "~3.2",
-        "jquery/jquery":                            "1.11.*",
+        "jquery/jquery":                            "1.11.1",
         "oyejorge/less.php":                        "~1.7",
         "fortawesome/font-awesome":                 "~4.2",
         "knplabs/knp-paginator-bundle":             "~2.4",

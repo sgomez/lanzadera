@@ -48,7 +48,7 @@ sonata_media:
               - jpg
     cdn:
         server:
-            path: /uploads/media # http://media.sonata-project.org/
+            path: %sonata_media_upload% # http://media.sonata-project.org/
     filesystem:
         local:
             directory:  %kernel.root_dir%/../web/uploads/media

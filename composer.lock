@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6f525de4025fc679f5a4412b93003e11",
+    "hash": "01d537e369d01e42fc0e5342bfe09e60",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -1504,10 +1504,10 @@
         },
         {
             "name": "jquery/jquery",
-            "version": "1.11.0",
+            "version": "1.11.1",
             "dist": {
                 "type": "file",
-                "url": "http://code.jquery.com/jquery-1.11.0.js",
+                "url": "http://code.jquery.com/jquery-1.11.1.js",
                 "reference": null,
                 "shasum": null
             },

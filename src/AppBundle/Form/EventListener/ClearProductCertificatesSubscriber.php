@@ -8,6 +8,7 @@
 
 namespace AppBundle\Form\EventListener;
 
+use AppBundle\Entity\Product;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
@@ -42,9 +43,13 @@ class ClearProductCertificatesSubscriber implements EventSubscriberInterface
      */
     public function postSubmit(FormEvent $event)
     {
-        $this->om->persist($product = $event->getForm()->getParent()->getData());
-        $this->om->flush();
+	    $product = $event->getForm()->getParent()->getData();
 
-        $this->om->getRepository('AppBundle:Certificate')->clearManualSelection($product, $event->getData());
+	    if ($product && $product instanceof Product) {
+		    $this->om->persist( $product );
+		    $this->om->flush();
+
+		    $this->om->getRepository( 'AppBundle:Certificate' )->clearManualSelection( $product, $event->getData() );
+	    }
     }
 }

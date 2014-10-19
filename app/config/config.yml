@@ -1,6 +1,9 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: bundles/rest.yml }
+    - { resource: bundles/sonata.yml }
+    - { resource: bundles/sylius.yml }
 
 framework:
     #esi:             ~
@@ -28,13 +31,15 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    exception_controller: 'FOS\RestBundle\Controller\ExceptionController::showAction'
 
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
     bundles:
-      - LanzaderaBundle
+      - AppBundle
+      - FOSCommentBundle
     #java: /usr/bin/java
     filters:
         lessphp:
@@ -60,10 +65,19 @@ doctrine:
         # if using pdo_sqlite as your database driver, add the path in parameters.yml
         # e.g. database_path: "%kernel.root_dir%/data/data.db3"
         # path:     "%database_path%"
-
+        types:
+            json: Sonata\Doctrine\Types\JsonType
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
+
+stof_doctrine_extensions:
+    default_locale: es
+    orm:
+        default:
+            timestampable: true
+            tree: true
+            sluggable: true
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -76,14 +90,22 @@ swiftmailer:
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: Tejedora\LanzaderaBundle\Entity\User
+    user_class: AppBundle\Entity\User
+    group:
+        group_class:   AppBundle\Entity\Group
+        group_manager: sonata.user.orm.group_manager
+    service:
+        user_manager: sonata.user.orm.user_manager
 
-sonata_block:
-    default_contexts: [cms]
-    blocks:
-        sonata.admin.block.admin_list:
-            contexts: [admin]
+fos_comment:
+    db_driver: orm
+    class:
+        model:
+            comment: AppBundle\Entity\Comment
+            thread: AppBundle\Entity\Thread
 
-sonata_admin:
-    title: Lanzadera
-    title_logo: bundles/lanzadera/img/tejedorasm.png
+stof_doctrine_extensions:
+    orm:
+        default:
+            tree: true
+            sluggable: true

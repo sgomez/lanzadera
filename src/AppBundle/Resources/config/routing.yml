@@ -1,0 +1,8 @@
+comment_api:
+    resource: @AppBundle/Resources/config/routing/taxonomy.yml
+
+organization_api:
+    resource: @AppBundle/Resources/config/routing/organization.yml
+
+product_api:
+    resource: @AppBundle/Resources/config/routing/product.yml

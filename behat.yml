@@ -1,24 +1,123 @@
 default:
+    gherkin:
+        filters:
+            tags: ~@javascript
     formatters:
         pretty:
             verbose:  true
             paths:    false
             snippets: false
-
-    suites:
-        account:
-            contexts:
-                - Behat\MinkExtension\Context\MinkContext
-                - Tejedora\LanzaderaBundle\Behat\UsersContext
-            filters:
-                tags: "@login"
-
     extensions:
         Behat\MinkExtension:
             sessions:
                 default:
                     symfony2: ~
-            browser_name: firefox
-            show_auto:    false
-            base_url: 'http://localhost:8080'
+            browser_name: chrome
+            files_path: features/images/
         Behat\Symfony2Extension: ~
+    suites:
+        account:
+            contexts:
+                - Behat\MinkExtension\Context\MinkContext
+                - AppBundle\Behat\UsersContext
+                - AppBundle\Behat\WebContext
+            filters:
+                tags: "@login"
+        users:
+            contexts:
+                - Behat\MinkExtension\Context\MinkContext
+                - AppBundle\Behat\CoreContext
+                - AppBundle\Behat\UsersContext
+                - AppBundle\Behat\WebContext
+            filters:
+                tags: "@users"
+        organizations:
+            contexts:
+                - Behat\MinkExtension\Context\MinkContext
+                - AppBundle\Behat\CoreContext
+                - AppBundle\Behat\UsersContext
+                - AppBundle\Behat\WebContext
+                - AppBundle\Behat\OrganizationContext
+            filters:
+                tags: "@organizations"
+        classificators:
+            contexts:
+                - Behat\MinkExtension\Context\MinkContext
+                - AppBundle\Behat\CoreContext
+                - AppBundle\Behat\UsersContext
+                - AppBundle\Behat\WebContext
+                - AppBundle\Behat\ClassificationContext
+            filters:
+                tags: "@classificators"
+        criteria:
+            contexts:
+                - Behat\MinkExtension\Context\MinkContext
+                - AppBundle\Behat\CoreContext
+                - AppBundle\Behat\UsersContext
+                - AppBundle\Behat\WebContext
+                - AppBundle\Behat\ClassificationContext
+            filters:
+                tags: "@criteria"
+        categories:
+            contexts:
+                - Behat\MinkExtension\Context\MinkContext
+                - AppBundle\Behat\CoreContext
+                - AppBundle\Behat\UsersContext
+                - AppBundle\Behat\WebContext
+                - AppBundle\Behat\TaxonomyContext
+            filters:
+                tags: "@categories"
+        tags:
+            contexts:
+                - Behat\MinkExtension\Context\MinkContext
+                - AppBundle\Behat\CoreContext
+                - AppBundle\Behat\UsersContext
+                - AppBundle\Behat\WebContext
+                - AppBundle\Behat\TaxonomyContext
+            filters:
+                tags: "@tags"
+        products:
+            contexts:
+                - Behat\MinkExtension\Context\MinkContext
+                - AppBundle\Behat\ClassificationContext
+                - AppBundle\Behat\CoreContext
+                - AppBundle\Behat\UsersContext
+                - AppBundle\Behat\WebContext
+                - AppBundle\Behat\ProductContext
+                - AppBundle\Behat\OrganizationContext
+                - AppBundle\Behat\TaxonomyContext
+            filters:
+                tags: "@products"
+
+
+javascript:
+    gherkin:
+        filters:
+            tags: @javascript
+    formatters:
+        pretty:
+            verbose:  true
+            paths:    false
+            snippets: false
+    extensions:
+        Behat\MinkExtension:
+            sessions:
+                javascript:
+                    selenium2: ~
+            browser_name: chrome
+            base_url: http://localhost:8000/app_test.php
+            default_session: javascript
+        Behat\Symfony2Extension: ~
+    suites:
+        products:
+            contexts:
+                - Behat\MinkExtension\Context\MinkContext
+                - AppBundle\Behat\ClassificationContext
+                - AppBundle\Behat\CoreContext
+                - AppBundle\Behat\UsersContext
+                - AppBundle\Behat\WebContext
+                - AppBundle\Behat\ProductContext
+                - AppBundle\Behat\OrganizationContext
+                - AppBundle\Behat\TaxonomyContext
+            filters:
+                tags: "@products"

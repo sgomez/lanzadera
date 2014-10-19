@@ -1,0 +1,31 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_flat_inner_row.html.twig' %}
+
+{% block row %}
+    <div class="media">
+        <span class="pull-left">
+            {% if object.media %}
+                {% thumbnail object.media, 'small' with {'class': 'media-object img-thumbnail', 'style': 'width: 80px;'} %}
+            {% else %}
+                <img src="{{ asset('bundles/sonatamedia/grey.png') }}" class="media-object img-thumbnail" alt="User Image" style="width: 80px;">
+            {% endif %}
+        </span>
+        <div class="media-body">
+            <div class="pull-right">
+                {% for certification in object.certificates %}
+                    {% set color = certification.auto ? 'success' : 'danger' %}
+                    <span class="label {{ 'label-' ~ color }} label-xs" >{{ certification }}</span>
+                {% endfor %}
+            </div>
+            <span class="label label-{{ object.status }}">{{ ('status.'~object.status)|trans({}) }}</span>
+            {{ object|render_list_element(admin.list['name']) }} <small>producido por</small>
+            <a href="{{ path('lanzadera_organization_show', {'id': object.organization.id}) }}">{{ object.organization }}</a>
+            {% if not object.organization.enabled %}<code><i class="fa fa-lock"></i></code>{% endif %}
+            <div class="lanzadera-list-field-taxonomies">
+                <small class="text-muted">Categoría: {{ object.category }} - Etiquetas: {{ object.tagsAsList }}</small>
+            </div>
+            <div class="lanzadera-list-field-description">
+                {{ object.description }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

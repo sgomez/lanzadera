@@ -1,0 +1,24 @@
+{#
+
+ This file is part of the FOSCommentBundle package.
+
+ (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
+
+ This source file is subject to the MIT license that is bundled
+ with this source code in the file LICENSE.
+
+#}
+
+{% set depth = depth|default(0) %}
+{% set view = view|default('tree') %}
+
+{% if depth == 0 %}
+    {% if fos_comment_can_comment_thread(thread) %}
+        {% render url("fos_comment_new_thread_comments", {"id": thread.id}) %}
+    {% endif %}
+{% endif %}
+<div class="box-body chat">
+    {% for commentinfo in comments %}
+        {% include "FOSCommentBundle:Thread:comment.html.twig" with { "children": commentinfo.children, "comment": commentinfo.comment, "depth": depth, "view": view } %}
+    {% endfor %}
+</div>

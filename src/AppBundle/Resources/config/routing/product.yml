@@ -1,0 +1,26 @@
+lanzadera_api_product_index:
+    pattern: /products
+    methods: [GET]
+    defaults:
+        _controller: lanzadera.controller.product:indexAction
+        _sylius:
+            paginate: 9
+            method: findAllAvailableProducts
+lanzadera_api_product_search:
+    pattern: /products/{keyword}/search
+    methods: [GET]
+    defaults:
+        _controller: lanzadera.controller.product:indexAction
+        _sylius:
+            paginate: 9
+            method: findAllAvailableProductsByKeyword
+            arguments: [ $keyword ]
+lanzadera_api_product_show:
+    pattern: /products/{slug}
+    methods: [GET]
+    defaults:
+        _controller: lanzadera.controller.product:showAction
+        _sylius:
+            criteria:
+                slug: $slug
+                status: approved

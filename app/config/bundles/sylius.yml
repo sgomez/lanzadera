@@ -1,0 +1,34 @@
+sylius_resource:
+    settings:
+        paginate: true
+        sortable: true
+        filterable: true
+    resources:
+        lanzadera.media:
+            driver: doctrine/orm
+            templates: ApplicationSonataMediaBundle:Media
+            classes:
+                model: Application\Sonata\MediaBundle\Entity\Media
+        lanzadera.organization:
+            driver: doctrine/orm
+            templates: AppBundle:Organization
+            classes:
+                model: AppBundle\Entity\Organization
+        lanzadera.product:
+            driver: doctrine/orm
+            templates: AppBundle:Product
+            classes:
+                model: AppBundle\Entity\Product
+        lanzadera.taxon:
+            driver: doctrine/orm
+            templates: AppBundle:Taxon
+            classes:
+                model: AppBundle\Entity\Taxon
+
+sylius_taxonomy:
+    classes:
+        taxonomy:
+            model: AppBundle\Entity\Taxonomy
+        taxon:
+            model: AppBundle\Entity\Taxon
+    driver: doctrine/orm # Configure the doctrine orm driver used in documentation.

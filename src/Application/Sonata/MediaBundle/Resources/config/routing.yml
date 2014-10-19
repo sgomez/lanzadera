@@ -1,0 +1,16 @@
+lanzadera_api_media_show:
+    pattern: /medias/{id}
+    methods: [GET]
+    defaults:
+        _controller: lanzadera.controller.media:showAction
+        _sylius:
+            criteria: { enabled: true }
+
+lanzadera_api_get_public_path:
+    pattern: /medias/{id}/path
+    methods: [GET]
+    defaults:
+        _controller: lanzadera.controller.media:showAction
+        _sylius:
+            method: generatePublicUrl
+            arguments: [$id]

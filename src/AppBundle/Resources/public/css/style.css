@@ -1,0 +1,58 @@
+.fullscreen_bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: contain;
+    background-position: 50% 50%;
+    background-image: url('../img/tejedorabg.png');
+    background-repeat:no-repeat;
+}
+
+a.sonata-ba-action {
+    margin-top: 10px;
+}
+
+@media(min-width:768px) {
+    .sonata-ba-list-field-header-batch {
+        width: 20px;
+    }
+    .sonata-ba-list-field-header-actions {
+        width: 240px;
+    }
+}
+
+.label-pending {
+    background-color: #5bc0de;
+}
+
+.label-approved {
+    background-color: #5cb85c;
+}
+
+.label-check {
+    background-color: #f0ad4e;
+}
+
+.label-denied {
+    background-color: #d9534f;
+}
+
+.fos_comment_comment_new_form {
+    margin-bottom: 10px;
+}
+
+.custom-search-form {
+    display: none;
+}
+
+.lanzadera-list-field-date {
+    font-size: 75%;
+}
+
+.lanzadera-list-field-description,
+.lanzadera-list-field-taxonomies {
+    margin-top: 5px;
+}
+

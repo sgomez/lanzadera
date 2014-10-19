@@ -1,0 +1,37 @@
+{#
+
+ This file is part of the FOSCommentBundle package.
+
+ (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
+
+ This source file is subject to the MIT license that is bundled
+ with this source code in the file LICENSE.
+
+#}
+
+{% block fos_comment_comment %}
+    <div class="item">
+        {% if app.user.media %}
+            {% thumbnail app.user.media, 'admin' with {'class': 'online'} %}
+        {% else %}
+            <img src="{{ asset('bundles/sonatamedia/grey.png') }}" class="online" alt="{{ app.user.username }}">
+        {% endif %}
+        <p class="message">
+            <span class="name" href="#">
+                <small class="text-mutex pull-right"><i class="fa fa-clock-o"></i> {{ comment.createdAt| format_datetime }}</small>
+                {{ comment.authorName }}
+            </span>
+            {% block fos_comment_comment_body %}
+                {% if comment is fos_comment_in_state(constant('FOS\\CommentBundle\\Model\\CommentInterface::STATE_DELETED')) %}
+                    {% trans from 'FOSCommentBundle' %}fos_comment_comment_deleted{% endtrans %}
+                {% else %}
+                    {% if comment is fos_comment_raw %}
+                        {{ comment.rawBody | raw }}
+                    {% else %}
+                        {{ comment.body | nl2br }}
+                    {% endif %}
+                {% endif %}
+            {% endblock fos_comment_comment_body %}
+        </p>
+    </div>
+{% endblock fos_comment_comment %}

@@ -13,3 +13,7 @@ parameters:
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    sonata.media.provider.file.class: Application\Sonata\MediaBundle\Provider\FileProvider
+    sonata.media.provider.image.class: Application\Sonata\MediaBundle\Provider\ImageProvider
+    sonata_media_upload: /uploads/media

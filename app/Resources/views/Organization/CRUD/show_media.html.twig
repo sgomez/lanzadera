@@ -1,0 +1,68 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+{% block field %}
+    {% spaceless %}
+        <div class="row">
+            <div class="col-md-12">
+                {% if value is not empty and value.providerReference %}
+                    <div class="panel panel-default">
+                        <div class="panel-body text-center">
+                            {% media value, 'reference' with {'class': 'img-responsive img-thumbnail'} %}
+                        </div>
+                        <div class="panel-footer">
+                            <strong>{{ value.name }}</strong>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="panel panel-default">
+                        <div class="panel-body text-center">
+                            <img src="{{ asset('bundles/sonatamedia/grey.png') }}" class="img-responsive img-thumbnail" style="width: 300px; height: 300px"/>
+                        </div>
+                        <div class="panel-footer">
+                            <strong>{{ 'product.media.no_linked_media' | trans() }}</strong>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endspaceless %}
+{% endblock %}
+
+
+
+{% block sonata_media_type_widget %}
+    <div class="row">
+        <div class="col-md-12">
+            {% if value is not empty and value.providerReference %}
+                <div class="panel panel-default">
+                    <div class="panel-body text-center">
+                        {% media value, 'reference' with {'class': 'img-responsive img-thumbnail'} %}
+                    </div>
+                    <div class="panel-footer">
+                        {% if sonata_admin_enabled is defined and sonata_admin_enabled %}
+                            <a href="{{ url('admin_sonata_media_media_edit', {id: value.id}) }}"><strong>{{ value.name }}</strong></a>
+                        {% else %}
+                            <strong>{{ value.name }}</strong>
+                        {% endif %}
+                    </div>
+                </div>
+            {% else %}
+                <div class="panel panel-default">
+                    <div class="panel-body text-center">
+                        <img src="{{ asset('bundles/sonatamedia/grey.png') }}" class="img-responsive img-thumbnail" style="width: 300px; height: 300px"/>
+                    </div>
+                    <div class="panel-footer">
+                        <span type="label">{{ form.vars['provider']|trans({}, 'SonataMediaBundle') }} ~ {{ form.vars['context']|trans({}, 'SonataMediaBundle') }}</span>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="col-md-12">
+            {{ block('form_widget') }}
+        </div>
+    </div>
+
+    <script type="application/javascript">
+        $(":file").filestyle({buttonText: "Abrir archivo", buttonBefore: true});
+    </script>
+{% endblock sonata_media_type_widget %}

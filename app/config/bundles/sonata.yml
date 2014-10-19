@@ -1,0 +1,72 @@
+sonata_admin:
+    title: Lanzadera
+    title_logo: bundles/app/img/tejedorasm.png
+    templates:
+        layout: Default/standard_layout.html.twig
+    security:
+        handler: sonata.admin.security.handler.role
+
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.user.block.menu: ~
+        sonata.user.block.account: ~
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+
+sonata_doctrine_orm_admin:
+   templates:
+        form: [ Form/form_admin_fields.html.twig ]
+
+sonata_media:
+    class:
+        media: Application\Sonata\MediaBundle\Entity\Media
+        gallery: Application\Sonata\MediaBundle\Entity\Gallery
+        gallery_has_media: Application\Sonata\MediaBundle\Entity\GalleryHasMedia
+    default_context: default
+    db_driver: doctrine_orm
+    contexts:
+        default:
+            providers:
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+            formats:
+                small: { width: 100 , quality: 70}
+                big:   { width: 500 , quality: 70}
+    providers:
+        image:
+            resizer: sonata.media.resizer.square
+            allowed_mime_types:
+              - image/gif
+              - image/jpeg
+              - image/png
+              - image/pjpeg
+            allowed_extensions:
+              - gif
+              - png
+              - jpeg
+              - jpg
+    cdn:
+        server:
+            path: %sonata_media_upload% # http://media.sonata-project.org/
+    filesystem:
+        local:
+            directory:  %kernel.root_dir%/../web/uploads/media
+            create:     false
+
+sonata_notification:
+    backend: sonata.notification.backend.runtime
+    admin:
+        enabled: false
+
+sonata_user:
+    security_acl: true
+    manager_type: orm
+    class:
+        user:         AppBundle\Entity\User
+        group:        AppBundle\Entity\Group
+    admin:
+        user:
+            class:    AppBundle\Admin\UserAdmin
+        group:
+            class:    AppBundle\Admin\GroupAdmin

@@ -8,16 +8,6 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: classification.admin.group, label: label.indicators, show_in_dashboard: false}
 
-    lanzadera.admin.organization:
-        class: AppBundle\Admin\OrganizationAdmin
-        arguments: [~, AppBundle\Entity\Organization, SonataAdminBundle:CRUD]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: product.admin.group, label: label.organizations}
-        calls:
-            - [ addChild, [@lanzadera.admin.product] ]
-            - [ setTemplate, [edit, Comment/CRUD/edit.html.twig]]
-            - [ setTemplate, [inner_list_row, Organization/CRUD/inner_list_row.html.twig]]
-            - [ setTemplate, [base_list_field, SonataAdminBundle:CRUD:base_list_flat_field.html.twig]]
 
     lanzadera.admin.product:
         class: AppBundle\Admin\ProductAdmin
@@ -27,6 +17,17 @@ services:
         calls:
             - [ setTemplate, [edit, Comment/CRUD/edit.html.twig]]
             - [ setTemplate, [inner_list_row, Product/CRUD/inner_list_row.html.twig]]
+            - [ setTemplate, [base_list_field, SonataAdminBundle:CRUD:base_list_flat_field.html.twig]]
+
+    lanzadera.admin.organization:
+        class: AppBundle\Admin\OrganizationAdmin
+        arguments: [~, AppBundle\Entity\Organization, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: product.admin.group, label: label.organizations}
+        calls:
+            - [ addChild, [@lanzadera.admin.product] ]
+            - [ setTemplate, [edit, Comment/CRUD/edit.html.twig]]
+            - [ setTemplate, [inner_list_row, Organization/CRUD/inner_list_row.html.twig]]
             - [ setTemplate, [base_list_field, SonataAdminBundle:CRUD:base_list_flat_field.html.twig]]
 
 #    lanzadera.admin.category:

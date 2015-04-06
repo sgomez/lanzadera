@@ -310,6 +310,14 @@
         <source>label.group_placeholder</source>
         <target>Selecciona un grupo</target>
       </trans-unit>
-    </body>
+      <trans-unit id="77">
+        <source>label.create_product</source>
+        <target>Crear Producto</target>
+      </trans-unit>
+      <trans-unit id="78">
+        <source>label.list_product</source>
+        <target>Ver Productos</target>
+      </trans-unit>
+      </body>
   </file>
 </xliff>

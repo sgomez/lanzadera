@@ -3,12 +3,12 @@
         name: <current()>
         context: 'default'
         providerName: sonata.media.provider.image
-        binaryContent: <image('/tmp', 400, 400, 'cats')>
+        binaryContent: <image('/tmp', 400, 400, 'business')>
         category: @category_images
 
 \AppBundle\Entity\Organization:
     organization_{A,B,C,D,E}:
-        name: <company()>
+        name (unique): <collective()>
         description: <text()>
         address: <address()>
         email: <email()>

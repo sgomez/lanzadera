@@ -1,0 +1,20 @@
+\Application\Sonata\MediaBundle\Entity\Media:
+    image_product_{1..30}:
+        name: <current()>
+        context: 'default'
+        providerName: sonata.media.provider.image
+        binaryContent: <image('/tmp', 400, 400, 'food')>
+        category: @category_images
+
+
+\AppBundle\Entity\Product:
+    product_{1..30}:
+        name (unique): <product()>
+        description: <text()>
+        category: @category_products_*
+        tags: <numberBetween(3,5)>x @tag*
+        organization: @organization_*
+        status: <randomElement(array('pending','approved','check','denied'))>
+        regularPrice: <randomNumber(2)>
+        reducedPrice: <randomNumber(2)>
+        media: @image_product_<current()>

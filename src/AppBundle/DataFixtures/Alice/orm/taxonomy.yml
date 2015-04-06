@@ -3,6 +3,10 @@
         id: default
         name: default
         enabled: true
+    context_products:
+        id: products
+        name: Productos
+        enabled: true
 
 \Application\Sonata\ClassificationBundle\Entity\Category:
     category_default:
@@ -17,13 +21,12 @@
         name: Imágenes
         parent: @category_default
     category_product:
-        context: @context_default
+        context: @context_products
         description: Productos
         enabled: true
         name: Productos
-        parent: @category_default
     category_products_{1..10}:
-        context: @context_default
+        context: @context_products
         description: <text()>
         enabled: true
         name (unique): <category()>
@@ -32,6 +35,6 @@
 \Application\Sonata\ClassificationBundle\Entity\Tag:
     tag{1..30}:
         name (unique): <tag()>
-        context: @context_default
+        context: @context_products
         enabled: true
 

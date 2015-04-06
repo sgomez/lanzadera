@@ -27,6 +27,7 @@ class TaskListSet extends FixtureSet
         $this->addFile(__DIR__.'/orm/user.yml', 'yaml');
         $this->addFile(__DIR__.'/orm/classification.yml', 'yaml');
         $this->addFile(__DIR__.'/orm/organization.yml', 'yaml');
+        $this->addFile(__DIR__.'/orm/product.yml', 'yaml');
     }
 }
 

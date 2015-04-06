@@ -2,11 +2,11 @@ parameters: ~
 
 services:
 
-    lanzadera.repository.category:
-        class: AppBundle\Doctrine\ORM\TaxonRepository
-        factory_service: doctrine.orm.entity_manager
-        factory_method: getRepository
-        arguments: ['AppBundle\Entity\Taxon']
+#    lanzadera.repository.category:
+#        class: AppBundle\Doctrine\ORM\TaxonRepository
+#        factory_service: doctrine.orm.entity_manager
+#        factory_method: getRepository
+#        arguments: ['AppBundle\Entity\Taxon']
 
     lanzadera.repository.certificate:
         class: AppBundle\Doctrine\ORM\CertificateRepository
@@ -56,23 +56,23 @@ services:
         factory_method: getRepository
         arguments: ['AppBundle\Entity\Product']
 
-    lanzadera.repository.tag:
-        class: AppBundle\Doctrine\ORM\TaxonRepository
-        factory_service: doctrine.orm.entity_manager
-        factory_method: getRepository
-        arguments: ['AppBundle\Entity\Taxon']
-
-    lanzadera.repository.taxon:
-        class: AppBundle\Doctrine\ORM\TaxonRepository
-        factory_service: doctrine.orm.entity_manager
-        factory_method: getRepository
-        arguments: ['AppBundle\Entity\Taxon']
-
-    lanzadera.repository.taxonomy:
-        class: AppBundle\Doctrine\ORM\TaxonomyRepository
-        factory_service: doctrine.orm.entity_manager
-        factory_method: getRepository
-        arguments: ['AppBundle\Entity\Taxonomy']
+#    lanzadera.repository.tag:
+#        class: AppBundle\Doctrine\ORM\TaxonRepository
+#        factory_service: doctrine.orm.entity_manager
+#        factory_method: getRepository
+#        arguments: ['AppBundle\Entity\Taxon']
+#
+#    lanzadera.repository.taxon:
+#        class: AppBundle\Doctrine\ORM\TaxonRepository
+#        factory_service: doctrine.orm.entity_manager
+#        factory_method: getRepository
+#        arguments: ['AppBundle\Entity\Taxon']
+#
+#    lanzadera.repository.taxonomy:
+#        class: AppBundle\Doctrine\ORM\TaxonomyRepository
+#        factory_service: doctrine.orm.entity_manager
+#        factory_method: getRepository
+#        arguments: ['AppBundle\Entity\Taxonomy']
 
     lanzadera.repository.user:
         class: AppBundle\Doctrine\ORM\UserRepository

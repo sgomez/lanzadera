@@ -25,11 +25,6 @@ class OrganizationAdmin extends Admin
 	 */
 	protected $baseRouteName = "lanzadera_organization";
 
-	/**
-	 * {@inheritdoc}
-	 */
-	protected $baseRoutePattern = 'lanzadera/organization';
-
     /**
      * {@inheritdoc}
      */

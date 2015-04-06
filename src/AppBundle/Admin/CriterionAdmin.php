@@ -16,11 +16,6 @@ class CriterionAdmin extends Admin
      */
     protected $baseRouteName = "lanzadera_criterion";
 
-	/**
-	 * {@inheritdoc}
-	 */
-	protected $baseRoutePattern = 'lanzadera/criterion';
-
     /**
      * {@inheritdoc}
      */
@@ -107,7 +102,6 @@ class CriterionAdmin extends Admin
     {
         $disabled = $this->getSubject()->isNew() ? false : true;
 
-        $this->getConfigurationPool()->getContainer()->get('ladybug')->log($this->getSubject()->getId());
         $formMapper
             ->with('label.description', array('class' => 'col-md-6'))
                 ->add('name', null, array('label' => 'label.name', 'required' => true))

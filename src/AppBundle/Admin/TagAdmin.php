@@ -8,13 +8,13 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
-use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\CoreBundle\Validator\ErrorElement;
 
 class TagAdmin extends Admin
 {
     protected $baseRouteName = "lanzadera_tag";
 
-    protected $baseRoutePattern = 'lanzadera/taxonomy/tag';
+    protected $baseRoutePattern = 'app/taxonomy/tag';
 
     /**
      * {@inheritdoc}

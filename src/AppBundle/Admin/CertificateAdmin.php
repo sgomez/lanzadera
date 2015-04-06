@@ -18,11 +18,6 @@ class CertificateAdmin extends Admin
 	protected $baseRouteName = "lanzadera_certificate";
 
 	/**
-	 * {@inheritdoc}
-	 */
-	protected $baseRoutePattern = 'lanzadera/certificate';
-
-	/**
      * {@inheritdoc}
      */
     protected function configureFormFields(FormMapper $formMapper)

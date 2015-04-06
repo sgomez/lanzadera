@@ -1,0 +1,41 @@
+\Application\Sonata\MediaBundle\Entity\Media:
+    admin_image:
+        name: admin_image
+        context: 'default'
+        providerName: sonata.media.provider.image
+        binaryContent: <image('/tmp', 400, 400, 'cats')>
+        category: @category_images
+    image_{manager, staff, operator}:
+        name: <current()>
+        context: 'default'
+        providerName: sonata.media.provider.image
+        binaryContent: <image('/tmp', 400, 400, 'cats')>
+        category: @category_images
+
+\AppBundle\Entity\Group:
+    group_manager:
+        __construct: ['Administradores', ['ROLE_ADMIN']]
+    group_staff:
+        __construct: ['Gestores', ['ROLE_STAFF']]
+    group_operator:
+        __construct: ['Colaboradores', ['ROLE_OPER']]
+
+\AppBundle\Entity\User:
+    user_admin:
+        username: admin
+        email: admin@test.uco.es
+        enabled: true
+        roles: ['ROLE_SUPER_ADMIN']
+        plainPassword: adminpw
+        firstName: <name()>
+        lastName: <lastName()>
+        media: @admin_image
+    user_{manager, staff, operator}:
+        username: <current()>
+        email: <current()>@test.uco.es
+        enabled: true
+        plainPassword: secret
+        firstName: <name()>
+        lastName: <lastName()>
+        media: @image_<current()>
+        groups: [@group_<current()>]

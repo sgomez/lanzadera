@@ -72,7 +72,7 @@ Característica: Etiquetas
         Escenario: Borrar etiqueta desde la página de edición
             Dado que estoy en la página edición de etiqueta con nombre "Etiqueta A"
             Cuando sigo "Borrar"
-            Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
+            Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
             Cuando presiono "Sí, borrar"
             Entonces debería estar en la página principal de etiqueta
             Y debo ver "Elemento eliminado satisfactoriamente."
@@ -80,7 +80,7 @@ Característica: Etiquetas
         Escenario: Borrar etiqueta desde el listado
             Dado que estoy en la página principal de etiqueta
             Cuando presiono "Borrar" junto a "Etiqueta E"
-            Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
+            Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
             Cuando presiono "Sí, borrar"
             Entonces debería estar en la página principal de etiqueta
             Y debo ver "Elemento eliminado satisfactoriamente."

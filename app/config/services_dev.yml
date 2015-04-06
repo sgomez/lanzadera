@@ -1,0 +1,17 @@
+services:
+
+    lanzadera.faker.generator:
+        class: Faker\Factory
+        factory: [Faker\Factory, create]
+
+    lanzadera.faker.provider:
+        class: AppBundle\Faker\Provider\Lanzadera
+        arguments: [@lanzadera.faker.generator]
+        tags:
+            -  { name: h4cc_alice_fixtures.provider }
+
+    lanzadera.faker.provider.nelmio:
+        class: Nelmio\Alice\Provider\IdentityProvider
+        arguments: [@lanzadera.faker.generator]
+        tags:
+            -  { name: h4cc_alice_fixtures.provider }

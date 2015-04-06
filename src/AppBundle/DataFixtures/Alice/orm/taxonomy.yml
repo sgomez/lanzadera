@@ -1,0 +1,37 @@
+\Application\Sonata\ClassificationBundle\Entity\Context:
+    context_default:
+        id: default
+        name: default
+        enabled: true
+
+\Application\Sonata\ClassificationBundle\Entity\Category:
+    category_default:
+        context: @context_default
+        description: Categoría Base
+        name: default
+        enabled: true
+    category_images:
+        context: @context_default
+        description: Imágenes
+        enabled: true
+        name: Imágenes
+        parent: @category_default
+    category_product:
+        context: @context_default
+        description: Productos
+        enabled: true
+        name: Productos
+        parent: @category_default
+    category_products_{1..10}:
+        context: @context_default
+        description: <text()>
+        enabled: true
+        name (unique): <category()>
+        parent: @category_product
+
+\Application\Sonata\ClassificationBundle\Entity\Tag:
+    tag{1..30}:
+        name (unique): <tag()>
+        context: @context_default
+        enabled: true
+

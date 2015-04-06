@@ -19,16 +19,16 @@ sylius_resource:
             templates: AppBundle:Product
             classes:
                 model: AppBundle\Entity\Product
-        lanzadera.taxon:
-            driver: doctrine/orm
-            templates: AppBundle:Taxon
-            classes:
-                model: AppBundle\Entity\Taxon
+#        lanzadera.taxon:
+#            driver: doctrine/orm
+#            templates: AppBundle:Taxon
+#            classes:
+#                model: AppBundle\Entity\Taxon
 
-sylius_taxonomy:
-    classes:
-        taxonomy:
-            model: AppBundle\Entity\Taxonomy
-        taxon:
-            model: AppBundle\Entity\Taxon
-    driver: doctrine/orm # Configure the doctrine orm driver used in documentation.
+#sylius_taxonomy:
+#    classes:
+#        taxonomy:
+#            model: AppBundle\Entity\Taxonomy
+#        taxon:
+#            model: AppBundle\Entity\Taxon
+#    driver: doctrine/orm # Configure the doctrine orm driver used in documentation.

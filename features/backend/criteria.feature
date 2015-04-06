@@ -108,7 +108,7 @@ Característica: Criterios
     Escenario: Borrar criterio desde la página de edición
         Dado que estoy en la página edición de criterio con nombre "Respuesta a la creación de empleo"
         Cuando sigo "Borrar"
-        Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
+        Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
         Cuando presiono "Sí, borrar"
         Entonces debería estar en la página principal de criterio
         Y debo ver "Elemento eliminado satisfactoriamente."
@@ -116,7 +116,7 @@ Característica: Criterios
     Escenario: Borrar criterio desde el listado
         Dado que estoy en la página principal de criterio
         Cuando presiono "Borrar" junto a "Respuesta a la creación de empleo"
-        Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
+        Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
         Cuando presiono "Sí, borrar"
         Entonces debería estar en la página principal de criterio
         Y debo ver "Elemento eliminado satisfactoriamente."

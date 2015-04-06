@@ -17,9 +17,4 @@ class GroupAdmin extends BaseGroupAdmin
 	 */
 	protected $baseRouteName = "lanzadera_group";
 
-	/**
-	 * {@inheritdoc}
-	 */
-	protected $baseRoutePattern = 'lanzadera/group';
-
-} 
+}

@@ -8,13 +8,13 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
-use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\CoreBundle\Validator\ErrorElement;
 
 class CategoryAdmin extends Admin
 {
     protected $baseRouteName = "lanzadera_category";
 
-    protected $baseRoutePattern = 'lanzadera/taxonomy/category';
+    protected $baseRoutePattern = 'app/taxonomy/category';
 
     protected $datagridValues = array(
         '_page' => 1,
@@ -130,7 +130,7 @@ class CategoryAdmin extends Admin
     /**
      * {@inheritdoc}
      */
-    public function validate(ErrorElement $errorElement, $object)
+    public function validate( ErrorElement $errorElement, $object )
     {
         $errorElement
             ->with('name')

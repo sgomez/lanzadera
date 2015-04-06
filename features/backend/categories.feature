@@ -72,7 +72,7 @@ Característica: Categorías
     Escenario: Borrar categoría desde la página de edición
         Dado que estoy en la página edición de categoría con nombre "Categoría A"
         Cuando sigo "Borrar"
-        Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
+        Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
         Cuando presiono "Sí, borrar"
         Entonces debería estar en la página principal de categoría
         Y debo ver "Elemento eliminado satisfactoriamente."
@@ -80,7 +80,7 @@ Característica: Categorías
     Escenario: Borrar categoría desde el listado
         Dado que estoy en la página principal de categoría
         Cuando presiono "Borrar" junto a "Categoría A"
-        Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
+        Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
         Cuando presiono "Sí, borrar"
         Entonces debería estar en la página principal de categoría
         Y debo ver "Elemento eliminado satisfactoriamente."

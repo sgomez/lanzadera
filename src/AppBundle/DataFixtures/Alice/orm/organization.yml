@@ -1,0 +1,18 @@
+\Application\Sonata\MediaBundle\Entity\Media:
+    image_organization_{A,B,C,D,E}:
+        name: <current()>
+        context: 'default'
+        providerName: sonata.media.provider.image
+        binaryContent: <image('/tmp', 400, 400, 'cats')>
+        category: @category_images
+
+\AppBundle\Entity\Organization:
+    organization_{A,B,C,D,E}:
+        name: <company()>
+        description: <text()>
+        address: <address()>
+        email: <email()>
+        phone: <phonenumber()>
+        web: <url()>
+        enabled: <boolean()>
+        media: @image_organization_<current()>

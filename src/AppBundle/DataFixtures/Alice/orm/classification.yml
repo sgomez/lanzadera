@@ -1,0 +1,69 @@
+\AppBundle\Entity\Classification:
+    classification_{A, B, C}:
+        name: Clasificación <current()>
+        description: <text()>
+        threshold: <numberBetween(50,80)>
+
+\AppBundle\Entity\Criterion:
+    criterion_{A, B}:
+        name: Criterio <current()>
+        description: <text()>
+        type: product
+        classification: @classification_A
+    criterion_{C, D}:
+        name: Criterio <current()>
+        description: <text()>
+        type: product
+        classification: @classification_B
+    criterion_{E, F}:
+        name: Criterio <current()>
+        description: <text()>
+        type: product
+        classification: @classification_C
+    criterion_org_{A, B, C}:
+        name: Criterio de Organización <current()>
+        description: <text()>
+        type: organization
+        classification: @classification_<current()>
+
+\AppBundle\Entity\Indicator:
+    indicator_A{1..4}:
+        name: Indicador A<current()>
+        value: <($this->currentValue * 2)>
+        criterion: @criterion_A
+    indicator_B{1..4}:
+        name: Indicador B<current()>
+        value: <($this->currentValue * 2)>
+        criterion: @criterion_B
+
+    indicator_C{1..4}:
+        name: Indicador B<current()>
+        value: <($this->currentValue * 1)>
+        criterion: @criterion_C
+    indicator_D{1..4}:
+        name: Indicador B<current()>
+        value: <($this->currentValue * 2)>
+        criterion: @criterion_D
+
+    indicator_EC{1..4}:
+        name: Indicador B<current()>
+        value: <($this->currentValue * 2)>
+        criterion: @criterion_E
+    indicator_F{1..4}:
+        name: Indicador B<current()>
+        value: <(pow(2, $this->currentValue))>
+        criterion: @criterion_F
+
+    criterion_org_A{1..4}:
+        name: Indicador de Organización A<current()>
+        value: <( pow(2, $this->currentValue) )>
+        criterion: @criterion_org_A
+    criterion_org_B{1..4}:
+        name: Indicador de Organización B<current()>
+        value: <($this->currentValue * 2)>
+        criterion: @criterion_org_B
+    criterion_org_C{1..4}:
+        name: Indicador de Organización C<current()>
+        value: <($this->currentValue)>
+        criterion: @criterion_org_C
+

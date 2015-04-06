@@ -16,11 +16,6 @@ class UserAdmin extends Admin
 	 */
 	protected $baseRouteName = "lanzadera_user";
 
-	/**
-	 * {@inheritdoc}
-	 */
-	protected $baseRoutePattern = 'lanzadera/user';
-
     /**
      * {@inheritdoc}
      */

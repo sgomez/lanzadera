@@ -14,11 +14,6 @@ class ClassificationAdmin extends Admin
      */
     protected $baseRouteName = 'lanzadera_classification';
 
-	/**
-	 * {@inheritdoc}
-	 */
-	protected $baseRoutePattern = 'lanzadera/classification';
-
     /**
      * @param DatagridMapper $datagridMapper
      */

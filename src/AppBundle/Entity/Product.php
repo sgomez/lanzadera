@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use Application\Sonata\ClassificationBundle\Entity\Category;
+use Application\Sonata\ClassificationBundle\Entity\Tag;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -170,9 +172,9 @@ class Product
     private $indicators;
 
     /**
-     * @var Taxon
+     * @var Category
      *
-     * @ORM\ManyToOne(targetEntity="Taxon", inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\ClassificationBundle\Entity\Category", inversedBy="products")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete="SET NULL")
      * })
@@ -184,7 +186,7 @@ class Product
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Taxon", cascade={"remove"})
+     * @ORM\ManyToMany(targetEntity="Application\Sonata\ClassificationBundle\Entity\Tag", cascade={"remove"})
      * @ORM\JoinTable(name="product_has_tag",
      *   joinColumns={
      *     @ORM\JoinColumn(name="product_id", referencedColumnName="id", onDelete="CASCADE")
@@ -411,7 +413,7 @@ class Product
      * @param Taxon $category
      * @return Product
      */
-    public function setCategory(Taxon $category = null)
+    public function setCategory(Category $category = null)
     {
         $this->category = $category;
 
@@ -434,7 +436,7 @@ class Product
      * @param Taxon $tags
      * @return Product
      */
-    public function addTag(Taxon $tags)
+    public function addTag(Tag $tags)
     {
         $this->tags[] = $tags;
 
@@ -446,7 +448,7 @@ class Product
      *
      * @param Taxon $tags
      */
-    public function removeTag(Taxon $tags)
+    public function removeTag(Tag $tags)
     {
         $this->tags->removeElement($tags);
     }

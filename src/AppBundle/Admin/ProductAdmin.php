@@ -15,10 +15,6 @@ class ProductAdmin extends Admin
 	 */
 	protected $baseRouteName = "lanzadera_product";
 
-	/**
-	 * {@inheritdoc}
-	 */
-	protected $baseRoutePattern = 'lanzadera/product';
     /**
      * {@inheritdoc}
      */
@@ -27,6 +23,14 @@ class ProductAdmin extends Admin
         '_sort_order' => 'ASC', // reverse order (default = 'ASC')
         '_sort_by' => 'name'  // name of the ordered field
     );
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getParentAssociationMapping()
+    {
+        return 'organization';
+    }
 
     /**
      * {@inheritdoc}
@@ -74,22 +78,22 @@ class ProductAdmin extends Admin
                     'expanded' => false,
                     'multiple' => false,
             ))
-            ->add('category', null, array(
-                    'label' => 'label.category'
-                ), null,
-                array(
-                    'expanded' => false,
-                    'multiple' => true,
-                    'query_builder' => $this->getRepository('taxon')->createTaxonQuery('Category'),
-            ))
-            ->add('tags', null, array(
-                    'label' => 'label.tags'
-                ), null,
-                array(
-                    'expanded' => false,
-                    'multiple' => true,
-                    'query_builder' => $this->getRepository('taxon')->createTaxonQuery('Tag'),
-            ))
+//            ->add('category', null, array(
+//                    'label' => 'label.category'
+//                ), null,
+//                array(
+//                    'expanded' => false,
+//                    'multiple' => true,
+//                    'query_builder' => $this->getRepository('taxon')->createTaxonQuery('Category'),
+//            ))
+//            ->add('tags', null, array(
+//                    'label' => 'label.tags'
+//                ), null,
+//                array(
+//                    'expanded' => false,
+//                    'multiple' => true,
+//                    'query_builder' => $this->getRepository('taxon')->createTaxonQuery('Tag'),
+//            ))
         ;
     }
 

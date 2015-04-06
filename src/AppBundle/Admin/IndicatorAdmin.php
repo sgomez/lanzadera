@@ -11,11 +11,6 @@ class IndicatorAdmin extends Admin
 	 */
 	protected $baseRouteName = "lanzadera_indicator";
 
-	/**
-	 * {@inheritdoc}
-	 */
-	protected $baseRoutePattern = 'lanzadera/indicator';
-	
     /**
      * {@inheritdoc}
      */

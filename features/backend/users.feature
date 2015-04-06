@@ -70,7 +70,7 @@ Característica: Administrar usuarios
   Escenario: Borrar usuario desde la página de edición
     Dado que estoy en la página edición de usuario con identificador "sergio"
     Cuando sigo "Borrar"
-    Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
+    Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
     Cuando presiono "Sí, borrar"
     Entonces debería estar en la página principal de usuario
     Y debo ver "Elemento eliminado satisfactoriamente."
@@ -78,7 +78,7 @@ Característica: Administrar usuarios
   Escenario: Borrar usuario desde el listado
     Dado que estoy en la página principal de usuario
     Cuando presiono "Borrar" junto a "johndoe"
-    Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
+    Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
     Cuando presiono "Sí, borrar"
     Entonces debería estar en la página principal de usuario
     Y debo ver "Elemento eliminado satisfactoriamente."

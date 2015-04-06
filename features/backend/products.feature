@@ -173,7 +173,7 @@ Característica: productos
     Escenario: Borrar producto desde la página de edición
         Dado que estoy en la página edición de producto con nombre "Producto A1"
         Cuando sigo "Borrar"
-        Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
+        Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
         Cuando presiono "Sí, borrar"
         Entonces debería estar en la página principal de producto
         Y debo ver "Elemento eliminado satisfactoriamente."
@@ -182,7 +182,7 @@ Característica: productos
     Escenario: Borrar producto desde el listado
         Dado que estoy en la página principal de producto
         Cuando presiono "Borrar" junto a "Producto A1"
-        Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
+        Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
         Cuando presiono "Sí, borrar"
         Entonces debería estar en la página principal de producto
         Y debo ver "Elemento eliminado satisfactoriamente."

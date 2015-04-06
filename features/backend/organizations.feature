@@ -76,7 +76,7 @@ Característica: Organizaciones
     Escenario: Borrar organización desde la página de edición
         Dado que estoy en la página edición de organización con nombre "Organización A"
         Cuando sigo "Borrar"
-        Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
+        Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
         Cuando presiono "Sí, borrar"
         Entonces debería estar en la página principal de organización
         Y debo ver "Elemento eliminado satisfactoriamente."
@@ -84,7 +84,7 @@ Característica: Organizaciones
     Escenario: Borrar organización desde el listado
         Dado que estoy en la página principal de organización
         Cuando presiono "Borrar" junto a "Organización A"
-        Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
+        Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
         Cuando presiono "Sí, borrar"
         Entonces debería estar en la página principal de organización
         Y debo ver "Elemento eliminado satisfactoriamente."

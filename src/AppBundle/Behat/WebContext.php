@@ -28,7 +28,7 @@ class WebContext extends DefaultContext
     }
 
     /**
-     * @Given /^que estoy en la página (principal|creación) de (.*)$/
+     * @Given /^que estoy en la página (principal|creación|esquema) de (.*)$/
      */
     public function iAmOnActionResource($action, $resource)
     {
@@ -66,8 +66,8 @@ class WebContext extends DefaultContext
     }
 
     /**
-     * @Then /^debería estar en la página (principal|creación) de (.*)$/
-     * @Then /^debería estar todavía en la página (principal|creación) de (.*)$/
+     * @Then /^debería estar en la página (principal|creación|esquema) de (.*)$/
+     * @Then /^debería estar todavía en la página (principal|creación|esquema) de (.*)$/
      */
     public function iShouldBeOnActionResource($action, $resource)
     {
@@ -122,14 +122,14 @@ class WebContext extends DefaultContext
     }
 
     /**
-     * @When /^presiono (.*) l.s (.*)$/
+     * @When /^presiono (.*) los (.*)$/
+     * @When /^presiono (.*) las (.*)$/
      */
     public function iClickActionOnBlock($action, $block)
     {
         $action = ucfirst($action);
         $block = ucfirst($block);
         $this->iClickNear($action, $block);
-
     }
 
     /**
@@ -143,7 +143,7 @@ class WebContext extends DefaultContext
     /**
      * @Then /^debería ver (\d+) (.*) en la lista$/
      */
-    public function iShouldSeeNumItems($num)
+    public function iShouldSeeNumItems($num, $item)
     {
         $this->assertSession()->pageTextContains(sprintf("%d %s", $num, $num == 1 ? "resultado" : "resultados"));
     }

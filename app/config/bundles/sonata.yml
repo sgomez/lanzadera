@@ -14,6 +14,12 @@ sonata_block:
         sonata.admin.block.admin_list:
             contexts: [admin]
 
+sonata_classification:
+    admin:
+        category:
+            class: AppBundle\Admin\CategoryAdmin
+
+
 sonata_doctrine_orm_admin:
    templates:
         form: [ Form/form_admin_fields.html.twig ]

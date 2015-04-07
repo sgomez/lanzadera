@@ -8,67 +8,52 @@
 
 namespace AppBundle\Behat;
 
+use Application\Sonata\ClassificationBundle\Entity\Category;
+use Application\Sonata\ClassificationBundle\Entity\Context;
+use Application\Sonata\ClassificationBundle\Entity\Tag;
 use Behat\Gherkin\Node\TableNode;
-use AppBundle\Entity\Taxonomy;
 
 class TaxonomyContext extends DefaultContext
 {
     /**
-     * @Given existen las siguientes taxonomías:
+     * @Given existen las siguientes categorías:
      */
-    public function createTaxonomies(TableNode $tableNode)
+    public function createTaxons(TableNode $categoriesTable)
     {
-        foreach($tableNode->getHash() as $node) {
-            $taxonomy = $this->getRepository('taxonomy')->findOneByName($node['id']);
-
-            if (!$taxonomy) {
-                $taxonomy = new Taxonomy();
-            }
-            $taxonomy->setName($node['id']);
-            $this->getEntityManager()->persist($taxonomy);
-        }
-
-        $this->getEntityManager()->flush();
-    }
-
-    /**
-     * @Given /^la taxonomía "([^""]*)" tiene los siguientes elementos:$/
-     */
-    public function createTaxons($taxonomyName, TableNode $taxonsTable)
-    {
-        $taxonomy = $this->getRepository('taxonomy')->findOneByName($taxonomyName);
         $manager = $this->getEntityManager();
+        $context = $this->getDefaultContext();
 
-        $taxons = array();
+        $baseCategory = new Category();
+        $baseCategory->setName('Default');
+        $baseCategory->setContext($context);
+        $baseCategory->setEnabled(true);
+        $manager->persist($baseCategory);
 
-        foreach ($taxonsTable->getRows() as $node) {
-            $taxonList = explode('>', $node[0]);
-            $parent = null;
+        foreach ($categoriesTable->getRows() as $node) {
+            $categoryList = explode('>', $node[0]);
+            /** @var Category $parent */
+            $parent = $baseCategory;
 
-            foreach ($taxonList as $taxonName) {
-                $taxonName = trim($taxonName);
+            foreach ($categoryList as $categoryName) {
+                $categoryName = trim($categoryName);
 
-                if (!isset($taxons[$taxonName])) {
-                    /* @var $taxon TaxonInterface */
-                    $taxon = $this->getRepository('taxon')->createNew();
-                    $taxon->setName($taxonName);
-
-                    $taxons[$taxonName] = $taxon;
-                }
-
-                $taxon = $taxons[$taxonName];
+                /* @var $category Category */
+                $category = $this->getRepository('category')->createNew();
+                $category->setName($categoryName);
+                $category->setDescription($this->faker->text);
+                $category->setEnabled(true);
+                $category->setContext($context);
 
                 if (null !== $parent) {
-                    $parent->addChild($taxon);
-                } else {
-                    $taxonomy->addTaxon($taxon);
+                    $category->setParent($parent);
                 }
 
-                $parent = $taxon;
+                $parent = $category;
+
+                $manager->persist($category);
             }
         }
 
-        $manager->persist($taxonomy);
         $manager->flush();
     }
 
@@ -77,17 +62,33 @@ class TaxonomyContext extends DefaultContext
      */
     public function createTags(TableNode $tableNode)
     {
-        $em = $this->getEntityManager();
-        foreach ($tableNode->getHash() as $tagHash) {
-            /** @var Taxonomy $tag */
-            $tag = $this->getContainer()->get('sylius.repository.taxon')->findOneByName($tagHash['nombre']);
-            if (!$tag) {
-                $tag = new Taxonomy();
-            }
-            $tag->setName($tagHash['nombre']);
+        $manager = $this->getEntityManager();
+        $context = $this->getDefaultContext();
 
-            $em->persist($tag);
-            $em->flush();
+        foreach ($tableNode->getHash() as $tagHash) {
+            /** @var Tag $tag */
+            $tag = $this->getRepository('tag')->createNew();
+            $tag->setName($tagHash['nombre']);
+            $tag->setEnabled(true);
+            $tag->setContext($context);
+
+            $manager->persist($tag);
         }
+        $manager->flush();
+    }
+
+    protected function getDefaultContext()
+    {
+        try {
+            $context = $this->findOneByName( 'context', 'default' );
+        } catch (\InvalidArgumentException $e) {
+            $context = new Context();
+            $context->setId('default');
+            $context->setName('default');
+            $context->setEnabled(true);
+            $this->getEntityManager()->persist($context);
+            $this->getEntityManager()->flush();
+        }
+        return $context;
     }
 } 

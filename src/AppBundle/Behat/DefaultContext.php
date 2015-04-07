@@ -9,28 +9,23 @@
 namespace AppBundle\Behat;
 
 use Behat\Behat\Context\Context;
-use Behat\Behat\Hook\Scope\AfterScenarioScope;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Mink\Driver\Selenium2Driver;
-use Behat\MinkExtension\Context\RawMinkContext;
 use Behat\Symfony2Extension\Context\KernelAwareContext;
-use Doctrine\Common\DataFixtures\Purger\ORMPurger;
-use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory as FakerFactory;
 use Faker\Generator;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Sylius\Bundle\ResourceBundle\Behat\DefaultContext as BaseDefaultContext;
 use Symfony\Component\HttpKernel\KernelInterface;
-use Symfony\Component\Security\Core\SecurityContextInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 
-abstract class DefaultContext extends RawMinkContext
+abstract class DefaultContext extends BaseDefaultContext
                implements Context, KernelAwareContext
 {
     protected $actions = array(
         "principal" => "list",
         "creación"  => "create",
         "edición"   => "edit",
+        "esquema"     => "tree",
     );
 
     protected $translate = array(
@@ -45,18 +40,6 @@ abstract class DefaultContext extends RawMinkContext
         "categoría" => "category",
         "etiqueta" => "tag"
     );
-
-	protected function entityHasFollowingIndicator($type, $name, TableNode $tableNode)
-	{
-		$element = $this->getRepository($type)->findOneByName($name);
-
-		foreach($tableNode->getHash() as $nodeHash) {
-			$indicator = $this->getRepository('indicator')->findOneByCriterionAndName($nodeHash['criterio'], $nodeHash['indicador']);
-			$element->addIndicator($indicator);
-		}
-
-		return $element;
-	}
 
     /**
      * @var KernelInterface
@@ -82,73 +65,6 @@ abstract class DefaultContext extends RawMinkContext
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function setKernel(KernelInterface $kernel)
-    {
-        $this->kernel = $kernel;
-    }
-
-    /**
-     * Get entity manager.
-     *
-     * @return ObjectManager
-     */
-    protected function getEntityManager()
-    {
-        return $this->getService('doctrine')->getManager();
-    }
-
-    /**
-     * @AfterScenario
-     */
-    public function purgeDatabase(AfterScenarioScope $scope)
-    {
-        $purger = new ORMPurger($this->getService('doctrine.orm.entity_manager'));
-        $purger->purge();
-    }
-
-    /**
-     * Returns Container instance.
-     *
-     * @return ContainerInterface
-     */
-    protected function getContainer()
-    {
-        return $this->kernel->getContainer();
-    }
-
-    /**
-     * Get service by id.
-     *
-     * @param string $id
-     *
-     * @return object
-     */
-    protected function getService($id)
-    {
-        return $this->getContainer()->get($id);
-    }
-
-    /**
-     * Get current user instance.
-     *
-     * @return null|UserInterface
-     *
-     * @throws \Exception
-     */
-    protected function getUser()
-    {
-        $token = $this->getSecurityContext()->getToken();
-
-        if (null === $token) {
-            throw new \Exception('No token found in security context.');
-        }
-
-        return $token->getUser();
-    }
-
-    /**
      * Get repository by resource name.
      *
      * @param string $resource
@@ -158,42 +74,6 @@ abstract class DefaultContext extends RawMinkContext
     protected function getRepository($resource)
     {
         return $this->getService('lanzadera.repository.'.$resource);
-    }
-
-    /**
-     * Get security context.
-     *
-     * @return SecurityContextInterface
-     */
-    protected function getSecurityContext()
-    {
-        return $this->getContainer()->get('security.context');
-    }
-
-    /**
-     * Find one resource by criteria.
-     *
-     * @param string $type
-     * @param array  $criteria
-     *
-     * @return object
-     *
-     * @throws \InvalidArgumentException
-     */
-    protected function findOneBy($type, array $criteria)
-    {
-        $resource = $this
-            ->getRepository($type)
-            ->findOneBy($criteria)
-        ;
-
-        if (null === $resource) {
-            throw new \InvalidArgumentException(
-                sprintf('%s for criteria "%s" was not found.', str_replace('_', ' ', ucfirst($type)), serialize($criteria))
-            );
-        }
-
-        return $resource;
     }
 
     /**
@@ -230,61 +110,22 @@ abstract class DefaultContext extends RawMinkContext
     }
 
     /**
-     * Generate url.
+     * @param $type
+     * @param $name
+     * @param TableNode $tableNode
      *
-     * @param string  $route
-     * @param array   $parameters
-     * @param Boolean $absolute
-     *
-     * @return string
+     * @return mixed
      */
-    protected function generateUrl($route, array $parameters = array(), $absolute = false)
+    protected function entityHasFollowingIndicator($type, $name, TableNode $tableNode)
     {
-        return $this->getService('router')->generate($route, $parameters, $absolute);
-    }
+        $element = $this->getRepository($type)->findOneByName($name);
 
-    /**
-     * Presses button with specified id|name|title|alt|value.
-     */
-    protected function pressButton($button)
-    {
-        $this->getSession()->getPage()->pressButton($this->fixStepArgument($button));
-    }
+        foreach($tableNode->getHash() as $nodeHash) {
+            $indicator = $this->getRepository('indicator')->findOneByCriterionAndName($nodeHash['criterio'], $nodeHash['indicador']);
+            $element->addIndicator($indicator);
+        }
 
-    /**
-     * Clicks link with specified id|title|alt|text.
-     */
-    protected function clickLink($link)
-    {
-        $this->getSession()->getPage()->clickLink($this->fixStepArgument($link));
-    }
-
-    /**
-     * Fills in form field with specified id|name|label|value.
-     */
-    protected function fillField($field, $value)
-    {
-        $this->getSession()->getPage()->fillField($this->fixStepArgument($field), $this->fixStepArgument($value));
-    }
-
-    /**
-     * Selects option in select field with specified id|name|label|value.
-     */
-    public function selectOption($select, $option)
-    {
-        $this->getSession()->getPage()->selectFieldOption($this->fixStepArgument($select), $this->fixStepArgument($option));
-    }
-
-    /**
-     * Returns fixed step argument (with \\" replaced back to ").
-     *
-     * @param string $argument
-     *
-     * @return string
-     */
-    protected function fixStepArgument($argument)
-    {
-        return str_replace('\\"', '"', $argument);
+        return $element;
     }
 
     /**

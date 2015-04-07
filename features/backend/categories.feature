@@ -7,11 +7,7 @@ Característica: Categorías
 
     Antecedentes:
         Dado que estoy autenticado como administrador
-        Y existen las siguientes taxonomías:
-            | nombre          | id          |
-            | Categoría       | Category    |
-            | Tag             | Tag         |
-        Y la taxonomía "Category" tiene los siguientes elementos:
+        Y existen las siguientes categorías:
             | Categoría A > Categoría A.1 > Categoría A.1.1 |
             | Categoría B > Categoría B.1                   |
             | Categoría C > Categoría C.1                   |
@@ -19,8 +15,9 @@ Característica: Categorías
     Escenario: Ver el listado de categorías
         Dado que estoy en la página del escritorio
         Cuando presiono listar las categorías
+        Y sigo "Lista"
         Entonces debería estar en la página principal de categoría
-        Y debería ver 7 categorías en la lista
+        Y debería ver 8 categorías en la lista
 
     Escenario: Buscar categorías
         Dado que estoy en la página principal de categoría
@@ -28,11 +25,6 @@ Característica: Categorías
         Y presiono "Filtrar"
         Entonces debería estar en la página principal de categoría
         Y debería ver 2 categorías en la lista
-
-    Escenario: Acceder a los detalles de la categoría desde el listado
-        Dado que estoy en la página principal de categoría
-        Cuando presiono "Mostrar" junto a "Categoría C"
-        Entonces debería estar en la página de categoría con nombre "Categoría C"
 
     Escenario: Acceder al formulario de creación de categorías
         Dado que estoy en la página principal de categoría
@@ -43,16 +35,17 @@ Característica: Categorías
         Dado que estoy en la página creación de categoría
         Cuando presiono "Crear y editar"
         Entonces debería estar todavía en la página creación de categoría
-        Y debo ver "Por favor, indique el nombre de la categoría."
+        Y debo ver "Se ha producido un error durante la creación del elemento."
 
     Escenario: Crear clasificador
         Dado que estoy en la página creación de categoría
         Cuando relleno lo siguiente:
         | Nombre      | Comercio Justo        |
         | Descripción | Descripción           |
-        Y selecciono "Categoría A" de "Superior"
+        Y selecciono "Categoría A" de "Padre"
+        Y marco "Habilitada"
         Y presiono "Crear y regresar al listado"
-        Entonces debería estar en la página principal de categoría
+        Entonces debería estar en la página esquema de categoría
         Y debo ver "Elemento creado satisfactoriamente"
         Y debo ver "Comercio Justo"
 

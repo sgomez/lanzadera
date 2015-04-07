@@ -7,11 +7,8 @@ Característica: Etiquetas
 
     Antecedentes:
         Dado que estoy autenticado como administrador
-        Y existen las siguientes taxonomías:
-            | nombre          | id          |
-            | Categoría       | Category    |
-            | Etiqueta        | Tag         |
-        Y la taxonomía "Tag" tiene los siguientes elementos:
+        Y existen las siguientes etiquetas:
+            | nombre          |
             | Etiqueta A      |
             | Etiqueta B      |
             | Etiqueta C      |
@@ -31,11 +28,6 @@ Característica: Etiquetas
             Entonces debería estar en la página principal de etiqueta
             Y debería ver 1 etiqueta en la lista
 
-        Escenario: Acceder a los detalles de la etiqueta desde el listado
-            Dado que estoy en la página principal de etiqueta
-            Cuando presiono "Mostrar" junto a "Etiqueta C"
-            Entonces debería estar en la página de etiqueta con nombre "Etiqueta C"
-
         Escenario: Acceder al formulario de creación de etiquetas
             Dado que estoy en la página principal de etiqueta
             Y sigo "Agregar nuevo"
@@ -45,7 +37,7 @@ Característica: Etiquetas
             Dado que estoy en la página creación de etiqueta
             Cuando presiono "Crear y editar"
             Entonces debería estar todavía en la página creación de etiqueta
-            Y debo ver "Por favor, indique el nombre de la etiqueta."
+            Y debo ver "Se ha producido un error durante la creación del elemento."
 
         Escenario: Crear etiqueta
             Dado que estoy en la página creación de etiqueta

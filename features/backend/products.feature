@@ -13,15 +13,12 @@ Característica: productos
             | Organización B  | 1       |
             | Organización C  | 1       |
             | Organización D  | 1       |
-        Y existen las siguientes taxonomías:
-            | nombre          | id          |
-            | Categoría       | Category    |
-            | Tag             | Tag         |
-        Y la taxonomía "Category" tiene los siguientes elementos:
+        Y existen las siguientes categorías:
             | Categoría A > Categoría A.1 > Categoría A.1.1 |
             | Categoría B > Categoría B.1                   |
             | Categoría C > Categoría C.1                   |
-        Y la taxonomía "Tag" tiene los siguientes elementos:
+        Y existen las siguientes etiquetas:
+            | nombre          |
             | Etiqueta A      |
             | Etiqueta B      |
             | Etiqueta C      |

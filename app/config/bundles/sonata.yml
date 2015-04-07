@@ -18,6 +18,8 @@ sonata_classification:
     admin:
         category:
             class: AppBundle\Admin\CategoryAdmin
+        tag:
+            class: AppBundle\Admin\TagAdmin
 
 
 sonata_doctrine_orm_admin:

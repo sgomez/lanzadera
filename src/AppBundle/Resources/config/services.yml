@@ -20,6 +20,12 @@ services:
         factory_method: getRepository
         arguments: ['AppBundle\Entity\Classification']
 
+    lanzadera.repository.context:
+        class: Application\Sonata\ClassificationBundle\Doctrine\ORM\ContextRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: ['Application\Sonata\ClassificationBundle\Entity\Context']
+
     lanzadera.repository.criterion:
         class: AppBundle\Doctrine\ORM\CriterionRepository
         factory_service: doctrine.orm.entity_manager

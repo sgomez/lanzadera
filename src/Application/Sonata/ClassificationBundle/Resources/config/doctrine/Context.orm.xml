@@ -11,7 +11,7 @@
     <entity
         name="Application\Sonata\ClassificationBundle\Entity\Context"
         table="classification__context"
-        repository-class="Doctrine\ORM\EntityRepository">
+        repository-class="Application\Sonata\ClassificationBundle\Doctrine\ORM\ContextRepository">
 
         <id name="id" type="string" column="id">
             <generator strategy="NONE"/>

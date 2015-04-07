@@ -10,10 +10,6 @@
     background-repeat:no-repeat;
 }
 
-a.sonata-ba-action {
-    margin-top: 10px;
-}
-
 @media(min-width:768px) {
     .sonata-ba-list-field-header-batch {
         width: 20px;

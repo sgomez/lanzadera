@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: sergio
- * Date: 6/4/15
- * Time: 11:31
+ * Date: 06/04/15
+ * Time: 21:53
  */
 
 namespace Application\Sonata\ClassificationBundle\Doctrine\ORM;
@@ -11,7 +11,7 @@ namespace Application\Sonata\ClassificationBundle\Doctrine\ORM;
 
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
-class TagRepository extends EntityRepository
+class CategoryRepository extends EntityRepository
 {
     /**
      * @param mixed $id
@@ -25,16 +25,5 @@ class TagRepository extends EntityRepository
         }
 
         return parent::find($id);
-    }
-
-    /**
-     * @return \Doctrine\ORM\QueryBuilder
-     */
-    public function getAll()
-    {
-        return $this
-            ->createQueryBuilder('o')
-            ->orderBy('o.name', 'ASC')
-        ;
     }
 }

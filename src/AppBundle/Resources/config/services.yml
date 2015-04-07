@@ -3,7 +3,7 @@ parameters: ~
 services:
 
     lanzadera.repository.category:
-        class: Doctrine\ORM\EntityRepository
+        class: Application\Sonata\ClassificationBundle\Doctrine\ORM\CategoryRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments: ['Application\Sonata\ClassificationBundle\Entity\Category']
